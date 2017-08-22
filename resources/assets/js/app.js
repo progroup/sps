@@ -1,11 +1,11 @@
-require('./bootstrap');
-import router from "./routes";
+require('./bootstrap')
+import router from './routes'
 
-window.Vue = require('vue');
+window.Vue = require('vue')
 
-Vue.component('example', require('./components/Example.vue'));
+Vue.component('quick-links', require('./components/QuickLinks.vue'))
 
 const app = new Vue({
-  router,
-  el: '#app'
-});
+    el: '#app',
+    router
+})

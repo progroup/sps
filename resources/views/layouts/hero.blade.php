@@ -4,9 +4,6 @@
       <h1 class="title">
         Frequently Asked Questions
       </h1>
-      <h2 class="subtitle">
-        Primary subtitle
-      </h2>
     </div>
   </div>
 </section>
