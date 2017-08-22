@@ -1,5 +1,5 @@
 <div class="">
   <a href="/">
-    <img src="/logo-gasps.png">
+    <img src="/assets/images/logo-gasps.png">
   </a>
 </div>

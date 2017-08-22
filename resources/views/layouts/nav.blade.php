@@ -10,7 +10,7 @@
     <div class="navbar-menu" id="navMenu">
       <div class="navbar-start">
 
-        <router-link class="navbar-item" to="/">Home</router-link>
+        <a class="navbar-item" href="/">Home</a>
 
         <b-dropdown hoverable>
           <a class="navbar-item" slot="trigger">
@@ -79,9 +79,9 @@
           SPF Overview
         </router-link> -->
 
-        <router-link to="/faqs" class="nav-item">
+        <a href="/faqs" class="nav-item">
           FAQs
-        </router-link>
+        </a>
       </div>
 
       <div class="navbar-end">

@@ -55,7 +55,7 @@
           </div>
           <figure class="media-right">
             <p class="image" style="width: 14rem">
-              <img src="/georgia.jpg">
+              <img src="/assets/images/georgia.jpg">
             </p>
           </figure>
         </article>
@@ -63,7 +63,7 @@
         <article class="media">
           <figure class="media-left">
             <p class="image" style="width: 24rem">
-              <img src="/the-behavioral-health-continuum-model.png">
+              <img src="/assets/images/the-behavioral-health-continuum-model.png">
             </p>
           </figure>
           <div class="media-content">
@@ -107,7 +107,7 @@
           </div>
           <figure class="media-right">
             <p class="image" style="width: 14rem">
-              <img src="/spf2.png">
+              <img src="/assets/images/spf2.png">
             </p>
           </figure>
         </article>
@@ -116,7 +116,7 @@
 
         <p>Environmental strategies are prevention efforts aimed at changing or influencing community standards, institutions, structures or attitudes that shape individuals’ behaviors. While individual approaches focus on helping people develop the knowledge, attitudes, and skills they need to change their behavior, environmental approaches focus on creating an environment that makes it easier for people to act in healthy ways.</p>
 
-        <img src="/research-icon.png">
+        <img src="/assets/images/research-icon.png">
 
       </div>
     </div> -->

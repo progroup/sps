@@ -5,13 +5,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
-
   <title>{{ config('app.name', 'Laravel') }}</title>
-
-  <!-- Styles -->
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
   <!-- Scripts -->
@@ -26,14 +22,18 @@
 
 <body>
   <div id="app">
-    @include ('layouts.nav')
-    @yield('content')
-
-    <flash message="{{ session('flash') }}"></flash>
+    <main class="main">
+      @include ('layouts.nav')
+      @include ('layouts.hero')
+      @yield('content')
+    </main>
+    @include ('layouts.footer')
   </div>
 
+  <flash message="{{ session('flash') }}"></flash>
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}"></script>
+  <script src="//s3.amazonaws.com/scripts.hellobar.com/db5100bd0d00d770fd80b188dbabf1529f1e4ff7.js"></script>
 </body>
 
 </html>
