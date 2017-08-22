@@ -38,7 +38,7 @@
         <div class="column">
             <h1 class="title">Frequently Asked Questions</h1>
             <div class="content is-medium">
-              <ol>
+              <ul>
               @forelse ($faqs as $faq)
                 <li>
                   <div>
@@ -51,7 +51,7 @@
               @empty
                 <li>No FAQs</li>
               @endforelse
-            </ol>
+            </ul>
           </div>
         </div>
       </div>

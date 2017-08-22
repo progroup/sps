@@ -1,21 +1,8 @@
 <?php
-use App\Faq;
 
 Route::get('/', function () {
-    $faqs = DB::table('faqs')->get();
-
-    return view('welcome', compact('faqs'));
+    return view('welcome');
 });
 
-Route::get('/faqs', function () {
-    $faqs = Faq::all();
-
-    return view('faqs.index', compact('faqs'));
-});
-
-
-Route::get('/faqs/{faq}', function ($id) {
-    $faq = Faq::find($id);
-
-    return view('faqs.show', compact('faq'));
-});
+Route::get('/faqs', 'FaqController@index');
+Route::get('/faqs/{faq}', 'FaqController@show');

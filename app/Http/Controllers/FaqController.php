@@ -14,7 +14,9 @@ class FaqController extends Controller
      */
     public function index()
     {
-        //
+        $faqs = Faq::all();
+
+        return view('faqs.index', compact('faqs'));
     }
 
     /**
@@ -44,9 +46,11 @@ class FaqController extends Controller
      * @param  \App\Faq  $faq
      * @return \Illuminate\Http\Response
      */
-    public function show(Faq $faq)
+    public function show($id)
     {
-        //
+        $faq = Faq::find($id);
+
+        return view('faqs.show', compact('faq'));
     }
 
     /**
