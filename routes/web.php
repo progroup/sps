@@ -1,5 +1,8 @@
 <?php
 
 Route::get('/', function () {
-    return view('app');
+    $faqs = DB::table('faqs')->get();
+    // return $faqs;
+
+    return view('app', compact('faqs'));
 });
