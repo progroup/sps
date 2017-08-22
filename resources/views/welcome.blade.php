@@ -52,7 +52,7 @@
             <flash message="{{ session('flash') }}"></flash>
         </div>
         <script src="{{ mix('/js/app.js') }}"></script>
-        <script src="//s3.amazonaws.com/scripts.hellobar.com/db5100bd0d00d770fd80b188dbabf1529f1e4ff7.js"></script>
+        <!-- <script src="//s3.amazonaws.com/scripts.hellobar.com/db5100bd0d00d770fd80b188dbabf1529f1e4ff7.js"></script> -->
 
     </body>
 </html>

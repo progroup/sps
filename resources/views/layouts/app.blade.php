@@ -23,8 +23,8 @@
 <body>
   <div id="app">
     <main class="main">
-      @include ('layouts.nav')
-      @include ('layouts.hero')
+      @include('layouts.nav')
+      @include('layouts.hero')
       @yield('content')
     </main>
     @include ('layouts.footer')
@@ -33,7 +33,7 @@
   <flash message="{{ session('flash') }}"></flash>
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}"></script>
-  <script src="//s3.amazonaws.com/scripts.hellobar.com/db5100bd0d00d770fd80b188dbabf1529f1e4ff7.js"></script>
+  <!-- <script src="//s3.amazonaws.com/scripts.hellobar.com/db5100bd0d00d770fd80b188dbabf1529f1e4ff7.js"></script> -->
 </body>
 
 </html>

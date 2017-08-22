@@ -1,4 +1,6 @@
 <?php
+use App\Faq;
+
 Route::get('/', function () {
     $faqs = DB::table('faqs')->get();
 
@@ -6,14 +8,14 @@ Route::get('/', function () {
 });
 
 Route::get('/faqs', function () {
-    $faqs = DB::table('faqs')->get();
+    $faqs = Faq::all();
 
     return view('faqs.index', compact('faqs'));
 });
 
 
 Route::get('/faqs/{faq}', function ($id) {
-    $faq = DB::table('faqs')->find($id);
+    $faq = Faq::find($id);
 
     return view('faqs.show', compact('faq'));
 });

@@ -36,17 +36,22 @@
           </aside>
         </div>
         <div class="column">
-          <div class="content">
-            <h1>Frequently Asked Questions</h1>
-
-            @foreach ($faqs as $faq)
-            <b-panel collapsible>
-              <strong slot="header">{{$faq->question}}</strong>
-              <div class="content">
-                <p>{{$faq->answer}}</p>
-              </div>
-            </b-panel>
-            @endforeach
+            <h1 class="title">Frequently Asked Questions</h1>
+            <div class="content is-medium">
+              <ol>
+              @forelse ($faqs as $faq)
+                <li>
+                  <div>
+                    <p>
+                      <b>{{$faq->question}}</b>
+                      <p>{{$faq->answer}}</p>
+                    </p>
+                  </div>
+                </li>
+              @empty
+                <li>No FAQs</li>
+              @endforelse
+            </ol>
           </div>
         </div>
       </div>
