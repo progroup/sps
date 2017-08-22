@@ -32,6 +32,10 @@ const routes = [
     {
         path: '/calendar',
         component: require('./pages/Calendar.vue')
+    },
+    {
+        path: '/resources',
+        component: require('./pages/Resources.vue')
     }
 ]
 

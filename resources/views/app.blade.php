@@ -11,41 +11,49 @@
     </head>
     <body>
         <div id="app">
-            <!-- @include('layouts.header') -->
-            @include ('layouts.nav')
-            @include ('layouts.hero')
-            <!-- <section class="section">
-                <div class="container">
-                    <div class="columns">
-                        <div class="column has-text-centered">
-                            <a class="button is-primary is-outlined is-large">
-                                <span>Resources</span>
-                            </a>
-                        </div>
-                        <div class="column has-text-centered">
-                            <a class="button is-primary is-outlined is-large">
-                                <span>Training Center</span>
-                            </a>
-                        </div>
-                        <div class="column has-text-centered">
-                            <a class="button is-primary is-outlined is-large">
-                                <span>Help / IP Reports</span>
-                            </a>
-                        </div>
-                        <div class="column has-text-centered">
-                            <a class="button is-primary is-outlined is-large">
-                                <span>Calendar</span>
-                            </a>
+            <main class="main">
+                <!-- @include('layouts.header') -->
+                @include ('layouts.nav') @include ('layouts.hero')
+                <!-- <section class="section">
+                    <div class="container">
+                        <div class="columns">
+                            <div class="column has-text-centered">
+                                <a class="button is-primary is-outlined is-large">
+                                    <span>Resources</span>
+                                </a>
+                            </div>
+                            <div class="column has-text-centered">
+                                <a class="button is-primary is-outlined is-large">
+                                    <span>Training Center</span>
+                                </a>
+                            </div>
+                            <div class="column has-text-centered">
+                                <a class="button is-primary is-outlined is-large">
+                                    <span>Help / IP Reports</span>
+                                </a>
+                            </div>
+                            <div class="column has-text-centered">
+                                <a class="button is-primary is-outlined is-large">
+                                    <span>Calendar</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section> -->
+                </section> -->
 
-            <transition name="fade" mode="out-in">
-                <keep-alive>
-                    <router-view></router-view>
-                </keep-alive>
-            </transition>
+                <transition name="fade" mode="out-in">
+                    <keep-alive>
+                        <router-view></router-view>
+                    </keep-alive>
+                </transition>
+            </main>
+            <footer class="foot" style="background: #000">
+                <section class="section">
+                    <div class="container">
+                        <p>Footer</p>
+                    </div>
+                </section>
+            </footer>
         </div>
         <script type="text/javascript" src="{{ mix('/js/app.js') }}"></script>
     </body>

@@ -27,3 +27,19 @@
   // Import Bulma and Buefy styles
   @import "~bulma";
   @import "~buefy/src/scss/buefy";
+
+  body {
+    height: 100vh;
+  }
+
+  #app {
+    display: flex;
+    flex-direction: column;
+    height: 100%
+  }
+  .main {
+    flex: 1 0 auto;
+  }
+  .foot {
+    flex-shrink: 0;
+  }

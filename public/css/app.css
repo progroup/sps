@@ -12722,3 +12722,29 @@ label.panel-block:hover {
   background: rgba(64, 153, 255, 0.05);
 }
 
+body {
+  height: 100vh;
+}
+
+#app {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+}
+
+.main {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+}
+
+.foot {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+

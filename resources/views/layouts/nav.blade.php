@@ -37,32 +37,47 @@
           </b-dropdown-item>
         </b-dropdown>
 
-        <a class="nav-item" href="http://ecco.ga-sps.org/help.php" target="_blank">Upload Reports</a>
+        <!-- <a class="nav-item" href="http://ecco.ga-sps.org/help.php" target="_blank">Upload Reports</a> -->
 
-        <div class="navbar-item has-dropdown">
-          <a class="navbar-link">
-            Resources
+        <!-- <b-dropdown hoverable>
+          <a class="navbar-item" slot="trigger">
+            <span>Resources</span>
+            <b-icon icon="arrow_drop_down"></b-icon>
           </a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item">
-              Overview
-            </a>
-            <a class="navbar-item">
-              Elements
-            </a>
-            <a class="navbar-item">
-              Components
-            </a>
-            <hr class="navbar-divider">
-            <div class="navbar-item">
-              Version 0.5.1
-            </div>
-          </div>
-        </div>
+          <b-dropdown-item has-link>
+            <router-link :to="{ path: '/resources', params: { id: 123 }}">
+              Introduction to App
+            </router-link>
+            <router-link to="/resources">
+              Webinars
+            </router-link>
+            <router-link to="/resources">
+              Tools
+            </router-link>
+            <router-link to="/resources">
+              Stategic Prevention Framework
+            </router-link>
+            <router-link to="/resources">
+              App Strategies
+            </router-link>
+            <router-link to="/resources">
+              Suicide Prevention
+            </router-link>
+            <router-link to="/resources">
+              GENRx
+            </router-link>
+            <router-link to="/resources">
+              Admin
+            </router-link>
+            <router-link to="/resources">
+              Evaluation
+            </router-link>
+          </b-dropdown-item>
+        </b-dropdown> -->
 
-        <router-link to="/spf-overview" class="nav-item">
+        <!-- <router-link to="/spf-overview" class="nav-item">
           SPF Overview
-        </router-link>
+        </router-link> -->
 
         <router-link to="/faqs" class="nav-item">
           FAQs

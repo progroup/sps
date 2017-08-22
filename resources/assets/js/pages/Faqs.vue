@@ -38,7 +38,9 @@
 
         </div>
         <div class="column">
-
+          <div class="content">
+            <h1>Frequently Asked Questions</h1>
+          </div>
         </div>
       </div>
 
