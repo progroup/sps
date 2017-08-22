@@ -1,4 +1,4 @@
-<section class="hero is-primary is-medium is-bold" style="background: url('/assets/images/about.jpg') no-repeat; background-size: cover">
+<section class="hero is-primary is-bold" style="background-size: cover">
   <div class="hero-body">
     <div class="container">
       <!-- <img style="background: #fff" src="/logo-gasps.png" alt=""> -->

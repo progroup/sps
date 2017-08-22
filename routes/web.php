@@ -1,8 +1,6 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/faqs', 'FaqController@index');
+Route::get('/', 'FaqController@index');
+Route::get('/faqs/create', 'FaqController@create');
+Route::post('/faqs', 'FaqController@store');
 Route::get('/faqs/{faq}', 'FaqController@show');

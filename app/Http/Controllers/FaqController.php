@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class FaqController extends Controller
 {
-    /**s
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -26,7 +26,7 @@ class FaqController extends Controller
      */
     public function create()
     {
-        //
+        return view('faqs.create');
     }
 
     /**
@@ -37,7 +37,21 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $faq = new Faq;
+        // $faq->question = request('question');
+        // $faq->answer = request('answer');
+        // $faq->topic_id = 1;
+
+        // $faq->save();
+
+        Faq::create([
+            'question' => request('question'),
+            'answer' => request('answer'),
+            'topic_id' => 1
+        ]);
+
+        return redirect('/');
+
     }
 
     /**
@@ -46,10 +60,8 @@ class FaqController extends Controller
      * @param  \App\Faq  $faq
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Faq $faq)
     {
-        $faq = Faq::find($id);
-
         return view('faqs.show', compact('faq'));
     }
 

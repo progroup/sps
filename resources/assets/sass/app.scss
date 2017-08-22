@@ -43,3 +43,10 @@
   .foot {
     flex-shrink: 0;
   }
+  .inline-caps {
+    text-transform: uppercase;
+    li a {
+      letter-spacing: 2.2px;
+      font-size: 0.75rem;
+    }
+  }

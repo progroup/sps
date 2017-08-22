@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-
-</div>
+<section class="section">
+    <div class="container">
+        <h1 class="title">{{$faq->question}}</h1>
+      </div>
+</section>
 @endsection
