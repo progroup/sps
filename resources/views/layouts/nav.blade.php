@@ -87,15 +87,18 @@
             </div>
 
             <div class="navbar-end">
-              <div class="navbar-item">
-                <!-- <b-field>
-                  <b-input placeholder="Search..." type="search" icon="search">
-                  </b-input>
-                  <p class="control">
-                    <button class="button is-primary">Search</button>
-                  </p>
-                </b-field> -->
-              </div>
+              <!-- Authentication Links -->
+              @if (Auth::guest())
+                <a class="nav-item" href="{{ route('login') }}">Login</a>
+                <a class="nav-item" href="{{ route('register') }}">Register</a>
+              @else
+                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false">
+                  {{ Auth::user()->name }} <span class="caret"></span>
+                </a>
+                <a href="{{ route('logout') }}"
+                  onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
+              @endif
             </div>
           </div>
         </nav>

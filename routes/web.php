@@ -9,3 +9,7 @@ Route::get('/faqs', 'FaqsController@index');
 Route::get('/faqs/create', 'FaqsController@create');
 Route::post('/faqs', 'FaqsController@store');
 Route::get('/faqs/{faq}', 'FaqsController@show');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
