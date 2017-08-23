@@ -2,9 +2,7 @@
   <div class="hero-body">
     <div class="container">
       <!-- <img style="background: #fff" src="/logo-gasps.png" alt=""> -->
-      <!-- <h1 class="title">
-        Georgia Strategic Prevention System
-      </h1> -->
+      <h1 class="title">Strategic Prevention System</h1>
     </div>
   </div>
   <!-- <div class="hero-foot">

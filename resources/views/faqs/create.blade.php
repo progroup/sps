@@ -14,14 +14,14 @@
             <div class="field">
                 <label class="label">Question</label>
                 <div class="control">
-                  <input class="input" type="text" name="question" placeholder="Text input" required>
+                  <input class="input" type="text" name="question" placeholder="Text input">
                 </div>
               </div>
 
               <div class="field">
                 <label class="label">Answer</label>
                 <div class="control">
-                  <textarea class="textarea" name="answer" placeholder="Textarea" required></textarea>
+                  <textarea class="textarea" name="answer" placeholder="Textarea"></textarea>
                 </div>
               </div>
 
@@ -29,9 +29,16 @@
                   <label class="label">Topic</label>
                   <div class="control">
                     <div class="select">
-                      <select name="topic">
-                        <option>Select dropdown</option>
-                        <option>With options</option>
+                      <select name="topic_id">
+                        <option value='0'>Select Topic</option>
+                        <option value='1'>Using ECCO</option>
+                        <option value='2'>Alcohol and Substance Abuse Prevention Project (ASAPP)</option>
+                        <option value='3'>Suicide Prevention</option>
+                        <option value='4'>Red Ribbon Week</option>
+                        <option value='5'>Contracts</option>
+                        <option value='6'>Prescription Drug Abuse Prevention (GENRx)</option>
+                        <option value='7'>DBHDD/OBHP</option>
+                        <option value='8'>Continuing Education</option>
                       </select>
                     </div>
                   </div>
@@ -46,6 +53,9 @@
                 </div>
               </div>
           </form>
+      </div>
+      <div class="column is-3">
+          @include('layouts.errors')
       </div>
     </div>
   </div>

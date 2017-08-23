@@ -16,7 +16,10 @@
                 <li>
                   <div>
                     <p>
-                      <b>{{$faq->question}}</b>
+                      <!-- <b>{{$faq->created_at->toFormattedDateString()}}</b> -->
+                      <a href="/faqs/{{ $faq->id }}">
+                        {{$faq->question}}
+                      </a>
                       <p>{{$faq->answer}}</p>
                     </p>
                   </div>

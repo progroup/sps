@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Topic;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -14,6 +15,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        \View::composer('*', function ($view) {
+            $topics = \Cache::rememberForever('topics', function () {
+                return Topic::all();
+            });
+
+            $view->with('topics', $topics);
+        });
+
         Schema::defaultStringLength(191);
     }
 

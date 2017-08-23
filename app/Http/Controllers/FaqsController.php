@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Faq;
 use Illuminate\Http\Request;
 
-class FaqController extends Controller
+class FaqsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,18 +37,12 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
-        // $faq = new Faq;
-        // $faq->question = request('question');
-        // $faq->answer = request('answer');
-        // $faq->topic_id = 1;
-
-        // $faq->save();
-
-        Faq::create([
-            'question' => request('question'),
-            'answer' => request('answer'),
-            'topic_id' => 1
+        $this->validate(request(), [
+            'question' => 'required',
+            'answer' => 'required'
         ]);
+
+        Faq::create(request(['question', 'answer', 'topic_id']));
 
         return redirect('/');
 

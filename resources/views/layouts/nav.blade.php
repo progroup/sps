@@ -11,7 +11,8 @@
           <div class="navbar-menu" id="navMenu">
             <div class="navbar-start">
 
-              <a class="navbar-item" href="/">Home</a>
+              <a class="navbar-item" href="/">Topics</a>
+              <a class="navbar-item" href="/faqs">FAQs</a>
 
               <!-- <b-dropdown hoverable>
                 <a class="navbar-item" slot="trigger">
