@@ -3,7 +3,7 @@
   // Override Your Fonts Style and Sizes
   "terminal.integrated.fontFamily": "Operator Mono",
   "terminal.integrated.fontSize": 16,
-  "window.zoomLevel": 0,
+  "window.zoomLevel": 1,
   "editor.fontFamily": "Operator Mono",
   "editor.fontSize": 19,
   "editor.fontLigatures": true,

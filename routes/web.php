@@ -10,6 +10,8 @@ Route::get('/faqs/create', 'FaqsController@create');
 Route::post('/faqs', 'FaqsController@store');
 Route::get('/faqs/{faq}', 'FaqsController@show');
 
+Route::get('/faqs/tags/{tag}', 'TagsController@index');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -1,52 +1,38 @@
-  // Import Bulma's core
-  @import "~bulma/sass/utilities/_all";
+@import "variables";
 
-  // Set your colors
-  $primary: #98002e;
-  $primary-invert: findColorInvert($primary);
-  $twitter: #4099FF;
-  $twitter-invert: findColorInvert($twitter);
+// Import Bulma and Buefy styles
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
 
-  // Setup $colors to use as bulma classes (e.g. 'is-twitter')
-  $colors: ( "white": ($white, $black),
-  "black": ($black, $white),
-  "light": ($light, $light-invert),
-  "dark": ($dark, $dark-invert),
-  "primary": ($primary, $primary-invert),
-  "info": ($info, $info-invert),
-  "success": ($success, $success-invert),
-  "warning": ($warning, $warning-invert),
-  "danger": ($danger, $danger-invert),
-  "twitter": ($twitter, $twitter-invert));
+body {
+  height: 100vh;
+}
 
-  // Links
-  $link: $primary;
-  $link-invert: $primary-invert;
-  $link-focus-border: $primary;
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%
+}
+.main {
+  flex: 1 0 auto;
+}
+.foot {
+  flex-shrink: 0;
+}
 
-  // Import Bulma and Buefy styles
-  @import "~bulma";
-  @import "~buefy/src/scss/buefy";
-
-  body {
-    height: 100vh;
+.inline-caps {
+  text-transform: uppercase;
+  li a {
+    letter-spacing: 2.2px;
+    font-size: 0.75rem;
   }
+}
 
-  #app {
-    display: flex;
-    flex-direction: column;
-    height: 100%
-  }
-  .main {
-    flex: 1 0 auto;
-  }
-  .foot {
-    flex-shrink: 0;
-  }
-  .inline-caps {
-    text-transform: uppercase;
-    li a {
-      letter-spacing: 2.2px;
-      font-size: 0.75rem;
-    }
-  }
+#flash-message {
+  animation: flash-message 4s forwards;
+}
+
+@keyframes flash-message {
+  0%   {opacity: 1;}
+  100% {opacity: 0; display: none;}
+}

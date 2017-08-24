@@ -7,4 +7,12 @@
       </li>
     @endforeach
   </ul>
+  <p class="menu-label">Tags</p>
+  <ul class="menu-list">
+    @foreach ($tags as $tag)
+      <li>
+        <a href="/faqs/tags/{{$tag}}">{{$tag}}</a>
+      </li>
+    @endforeach
+  </ul>
 </aside>

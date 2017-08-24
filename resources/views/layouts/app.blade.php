@@ -8,7 +8,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>{{ config('app.name', 'Laravel') }}</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
 
   <!-- Scripts -->
   <script>
@@ -25,6 +25,15 @@
     <main class="main">
       @include('layouts.nav')
       @include('layouts.hero')
+      @if ($flash = session('message'))
+      <div id="flash-message" class="message is-success">
+        <div class="message-header">
+          <div class="container">
+            {{ $flash }}
+          </div>
+        </div>
+      </div>
+      @endif
       @yield('content')
     </main>
     @include ('layouts.footer')
@@ -32,7 +41,7 @@
 
   <flash message="{{ session('flash') }}"></flash>
   <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}"></script>
+  <script src="{{ mix('/js/app.js') }}"></script>
   <!-- <script src="//s3.amazonaws.com/scripts.hellobar.com/db5100bd0d00d770fd80b188dbabf1529f1e4ff7.js"></script> -->
 </body>
 

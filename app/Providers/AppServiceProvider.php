@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Tag;
 use App\Topic;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
@@ -19,8 +20,9 @@ class AppServiceProvider extends ServiceProvider
             $topics = \Cache::rememberForever('topics', function () {
                 return Topic::all();
             });
+            $tags = Tag::has('faqs')->pluck('name');
 
-            $view->with('topics', $topics);
+            $view->with(compact('topics', 'tags'));
         });
 
         Schema::defaultStringLength(191);

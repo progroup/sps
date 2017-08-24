@@ -43,7 +43,9 @@ class TopicsController extends Controller
 
         Faq::create(request(['name']));
 
-        return redirect('/');
+        session()->flash('message', 'Thanks for adding a topic.');
+
+        return redirect()->home();
     }
 
     /**

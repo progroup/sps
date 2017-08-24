@@ -10,6 +10,7 @@
       <div class="column">
         <div class="content">
           <h1>{{$topic->name}}</h1>
+
           <hr>
           @foreach($topic->faqs as $faq)
             <div class="card">

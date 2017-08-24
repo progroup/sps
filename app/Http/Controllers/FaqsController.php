@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Faq;
+use App\Tag;
+
 use Illuminate\Http\Request;
 
 class FaqsController extends Controller
@@ -44,7 +46,9 @@ class FaqsController extends Controller
 
         Faq::create(request(['question', 'answer', 'topic_id']));
 
-        return redirect('/');
+        session()->flash('message', 'The FAQ has been added.');
+
+        return redirect('/faqs');
 
     }
 
