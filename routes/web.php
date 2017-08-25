@@ -1,5 +1,9 @@
 <?php
 
+Route::get('/spa', function() {
+    return view('spa');
+});
+
 Route::get('/', 'TopicsController@index');
 Route::get('/topics/create', 'TopicsController@create');
 Route::post('/topics', 'TopicsController@store');

@@ -3,10 +3,12 @@ import VueRouter from 'vue-router'
 import lodash from 'lodash'
 import axios from 'axios'
 import Buefy from 'buefy'
+import InstantSearch from 'vue-instantsearch'
 
 window.Vue = Vue
 Vue.use(VueRouter)
 Vue.use(Buefy)
+Vue.use(InstantSearch)
 
 window._ = lodash
 window.axios = axios

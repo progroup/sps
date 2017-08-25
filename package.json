@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "buefy": "^0.5.1",
+    "vue-instantsearch": "^1.0.0",
     "vue-router": "^2.7.0",
     "vuex": "^2.3.1",
     "vuex-router-sync": "^4.2.0"
