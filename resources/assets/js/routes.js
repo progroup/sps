@@ -3,11 +3,19 @@ import VueRouter from 'vue-router'
 const routes = [
     {
         path: '/',
-        component: require('./pages/Home.vue')
+        component: require('./pages/Search.vue')
     },
     {
         path: '/faqs',
         component: require('./pages/Faqs.vue')
+    },
+    {
+        path: '/home',
+        component: require('./pages/Home.vue')
+    },
+    {
+        path: '/icons',
+        component: require('./pages/Icons.vue')
     },
     {
         path: '/about-us',

@@ -1,10 +1,10 @@
 <?php
 
-Route::get('/spa', function() {
+Route::get('/', function() {
     return view('spa');
 });
 
-Route::get('/', 'TopicsController@index');
+Route::get('/topics', 'TopicsController@index');
 Route::get('/topics/create', 'TopicsController@create');
 Route::post('/topics', 'TopicsController@store');
 Route::get('/topics/{topic}', 'TopicsController@show');

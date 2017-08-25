@@ -17,9 +17,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         \View::composer('*', function ($view) {
-            $topics = \Cache::rememberForever('topics', function () {
-                return Topic::all();
-            });
+            $topics = Topic::all();
             $tags = Tag::has('faqs')->pluck('name');
 
             $view->with(compact('topics', 'tags'));
