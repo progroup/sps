@@ -167,8 +167,15 @@ return [
         /*
          * Package Service Providers...
          */
-        Laravel\Tinker\TinkerServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
+        Laravel\Tinker\TinkerServiceProvider::class,
+        Spatie\CollectionMacros\CollectionMacroServiceProvider::class,
+        Spatie\Menu\Laravel\MenuServiceProvider::class,
+        Spatie\ResponseCache\ResponseCacheServiceProvider::class,
+        Spatie\Tail\TailServiceProvider::class,
+        Spatie\GoogleTagManager\GoogleTagManagerServiceProvider::class,
+        Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -178,6 +185,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Navigation\NavigationServiceProvider::class,
 
     ],
 
@@ -227,7 +235,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'GoogleTagManager' => Spatie\GoogleTagManager\GoogleTagManagerFacade::class,
     ],
 
 ];

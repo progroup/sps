@@ -10,6 +10,10 @@ const routes = [
         component: require('./pages/Faqs.vue')
     },
     {
+        path: '/test',
+        component: require('./pages/Test.vue')
+    },
+    {
         path: '/home',
         component: require('./pages/Home.vue')
     },

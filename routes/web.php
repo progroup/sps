@@ -1,9 +1,5 @@
 <?php
 
-Route::get('/', function() {
-    return view('spa');
-});
-
 Route::get('/topics', 'TopicsController@index');
 Route::get('/topics/create', 'TopicsController@create');
 Route::post('/topics', 'TopicsController@store');
@@ -18,4 +14,10 @@ Route::get('/faqs/tags/{tag}', 'TagsController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/spa', function() {
+    return view('spa');
+});
+
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/{url}', 'PageController')->where('url', '.*')->name('page');

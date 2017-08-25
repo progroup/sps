@@ -2,7 +2,8 @@
   <div class="hero-body">
     <div class="container">
       <!-- <img style="background: #fff" src="/logo-gasps.png" alt=""> -->
-      <h1 class="title">Strategic Prevention System</h1>
+      <h1 class="title">Prospectus Group</h1>
+      <h2 class="subtitle">GASPS Training and Technical Assistance</h2>
     </div>
   </div>
   <!-- <div class="hero-foot">

@@ -4,6 +4,10 @@ import lodash from 'lodash'
 import axios from 'axios'
 import Buefy from 'buefy'
 import InstantSearch from 'vue-instantsearch'
+import { TableComponent, TableColumn } from 'vue-table-component'
+
+Vue.component('table-component', TableComponent)
+Vue.component('table-column', TableColumn)
 
 window.Vue = Vue
 Vue.use(VueRouter)

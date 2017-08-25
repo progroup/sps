@@ -1,5 +1,5 @@
-require('./bootstrap')
 import router from './routes'
+require('./bootstrap')
 
 window.Vue = require('vue')
 

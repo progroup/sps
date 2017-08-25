@@ -11,7 +11,7 @@
             <a class="button is-link" href="/faqs/create">Add a Question</a>
 
             <div class="content is-medium">
-              <ul>
+              <ol>
               @forelse ($faqs as $faq)
                 <li>
                   <div>
@@ -27,7 +27,7 @@
               @empty
                 <li>No FAQs</li>
               @endforelse
-            </ul>
+            </ol>
           </div>
         </div>
       </div>

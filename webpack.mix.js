@@ -11,5 +11,17 @@ let mix = require('laravel-mix');
  |
  */
 
+mix.config.postCss = [
+    require('postcss-easy-import')(),
+    require('postcss-cssnext')({
+        features: {
+            // Mix takes care of this for us.
+            autoprefixer: false,
+        },
+    }),
+];
+
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+    .js('resources/assets/js/docs.js', 'public/js')
+    .postCss('resources/assets/css/docs.css', 'public/css')
+    .sass('resources/assets/sass/app.scss', 'public/css');
