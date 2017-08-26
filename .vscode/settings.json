@@ -8,6 +8,20 @@
   "editor.fontSize": 19,
   "editor.fontLigatures": true,
   "editor.formatOnPaste": true,
+  // Accept code suggestions by pressing "enter" (in addition to the default "tab")
+  "editor.acceptSuggestionOnEnter": "on",
+  // Highlight matching brackets when one of them is selected.
+  "editor.matchBrackets": true,
+  // Wrap text to the viewport width
+  "editor.wordWrap": "on",
+  // Use 4 spaces for tabs
+  "editor.tabSize": 4,
+  // Use hard tabs
+  "editor.insertSpaces": false,
+  // Automatically indent text
+  // "editor.autoIndent": true,
+  // Indent wrapped lines for easier viewing
+  "editor.wrappingIndent": "indent",
   // "files.associations": {
   //   "*.blade.php": "html"
   // },

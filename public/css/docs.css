@@ -381,7 +381,7 @@ body {
 
 .home__introduction p.-large {
     font-size: 1.4em;
-    line-height: 33.6px; 
+    line-height: 33.6px;
 }
 
 .home__introduction a {
@@ -640,7 +640,8 @@ body {
 }
 
 .waves {
-    background-image: url(/images/waves.jpg?bb9a1caaa95d9b5d0a50c70fc498fd27);
+    background-color: #98002e;
+    /* background-image: url('../images/waves.jpg'); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: left top;

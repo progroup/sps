@@ -44,7 +44,7 @@
 
 .home__introduction p.-large {
     font-size: 1.4em;
-    line-height: calc(var(--baseline) * 1.2); 
+    line-height: calc(var(--baseline) * 1.2);
 }
 
 .home__introduction a {
