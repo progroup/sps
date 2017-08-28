@@ -30,7 +30,10 @@
 
 <body>
   <div id="app">
-  <router-view></router-view>
+    @include('layouts.nav')
+    @include('layouts.hero')
+
+    <router-view></router-view>
 
     <section class="section">
       <div class="container">

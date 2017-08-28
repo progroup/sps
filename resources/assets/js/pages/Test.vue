@@ -1,67 +1,81 @@
 <template>
-  <div class="content">
-
-    <flex justify="center" align="center" grow>
-
-    <!-- https://github.com/alexsasharegan/vue-flex -->
-        <div>
-            div<br>
-            div<br>
-            div<br>
-        </div>
-        <div></div>
-        <div></div>
-    </flex>
+<section class="section">
 
     <div class="container">
-    <!-- https://alligator.io/js/copying-to-clipboard/ -->
-        <input type="text" v-model="message">
-        <button type="button"
-            v-clipboard:copy="message"
-            v-clipboard:success="onCopy"
-            v-clipboard:error="onError">Copy!</button>
-        <p v-if="copySucceeded">Copied!</p>
+
+        <div class="content">
+            <h1>Sandbox</h1>
+            <flex justify="center" align="center" grow>
+
+                <!-- https://github.com/alexsasharegan/vue-flex -->
+                <div>
+                    div<br> div
+                    <br> div
+                    <br>
+                </div>
+                <div></div>
+                <div></div>
+            </flex>
+
+            <hr>
+
+            <div class="container">
+                <!-- https://alligator.io/js/copying-to-clipboard/ -->
+                <input type="text" v-model="message">
+                <button type="button" v-clipboard:copy="message" v-clipboard:success="onCopy" v-clipboard:error="onError">Copy!</button>
+                <p v-if="copySucceeded">Copied!</p>
+            </div>
+
+            <hr>
+
+            <div class="alligator-information">
+                <p>There are {{numberOfHappy}} happy alligators.</p>
+                <div v-for="alligator of alligators">
+                    <p>Name: {{alligator.name}}</p>
+                    <p>Weight: {{alligator.weight}}</p>
+                </div>
+            </div>
+
+            <table-component :data="[
+                          { firstName: 'John', lastName: 'Lennon', instrument: 'Guitar', birthday: '04/10/1940', songs: 72 },
+                          { firstName: 'Paul', lastName: 'McCartney', instrument: 'Bass', birthday: '18/06/1942', songs: 70 },
+                          { firstName: 'George', lastName: 'Harrison', instrument: 'Guitar', birthday: '25/02/1943', songs: 22 },
+                          { firstName: 'Ringo', lastName: 'Starr', instrument: 'Drums', birthday: '07/07/1940', songs: 2 }]" sort-by="songs" sort-order="asc" table-class="table is-bordered is-striped is-narrow is-fullwidth" filter-input-class="input" :show-filter="false" :show-caption="false">
+                <table-column show="firstName" label="First name"></table-column>
+                <table-column show="lastName" label="Last name"></table-column>
+                <table-column show="instrument" label="Instrument"></table-column>
+                <table-column show="songs" label="Songs" data-type="numeric"></table-column>
+                <table-column show="birthday" label="Birthday" data-type="date:DD/MM/YYYY"></table-column>
+                <table-column label="" :sortable="false" :filterable="false">
+                    <template scope="row">
+                        <a :href="`#${row.firstName}`">Edit</a>
+                    </template>
+                </table-column>
+            </table-component>
+
+    <intersect @enter="msg = 'Intersected'" @leave="msg = 'Not intersected'">
+        <div>{{ msg }}</div>
+    </intersect>
+
+        </div>
     </div>
 
-    <div class="alligator-information">
-      <p>There are {{numberOfHappy}} happy alligators.</p>
-      <div v-for="alligator of alligators">
-        <p>Name: {{alligator.name}}</p>
-        <p>Weight: {{alligator.weight}}</p>
-      </div>
-    </div>
+</section>
 
-    <table-component :data="[
-      { firstName: 'John', lastName: 'Lennon', instrument: 'Guitar', birthday: '04/10/1940', songs: 72 },
-      { firstName: 'Paul', lastName: 'McCartney', instrument: 'Bass', birthday: '18/06/1942', songs: 70 },
-      { firstName: 'George', lastName: 'Harrison', instrument: 'Guitar', birthday: '25/02/1943', songs: 22 },
-      { firstName: 'Ringo', lastName: 'Starr', instrument: 'Drums', birthday: '07/07/1940', songs: 2 }]" sort-by="songs" sort-order="asc"
-        table-class="table is-bordered is-striped is-narrow is-fullwidth"
-        filter-input-class="input" :show-filter="false" :show-caption="false">
-      <table-column show="firstName" label="First name"></table-column>
-      <table-column show="lastName" label="Last name"></table-column>
-      <table-column show="instrument" label="Instrument"></table-column>
-      <table-column show="songs" label="Songs" data-type="numeric"></table-column>
-      <table-column show="birthday" label="Birthday" data-type="date:DD/MM/YYYY"></table-column>
-      <table-column label="" :sortable="false" :filterable="false">
-        <template scope="row">
-          <a :href="`#${row.firstName}`">Edit</a>
-        </template>
-      </table-column>
-    </table-component>
-
-  </div>
 </template>
 
 <script>
 import axios from 'axios'
+import Intersect from 'vue-intersect'
 
 import Auth from '../mixins/Auth'
 import { filter, countBy } from 'vue-computed-helpers'
 
 export default {
-    mixins: [ Auth ],
+    mixins: [Auth],
+    components: { Intersect },
     data: () => ({
+        msg: 'I will change',
         copySucceeded: null,
         message: 'Copy These Text',
 

@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'tagline' => env('APP_TAGLINE', 'An interesting tagline.'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -176,6 +178,7 @@ return [
         Spatie\Tail\TailServiceProvider::class,
         Spatie\GoogleTagManager\GoogleTagManagerServiceProvider::class,
         Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -236,6 +239,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'GoogleTagManager' => Spatie\GoogleTagManager\GoogleTagManagerFacade::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
     ],
 
 ];

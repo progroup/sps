@@ -11,10 +11,10 @@
           <div class="navbar-menu" id="navMenu">
             <div class="navbar-start">
 
-              <a class="navbar-item" href="/">Topics</a>
+              <a class="navbar-item" href="/topics">Topics</a>
               <a class="navbar-item" href="/faqs">FAQs</a>
 
-              <!-- <b-dropdown hoverable>
+              <b-dropdown hoverable>
                 <a class="navbar-item" slot="trigger">
                   <span>About</span>
                   <b-icon icon="arrow_drop_down"></b-icon>
@@ -37,9 +37,9 @@
                     Georgia SEOW
                   </router-link>
                 </b-dropdown-item>
-              </b-dropdown> -->
-<!--
-              <a class="nav-item" href="http://ecco.ga-sps.org/help.php" target="_blank">Upload Reports</a> -->
+              </b-dropdown>
+
+              <a class="nav-item" href="http://ecco.ga-sps.org/help.php" target="_blank">Upload Reports</a>
 
               <!-- <b-dropdown hoverable>
                 <a class="navbar-item" slot="trigger">
@@ -75,11 +75,11 @@
                     Evaluation
                   </router-link>
                 </b-dropdown-item>
-              </b-dropdown> -->
+              </b-dropdown>
 
-              <!-- <router-link to="/spf-overview" class="nav-item">
+              <router-link to="/spf-overview" class="nav-item">
                 SPF Overview
-              </router-link> -->
+              </router-link>
 
               <a href="/faqs/create" class="nav-item">
                 Answer Question

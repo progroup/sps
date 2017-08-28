@@ -12,6 +12,11 @@ Route::get('/faqs/{faq}', 'FaqsController@show');
 
 Route::get('/faqs/tags/{tag}', 'TagsController@index');
 
+Route::group(['prefix' => 'proposal-viewer'], function() {
+    Route::get('/', ['as' => 'proposal-viewer.home', 'uses' => 'ProposalViewerController@index']);
+    Route::any('show', ['as' => 'proposal-viewer.show', 'uses' => 'ProposalViewerController@show']);
+});
+
 // https://github.com/maxiloc/laracon17
 Route::get('/speakers', function () {
     return view('speakers');

@@ -54,6 +54,7 @@
     "vue-computed-helpers": "^1.2.0",
     "vue-flex": "^1.0.9",
     "vue-instantsearch": "^1.0.0",
+    "vue-intersect": "^1.1.2",
     "vue-parallaxy": "^1.0.3",
     "vue-router": "^2.7.0",
     "vue-table-component": "^1.4.0",
