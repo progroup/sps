@@ -4,35 +4,69 @@
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
 
+@import "components/badge.sass";
+@import "components/calendar.sass";
+@import "components/timeline.sass";
+@import "components/tooltip.sass";
+
 body {
-  height: 100vh;
+    height: 100vh;
 }
 
 #app {
-  display: flex;
-  flex-direction: column;
-  height: 100%
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
+
 .main {
-  flex: 1 0 auto;
+    flex: 1 0 auto;
 }
+
 .foot {
-  flex-shrink: 0;
+    flex-shrink: 0;
 }
 
 .inline-caps {
-  text-transform: uppercase;
-  li a {
-    letter-spacing: 2.2px;
-    font-size: 0.75rem;
-  }
+    text-transform: uppercase;
+
+    li a {
+        letter-spacing: 2.2px;
+        font-size: 0.75rem;
+    }
 }
 
 #flash-message {
-  animation: flash-message 4s forwards;
+    animation: flash-message 4s forwards;
 }
 
 @keyframes flash-message {
-  0%   {opacity: 1;}
-  100% {opacity: 0; display: none;}
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+.bd-rainbow {
+    animation: rainbow 8s ease infinite;
+    background-image: linear-gradient(124deg, #ff470f, #ff3860, #b86bff, #3273dc);
+    background-size: 800% 800%;
+}
+
+@keyframes rainbow {
+    0% {
+        background-position: 0% 80%;
+    }
+
+    50% {
+        background-position: 100% 20%;
+    }
+
+    100% {
+        background-position: 0% 80%;
+    }
 }

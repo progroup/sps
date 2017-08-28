@@ -1,4 +1,5 @@
 import VueRouter from 'vue-router'
+import slideshows from './slideshows'
 
 const routes = [
     {
@@ -8,6 +9,10 @@ const routes = [
     {
         path: '/faqs',
         component: require('./pages/Faqs.vue')
+    },
+    {
+        path: '/parallax',
+        component: require('./pages/Parallax.vue')
     },
     {
         path: '/test',
@@ -50,6 +55,13 @@ const routes = [
         component: require('./pages/Resources.vue')
     }
 ]
+
+slideshows.list.forEach(function (slideshow) {
+    routes.push({
+        path: '/' + slideshow.infos.path,
+        component: slideshow
+    })
+})
 
 export default new VueRouter({
     routes,

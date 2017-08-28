@@ -1,6 +1,28 @@
 <template>
   <div class="content">
 
+    <flex justify="center" align="center" grow>
+
+    <!-- https://github.com/alexsasharegan/vue-flex -->
+        <div>
+            div<br>
+            div<br>
+            div<br>
+        </div>
+        <div></div>
+        <div></div>
+    </flex>
+
+    <div class="container">
+    <!-- https://alligator.io/js/copying-to-clipboard/ -->
+        <input type="text" v-model="message">
+        <button type="button"
+            v-clipboard:copy="message"
+            v-clipboard:success="onCopy"
+            v-clipboard:error="onError">Copy!</button>
+        <p v-if="copySucceeded">Copied!</p>
+    </div>
+
     <div class="alligator-information">
       <p>There are {{numberOfHappy}} happy alligators.</p>
       <div v-for="alligator of alligators">
@@ -40,6 +62,9 @@ import { filter, countBy } from 'vue-computed-helpers'
 export default {
     mixins: [ Auth ],
     data: () => ({
+        copySucceeded: null,
+        message: 'Copy These Text',
+
         alligators: [
             {
                 name: 'Betty',
@@ -61,6 +86,13 @@ export default {
     methods: {
         formatter (value, columnProperties) {
             return `Hi, I am ${value}`
+        },
+        onCopy: function (e) {
+            this.copySucceeded = true
+            // alert('You just copied: ' + e.text)
+        },
+        onError: function (e) {
+            alert('Failed to copy texts')
         }
     },
     computed: {

@@ -8,6 +8,7 @@
         </div>
         <div class="column">
             <h1 class="title">Frequently Asked Questions</h1>
+            <p>Below is the list of frequently asked questions, if you think a common question is missing in the list. Please create an issue here</p>
             <a class="button is-link" href="/faqs/create">Add a Question</a>
 
             <div class="content is-medium">

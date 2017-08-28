@@ -4,16 +4,24 @@ import lodash from 'lodash'
 import axios from 'axios'
 import Buefy from 'buefy'
 import InstantSearch from 'vue-instantsearch'
+import Eagle from 'eagle.js'
+import VueClipboard from 'vue-clipboard2'
+import VueFlex from 'vue-flex'
+import 'vue-flex/dist/vue-flex.css'
+
 import { TableComponent, TableColumn } from 'vue-table-component'
 
 Vue.component('table-component', TableComponent)
 Vue.component('table-column', TableColumn)
 
-window.Vue = Vue
 Vue.use(VueRouter)
 Vue.use(Buefy)
 Vue.use(InstantSearch)
+Vue.use(Eagle)
+Vue.use(VueClipboard)
+Vue.use(VueFlex)
 
+window.Vue = Vue
 window._ = lodash
 window.axios = axios
 window.axios.defaults.headers.common = {

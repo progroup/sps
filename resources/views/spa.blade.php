@@ -8,8 +8,9 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>{{ config('app.name', 'Laravel') }}</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-  <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
+  <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
   <!-- Scripts -->
   <script>
     window.App = {!! json_encode([
@@ -29,13 +30,16 @@
 
 <body>
   <div id="app">
+  <router-view></router-view>
+
     <section class="section">
       <div class="container">
         <div class="columns">
           <div class="column is-2">
+
           </div>
           <div class="column">
-            <router-view></router-view>
+
           </div>
         </div>
       </div>

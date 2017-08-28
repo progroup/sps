@@ -11,6 +11,11 @@ class Tag extends Model
         return $this->belongsToMany(Faq::class);
     }
 
+    public function resources()
+    {
+        return $this->belongsToMany(Resource::class);
+    }
+
     public function getRouteKeyName()
     {
         return 'name';
