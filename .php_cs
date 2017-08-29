@@ -1,7 +1,8 @@
 <?php
+
 $finder = Symfony\Component\Finder\Finder::create()
     ->notPath('bootstrap')
-    ->notPath('storage')
+    ->notPath('storage/*')
     ->notPath('vendor')
     ->in(__DIR__)
     ->name('*.php')
@@ -9,6 +10,8 @@ $finder = Symfony\Component\Finder\Finder::create()
     ->notName('*.blade.php')
     ->ignoreDotFiles(true)
     ->ignoreVCS(true);
+
+
 return PhpCsFixer\Config::create()
     ->setRules([
         '@PSR2' => true,

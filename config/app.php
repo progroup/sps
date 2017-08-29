@@ -169,18 +169,29 @@ return [
         /*
          * Package Service Providers...
          */
+        Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        Jenssegers\Date\DateServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        Spatie\Analytics\AnalyticsServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class,
         Spatie\CollectionMacros\CollectionMacroServiceProvider::class,
+        Spatie\GoogleCalendar\GoogleCalendarServiceProvider::class,
+        Spatie\GoogleTagManager\GoogleTagManagerServiceProvider::class,
+        Spatie\MailableTest\MailableTestServiceProvider::class,
+        Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
         Spatie\Menu\Laravel\MenuServiceProvider::class,
+        Spatie\MissingPageRedirector\MissingPageRedirectorServiceProvider::class,
+        Spatie\Newsletter\NewsletterServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
         Spatie\ResponseCache\ResponseCacheServiceProvider::class,
         Spatie\Tail\TailServiceProvider::class,
-        Spatie\GoogleTagManager\GoogleTagManagerServiceProvider::class,
-        Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
-        Collective\Html\HtmlServiceProvider::class,
+        Themsaid\MailPreview\MailPreviewServiceProvider::class,
         Tightenco\Ziggy\ZiggyServiceProvider::class,
-
 
         /*
          * Application Service Providers...
@@ -191,6 +202,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Navigation\NavigationServiceProvider::class,
+        Spatie\DemoMode\DemoModeServiceProvider::class,
 
     ],
 
@@ -243,6 +255,12 @@ return [
         'GoogleTagManager' => Spatie\GoogleTagManager\GoogleTagManagerFacade::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Bugsnag' => Bugsnag\BugsnagLaravel\Facades\Bugsnag::class,
+        'Date' => Jenssegers\Date\Date::class,
+        'Newsletter' => Spatie\Newsletter\NewsletterFacade::class,
+        'GoogleCalendar' => Spatie\GoogleCalendar\GoogleCalendarFacade::class,
     ],
 
 ];

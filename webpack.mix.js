@@ -1,4 +1,7 @@
-let mix = require('laravel-mix');
+let mix = require('laravel-mix')
+
+// mix.config.uglify.compress.drop_console = false;
+// mix.config.postCss = require("./postcss.config").plugins;
 
 /*
  |--------------------------------------------------------------------------
@@ -16,12 +19,12 @@ mix.config.postCss = [
     require('postcss-cssnext')({
         features: {
             // Mix takes care of this for us.
-            autoprefixer: false,
-        },
-    }),
-];
+            autoprefixer: false
+        }
+    })
+]
 
 mix.js('resources/assets/js/app.js', 'public/js')
     .js('resources/assets/js/docs.js', 'public/js')
     .postCss('resources/assets/css/docs.css', 'public/css')
-    .sass('resources/assets/sass/app.scss', 'public/css');
+    .sass('resources/assets/sass/app.scss', 'public/css')

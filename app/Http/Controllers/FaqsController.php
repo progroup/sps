@@ -18,6 +18,8 @@ class FaqsController extends Controller
     {
         $faqs = Faq::all();
 
+        \Bugsnag::notifyError('ErrorType', 'Test Error');
+
         return view('faqs.index', compact('faqs'));
     }
 
