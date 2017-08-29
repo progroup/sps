@@ -52,6 +52,24 @@
                     </template>
                 </table-column>
             </table-component>
+    <div>
+    <tabs>
+        <tab name="First tab">
+            This is the content of the first tab
+        </tab>
+        <tab name="Second tab">
+            This is the content of the second tab
+        </tab>
+        <tab id="oh-hi-mark" name="Custom fragment">
+            The fragment that is appended to the url can be customized
+        </tab>
+        <tab prefix="<span class='glyphicon glyphicon-star'></span> "
+             name="Prefix and suffix"
+             suffix=" <span class='badge'>4</span>">
+            A prefix and a suffix can be added
+        </tab>
+    </tabs>
+</div>
 
     <intersect @enter="msg = 'Intersected'" @leave="msg = 'Not intersected'">
         <div>{{ msg }}</div>

@@ -21,6 +21,7 @@
       'signedIn' => Auth::check()
     ])!!};
   </script>
+  @routes
 </head>
 
 <body>

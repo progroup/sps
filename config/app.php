@@ -179,6 +179,8 @@ return [
         Spatie\GoogleTagManager\GoogleTagManagerServiceProvider::class,
         Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Tightenco\Ziggy\ZiggyServiceProvider::class,
+
 
         /*
          * Application Service Providers...

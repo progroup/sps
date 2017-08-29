@@ -8,11 +8,8 @@ import Eagle from 'eagle.js'
 import VueClipboard from 'vue-clipboard2'
 import VueFlex from 'vue-flex'
 import 'vue-flex/dist/vue-flex.css'
-
-import { TableComponent, TableColumn } from 'vue-table-component'
-
-Vue.component('table-component', TableComponent)
-Vue.component('table-column', TableColumn)
+import Tabs from 'vue-tabs-component'
+import TableComponent from 'vue-table-component'
 
 Vue.use(VueRouter)
 Vue.use(Buefy)
@@ -20,6 +17,8 @@ Vue.use(InstantSearch)
 Vue.use(Eagle)
 Vue.use(VueClipboard)
 Vue.use(VueFlex)
+Vue.use(Tabs)
+Vue.use(TableComponent)
 
 window.Vue = Vue
 window._ = lodash
