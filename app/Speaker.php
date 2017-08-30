@@ -12,7 +12,7 @@ class Speaker extends Model
     public $appends = ['image'];
     public function conferences()
     {
-        return $this->belongsToMany('\App\Conference');
+        return $this->belongsToMany(\App\Conference::class);
     }
     public function attend(Conference $conference)
     {
