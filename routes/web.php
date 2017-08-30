@@ -1,4 +1,7 @@
 <?php
+use App\Resource;
+use App\Notifications\ResourceAdded;
+use Corcel\Model\Post;
 
 Route::get('/topics', 'TopicsController@index');
 Route::get('/topics/create', 'TopicsController@create');
@@ -11,6 +14,32 @@ Route::post('/faqs', 'FaqsController@store');
 Route::get('/faqs/{faq}', 'FaqsController@show');
 
 Route::get('/faqs/tags/{tag}', 'TagsController@index');
+
+Route::get('/examples/coverr', function () {
+    // $posts = Post::published()->get();
+    // $post = Post::find(1);
+    // return $post->post_title;
+    // return $posts;
+
+    return view('examples.coverr.index');
+
+    $resource = Resource::find(1);
+    $resource->notify(new ResourceAdded());
+});
+
+Route::get('/mailit', function () {
+    // $posts = Post::published()->get();
+    // $post = Post::find(1);
+    // return $post->post_title;
+    // return $posts;
+
+    $resource = Resource::find(1);
+    $resource->notify(new ResourceAdded());
+});
+
+
+
+Route::get('/test', 'TestController@index');
 
 Route::group(['prefix' => 'proposal-viewer'], function() {
     Route::get('/', ['as' => 'proposal-viewer.home', 'uses' => 'ProposalViewerController@index']);

@@ -1,6 +1,7 @@
 title: Misc
-weight: 6
+weight: 3
 items:
+  - API Keys
   - Filters
   - Google Analytics
   - Node Event Broadcasters

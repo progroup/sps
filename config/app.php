@@ -169,14 +169,20 @@ return [
         /*
          * Package Service Providers...
          */
+        BladeSvg\BladeSvgServiceProvider::class,
         Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
+        Corcel\Laravel\CorcelServiceProvider::class,
         Jenssegers\Date\DateServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        NotificationChannels\Telegram\TelegramServiceProvider::class,
+        NotificationChannels\Twitter\TwitterServiceProvider::class,
+        Pbmedia\LaravelFFMpeg\FFMpegServiceProvider::class,
         Spatie\Analytics\AnalyticsServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
         Spatie\CollectionMacros\CollectionMacroServiceProvider::class,
@@ -261,6 +267,8 @@ return [
         'Date' => Jenssegers\Date\Date::class,
         'Newsletter' => Spatie\Newsletter\NewsletterFacade::class,
         'GoogleCalendar' => Spatie\GoogleCalendar\GoogleCalendarFacade::class,
+        'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
+        'FFMpeg' => Pbmedia\LaravelFFMpeg\FFMpegFacade::class,
     ],
 
 ];
