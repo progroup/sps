@@ -51,7 +51,6 @@ class FaqsController extends Controller
         session()->flash('message', 'The FAQ has been added.');
 
         return redirect('/faqs');
-
     }
 
     /**

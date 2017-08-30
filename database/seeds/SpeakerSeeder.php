@@ -3,9 +3,9 @@ use Illuminate\Database\Seeder;
 
 class SpeakerSeeder extends Seeder
 {
-	public function run()
-	{
-		$speakers = yaml_parse_file(__DIR__.'/speakers.yaml');
+    public function run()
+    {
+        $speakers = yaml_parse_file(__DIR__.'/speakers.yaml');
         $speakers = json_decode(json_encode($speakers));
         $event = \App\Conference::firstOrNew([
             'id' => 1
@@ -33,5 +33,5 @@ class SpeakerSeeder extends Seeder
                 $s->conferences()->attach(1);
             }
         }
-	}
+    }
 }

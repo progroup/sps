@@ -11,26 +11,33 @@ function visit($url)
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_VERBOSE, false);
     curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_SSLVERSION, 3);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
     $page = curl_exec($ch);
     //echo curl_error($ch);
     $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
-    if ($httpcode >= 200 && $httpcode < 400) return true;
-    else return false;
+    if ($httpcode >= 200 && $httpcode < 400) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function gravatar_url($email = "victor.tolbert@gmail.com")
 {
-    if (visit('yahoo.com')) return "http://www.gravatar.com/avatar/" . md5($email) . '?s=48';
+    if (visit('yahoo.com')) {
+        return "http://www.gravatar.com/avatar/" . md5($email) . '?s=48';
+    }
     return "/img/down.gif";
 }
 
 function gravatar_profile($email = "victor.tolbert@gmail.com")
 {
-    if (visit('yahoo.com')) return "http://www.gravatar.com/" . md5($email);
+    if (visit('yahoo.com')) {
+        return "http://www.gravatar.com/" . md5($email);
+    }
     return "/img/down.gif";
 }
 
@@ -53,8 +60,9 @@ function get_gravatar($email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts 
     $url .= "?s=$s&d=$d&r=$r";
     if ($img) {
         $url = '<img src="' . $url . '"';
-        foreach ($atts as $key => $val)
+        foreach ($atts as $key => $val) {
             $url .= ' ' . $key . '="' . $val . '"';
+        }
         $url .= ' />';
     }
     return $url;
@@ -113,4 +121,3 @@ function format_phone($phoneNumber)
 
     return $phoneNumber;
 }
-

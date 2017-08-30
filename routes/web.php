@@ -41,7 +41,7 @@ Route::get('/mailit', function () {
 
 Route::get('/test', 'TestController@index');
 
-Route::group(['prefix' => 'proposal-viewer'], function() {
+Route::group(['prefix' => 'proposal-viewer'], function () {
     Route::get('/', ['as' => 'proposal-viewer.home', 'uses' => 'ProposalViewerController@index']);
     Route::any('show', ['as' => 'proposal-viewer.show', 'uses' => 'ProposalViewerController@show']);
 });
@@ -52,7 +52,7 @@ Route::get('/speakers', function () {
 });
 
 Route::get('/speakers/add', function () {
-   return view('speaker_form')->with('speaker', null);
+    return view('speaker_form')->with('speaker', null);
 });
 
 Route::get('/speakers/{speaker}/edit', function (\App\Speaker $speaker) {
@@ -74,16 +74,16 @@ Route::post('/speakers/{id}', function (\Illuminate\Http\Request $request, $id) 
 });
 
 Route::get('/speakers/{id}/delete', function ($id) {
-   $speaker = \App\Speaker::find($id);
-   if ($speaker) {
-       $speaker->delete();
-   }
-   return redirect('/speakers');
+    $speaker = \App\Speaker::find($id);
+    if ($speaker) {
+        $speaker->delete();
+    }
+    return redirect('/speakers');
 });
 
 Auth::routes();
 
-Route::get('/spa', function() {
+Route::get('/spa', function () {
     return view('spa');
 });
 
