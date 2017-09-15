@@ -1,6 +1,6 @@
 <template>
     <main>
-        <section class="hero is-primary is-bold">
+        <section class="hero is-dark is-bold">
             <div class="hero-body">
                 <div class="container">
                     <div class="field">
@@ -25,9 +25,7 @@
         <section class="section">
             <div class="container">
                 <div class="columns">
-                    <div class="column is-6">
-                        <h2 class="is-size-4">Resources</h2>
-                        <hr>
+                    <div class="column is-8">
                         <ais-index
                             app-id="WTEU7RU64C"
                             api-key="84cd67fa388e3c50b3a0a1710fae55ad"
@@ -36,79 +34,163 @@
                             :auto-search="true"
                             :query="query"
                         >
+                            <div class="columns">
+                                <div class="column is-3 is-hidden-touch">
 
-                            <ais-no-results></ais-no-results>
-                            <ais-results>
-                                <template scope="{ result }">
-                                    <article class="media">
-                                        <figure class="media-left">
-                                            <p class="image is-64x64">
-                                                <img src="http://bulma.io/images/placeholders/128x128.png">
-                                            </p>
-                                        </figure>
-                                        <div class="media-content">
-                                            <div class="content">
-                                                <h5>
-                                                    <a :href="result.url">
-                                                        <ais-highlight
-                                                            :result="result"
-                                                            attribute-name="title"
-                                                        ></ais-highlight>
-                                                    </a>
-                                                </h5>
+    <aside>
+        <div>
+            <ais-refinement-list
+                attribute-name="category"
+                :sort-by="['name:asc']"
+            >
+                <template slot="header">
+                    <p class="menu-label">
+                        Category
+                    </p>
+                </template>
 
-                                                <p>{{ result.description }}</p>
+                <template scope="props">
+                    <span
+                        class="ais-refinement-list__value"
+                        v-text="seriesName(props.value)"
+                    ></span>
+                </template>
+                </ais-refinement-list>
+        </div>
 
-                                                <span class="tag is-rounded" :key="index" v-for="(tag, index) in result._tags">
-                                                    {{tag}}
-                                                </span>
+        <div>
+            <ais-refinement-list attribute-name="_tags">
+                <template slot="header">
+                    <p class="menu-label">
+                        Tags
+                    </p>
+                </template>
 
-                                                <p class="lesson-list in-caps fs-smaller is-bold mbt-1 is-hidden-mobile">
-                                                    <a
-                                                        href="#"
-                                                        class="tag is-rounded is-small color-white"
-                                                        :style="{ background: colors[result.filetype] }"
-                                                        v-text="result.filetype"
-                                                    >
-                                                        </a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </template>
-                            </ais-results>
-                            <nav
-                                class="pagination"
-                                role="navigation"
-                                aria-label="pagination"
-                            >
-                                <ais-pagination class="pagination-list">
-                                    <template slot="first">
-                                        First Page
-                                    </template>
-                                    <template
-                                        class="pagination-previous"
-                                        slot="previous"
-                                    >
-                                        Previous Page
+                <template scope="props">
+                    <span
+                        class="ais-refinement-list__value"
+                        v-text="seriesName(props.value)"
+                    ></span>
+                </template>
+            </ais-refinement-list>
+        </div>
+
+        <div>
+            <ais-refinement-list
+                attribute-name="filetype"
+                :sort-by="['count:desc']"
+            >
+                <template slot="header">
+                    <p class="menu-label">
+                        File Type
+                    </p>
+                </template>
+
+                <template scope="props">
+                    <span
+                        class="ais-refinement-list__value"
+                        v-text="seriesName(props.value)"
+                    ></span>
+                </template>
+                </ais-refinement-list>
+        </div>
+    </aside>
+
+                                </div>
+                                <div class="column">
+                                    <h2 class="is-size-4">Resources</h2>
+                                    <ais-stats>
+                                        <template scope="{ totalResults, processingTime, query }">
+                                            <hr> There are {{ totalResults }} resources matching your search
+                                            <b>{{ query }}</b>
                                         </template>
-                                        <template
-                                            class="pagination-link"
-                                            scope="props"
-                                        >
-                                            {{ props.value }}
+                                    </ais-stats>
+                                    <ais-no-results>
+                                        <template scope="props">
+                                            <hr> No resources were found for
+                                            <b>{{ props.query }}</b>.
+                                        </template>
+                                    </ais-no-results>
+                                    <ais-results :results-per-page="10">
+                                        <template scope="{ result }">
+                                            <hr>
+                                            <article class="media">
+                                                <figure class="media-left">
+                                                    <p class="image is-64x64">
+                                                        <img src="http://bulma.io/images/placeholders/128x128.png">
+                                                    </p>
+                                                </figure>
+                                                <div class="media-content">
+                                                    <div class="content">
+                                                        <h5>
+                                                            <a :href="result.url">
+                                                                <ais-highlight
+                                                                    :result="result"
+                                                                    attribute-name="title"
+                                                                ></ais-highlight>
+                                                            </a>
+                                                        </h5>
+
+                                                        <p>{{ result.description }}</p>
+
+                                                        <span
+                                                            class="tag is-rounded"
+                                                            :key="index"
+                                                            v-for="(tag, index) in result._tags"
+                                                        >
+                                                            {{tag}}
+                                                            </span>
+
+                                                            <p class="lesson-list in-caps fs-smaller is-bold mbt-1 is-hidden-mobile">
+                                                                <a
+                                                                    href="#"
+                                                                    class="tag is-rounded is-small color-white"
+                                                                    :style="{ background: colors[result.filetype] }"
+                                                                    v-text="result.filetype"
+                                                                >
+                                                                    </a>
+                                                            </p>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        </template>
+                                    </ais-results>
+
+                                    <hr>
+                                    <nav
+                                        class="pagination"
+                                        role="navigation"
+                                        aria-label="pagination"
+                                    >
+                                        <ais-pagination class="pagination-list">
+                                            <template slot="first">
+                                                &lt;&lt;
+                                            </template>
+                                            <template
+                                                class="pagination-previous"
+                                                slot="previous"
+                                            >
+                                                &lt;
+                                            </template>
+                                            <template
+                                                class="pagination-link"
+                                                scope="props"
+                                            >
+                                                {{ props.value }}
                                             </template>
                                             <template
                                                 class="pagination-next"
                                                 slot="next"
                                             >
-                                                Next Page
-                                                </template>
-                                                <template slot="last">
-                                                    Last Page
-                                                </template>
-                                </ais-pagination>
-                            </nav>
+                                                &gt;
+                                            </template>
+                                            <template slot="last">
+                                                &gt;&gt;
+                                            </template>
+                                        </ais-pagination>
+                                    </nav>
+                                </div>
+                            </div>
                         </ais-index>
                     </div>
                     <div class="column is-4">
@@ -120,9 +202,46 @@
                             :auto-search="true"
                             :query="query"
                         >
+
+                            <h2 class="is-size-4">FAQs</h2>
+
+                            <ais-stats>
+                                <template scope="{ totalResults, processingTime, query }">
+                                    <hr>
+                                    There are {{ totalResults }} FAQs matching your search
+                                    <b>{{ query }}</b>
+                                </template>
+                            </ais-stats>
+                            <ais-no-results>
+                                <template scope="props">
+                                    <hr>
+                                    No FAQs were found for
+                                    <b>{{ props.query }}</b>.
+                                </template>
+                            </ais-no-results>
                             <ais-results>
                                 <template scope="{ result }">
-                                    <accordion-menu :contents="contents"></accordion-menu>
+                                    <hr>
+                                    <article class="media">
+                                        <div class="media-content">
+                                            <div class="content is-small">
+                                                <h5>{{result.question}}</h5>
+                                                <p>{{result.answer}}</p>
+
+                                                <p class="is-hidden-mobile">
+                                                    <a
+                                                        href="#"
+                                                        class="tag is-rounded"
+                                                        :style="{ background: colors[result.topic] }"
+                                                        v-text="result.topic"
+                                                    >
+                                                        </a>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <!-- <accordion-menu :contents="contents"></accordion-menu> -->
                                 </template>
                             </ais-results>
                         </ais-index>
@@ -246,4 +365,7 @@ export default {
     svg {}
 
     button.ais-clear.ais-clear--disabled svg {}
+
+    .icon.is-xx-large { width: 84px; height: 84px;}
+    .icon.is-xx-large .fa { font-size: 96px; }
 </style>

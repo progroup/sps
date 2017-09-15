@@ -4,7 +4,7 @@
 <section class="section">
     <div class="container">
         <div class="columns">
-            <div class="column is-3">
+            <div class="column is-4">
                 <div class="content">
                     <h1>Reset Password</h1>
                     @if (session('status'))
