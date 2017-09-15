@@ -1,1 +1,0 @@
-# Strategic Prevention Framework

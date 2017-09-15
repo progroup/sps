@@ -17,7 +17,7 @@ class ProposalViewerController extends Controller
    */
   public function index()
   {
-    return view('proposal-viewer.index');
+    return view('@videa.proposal-viewer.index');
   }
 
   /**
@@ -136,7 +136,7 @@ class ProposalViewerController extends Controller
       $daypartsSummary[$avail['daypart']] += (float) $avail['cpp'] / (int) $daypartsCount[$avail['daypart']];
     }
 
-    return view('proposal-viewer.show', compact('xml', 'namespaces', 'daypartsSummary'));
+    return view('@videa.proposal-viewer.show', compact('xml', 'namespaces', 'daypartsSummary'));
 
   }
 }

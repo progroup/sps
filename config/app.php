@@ -15,7 +15,7 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
-    'tagline' => env('APP_TAGLINE', 'An interesting tagline.'),
+    'description' => env('APP_DESCRIPTION', 'Laravel'),
 
     /*
     |--------------------------------------------------------------------------
@@ -169,26 +169,30 @@ return [
         /*
          * Package Service Providers...
          */
+        Barryvdh\Cors\ServiceProvider::class,
         BladeSvg\BladeSvgServiceProvider::class,
+        Brotzka\DotenvEditor\DotenvEditorServiceProvider::class,
         Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         ConsoleTVs\Charts\ChartsServiceProvider::class,
         Corcel\Laravel\CorcelServiceProvider::class,
+        Fideloper\Proxy\TrustedProxyServiceProvider::class,
+        Irazasyed\LaravelGAMP\LaravelGAMPServiceProvider::class,
         Jenssegers\Date\DateServiceProvider::class,
+        Jtant\LaravelEnvSync\EnvSyncServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        Laravel\Passport\PassportServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
+        Lubusin\Decomposer\DecomposerServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        NotificationChannels\Telegram\TelegramServiceProvider::class,
-        NotificationChannels\Twitter\TwitterServiceProvider::class,
         Pbmedia\LaravelFFMpeg\FFMpegServiceProvider::class,
         Spatie\Analytics\AnalyticsServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
         Spatie\CollectionMacros\CollectionMacroServiceProvider::class,
         Spatie\GoogleCalendar\GoogleCalendarServiceProvider::class,
         Spatie\GoogleTagManager\GoogleTagManagerServiceProvider::class,
-        Spatie\MailableTest\MailableTestServiceProvider::class,
         Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
         Spatie\Menu\Laravel\MenuServiceProvider::class,
         Spatie\MissingPageRedirector\MissingPageRedirectorServiceProvider::class,
@@ -269,6 +273,8 @@ return [
         'GoogleCalendar' => Spatie\GoogleCalendar\GoogleCalendarFacade::class,
         'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
         'FFMpeg' => Pbmedia\LaravelFFMpeg\FFMpegFacade::class,
+        'DotenvEditor' => Brotzka\DotenvEditor\DotenvEditorFacade::class,
+        'GAMP'  => Irazasyed\LaravelGAMP\Facades\GAMP::class,
     ],
 
 ];

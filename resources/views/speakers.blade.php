@@ -1,25 +1,33 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
-    <div class="container" id="app">
+<section class="section">
+    <div class="container">
         <ais-index app-id="VX7SSUP845" api-key="7b8b78e32d93745b94b610352d037e63" index-name="speakers">
-            <ais-input placeholder="Search laracon speakers"></ais-input>
-            <div class="flex-container">
-                <div class="left">
+
+            <ais-input class="input" placeholder="Search laracon speakers"></ais-input>
+
+            <div class="columns">
+                <div class="column">
+
                     <ais-refinement-list attribute-name="conferences">
                         <template slot="header">
                             <b>Conferences</b>
                         </template>
                     </ais-refinement-list>
+
                     <ais-refinement-list attribute-name="number_of_conf">
                         <template slot="header">
                             <b>Number of conferences</b>
                         </template>
                     </ais-refinement-list>
                 </div>
-                <div class="right">
+
+                <div class="column">
                     <ais-no-results></ais-no-results>
+
                     <ais-results :result-per-page="6">
+
                         @verbatim
                             <template scope="{ result }">
                                 <div class="speaker">
@@ -50,4 +58,5 @@
             </div>
         </ais-index>
     </div>
+</section>
 @endsection

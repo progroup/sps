@@ -3,11 +3,17 @@
   // Override Your Fonts Style and Sizes
   "terminal.integrated.fontFamily": "Operator Mono",
   "terminal.integrated.fontSize": 16,
-  "window.zoomLevel": 1,
-  "editor.fontFamily": "Operator Mono",
-  "editor.fontSize": 19,
+  "window.zoomLevel": 0,
+  "editor.fontFamily": "Operator Mono, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 17,
+  "editor.lineHeight": 40,
+  "editor.letterSpacing": 0.5,
+  "editor.fontWeight": "400",
+  "prettier.eslintIntegration": true,
   "editor.fontLigatures": true,
   "editor.formatOnPaste": true,
+  "editor.cursorBlinking": "solid",
+  "editor.renderWhitespace": "all",
   // Accept code suggestions by pressing "enter" (in addition to the default "tab")
   "editor.acceptSuggestionOnEnter": "on",
   // Highlight matching brackets when one of them is selected.
@@ -30,8 +36,9 @@
     "blade": "html",
     "vue-html": "html"
   },
+  "workbench.colorTheme": "Cobalt2",
   // Add Your Icon Theme if You Need this lol
-  "workbench.iconTheme": "vscode-icons",
+  "workbench.iconTheme": "vscode-great-icons",
   // Edit Both Start and Ending of Tags
   "auto-rename-tag.activationOnLanguage": [
     "html",
@@ -91,5 +98,11 @@
   "php.suggest.basic": false,
   "phpformatter.composer": true,
   "composer.executablePath": "/usr/local/bin/php",
-  "php.validate.executablePath": "/usr/local/bin/php"
+  "php.validate.executablePath": "/usr/local/bin/php",
+  "git.ignoreLimitWarning": true,
+  "vetur.format.js.InsertSpaceBeforeFunctionParenthesis": true,
+  "vetur.format.scriptInitialIndent": true,
+  "vetur.format.styleInitialIndent": true,
+  "vetur.format.html.wrap_line_length": 80,
+  "vetur.format.html.wrap_attributes": "force-expand-multiline"
 }

@@ -1,128 +1,47 @@
-<div style="border-bottom: 1px solid #98002e; background: #e7e7e7">
+<div style="border-bottom: 1px solid #98002e;">
     <div class="container">
-        <nav class="navbar is-transparent" style="background: #e7e7e7">
-          <div class="navbar-brand">
-            <div class="navbar-burger" data-target="navMenu">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </div>
-          <div class="navbar-menu" id="navMenu">
-            <div class="navbar-start">
-
-              <a class="navbar-item" href="/topics">Topics</a>
-              <a class="navbar-item" href="/faqs">FAQs</a>
-
-{{--               <b-dropdown hoverable>
-                <a class="navbar-item" slot="trigger">
-                  <span>About</span>
-                  <b-icon icon="arrow_drop_down"></b-icon>
+        <nav class="navbar is-transparent">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="{{ route('home') }}">
+                    <div style="">
+                        <span style="font-family: 'Audiowide', cursive;font-size: 2.5rem">Ga<span style="color: #980e0e">SPS</span></span>
+                    </div>
                 </a>
 
-                <b-dropdown-item has-link>
-                  <router-link to="/about-us">
-                    About Us
-                  </router-link>
-                </b-dropdown-item>
-
-                <b-dropdown-item has-link>
-                  <router-link to="/contact-information">
-                    Contact Information
-                  </router-link>
-                </b-dropdown-item>
-
-                <b-dropdown-item has-link>
-                  <router-link to="/georgia-seow">
-                    Georgia SEOW
-                  </router-link>
-                </b-dropdown-item>
-              </b-dropdown> --}}
-
-              <a class="nav-item" href="http://ecco.ga-sps.org/help.php" target="_blank">Upload Reports</a>
-
-{{--               <b-dropdown hoverable>
-                <a class="navbar-item" slot="trigger">
-                  <span>Resources</span>
-                  <b-icon icon="arrow_drop_down"></b-icon>
-                </a>
-                <b-dropdown-item has-link>
-                  <router-link :to="{ path: '/resources', params: { id: 123 }}">
-                    Introduction to App
-                  </router-link>
-                  <router-link to="/resources">
-                    Webinars
-                  </router-link>
-                  <router-link to="/resources">
-                    Tools
-                  </router-link>
-                  <router-link to="/resources">
-                    Stategic Prevention Framework
-                  </router-link>
-                  <router-link to="/resources">
-                    App Strategies
-                  </router-link>
-                  <router-link to="/resources">
-                    Suicide Prevention
-                  </router-link>
-                  <router-link to="/resources">
-                    GENRx
-                  </router-link>
-                  <router-link to="/resources">
-                    Admin
-                  </router-link>
-                  <router-link to="/resources">
-                    Evaluation
-                  </router-link>
-                </b-dropdown-item>
-              </b-dropdown> --}}
-
-{{--               <router-link to="/spf-overview" class="nav-item">
-                SPF Overview
-              </router-link> --}}
-
-              <a href="/faqs/create" class="nav-item">
-                Answer Question
-              </a>
-
-              <a class="navbar-item" href="/settings">
-                  @svg('book-reference') Resources
-              </a>
-              <a class="navbar-item" href="/settings">
-                  @svg('calendar') Calendar
-              </a>
-              <a class="navbar-item" href="/settings">
-                  @svg('education') Training
-              </a>
-              <a class="navbar-item" href="/settings">
-                  @svg('buoy') Help
-              </a>
-              <a class="navbar-item" href="/settings">
-                  @svg('show-sidebar') Show Sidebar
-              </a>
-              <a class="navbar-item" href="/settings">
-                  @svg('stethoscope') Makegood
-              </a>
-              <a class="navbar-item" href="/settings">
-                  @svg('tag') Tag
-              </a>
+                <div class="navbar-burger burger" data-target="navMenuIndex">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
 
-            <div class="navbar-end">
-              <!-- Authentication Links -->
-              @if (Auth::guest())
-                <a class="nav-item" href="{{ route('login') }}">Login</a>
-                <a class="nav-item" href="{{ route('register') }}">Register</a>
-              @else
-                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false">
-                  {{ Auth::user()->name }} <span class="caret"></span>
-                </a>
-                <a href="{{ route('logout') }}"
-                  onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
-              @endif
+            <div class="navbar-menu" id="navMenuIndex">
+                <div class="navbar-start">
+                </div>
+
+                <div class="navbar-end">
+                    @if (Auth::guest())
+                        <a class="nav-item" href="{{ route('login') }}">Login</a>
+                        <a class="nav-item" href="{{ route('register') }}">Register</a>
+                    @else
+
+                        {{--  <a class="navbar-item" href="/speakers">Speakers</a>
+                        <a class="navbar-item" href="/speakers/add">Add Speakers</a>  --}}
+
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <div class="navbar-link">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </div>
+                            <div id="moreDropdown" class="navbar-dropdown">
+                                <a class="navbar-item" href="{{ route('profile', Auth::user()) }}">My Profile</a>
+                                <a class="navbar-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
+                            </div>
+                        </div>
+                    @endif
+                </div>
             </div>
-          </div>
         </nav>
-      </div>
+    </div>
 </div>
+

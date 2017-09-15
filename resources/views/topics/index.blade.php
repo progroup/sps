@@ -7,6 +7,8 @@
         <div class="column is-2">
           @include('layouts.sidebar')
         </div>
+        <div class="column is-8">
+        </div>
       </div>
     </div>
 </section>

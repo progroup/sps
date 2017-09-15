@@ -1,5 +1,6 @@
 module.exports = {
   plugins: [
+    require('postcss-fakeid'),
     require("postcss-easy-import")(),
     require("postcss-cssnext")({
       features: {

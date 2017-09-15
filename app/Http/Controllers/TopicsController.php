@@ -16,7 +16,7 @@ class TopicsController extends Controller
     {
         $topics = Topic::all();
 
-        return view('topics.index', compact('topics'));
+        return view('@progroup.topics.index', compact('topics'));
     }
 
     /**
@@ -56,7 +56,7 @@ class TopicsController extends Controller
      */
     public function show(Topic $topic)
     {
-        return view('topics.show', compact('topic'));
+        return view('@progroup.topics.show', compact('topic'));
     }
 
     /**

@@ -1,19 +1,66 @@
 <?php
 use App\Resource;
 use App\Notifications\ResourceAdded;
-use Corcel\Model\Post;
+// use Corcel\Model\Post;
+use Spatie\Browsershot\Browsershot;
+
+Route::resource('resources', 'ResourcesController');
+
+Route::get('1', function() {
+    Resource::create([
+        'title' => 'Resource 1',
+        'description' => 'Resource 2 Description'
+        ])
+        ->addMedia(storage_path('demo/waves.jpg'))
+        ->preservingOriginal()
+        ->toMediaCollection();
+});
+
+Route::get('2', function() {
+    $resource = Resource::create([
+        'title' => 'Resource 2',
+        'description' => 'Resource 2 Description'
+    ]);
+
+    $resource
+        ->addMedia(storage_path('demo/waves.jpg'))
+        ->preservingOriginal()
+        ->toMediaCollection('images');
+
+    $resource
+        ->addMedia(storage_path('demo/test.pdf'))
+        ->preservingOriginal()
+        ->toMediaCollection('downloads');
+});
+
+Route::get('3', function() {
+    $resource = Resource::create([
+        'title' => 'Resource 3',
+        'description' => 'Resource 3 Description'
+    ]);
+
+    $resource
+        // ->addMediaFromRequest('upload')
+        ->addMedia(storage_path('demo/waves.jpg'))
+        ->preservingOriginal()
+        ->toMediaCollection('images', 's3');
+
+
+});
 
 Route::get('/topics', 'TopicsController@index');
 Route::get('/topics/create', 'TopicsController@create');
 Route::post('/topics', 'TopicsController@store');
 Route::get('/topics/{topic}', 'TopicsController@show');
 
-Route::get('/faqs', 'FaqsController@index');
+Route::get('/faqs', 'FaqsController@index')->name('faqs');
 Route::get('/faqs/create', 'FaqsController@create');
 Route::post('/faqs', 'FaqsController@store');
 Route::get('/faqs/{faq}', 'FaqsController@show');
 
-Route::get('/faqs/tags/{tag}', 'TagsController@index');
+// Route::get('/faqs/tags/{tag}', 'TagsController@index');
+
+Route::get('/search', 'SearchController@index')->name('search');
 
 Route::get('/examples/coverr', function () {
     // $posts = Post::published()->get();
@@ -32,19 +79,15 @@ Route::get('/mailit', function () {
     // $post = Post::find(1);
     // return $post->post_title;
     // return $posts;
+    Browsershot::url('http://github.com')->save('github.png');
 
-    $resource = Resource::find(1);
-    $resource->notify(new ResourceAdded());
+    // $resource = Resource::find(1);
+    // $resource->notify(new ResourceAdded());
 });
 
-
+Route::get('decompose','\Lubusin\Decomposer\Controllers\DecomposerController@index');
 
 Route::get('/test', 'TestController@index');
-
-Route::group(['prefix' => 'proposal-viewer'], function() {
-    Route::get('/', ['as' => 'proposal-viewer.home', 'uses' => 'ProposalViewerController@index']);
-    Route::any('show', ['as' => 'proposal-viewer.show', 'uses' => 'ProposalViewerController@show']);
-});
 
 // https://github.com/maxiloc/laracon17
 Route::get('/speakers', function () {
@@ -81,12 +124,14 @@ Route::get('/speakers/{id}/delete', function ($id) {
    return redirect('/speakers');
 });
 
-Auth::routes();
-
-Route::get('/spa', function() {
-    return view('spa');
+Route::get('/grid', function() {
+    return view('examples.grid');
 });
 
-Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/{url}', 'PageController')->where('url', '.*')->name('page');
+Auth::routes();
+
+Route::name('profile')->get('/profiles/{user}', 'ProfilesController@show');
+Route::name('docs')->get('/docs', 'HomeController@docs');
+Route::name('home')->get('/', 'HomeController@index');
+Route::name('page')->get('{url}', 'PageController')->where('url', '.*');

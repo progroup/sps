@@ -11,6 +11,20 @@
             <p>Below is the list of frequently asked questions, if you think a common question is missing in the list. Please create an issue here</p>
             <a class="button is-link" href="/faqs/create">Add a Question</a>
 
+            <a class="button is-success">
+                <span class="icon is-small">
+                    <i class="fa fa-check"></i>
+                </span>
+                <span>Save</span>
+            </a>
+
+            <a class="button is-danger is-outlined">
+                <span>Delete</span>
+                <span class="icon is-small">
+                    <i class="fa fa-times"></i>
+                </span>
+            </a>
+
             <div class="content is-medium">
               <ol>
               @forelse ($faqs as $faq)

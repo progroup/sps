@@ -1,21 +1,11 @@
-let mix = require('laravel-mix')
-
+const mix = require('laravel-mix')
+const path = require('path')
 // mix.config.uglify.compress.drop_console = false;
-// mix.config.postCss = require("./postcss.config").plugins;
-
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel application. By default, we are compiling the Sass
- | file for the application as well as bundling up all the JS files.
- |
- */
+// mix.config.postCss = require("./postcss.config").plugins; TODO: Test this when I need to customize PostCSS
 
 mix.config.postCss = [
     require('postcss-easy-import')(),
+    require('postcss-slds-prefix')('vui'),
     require('postcss-cssnext')({
         features: {
             // Mix takes care of this for us.
@@ -24,7 +14,15 @@ mix.config.postCss = [
     })
 ]
 
-mix.js('resources/assets/js/app.js', 'public/js')
+mix
     .js('resources/assets/js/docs.js', 'public/js')
+    .js('resources/assets/js/app.js', 'public/js')
     .postCss('resources/assets/css/docs.css', 'public/css')
     .sass('resources/assets/sass/app.scss', 'public/css')
+    .webpackConfig({
+        resolve: {
+            alias: {
+                '@': path.resolve('resources/assets/js')
+            }
+        }
+    })

@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
+        html {
+
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
         .homepage-hero-module {
             border-right: none;
             border-left: none;
@@ -51,12 +60,15 @@
 <body>
     <div class="homepage-hero-module">
         <div class="video-container">
-            <div class="filter"></div>
+            <div class="filter">
+                <div class="content">
+                    <h1 style="color: #fff; font-family: sans-serif; padding: 1rem; margin: 4rem">Video Background</h1>
+                </div>
+            </div>
             <video autoplay loop class="fillWidth">
                 <source src="/assets/coverr/very-open-space.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
                 <source src="/assets/coverr/very-open-space.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
             </video>
-
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

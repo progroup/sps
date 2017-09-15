@@ -2,10 +2,9 @@
 
 namespace App\Providers;
 
-use App\Tag;
 use App\Topic;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,14 +15,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        \View::composer('*', function ($view) {
-            $topics = Topic::all();
-            $tags = Tag::has('faqs')->pluck('name');
-
-            $view->with(compact('topics', 'tags'));
+        Carbon::serializeUsing(function ($carbon) {
+            return $carbon->format('U');
         });
 
-        Schema::defaultStringLength(191);
+        \View::composer('*', function ($view) {
+            $topics = Topic::all();
+
+            $view->with(compact('topics'));
+
+        });
     }
 
     /**
@@ -36,6 +37,8 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->isLocal()) {
             $this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+            $this->app->register(\VIACreative\SudoSu\ServiceProvider::class);
+            $this->app->register(\Laracademy\Generators\GeneratorsServiceProvider::class);
         }
     }
 }
