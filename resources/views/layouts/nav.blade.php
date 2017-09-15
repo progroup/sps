@@ -21,13 +21,7 @@
 
                 <div class="navbar-end">
                     @if (Auth::guest())
-                        <a class="nav-item" href="{{ route('login') }}">Login</a>
-                        <a class="nav-item" href="{{ route('register') }}">Register</a>
                     @else
-
-                        {{--  <a class="navbar-item" href="/speakers">Speakers</a>
-                        <a class="navbar-item" href="/speakers/add">Add Speakers</a>  --}}
-
                         <div class="navbar-item has-dropdown is-hoverable">
                             <div class="navbar-link">
                                 {{ Auth::user()->name }} <span class="caret"></span>
