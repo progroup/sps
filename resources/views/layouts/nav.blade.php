@@ -27,7 +27,6 @@
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </div>
                             <div id="moreDropdown" class="navbar-dropdown">
-                                <a class="navbar-item" href="{{ route('profile', Auth::user()) }}">My Profile</a>
                                 <a class="navbar-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
                             </div>
