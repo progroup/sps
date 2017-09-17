@@ -29,7 +29,7 @@
 </head>
 
 <body>
-    <div id="app-container">
+    <div id="app">
         <main class="main">
             @include('layouts.nav')
             @yield('content')

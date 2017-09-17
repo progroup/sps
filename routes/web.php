@@ -6,17 +6,17 @@ use Spatie\Browsershot\Browsershot;
 
 Route::resource('resources', 'ResourcesController');
 
-Route::get('1', function() {
+Route::get('1', function () {
     Resource::create([
         'title' => 'Resource 1',
         'description' => 'Resource 2 Description'
-        ])
+    ])
         ->addMedia(storage_path('demo/waves.jpg'))
         ->preservingOriginal()
         ->toMediaCollection();
 });
 
-Route::get('2', function() {
+Route::get('2', function () {
     $resource = Resource::create([
         'title' => 'Resource 2',
         'description' => 'Resource 2 Description'
@@ -33,7 +33,7 @@ Route::get('2', function() {
         ->toMediaCollection('downloads');
 });
 
-Route::get('3', function() {
+Route::get('3', function () {
     $resource = Resource::create([
         'title' => 'Resource 3',
         'description' => 'Resource 3 Description'
@@ -41,7 +41,7 @@ Route::get('3', function() {
 
     $resource
         // ->addMediaFromRequest('upload')
-        ->addMedia(storage_path('demo/waves.jpg'))
+->addMedia(storage_path('demo/waves.jpg'))
         ->preservingOriginal()
         ->toMediaCollection('images', 's3');
 
@@ -83,9 +83,23 @@ Route::get('/mailit', function () {
 
     // $resource = Resource::find(1);
     // $resource->notify(new ResourceAdded());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
 
-Route::get('decompose','\Lubusin\Decomposer\Controllers\DecomposerController@index');
+Route::get('decompose', '\Lubusin\Decomposer\Controllers\DecomposerController@index');
 
 Route::get('/test', 'TestController@index');
 
@@ -95,7 +109,7 @@ Route::get('/speakers', function () {
 });
 
 Route::get('/speakers/add', function () {
-   return view('speaker_form')->with('speaker', null);
+    return view('speaker_form')->with('speaker', null);
 });
 
 Route::get('/speakers/{speaker}/edit', function (\App\Speaker $speaker) {
@@ -103,7 +117,7 @@ Route::get('/speakers/{speaker}/edit', function (\App\Speaker $speaker) {
 });
 
 Route::post('/speakers/{id}', function (\Illuminate\Http\Request $request, $id) {
-    $speaker = $id == 0 ? new \App\Speaker(): \App\Speaker::find($id);
+    $speaker = $id == 0 ? new \App\Speaker() : \App\Speaker::find($id);
     $speaker->name = $request->input('name');
     $speaker->title = $request->input('title');
     $speaker->save();
@@ -117,14 +131,14 @@ Route::post('/speakers/{id}', function (\Illuminate\Http\Request $request, $id) 
 });
 
 Route::get('/speakers/{id}/delete', function ($id) {
-   $speaker = \App\Speaker::find($id);
-   if ($speaker) {
-       $speaker->delete();
-   }
-   return redirect('/speakers');
+    $speaker = \App\Speaker::find($id);
+    if ($speaker) {
+        $speaker->delete();
+    }
+    return redirect('/speakers');
 });
 
-Route::get('/grid', function() {
+Route::get('/grid', function () {
     return view('examples.grid');
 });
 
@@ -132,6 +146,15 @@ Route::get('/grid', function() {
 Auth::routes();
 
 Route::name('profile')->get('/profiles/{user}', 'ProfilesController@show');
-Route::name('docs')->get('/docs', 'HomeController@docs');
-Route::name('home')->get('/', 'HomeController@index');
+Route::name('docs')->get('/docs', 'PagesController@docs');
+Route::name('spf')->get('/spf', 'PagesController@spf');
+Route::name('calendar')->get('/calendar', 'PagesController@calendar');
+Route::name('learn')->get('/learn', 'PagesController@learn');
+Route::name('training')->get('/training', 'PagesController@training');
+Route::name('contact')->get('/contact', 'PagesController@contact');
+Route::name('georgia-seow')->get('/georgia-seow', 'PagesController@georgia-seow');
+Route::name('about')->get('/about', 'PagesController@about');
+Route::name('help')->get('/help', 'PagesController@help');
+Route::name('index')->get('/', 'PagesController@index');
+Route::name('home')->get('/home', 'PagesController@home');
 Route::name('page')->get('{url}', 'PageController')->where('url', '.*');

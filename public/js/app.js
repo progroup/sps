@@ -38518,7 +38518,7 @@ exports = module.exports = __webpack_require__(89)(undefined);
 
 
 // module
-exports.push([module.i, "\n.ais-highlight em {\n    background-color: #ff9;\n    font-style: normal;\n}\n.tile {\n    outline: 1px dotted red;\n}\n.ais-refinement-list {\n    margin-bottom: 32px;\n    margin-bottom: 2rem;\n}\n.ais-refinement-list__item {\n    margin-bottom: 8px;\n    margin-bottom: 0.5rem;\n}\n.ais-refinement-list__label {\n    display: flex;\n    align-items: center;\n}\n.ais-refinement-list__checkbox {\n    margin-right: 8px;\n    margin-right: 0.5rem;\n}\n.ais-refinement-list__value {\n    flex-grow: 1;\n}\nform[role=\"search\"] {\n}\ninput.ais-input {\n}\nbutton.ais-search-box__submit {\n}\nsvg {\n}\nbutton.ais-clear.ais-clear--disabled svg {\n}\n", ""]);
+exports.push([module.i, "\n.ais-highlight em {\n    background-color: #ff9;\n    font-style: normal;\n}\n.tile {\n    outline: 1px dotted red;\n}\n.ais-refinement-list {\n    margin-bottom: 32px;\n    margin-bottom: 2rem;\n}\n.ais-refinement-list__item {\n    margin-bottom: 8px;\n    margin-bottom: 0.5rem;\n}\n.ais-refinement-list__label {\n    display: flex;\n    align-items: center;\n}\n.ais-refinement-list__checkbox {\n    margin-right: 8px;\n    margin-right: 0.5rem;\n}\n.ais-refinement-list__value {\n    flex-grow: 1;\n}\nform[role=\"search\"] {\n}\ninput.ais-input {\n}\nbutton.ais-search-box__submit {\n}\nsvg {\n}\nbutton.ais-clear.ais-clear--disabled svg {\n}\n.icon.is-xx-large { width: 84px; height: 84px;\n}\n.icon.is-xx-large .fa { font-size: 96px;\n}\n", ""]);
 
 // exports
 
@@ -38566,6 +38566,125 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_AccordionMenu__ = __webpack_require__(310);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_AccordionMenu___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_AccordionMenu__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -39191,7 +39310,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('main', [_c('section', {
-    staticClass: "hero is-primary is-bold"
+    staticClass: "hero is-dark is-bold"
   }, [_c('div', {
     staticClass: "hero-body"
   }, [_c('div', {
@@ -39228,10 +39347,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "columns"
   }, [_c('div', {
-    staticClass: "column is-6"
-  }, [_c('h2', {
-    staticClass: "is-size-4"
-  }, [_vm._v("Resources")]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('ais-index', {
+    staticClass: "column is-8"
+  }, [_c('ais-index', {
     attrs: {
       "app-id": "WTEU7RU64C",
       "api-key": "84cd67fa388e3c50b3a0a1710fae55ad",
@@ -39240,13 +39357,101 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "auto-search": true,
       "query": _vm.query
     }
-  }, [_c('ais-no-results'), _vm._v(" "), _c('ais-results', {
+  }, [_c('div', {
+    staticClass: "columns"
+  }, [_c('div', {
+    staticClass: "column is-3 is-hidden-touch"
+  }, [_c('aside', [_c('div', [_c('ais-refinement-list', {
+    attrs: {
+      "attribute-name": "category",
+      "sort-by": ['name:asc']
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(props) {
+        return [_c('span', {
+          staticClass: "ais-refinement-list__value",
+          domProps: {
+            "textContent": _vm._s(_vm.seriesName(props.value))
+          }
+        })]
+      }
+    }])
+  }, [_c('template', {
+    slot: "header"
+  }, [_c('p', {
+    staticClass: "menu-label"
+  }, [_vm._v("\n                    Category\n                ")])])], 2)], 1), _vm._v(" "), _c('div', [_c('ais-refinement-list', {
+    attrs: {
+      "attribute-name": "_tags"
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(props) {
+        return [_c('span', {
+          staticClass: "ais-refinement-list__value",
+          domProps: {
+            "textContent": _vm._s(_vm.seriesName(props.value))
+          }
+        })]
+      }
+    }])
+  }, [_c('template', {
+    slot: "header"
+  }, [_c('p', {
+    staticClass: "menu-label"
+  }, [_vm._v("\n                    Tags\n                ")])])], 2)], 1), _vm._v(" "), _c('div', [_c('ais-refinement-list', {
+    attrs: {
+      "attribute-name": "filetype",
+      "sort-by": ['count:desc']
+    },
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(props) {
+        return [_c('span', {
+          staticClass: "ais-refinement-list__value",
+          domProps: {
+            "textContent": _vm._s(_vm.seriesName(props.value))
+          }
+        })]
+      }
+    }])
+  }, [_c('template', {
+    slot: "header"
+  }, [_c('p', {
+    staticClass: "menu-label"
+  }, [_vm._v("\n                    File Type\n                ")])])], 2)], 1)])]), _vm._v(" "), _c('div', {
+    staticClass: "column"
+  }, [_c('h2', {
+    staticClass: "is-size-4"
+  }, [_vm._v("Resources")]), _vm._v(" "), _c('ais-stats', {
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(ref) {
+        var totalResults = ref.totalResults;
+        var processingTime = ref.processingTime;
+        var query = ref.query;
+
+        return [_c('hr'), _vm._v(" There are " + _vm._s(totalResults) + " resources matching your search\n                                        "), _c('b', [_vm._v(_vm._s(query))])]
+      }
+    }])
+  }), _vm._v(" "), _c('ais-no-results', {
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(props) {
+        return [_c('hr'), _vm._v(" No resources were found for\n                                        "), _c('b', [_vm._v(_vm._s(props.query))]), _vm._v(".\n                                    ")]
+      }
+    }])
+  }), _vm._v(" "), _c('ais-results', {
+    attrs: {
+      "results-per-page": 10
+    },
     scopedSlots: _vm._u([{
       key: "default",
       fn: function(ref) {
         var result = ref.result;
 
-        return [_c('article', {
+        return [_c('hr'), _vm._v(" "), _c('article', {
           staticClass: "media"
         }, [_c('figure', {
           staticClass: "media-left"
@@ -39273,7 +39478,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           return _c('span', {
             key: index,
             staticClass: "tag is-rounded"
-          }, [_vm._v("\n                                                " + _vm._s(tag) + "\n                                            ")])
+          }, [_vm._v("\n                                                        " + _vm._s(tag) + "\n                                                        ")])
         }), _vm._v(" "), _c('p', {
           staticClass: "lesson-list in-caps fs-smaller is-bold mbt-1 is-hidden-mobile"
         }, [_c('a', {
@@ -39290,7 +39495,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         })])], 2)])])]
       }
     }])
-  }), _vm._v(" "), _c('nav', {
+  }), _vm._v(" "), _c('hr'), _vm._v(" "), _c('nav', {
     staticClass: "pagination",
     attrs: {
       "role": "navigation",
@@ -39301,20 +39506,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     scopedSlots: _vm._u([{
       key: "default",
       fn: function(props) {
-        return [_vm._v("\n                                        " + _vm._s(props.value) + "\n                                        ")]
+        return [_vm._v("\n                                            " + _vm._s(props.value) + "\n                                        ")]
       }
     }])
   }, [_c('template', {
     slot: "first"
-  }, [_vm._v("\n                                    First Page\n                                ")]), _vm._v(" "), _c('template', {
+  }, [_vm._v("\n                                            <<\n                                        ")]), _vm._v(" "), _c('template', {
     staticClass: "pagination-previous",
     slot: "previous"
-  }, [_vm._v("\n                                    Previous Page\n                                    ")]), _vm._v(" "), _c('template', {
+  }, [_vm._v("\n                                            <\n                                        ")]), _vm._v(" "), _c('template', {
     staticClass: "pagination-next",
     slot: "next"
-  }, [_vm._v("\n                                            Next Page\n                                            ")]), _vm._v(" "), _c('template', {
+  }, [_vm._v("\n                                            >\n                                        ")]), _vm._v(" "), _c('template', {
     slot: "last"
-  }, [_vm._v("\n                                                Last Page\n                                            ")])], 2)], 1)], 1)], 1), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                                            >>\n                                        ")])], 2)], 1)], 1)])])], 1), _vm._v(" "), _c('div', {
     staticClass: "column is-4"
   }, [_c('ais-index', {
     attrs: {
@@ -39325,17 +39530,52 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "auto-search": true,
       "query": _vm.query
     }
-  }, [_c('ais-results', {
+  }, [_c('h2', {
+    staticClass: "is-size-4"
+  }, [_vm._v("FAQs")]), _vm._v(" "), _c('ais-stats', {
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(ref) {
+        var totalResults = ref.totalResults;
+        var processingTime = ref.processingTime;
+        var query = ref.query;
+
+        return [_c('hr'), _vm._v("\n                                There are " + _vm._s(totalResults) + " FAQs matching your search\n                                "), _c('b', [_vm._v(_vm._s(query))])]
+      }
+    }])
+  }), _vm._v(" "), _c('ais-no-results', {
+    scopedSlots: _vm._u([{
+      key: "default",
+      fn: function(props) {
+        return [_c('hr'), _vm._v("\n                                No FAQs were found for\n                                "), _c('b', [_vm._v(_vm._s(props.query))]), _vm._v(".\n                            ")]
+      }
+    }])
+  }), _vm._v(" "), _c('ais-results', {
     scopedSlots: _vm._u([{
       key: "default",
       fn: function(ref) {
         var result = ref.result;
 
-        return [_c('accordion-menu', {
+        return [_c('hr'), _vm._v(" "), _c('article', {
+          staticClass: "media"
+        }, [_c('div', {
+          staticClass: "media-content"
+        }, [_c('div', {
+          staticClass: "content is-small"
+        }, [_c('h5', [_vm._v(_vm._s(result.question))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(result.answer))]), _vm._v(" "), _c('p', {
+          staticClass: "is-hidden-mobile"
+        }, [_c('a', {
+          staticClass: "tag is-rounded",
+          style: ({
+            background: _vm.colors[result.topic]
+          }),
           attrs: {
-            "contents": _vm.contents
+            "href": "#"
+          },
+          domProps: {
+            "textContent": _vm._s(result.topic)
           }
-        })]
+        })])])])])]
       }
     }])
   })], 1)], 1)])])])])

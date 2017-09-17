@@ -1,6 +1,6 @@
 <footer class="foot" style="background: #000">
     <section class="section">
-        <div class="container">
+        <div class="container is-fluid">
             <div class="columns is-centered">
                 <div class="column has-text-centered">
                     <figure>

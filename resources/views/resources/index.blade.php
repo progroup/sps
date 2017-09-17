@@ -1,4 +1,4 @@
-@extends('@progroup.layouts.app')
+@extends('layouts.app')
 
 @section('content')
 

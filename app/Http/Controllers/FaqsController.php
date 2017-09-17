@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Faq;
@@ -20,7 +19,7 @@ class FaqsController extends Controller
 
         \Bugsnag::notifyError('ErrorType', 'Test Error');
 
-        return view('@progroup.faqs.index', compact('faqs'));
+        return view('faqs.index', compact('faqs'));
     }
 
     /**
@@ -30,7 +29,7 @@ class FaqsController extends Controller
      */
     public function create()
     {
-        return view('@progroup.faqs.create');
+        return view('faqs.create');
     }
 
     /**
@@ -62,7 +61,7 @@ class FaqsController extends Controller
      */
     public function show(Faq $faq)
     {
-        return view('@progroup.faqs.show', compact('faq'));
+        return view('faqs.show', compact('faq'));
     }
 
     /**
@@ -74,6 +73,7 @@ class FaqsController extends Controller
     public function edit(Faq $faq)
     {
         //
+
     }
 
     /**
@@ -86,6 +86,7 @@ class FaqsController extends Controller
     public function update(Request $request, Faq $faq)
     {
         //
+
     }
 
     /**
@@ -97,5 +98,6 @@ class FaqsController extends Controller
     public function destroy(Faq $faq)
     {
         //
+
     }
 }

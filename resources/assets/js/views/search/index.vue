@@ -2,28 +2,29 @@
     <main>
         <section class="hero is-dark is-bold">
             <div class="hero-body">
-                <div class="container">
+                <div class="container is-fluid">
                     <div class="field">
                         <div class="control has-icons-left">
                             <input
                                 type="text"
                                 class="input is-large"
                                 placeholder="What resources can we help you find today?"
+
                                 v-model="query"
                             >
-                            <span class="icon is-small is-left">
-                                <i
-                                    class="fa fa-search"
-                                    aria-hidden="true"
-                                ></i>
-                            </span>
+                                <span class="icon is-small is-left">
+                                    <i
+                                        class="fa fa-search"
+                                        aria-hidden="true"
+                                    ></i>
+                                </span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         <section class="section">
-            <div class="container">
+            <div class="container is-fluid">
                 <div class="columns">
                     <div class="column is-8">
                         <ais-index
@@ -37,71 +38,75 @@
                             <div class="columns">
                                 <div class="column is-3 is-hidden-touch">
 
-    <aside>
-        <div>
-            <ais-refinement-list
-                attribute-name="category"
-                :sort-by="['name:asc']"
-            >
-                <template slot="header">
-                    <p class="menu-label">
-                        Category
-                    </p>
-                </template>
+                                    <aside>
+                                        <div>
+                                            <ais-refinement-list
+                                                attribute-name="category"
+                                                :sort-by="['name:asc']"
+                                            >
+                                                <template slot="header">
+                                                    <p class="menu-label">
+                                                        Category
+                                                    </p>
+                                                </template>
 
-                <template scope="props">
-                    <span
-                        class="ais-refinement-list__value"
-                        v-text="seriesName(props.value)"
-                    ></span>
-                </template>
-                </ais-refinement-list>
-        </div>
+                                                <template scope="props">
+                                                    <span
+                                                        class="ais-refinement-list__value"
 
-        <div>
-            <ais-refinement-list attribute-name="_tags">
-                <template slot="header">
-                    <p class="menu-label">
-                        Tags
-                    </p>
-                </template>
+                                                        v-text="seriesName(props.value)"
+                                                    ></span>
+                                                </template>
+                                                </ais-refinement-list>
+                                        </div>
 
-                <template scope="props">
-                    <span
-                        class="ais-refinement-list__value"
-                        v-text="seriesName(props.value)"
-                    ></span>
-                </template>
-            </ais-refinement-list>
-        </div>
+                                        <div>
+                                            <ais-refinement-list attribute-name="_tags">
+                                                <template slot="header">
+                                                    <p class="menu-label">
+                                                        Tags
+                                                    </p>
+                                                </template>
 
-        <div>
-            <ais-refinement-list
-                attribute-name="filetype"
-                :sort-by="['count:desc']"
-            >
-                <template slot="header">
-                    <p class="menu-label">
-                        File Type
-                    </p>
-                </template>
+                                                <template scope="props">
+                                                    <span
+                                                        class="ais-refinement-list__value"
 
-                <template scope="props">
-                    <span
-                        class="ais-refinement-list__value"
-                        v-text="seriesName(props.value)"
-                    ></span>
-                </template>
-                </ais-refinement-list>
-        </div>
-    </aside>
+                                                        v-text="seriesName(props.value)"
+                                                    ></span>
+                                                </template>
+                                            </ais-refinement-list>
+                                        </div>
+
+                                        <div>
+                                            <ais-refinement-list
+                                                attribute-name="filetype"
+                                                :sort-by="['count:desc']"
+                                            >
+                                                <template slot="header">
+                                                    <p class="menu-label">
+                                                        File Type
+                                                    </p>
+                                                </template>
+
+                                                <template scope="props">
+                                                    <span
+                                                        class="ais-refinement-list__value"
+
+                                                        v-text="seriesName(props.value)"
+                                                    ></span>
+                                                </template>
+                                                </ais-refinement-list>
+                                        </div>
+                                    </aside>
 
                                 </div>
                                 <div class="column">
                                     <h2 class="is-size-4">Resources</h2>
                                     <ais-stats>
                                         <template scope="{ totalResults, processingTime, query }">
-                                            <hr> There are {{ totalResults }} resources matching your search
+                                            <hr> There are {{ totalResults }} resources
+                                            matching your search
                                             <b>{{ query }}</b>
                                         </template>
                                     </ais-stats>
@@ -145,7 +150,9 @@
                                                                 <a
                                                                     href="#"
                                                                     class="tag is-rounded is-small color-white"
+
                                                                     :style="{ background: colors[result.filetype] }"
+
                                                                     v-text="result.filetype"
                                                                 >
                                                                     </a>
@@ -171,27 +178,27 @@
                                                 slot="previous"
                                             >
                                                 &lt;
-                                            </template>
-                                            <template
-                                                class="pagination-link"
-                                                scope="props"
-                                            >
-                                                {{ props.value }}
-                                            </template>
-                                            <template
-                                                class="pagination-next"
-                                                slot="next"
-                                            >
-                                                &gt;
-                                            </template>
-                                            <template slot="last">
-                                                &gt;&gt;
-                                            </template>
+                                                </template>
+                                                <template
+                                                    class="pagination-link"
+                                                    scope="props"
+                                                >
+                                                    {{ props.value }}
+                                                    </template>
+                                                    <template
+                                                        class="pagination-next"
+                                                        slot="next"
+                                                    >
+                                                        &gt;
+                                                        </template>
+                                                        <template slot="last">
+                                                            &gt;&gt;
+                                                        </template>
                                         </ais-pagination>
-                                    </nav>
+                                        </nav>
                                 </div>
                             </div>
-                        </ais-index>
+                            </ais-index>
                     </div>
                     <div class="column is-4">
                         <ais-index
@@ -207,15 +214,14 @@
 
                             <ais-stats>
                                 <template scope="{ totalResults, processingTime, query }">
-                                    <hr>
-                                    There are {{ totalResults }} FAQs matching your search
+                                    <hr> There are {{ totalResults }} FAQs matching your
+                                    search
                                     <b>{{ query }}</b>
                                 </template>
                             </ais-stats>
                             <ais-no-results>
                                 <template scope="props">
-                                    <hr>
-                                    No FAQs were found for
+                                    <hr> No FAQs were found for
                                     <b>{{ props.query }}</b>.
                                 </template>
                             </ais-no-results>
@@ -233,6 +239,7 @@
                                                         href="#"
                                                         class="tag is-rounded"
                                                         :style="{ background: colors[result.topic] }"
+
                                                         v-text="result.topic"
                                                     >
                                                         </a>
@@ -244,7 +251,7 @@
                                     <!-- <accordion-menu :contents="contents"></accordion-menu> -->
                                 </template>
                             </ais-results>
-                        </ais-index>
+                            </ais-index>
                     </div>
                 </div>
             </div>
@@ -366,6 +373,12 @@ export default {
 
     button.ais-clear.ais-clear--disabled svg {}
 
-    .icon.is-xx-large { width: 84px; height: 84px;}
-    .icon.is-xx-large .fa { font-size: 96px; }
+    .icon.is-xx-large {
+        width: 84px;
+        height: 84px;
+    }
+
+    .icon.is-xx-large .fa {
+        font-size: 96px;
+    }
 </style>

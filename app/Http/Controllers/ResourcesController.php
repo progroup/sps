@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Resource;
@@ -14,7 +13,7 @@ class ResourcesController extends Controller
      */
     public function index()
     {
-        return view('@progroup.resources.index');
+        return view('resources.index');
     }
 
     /**
@@ -25,6 +24,8 @@ class ResourcesController extends Controller
     public function create()
     {
         //
+
+
     }
 
     /**
@@ -36,6 +37,8 @@ class ResourcesController extends Controller
     public function store(Request $request)
     {
         //
+
+
     }
 
     /**
@@ -47,6 +50,8 @@ class ResourcesController extends Controller
     public function show(Resource $resource)
     {
         //
+
+
     }
 
     /**
@@ -58,6 +63,8 @@ class ResourcesController extends Controller
     public function edit(Resource $resource)
     {
         //
+
+
     }
 
     /**
@@ -70,6 +77,8 @@ class ResourcesController extends Controller
     public function update(Request $request, Resource $resource)
     {
         //
+
+
     }
 
     /**
@@ -81,5 +90,7 @@ class ResourcesController extends Controller
     public function destroy(Resource $resource)
     {
         //
+
+
     }
 }
