@@ -12,7 +12,7 @@
     {{--  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">  --}}
     <link rel="stylesheet" href="//maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('/css/sps.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -37,6 +37,6 @@
         @include('layouts.footer')
     </div>
     @include('partials.navbar-toggle-listener')
-    <script src="{{ mix('/js/app.js') }}"></script>
+    <script src="{{ mix('/js/sps.js') }}"></script>
 </body>
 </html>
