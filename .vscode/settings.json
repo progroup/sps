@@ -1,5 +1,5 @@
-// Place your settings in this file to overwrite the default settings
 {
+  // Place your settings in this file to overwrite the default settings
   // Override Your Fonts Style and Sizes
   "terminal.integrated.fontFamily": "Operator Mono",
   "terminal.integrated.fontSize": 16,
@@ -11,7 +11,7 @@
   "editor.fontWeight": "400",
   "prettier.eslintIntegration": true,
   "editor.fontLigatures": true,
-  "editor.formatOnPaste": true,
+  //   "editor.formatOnPaste": true,
   "editor.cursorBlinking": "solid",
   "editor.renderWhitespace": "all",
   // Accept code suggestions by pressing "enter" (in addition to the default "tab")
@@ -66,12 +66,7 @@
   // eslint configs
   "eslint.enable": true,
   "eslint.options": {
-    "extensions": [
-      ".html",
-      ".js",
-      ".vue",
-      ".jsx"
-    ]
+    "extensions": [".html", ".js", ".vue", ".jsx"]
   },
   "eslint.validate": [
     {
@@ -103,6 +98,6 @@
   "vetur.format.js.InsertSpaceBeforeFunctionParenthesis": true,
   "vetur.format.scriptInitialIndent": true,
   "vetur.format.styleInitialIndent": true,
-  "vetur.format.html.wrap_line_length": 80,
-  "vetur.format.html.wrap_attributes": "force-expand-multiline"
+  "vetur.format.html.wrap_line_length": 80
+  //   "vetur.format.html.wrap_attributes": "force-expand-multiline"
 }

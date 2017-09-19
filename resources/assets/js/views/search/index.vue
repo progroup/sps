@@ -1,49 +1,32 @@
 <template>
     <main>
-        <section class="hero is-dark is-bold">
+        <section class="hero is-bold" style="background-image: url('/assets/images/banners/learn.jpg')">
             <div class="hero-body">
-                <div class="container is-fluid">
+                <div class="container" style="padding: 4rem 0">
                     <div class="field">
                         <div class="control has-icons-left">
-                            <input
-                                type="text"
-                                class="input is-large"
-                                placeholder="What resources can we help you find today?"
-
-                                v-model="query"
-                            >
-                                <span class="icon is-small is-left">
-                                    <i
-                                        class="fa fa-search"
-                                        aria-hidden="true"
-                                    ></i>
-                                </span>
+                            <input type="text" class="input is-large" placeholder="What resources can we help you find today?"
+                                v-model="query">
+                            <span class="icon is-left">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         <section class="section">
-            <div class="container is-fluid">
+            <div class="container">
                 <div class="columns">
                     <div class="column is-8">
-                        <ais-index
-                            app-id="WTEU7RU64C"
-                            api-key="84cd67fa388e3c50b3a0a1710fae55ad"
-                            index-name="resources"
-                            :cache="true"
-                            :auto-search="true"
-                            :query="query"
-                        >
+                        <ais-index app-id="WTEU7RU64C" api-key="84cd67fa388e3c50b3a0a1710fae55ad" index-name="resources"
+                            :cache="true" :auto-search="true" :query="query">
                             <div class="columns">
                                 <div class="column is-3 is-hidden-touch">
 
                                     <aside>
                                         <div>
-                                            <ais-refinement-list
-                                                attribute-name="category"
-                                                :sort-by="['name:asc']"
-                                            >
+                                            <ais-refinement-list attribute-name="category" :sort-by="['name:asc']">
                                                 <template slot="header">
                                                     <p class="menu-label">
                                                         Category
@@ -51,13 +34,9 @@
                                                 </template>
 
                                                 <template scope="props">
-                                                    <span
-                                                        class="ais-refinement-list__value"
-
-                                                        v-text="seriesName(props.value)"
-                                                    ></span>
+                                                    <span class="ais-refinement-list__value" v-text="seriesName(props.value)"></span>
                                                 </template>
-                                                </ais-refinement-list>
+                                            </ais-refinement-list>
                                         </div>
 
                                         <div>
@@ -69,20 +48,13 @@
                                                 </template>
 
                                                 <template scope="props">
-                                                    <span
-                                                        class="ais-refinement-list__value"
-
-                                                        v-text="seriesName(props.value)"
-                                                    ></span>
+                                                    <span class="ais-refinement-list__value" v-text="seriesName(props.value)"></span>
                                                 </template>
                                             </ais-refinement-list>
                                         </div>
 
                                         <div>
-                                            <ais-refinement-list
-                                                attribute-name="filetype"
-                                                :sort-by="['count:desc']"
-                                            >
+                                            <ais-refinement-list attribute-name="filetype" :sort-by="['count:desc']">
                                                 <template slot="header">
                                                     <p class="menu-label">
                                                         File Type
@@ -90,13 +62,9 @@
                                                 </template>
 
                                                 <template scope="props">
-                                                    <span
-                                                        class="ais-refinement-list__value"
-
-                                                        v-text="seriesName(props.value)"
-                                                    ></span>
+                                                    <span class="ais-refinement-list__value" v-text="seriesName(props.value)"></span>
                                                 </template>
-                                                </ais-refinement-list>
+                                            </ais-refinement-list>
                                         </div>
                                     </aside>
 
@@ -129,34 +97,21 @@
                                                     <div class="content">
                                                         <h5>
                                                             <a :href="result.url">
-                                                                <ais-highlight
-                                                                    :result="result"
-                                                                    attribute-name="title"
-                                                                ></ais-highlight>
+                                                                <ais-highlight :result="result" attribute-name="title"></ais-highlight>
                                                             </a>
                                                         </h5>
 
                                                         <p>{{ result.description }}</p>
 
-                                                        <span
-                                                            class="tag is-rounded"
-                                                            :key="index"
-                                                            v-for="(tag, index) in result._tags"
-                                                        >
+                                                        <span class="tag is-rounded" :key="index" v-for="(tag, index) in result._tags">
                                                             {{tag}}
-                                                            </span>
+                                                        </span>
 
-                                                            <p class="lesson-list in-caps fs-smaller is-bold mbt-1 is-hidden-mobile">
-                                                                <a
-                                                                    href="#"
-                                                                    class="tag is-rounded is-small color-white"
-
-                                                                    :style="{ background: colors[result.filetype] }"
-
-                                                                    v-text="result.filetype"
-                                                                >
-                                                                    </a>
-                                                            </p>
+                                                        <p class="lesson-list in-caps fs-smaller is-bold mbt-1 is-hidden-mobile">
+                                                            <a href="#" class="tag is-rounded is-small color-white" :style="{ background: colors[result.filetype] }"
+                                                                v-text="result.filetype">
+                                                            </a>
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </article>
@@ -164,51 +119,32 @@
                                     </ais-results>
 
                                     <hr>
-                                    <nav
-                                        class="pagination"
-                                        role="navigation"
-                                        aria-label="pagination"
-                                    >
+                                    <nav class="pagination" role="navigation" aria-label="pagination">
                                         <ais-pagination class="pagination-list">
                                             <template slot="first">
                                                 &lt;&lt;
                                             </template>
-                                            <template
-                                                class="pagination-previous"
-                                                slot="previous"
-                                            >
+                                            <template class="pagination-previous" slot="previous">
                                                 &lt;
-                                                </template>
-                                                <template
-                                                    class="pagination-link"
-                                                    scope="props"
-                                                >
-                                                    {{ props.value }}
-                                                    </template>
-                                                    <template
-                                                        class="pagination-next"
-                                                        slot="next"
-                                                    >
-                                                        &gt;
-                                                        </template>
-                                                        <template slot="last">
-                                                            &gt;&gt;
-                                                        </template>
+                                            </template>
+                                            <template class="pagination-link" scope="props">
+                                                {{ props.value }}
+                                            </template>
+                                            <template class="pagination-next" slot="next">
+                                                &gt;
+                                            </template>
+                                            <template slot="last">
+                                                &gt;&gt;
+                                            </template>
                                         </ais-pagination>
-                                        </nav>
+                                    </nav>
                                 </div>
                             </div>
-                            </ais-index>
+                        </ais-index>
                     </div>
                     <div class="column is-4">
-                        <ais-index
-                            app-id="WTEU7RU64C"
-                            api-key="84cd67fa388e3c50b3a0a1710fae55ad"
-                            index-name="dev_faqs"
-                            :cache="true"
-                            :auto-search="true"
-                            :query="query"
-                        >
+                        <ais-index app-id="WTEU7RU64C" api-key="84cd67fa388e3c50b3a0a1710fae55ad" index-name="dev_faqs"
+                            :cache="true" :auto-search="true" :query="query">
 
                             <h2 class="is-size-4">FAQs</h2>
 
@@ -235,14 +171,9 @@
                                                 <p>{{result.answer}}</p>
 
                                                 <p class="is-hidden-mobile">
-                                                    <a
-                                                        href="#"
-                                                        class="tag is-rounded"
-                                                        :style="{ background: colors[result.topic] }"
-
-                                                        v-text="result.topic"
-                                                    >
-                                                        </a>
+                                                    <a href="#" class="tag is-rounded" :style="{ background: colors[result.topic] }"
+                                                        v-text="result.topic">
+                                                    </a>
                                                 </p>
 
                                             </div>
@@ -251,7 +182,7 @@
                                     <!-- <accordion-menu :contents="contents"></accordion-menu> -->
                                 </template>
                             </ais-results>
-                            </ais-index>
+                        </ais-index>
                     </div>
                 </div>
             </div>

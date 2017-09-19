@@ -97,6 +97,11 @@ Route::get('/mailit', function () {
 
 
 
+
+
+
+
+
 });
 
 Route::get('decompose', '\Lubusin\Decomposer\Controllers\DecomposerController@index');
@@ -142,7 +147,6 @@ Route::get('/grid', function () {
     return view('examples.grid');
 });
 
-
 Auth::routes();
 
 Route::name('profile')->get('/profiles/{user}', 'ProfilesController@show');
@@ -152,9 +156,9 @@ Route::name('calendar')->get('/calendar', 'PagesController@calendar');
 Route::name('learn')->get('/learn', 'PagesController@learn');
 Route::name('training')->get('/training', 'PagesController@training');
 Route::name('contact')->get('/contact', 'PagesController@contact');
-Route::name('georgia-seow')->get('/georgia-seow', 'PagesController@georgia-seow');
+Route::name('georgia-seow')->get('/georgia-seow', 'PagesController@georgiaSeow');
 Route::name('about')->get('/about', 'PagesController@about');
 Route::name('help')->get('/help', 'PagesController@help');
-Route::name('index')->get('/', 'PagesController@index');
-Route::name('home')->get('/home', 'PagesController@home');
+Route::name('search')->get('/search', 'PagesController@search');
+Route::name('home')->get('/', 'PagesController@index');
 Route::name('page')->get('{url}', 'PageController')->where('url', '.*');

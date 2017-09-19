@@ -1,5 +1,5 @@
 <div style="border-bottom: 1px solid #98002e;">
-    <div class="container is-fluid">
+    <div class="container">
         <nav class="navbar is-transparent">
             <div class="navbar-brand">
                 <a class="navbar-item" href="{{ route('home') }}">
@@ -33,8 +33,9 @@
                             </a>
                         </div>
                     </div>
-                    <a class="navbar-item" href="{{route('learn')}}"> Upload Reports</a>
+                    <a class="navbar-item" href="http://ecco.ga-sps.org/help.php" target="ecco"> Upload Reports</a>
                     <a class="navbar-item" href="{{route('spf')}}">SPF Overview</a>
+                    <a class="navbar-item" href="{{route('search')}}">Resources</a>
                     <a class="navbar-item" href="{{route('training')}}">Training</a>
                 </div>
 

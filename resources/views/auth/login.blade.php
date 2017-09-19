@@ -13,8 +13,11 @@
                         <div class="field">
                             <label for="email" class="label">E-Mail Address</label>
 
-                            <div class="control">
+                            <div class="control has-icons-left">
                                 <input id="email" type="email" class="input{{ $errors->has('email') ? ' is-danger' : '' }}" name="email" value="{{ old('email') }}" autofocus>
+                                <span class="icon is-left">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
                             </div>
                             @if ($errors->has('email'))
                                 <p class="help is-danger">{{ $errors->first('email') }}</p>
@@ -24,8 +27,11 @@
                         <div class="field">
                             <label for="password" class="label">Password</label>
 
-                            <div class="control">
+                            <div class="control has-icons-left">
                                 <input id="password" type="password" class="input{{ $errors->has('password') ? ' is-danger' : '' }}" name="password">
+                                <span class="icon is-left">
+                                    <i class="fa fa-lock"></i>
+                                </span>
                             </div>
                             @if ($errors->has('password'))
                                 <p class="help is-danger">{{ $errors->first('password') }}</p>

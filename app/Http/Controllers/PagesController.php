@@ -12,7 +12,7 @@ class PagesController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -30,9 +30,9 @@ class PagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function home()
+    public function search()
     {
-        return view('home');
+        return view('search');
     }
 
     /**
