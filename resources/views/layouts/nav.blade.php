@@ -2,7 +2,7 @@
     <div class="container">
         <nav class="navbar is-transparent">
             <div class="navbar-brand">
-                <a class="navbar-item" href="{{ route('home') }}">
+                <a class="navbar-item" href="/">
                     <div style="">
                         <span style="font-family: 'Audiowide', cursive;font-size: 2.5rem">Ga<span style="color: #980e0e">SPS</span></span>
                     </div>
