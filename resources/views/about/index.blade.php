@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<section class="hero is-light is-bold" style="background-image: url('/assets/images/banners/about.jpg')">
+<section class="hero is-light is-medium is-bold" style="background-size: cover; background-image: url('/assets/images/banners/about.jpg')">
     <div class="hero-body">
         <div class="container">
 

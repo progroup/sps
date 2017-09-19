@@ -1,6 +1,6 @@
 <template>
     <main>
-        <section class="hero is-bold" style="background-image: url('/assets/images/banners/learn.jpg')">
+        <section class="hero is-bold" style="background-size: cover; background-image: url('/assets/images/banners/learn.jpg')">
             <div class="hero-body">
                 <div class="container" style="padding: 4rem 0">
                     <div class="field">

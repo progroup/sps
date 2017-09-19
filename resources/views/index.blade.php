@@ -20,10 +20,10 @@
 
 <section class="section">
     <div class="container is-medium">
-        <div class="columns">
+        <div class="columns is-4">
             <div class="column has-text-centered">
                 <a href="{{route('search')}}">
-                <figure class="image is-96x96 is-inline-block" style="color: #bbb">
+                <figure class="image is-64x64 is-inline-block" style="color: #bbb">
                     @include('partials.svg.cogs')
                 </figure>
                 </a>
@@ -34,7 +34,7 @@
             </div>
             <div class="column has-text-centered">
                 <a href="{{route('training')}}">
-                <figure class="image is-96x96 is-inline-block" style="color: #bbb">
+                <figure class="image is-64x64 is-inline-block" style="color: #bbb">
                     @include('partials.svg.university')
                 </figure>
                 </a>
@@ -45,7 +45,7 @@
             </div>
             <div class="column has-text-centered">
                 <a href="http://ecco.ga-sps.org/help.php" target="ecco">
-                <figure class="image is-96x96 is-inline-block" style="color: #bbb">
+                <figure class="image is-64x64 is-inline-block" style="color: #bbb">
                     @include('partials.svg.medkit')
                 </figure>
                 </a>
@@ -56,7 +56,7 @@
             </div>
             <div class="column has-text-centered">
                 <a href="{{route('calendar')}}">
-                <figure class="image is-96x96 is-inline-block" style="color: #bbb">
+                <figure class="image is-64x64 is-inline-block" style="color: #bbb">
                     @include('partials.svg.calendar')
                 </figure>
                 </a>

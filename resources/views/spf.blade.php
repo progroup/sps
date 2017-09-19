@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<section class="hero is-primary is-bold">
+<section class="hero is-medium is-primary is-bold">
     <div class="hero-body">
         <div class="container">
 
