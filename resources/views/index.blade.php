@@ -23,47 +23,71 @@
         <div class="columns is-4">
             <div class="column has-text-centered">
                 <a href="{{route('search')}}">
-                <figure class="image is-64x64 is-inline-block" style="color: #bbb">
-                    @include('partials.svg.cogs')
-                </figure>
+                    <article class="media">
+                        <figure class="media-left" style="padding-right: 1rem">
+                            <p class="image is-48x48">
+                                @include('partials.svg.cogs')
+                            </p>
+                        </figure>
+                        <div class="media-content">
+                            <div style="padding-right: 1rem">
+                                <h3 class="is-size-3"><a href="{{route('search')}}">Resources</a></h3>
+                                <p class="is-size-6">GASPS has searched, developed and listed a comprehensive list of approved support resources. This includes Tools, Prospectus Literature Reviews, and webinars.</p>
+                            </div>
+                        </div>
+                    </article>
                 </a>
-                <div class="content is-large">
-                    <h3><a href="{{route('search')}}">Resources</a></h3>
-                    <p>GASPS has searched, developed and listed a comprehensive list of approved support resources. This includes Tools, Prospectus Literature Reviews, and webinars.</p>
-                </div>
             </div>
             <div class="column has-text-centered">
                 <a href="{{route('training')}}">
-                <figure class="image is-64x64 is-inline-block" style="color: #bbb">
-                    @include('partials.svg.university')
-                </figure>
+                    <article class="media">
+                        <figure class="media-left" style="padding-right: 1rem">
+                            <p class="image is-48x48">
+                                @include('partials.svg.university')
+                            </p>
+                        </figure>
+                        <div class="media-content">
+                            <div style="padding-right: 1rem">
+                                <h3 class="is-size-3"><a href="{{route('training')}}">Training Center</a></h3>
+                                <p class="is-size-6">Locate and Register for local and national trainings from the Training Center page.</p>
+                            </div>
+                        </div>
+                    </article>
                 </a>
-                <div class="content is-large">
-                    <h3><a href="{{route('training')}}">Training Center</a></h3>
-                    <p>Locate and Register for local and national trainings from the Training Center page.</p>
-                </div>
             </div>
             <div class="column has-text-centered">
                 <a href="http://ecco.ga-sps.org/help.php" target="ecco">
-                <figure class="image is-64x64 is-inline-block" style="color: #bbb">
-                    @include('partials.svg.medkit')
-                </figure>
+                    <article class="media">
+                        <figure class="media-left" style="padding-right: 1rem">
+                            <p class="image is-48x48">
+                                @include('partials.svg.medkit')
+                            </p>
+                        </figure>
+                        <div class="media-content">
+                            <div style="padding-right: 1rem">
+                                <h3 class="is-size-3"><a href="http://ecco.ga-sps.org/help.php" target="ecco">Help / IP Reports</a></h5>
+                                <p class="is-size-6">In need of Technical Assistance (TA)? Use the TA page to link to ECCO to submit a request for TA quickly and easily, no log in required</p>
+                            </div>
+                        </div>
+                    </article>
                 </a>
-                <div class="content is-large">
-                    <h3><a href="{{route('help')}}">Help / IP Reports</a></h3>
-                    <p>In need of Technical Assistance (TA)? Use the TA page to link to ECCO to submit a request for TA quickly and easily, no log in required</p>
-                </div>
             </div>
             <div class="column has-text-centered">
                 <a href="{{route('calendar')}}">
-                <figure class="image is-64x64 is-inline-block" style="color: #bbb">
-                    @include('partials.svg.calendar')
-                </figure>
+                    <article class="media">
+                        <figure class="media-left" style="padding-right: 1rem">
+                            <p class="image is-48x48">
+                                @include('partials.svg.calendar')
+                            </p>
+                        </figure>
+                        <div class="media-content">
+                            <div style="padding-right: 1rem">
+                                <h3 class="is-size-3"><a href="{{route('calendar')}}">Calendar</a></h3>
+                                <p class="is-size-6">What to keep up5with all that's going on? Take a look at the GASPS calendar. Where we list upcoming events, trainings and Major due dates for in the GASPS systems.</p>
+                            </div>
+                        </div>
+                    </article>
                 </a>
-                <div class="content is-large">
-                    <h3><a href="{{route('calendar')}}">Calendar</a></h3>
-                    <p>What to keep up with all that's going on? Take a look at the GASPS calendar. Where we list upcoming events, trainings and Major due dates for in the GASPS systems.</p>
-                </div>
             </div>
         </div>
     </div>

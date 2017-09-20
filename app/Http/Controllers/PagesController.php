@@ -13,6 +13,11 @@ class PagesController extends Controller
     public function __construct()
     {
         // $this->middleware('auth');
+
+
+
+
+
     }
 
     /**
@@ -32,7 +37,8 @@ class PagesController extends Controller
      */
     public function search()
     {
-        return view('search');
+        $query = request()->query();
+        return view('search', compact('query'));
     }
 
     /**

@@ -39248,9 +39248,8 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('main', [_c('section', {
-    staticClass: "hero is-bold",
+    staticClass: "hero is-bold has-bg-img",
     staticStyle: {
-      "background-size": "cover",
       "background-image": "url('/assets/images/banners/learn.jpg')"
     }
   }, [_c('div', {

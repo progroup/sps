@@ -1,18 +1,11 @@
 {
-  "extends": [
-    "standard",
-    "plugin:vue/recommended"
-  ],
+  "extends": ["standard", "plugin:vue/recommended"],
   "settings": {
-    "html/html-extensions": [
-      ".html"
-    ],
+    "html/html-extensions": [".html"],
     "html/report-bad-indent": "error"
   },
   // required to lint *.vue files
-  "plugins": [
-    "html"
-  ],
+  "plugins": ["html"],
   // user especific/ project specific
   "rules": {
     "no-undef": 1,
@@ -27,14 +20,8 @@
         "ignoreRestSiblings": true
       }
     ],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
-    "indent": [
-      "error",
-      4
-    ],
+    "linebreak-style": ["error", "unix"],
+    "indent": ["error", 4],
     "quotes": [
       "error",
       "single",
