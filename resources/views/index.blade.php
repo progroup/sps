@@ -3,7 +3,7 @@
 <section class="hero" style="background-size: cover; background-image: url('/images/atlanta.jpg')">
     <div class="hero-header">
         <div class="container">
-            <p class="is-size-2 has-text-light" style="line-height: 1; padding-top: 1rem"><b>Welcome to the Georgia Strategic<br>
+            <p class="is-size-2 has-text-light" style="line-height: 1; padding-top: 1.5rem"><b>Welcome to the Georgia Strategic<br>
             Prevention Services Hubsite</b></p>
         </div>
     </div>
@@ -27,14 +27,14 @@
             <div class="level">
                 <div class="level-left">
                     <div class="level-item">
-                        <figure class="image">
+                        <figure class="image" style="width: 200px">
                             <img src="/images/progroup.png" alt="Progroup">
                         </figure>
                     </div>
                 </div>
                 <div class="level-right">
                     <div class="level-item">
-                        <p class="is-size-3 has-text-weight-semibold has-text-light" style="line-height: 1;padding-bottom: 1rem"><em>Serving the state of Georgia's<br>
+                        <p class="is-size-3 has-text-weight-semibold has-text-light" style="line-height: 1;padding-bottom: 1.5rem"><em>Serving the state of Georgia's<br>
                         Behavioral Health / Prevention Workforce</em></p>
                     </div>
                 </div>
