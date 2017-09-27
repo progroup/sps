@@ -1,8 +1,14 @@
 @extends('layouts.app')
 @section('content')
-<section class="hero is-medium" style="background-size: cover; background-image: url('/images/atlanta.jpg')">
+<section class="hero" style="background-size: cover; background-image: url('/images/atlanta.jpg')">
+    <div class="hero-header">
+        <div class="container">
+            <p class="is-size-2 has-text-light" style="line-height: 1; padding-top: 1rem"><b>Welcome to the Georgia Strategic<br>
+            Prevention Services Hubsite</b></p>
+        </div>
+    </div>
      <div class="hero-body">
-        <div class="container" style="padding: 4rem 0">
+        <div class="container">
             <div class="field has-addons">
                 <div class="control is-expanded has-icons-left">
                     <input type="text" class="input is-large" placeholder="What resources can we help you find today?" v-model="query">
@@ -12,6 +18,25 @@
                 </div>
                 <div class="control">
                     <a href="{{route('search')}}" class="button is-primary is-large" type="submit">Search</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-footer">
+        <div class="container">
+            <div class="level">
+                <div class="level-left">
+                    <div class="level-item">
+                        <figure class="image">
+                            <img src="/images/progroup.png" alt="Progroup">
+                        </figure>
+                    </div>
+                </div>
+                <div class="level-right">
+                    <div class="level-item">
+                        <p class="is-size-3 has-text-weight-semibold has-text-light" style="line-height: 1;padding-bottom: 1rem"><em>Serving the state of Georgia's<br>
+                        Behavioral Health / Prevention Workforce</em></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -48,7 +73,7 @@
                         </figure>
                         <div class="media-content">
                             <div style="padding-right: 1rem">
-                                <h3 class="is-size-3"><a href="{{route('training')}}">Training Center</a></h3>
+                                <h3 class="is-size-3"><a href="{{route('training')}}">Training&nbsp;Center</a></h3>
                                 <p class="is-size-6">Locate and Register for local and national trainings from the Training Center page.</p>
                             </div>
                         </div>
@@ -65,7 +90,7 @@
                         </figure>
                         <div class="media-content">
                             <div style="padding-right: 1rem">
-                                <h3 class="is-size-3"><a href="http://ecco.ga-sps.org/help.php" target="ecco">Help / IP Reports</a></h5>
+                                <h3 class="is-size-3"><a href="http://ecco.ga-sps.org/help.php" target="ecco">Help&nbsp;/&nbsp;IP&nbsp;Reports</a></h5>
                                 <p class="is-size-6">In need of Technical Assistance (TA)? Use the TA page to link to ECCO to submit a request for TA quickly and easily, no log in required</p>
                             </div>
                         </div>
@@ -92,7 +117,7 @@
         </div>
     </div>
 </section>
-
+<hr>
 <section class="section">
     <div class="container content is-medium">
         <div class="columns">
