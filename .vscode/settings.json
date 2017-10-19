@@ -1,7 +1,7 @@
 {
   // Place your settings in this file to overwrite the default settings
   // Override Your Fonts Style and Sizes
-  "terminal.integrated.fontFamily": "Operator Mono",
+  "terminal.integrated.fontFamily": "'Inconsolata for Powerline', monospace",
   "terminal.integrated.fontSize": 16,
   "window.zoomLevel": 1,
   "editor.fontFamily": "Operator Mono, Menlo, Monaco, 'Courier New', monospace",
