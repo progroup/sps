@@ -45,8 +45,8 @@
 
 <section class="section">
     <div class="container is-medium">
-        <div class="columns is-4">
-            <div class="column has-text-centered">
+        <div class="columns is-multiline">
+            <div class="column is-half-tablet is-one-half-desktop has-text-centered">
                 <a href="{{route('search')}}">
                     <article class="media">
                         <figure class="media-left" style="padding-right: 1rem">
@@ -57,13 +57,13 @@
                         <div class="media-content">
                             <div style="padding-right: 1rem">
                                 <h3 class="is-size-3"><a href="{{route('search')}}">Resources</a></h3>
-                                <p class="is-size-6">GASPS has searched, developed and listed a comprehensive list of approved support resources. This includes Tools, Prospectus Literature Reviews, and webinars.</p>
+                                <p class="is-size-5">GASPS has searched, developed and listed a comprehensive list of approved support resources. This includes Tools, Prospectus Literature Reviews, and webinars.</p>
                             </div>
                         </div>
                     </article>
                 </a>
             </div>
-            <div class="column has-text-centered">
+            <div class="column is-half-tablet is-one-half-desktop has-text-centered">
                 <a href="{{route('training')}}">
                     <article class="media">
                         <figure class="media-left" style="padding-right: 1rem">
@@ -73,14 +73,14 @@
                         </figure>
                         <div class="media-content">
                             <div style="padding-right: 1rem">
-                                <h3 class="is-size-3"><a href="{{route('training')}}">Training&nbsp;Center</a></h3>
-                                <p class="is-size-6">Locate and Register for local and national trainings from the Training Center page.</p>
+                                <h3 class="is-size-3"><a href="{{route('training')}}">Training Center</a></h3>
+                                <p class="is-size-5">Locate and Register for local and national trainings from the Training Center page.</p>
                             </div>
                         </div>
                     </article>
                 </a>
             </div>
-            <div class="column has-text-centered">
+            <div class="column is-half-tablet is-one-half-desktop has-text-centered">
                 <a href="http://ecco.ga-sps.org/help.php" target="ecco">
                     <article class="media">
                         <figure class="media-left" style="padding-right: 1rem">
@@ -90,15 +90,14 @@
                         </figure>
                         <div class="media-content">
                             <div style="padding-right: 1rem">
-                                <h3 class="is-size-3"><a href="http://ecco.ga-sps.org/help.php" target="ecco">Help&nbsp;/&nbsp;IP&nbsp;Reports</a></h5>
-                                <p class="is-size-6">In need of Technical Assistance (TA)? Use the TA page to link to ECCO to submit a request for TA quickly and easily, no log in required</p>
+                                <h3 class="is-size-3"><a href="http://ecco.ga-sps.org/help.php" target="ecco">Help / IP Reports</a></h5>
+                                <p class="is-size-5">In need of Technical Assistance (TA)? Use the TA page to link to ECCO to submit a request for TA quickly and easily, no log in required</p>
                             </div>
                         </div>
                     </article>
                 </a>
             </div>
-            <div class="column has-text-centered">
-                <a href="{{route('calendar')}}">
+            <div class="column is-half-tablet is-one-half-desktop has-text-centered">                <a href="{{route('calendar')}}">
                     <article class="media">
                         <figure class="media-left" style="padding-right: 1rem">
                             <p class="image is-48x48">
@@ -108,7 +107,7 @@
                         <div class="media-content">
                             <div style="padding-right: 1rem">
                                 <h3 class="is-size-3"><a href="{{route('calendar')}}">Calendar</a></h3>
-                                <p class="is-size-6">What to keep up5with all that's going on? Take a look at the GASPS calendar. Where we list upcoming events, trainings and Major due dates for in the GASPS systems.</p>
+                                <p class="is-size-5">What to keep up5with all that's going on? Take a look at the GASPS calendar. Where we list upcoming events, trainings and Major due dates for in the GASPS systems.</p>
                             </div>
                         </div>
                     </article>
