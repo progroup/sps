@@ -5,8 +5,7 @@
                 <div class="container" style="padding: 4rem 0">
                     <div class="field">
                         <div class="control has-icons-left">
-                            <input type="text" class="input is-large" placeholder="What resources can we help you find today?"
-                                v-model="query">
+                            <input type="text" class="input is-large" placeholder="What resources can we help you find today?" v-model="query">
                             <span class="icon is-left">
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </span>
@@ -19,8 +18,7 @@
             <div class="container">
                 <div class="columns">
                     <div class="column is-8">
-                        <ais-index app-id="WTEU7RU64C" api-key="84cd67fa388e3c50b3a0a1710fae55ad" index-name="resources"
-                            :cache="true" :auto-search="true" :query="query">
+                        <ais-index app-id="WTEU7RU64C" api-key="84cd67fa388e3c50b3a0a1710fae55ad" index-name="resources" :cache="true" :auto-search="true" :query="query">
                             <div class="columns">
                                 <div class="column is-3 is-hidden-touch">
 
@@ -73,8 +71,7 @@
                                     <h2 class="is-size-4">Resources</h2>
                                     <ais-stats>
                                         <template scope="{ totalResults, processingTime, query }">
-                                            <hr> There are {{ totalResults }} resources
-                                            matching your search
+                                            <hr> There are {{ totalResults }} resources matching your search
                                             <b>{{ query }}</b>
                                         </template>
                                     </ais-stats>
@@ -108,8 +105,7 @@
                                                         </span>
 
                                                         <p class="lesson-list in-caps fs-smaller is-bold mbt-1 is-hidden-mobile">
-                                                            <a href="#" class="tag is-rounded is-small color-white" :style="{ background: colors[result.filetype] }"
-                                                                v-text="result.filetype">
+                                                            <a href="#" class="tag is-rounded is-small color-white" :style="{ background: colors[result.filetype] }" v-text="result.filetype">
                                                             </a>
                                                         </p>
                                                     </div>
@@ -143,15 +139,13 @@
                         </ais-index>
                     </div>
                     <div class="column is-4">
-                        <ais-index app-id="WTEU7RU64C" api-key="84cd67fa388e3c50b3a0a1710fae55ad" index-name="dev_faqs"
-                            :cache="true" :auto-search="true" :query="query">
+                        <ais-index app-id="WTEU7RU64C" api-key="84cd67fa388e3c50b3a0a1710fae55ad" index-name="dev_faqs" :cache="true" :auto-search="true" :query="query">
 
                             <h2 class="is-size-4">FAQs</h2>
 
                             <ais-stats>
                                 <template scope="{ totalResults, processingTime, query }">
-                                    <hr> There are {{ totalResults }} FAQs matching your
-                                    search
+                                    <hr> There are {{ totalResults }} FAQs matching your search
                                     <b>{{ query }}</b>
                                 </template>
                             </ais-stats>
@@ -171,8 +165,7 @@
                                                 <p>{{result.answer}}</p>
 
                                                 <p class="is-hidden-mobile">
-                                                    <a href="#" class="tag is-rounded" :style="{ background: colors[result.topic] }"
-                                                        v-text="result.topic">
+                                                    <a href="#" class="tag is-rounded" :style="{ background: colors[result.topic] }" v-text="result.topic">
                                                     </a>
                                                 </p>
 
@@ -191,7 +184,6 @@
 </template>
 
 <script>
-
 import moment from 'moment'
 import AccordionMenu from '@/components/AccordionMenu'
 
@@ -202,11 +194,9 @@ export default {
     },
     data () {
         return {
-            query: '',
+            query: this.$route.query.query || '',
             user: window.App.user,
-            value: [
-                { name: 'Vue.js', language: 'JavaScript' }
-            ],
+            value: [{ name: 'Vue.js', language: 'JavaScript' }],
             options: [
                 { name: 'Vue.js', language: 'JavaScript' },
                 { name: 'Adonis', language: 'JavaScript' },
@@ -265,51 +255,56 @@ export default {
 
 <style>
     .ais-highlight em {
-        background-color: #ff9;
-        font-style: normal;
+      background-color: #ff9;
+      font-style: normal;
     }
 
     .tile {
-        outline: 1px dotted red;
+      outline: 1px dotted red;
     }
 
     .ais-refinement-list {
-        margin-bottom: 2rem;
+      margin-bottom: 2rem;
     }
 
     .ais-refinement-list__item {
-        margin-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
     }
 
     .ais-refinement-list__label {
-        display: flex;
-        align-items: center;
+      display: flex;
+      align-items: center;
     }
 
     .ais-refinement-list__checkbox {
-        margin-right: 0.5rem;
+      margin-right: 0.5rem;
     }
 
     .ais-refinement-list__value {
-        flex-grow: 1;
+      flex-grow: 1;
     }
 
-    form[role="search"] {}
+    form[role='search'] {
+    }
 
-    input.ais-input {}
+    input.ais-input {
+    }
 
-    button.ais-search-box__submit {}
+    button.ais-search-box__submit {
+    }
 
-    svg {}
+    svg {
+    }
 
-    button.ais-clear.ais-clear--disabled svg {}
+    button.ais-clear.ais-clear--disabled svg {
+    }
 
     .icon.is-xx-large {
-        width: 84px;
-        height: 84px;
+      width: 84px;
+      height: 84px;
     }
 
     .icon.is-xx-large .fa {
-        font-size: 96px;
+      font-size: 96px;
     }
 </style>
