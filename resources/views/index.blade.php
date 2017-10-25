@@ -46,7 +46,7 @@
 <section class="section">
     <div class="container is-medium">
         <div class="columns is-multiline">
-            <div class="column is-half-tablet is-one-half-desktop has-text-centered">
+            <div class="column is-half-tablet is-one-half-desktop is-one-quarter-fullhd has-text-centered">
                 <a href="{{route('search')}}">
                     <article class="media">
                         <figure class="media-left" style="padding-right: 1rem">
@@ -63,7 +63,7 @@
                     </article>
                 </a>
             </div>
-            <div class="column is-half-tablet is-one-half-desktop has-text-centered">
+            <div class="column is-half-tablet is-one-half-desktop is-one-quarter-fullhd has-text-centered">
                 <a href="{{route('training')}}">
                     <article class="media">
                         <figure class="media-left" style="padding-right: 1rem">
@@ -80,7 +80,7 @@
                     </article>
                 </a>
             </div>
-            <div class="column is-half-tablet is-one-half-desktop has-text-centered">
+            <div class="column is-half-tablet is-one-half-desktop is-one-quarter-fullhd has-text-centered">
                 <a href="http://ecco.ga-sps.org/help.php" target="ecco">
                     <article class="media">
                         <figure class="media-left" style="padding-right: 1rem">
@@ -90,14 +90,14 @@
                         </figure>
                         <div class="media-content">
                             <div style="padding-right: 1rem">
-                                <h3 class="is-size-3"><a href="http://ecco.ga-sps.org/help.php" target="ecco">Help / IP Reports</a></h5>
+                                <h3 class="is-size-3"><a href="http://ecco.ga-sps.org/help.php" target="ecco">Help&nbsp;/&nbsp;IP&nbsp;Reports</a></h5>
                                 <p class="is-size-5">In need of Technical Assistance (TA)? Use the TA page to link to ECCO to submit a request for TA quickly and easily, no log in required</p>
                             </div>
                         </div>
                     </article>
                 </a>
             </div>
-            <div class="column is-half-tablet is-one-half-desktop has-text-centered">                <a href="{{route('calendar')}}">
+            <div class="column is-half-tablet is-one-half-desktop is-one-quarter-fullhd has-text-centered">                <a href="{{route('calendar')}}">
                     <article class="media">
                         <figure class="media-left" style="padding-right: 1rem">
                             <p class="image is-48x48">
