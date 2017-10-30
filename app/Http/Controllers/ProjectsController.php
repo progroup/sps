@@ -1,11 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Project;
 use Illuminate\Http\Request;
 
-class ProjectController extends Controller
+class ProjectsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,17 +13,19 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the page to create a new project.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('projects.create', [
+            'projects' => Project::all()
+        ]);
     }
 
     /**
@@ -35,7 +36,17 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+            'name' => 'required',
+            'description' => 'required'
+        ]);
+
+        Project::forceCreate([
+            'name' => request('name'),
+            'description' => request('description')
+        ]);
+
+        return ['message' => 'Project Created'];
     }
 
     /**
@@ -46,7 +57,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+
     }
 
     /**
@@ -57,7 +68,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+
     }
 
     /**
@@ -69,7 +80,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+
     }
 
     /**
@@ -80,6 +91,6 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+
     }
 }

@@ -17,7 +17,9 @@ mix.config.postCss = [
 mix
     .js('resources/assets/js/docs.js', 'public/js')
     .js('resources/assets/js/sps.js', 'public/js')
+    .js('resources/assets/js/app.js', 'public/js')
     .postCss('resources/assets/css/docs.css', 'public/css')
+    .sass('resources/assets/sass/app.sass', 'public/css')
     .sass('resources/assets/sass/sps.scss', 'public/css')
     .webpackConfig({
         resolve: {

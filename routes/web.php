@@ -102,6 +102,7 @@ Route::get('/mailit', function () {
 
 
 
+
 });
 
 Route::get('decompose', '\Lubusin\Decomposer\Controllers\DecomposerController@index');
@@ -160,5 +161,9 @@ Route::name('georgia-seow')->get('/georgia-seow', 'PagesController@georgiaSeow')
 Route::name('about')->get('/about', 'PagesController@about');
 Route::name('help')->get('/help', 'PagesController@help');
 Route::name('search')->get('/search', 'PagesController@search');
+
+Route::name('projects.create')->get('/projects', 'ProjectsController@create');
+Route::name('projects.store')->post('/projects', 'ProjectsController@store');
+
 Route::name('home')->get('/', 'PagesController@index');
 Route::name('page')->get('{url}', 'PageController')->where('url', '.*');
