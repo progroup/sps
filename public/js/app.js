@@ -11073,12 +11073,33 @@ var Errors = function () {
         this.errors = {};
     }
 
+    /**
+     * Determine if an errors exists for the given field.
+     */
+
+
     _createClass(Errors, [{
         key: 'has',
         value: function has(field) {
             // if this.errors contains a 'field' property.
             return this.errors.hasOwnProperty(field);
         }
+
+        /**
+         * Determine if we have any errors.
+         */
+
+    }, {
+        key: 'any',
+        value: function any() {
+            // if this.errors is not empty there are errors
+            return Object.keys(this.errors).length > 0;
+        }
+
+        /**
+         * Retrieve the error message for a field.
+         */
+
     }, {
         key: 'get',
         value: function get(field) {
@@ -11086,11 +11107,25 @@ var Errors = function () {
                 return this.errors[field][0];
             }
         }
+
+        /**
+         * Record the new errors.
+         *
+         * @param {object} errors
+         */
+
     }, {
         key: 'record',
         value: function record(errors) {
             this.errors = errors;
         }
+
+        /**
+         * Clear one or all error fields.
+         *
+         * @param {string|null} field
+         */
+
     }, {
         key: 'clear',
         value: function clear(field) {
@@ -11101,18 +11136,17 @@ var Errors = function () {
 
             this.errors = {};
         }
-    }, {
-        key: 'any',
-        value: function any() {
-            // if this.errors is not empty there are errors
-            return Object.keys(this.errors).length > 0;
-        }
     }]);
 
     return Errors;
 }();
 
 var Form = function () {
+    /**
+     * Create a new Form instance.
+     *
+     * @param {object} data
+     */
     function Form(data) {
         _classCallCheck(this, Form);
 
@@ -11125,6 +11159,11 @@ var Form = function () {
         this.errors = new Errors();
     }
 
+    /**
+     * Fetch all relevant data for the form.
+     */
+
+
     _createClass(Form, [{
         key: 'data',
         value: function data() {
@@ -11136,26 +11175,53 @@ var Form = function () {
 
             return data;
         }
+
+        /**
+         * Reset the form fields.
+         */
+
     }, {
         key: 'reset',
         value: function reset() {
             for (var field in this.originalData) {
                 this[field] = '';
             }
+            this.errors.clear();
         }
+
+        /**
+         * Submit the form.
+         *
+         * @param  {string} requestType
+         * @param  {string} url
+         */
+
     }, {
         key: 'submit',
         value: function submit(requestType, url) {
             __WEBPACK_IMPORTED_MODULE_2_axios___default.a[requestType](url, this.data()).then(this.onSuccess.bind(this)).catch(this.onFail.bind(this));
         }
+
+        /**
+         * Handle a successful form submission.
+         *
+         * @param {object} response
+         */
+
     }, {
         key: 'onSuccess',
         value: function onSuccess(response) {
             alert(response.data.message);
 
-            this.errors.clear();
             this.reset();
         }
+
+        /**
+         * Handle a failed form submission.
+         *
+         * @param {object} error
+         */
+
     }, {
         key: 'onFail',
         value: function onFail(error) {
