@@ -23,7 +23,12 @@ class Errors {
     }
 
     clear (field) {
-        delete this.errors[field]
+        if (field) {
+            delete this.errors[field]
+            return
+        }
+
+        this.errors = {}
     }
 
     any () {
@@ -34,7 +39,7 @@ class Errors {
 
 class Form {
     constructor (data) {
-        this.data = data
+        this.originalData = data
 
         for (let field in data) {
             this[field] = data[field]
@@ -43,7 +48,38 @@ class Form {
         this.errors = new Errors()
     }
 
-    reset () {}
+    data () {
+        // this clones the data
+        let data = Object.assign({}, this) // {name, description, originalData, errors }
+
+        delete data.originalData
+        delete data.errors
+
+        return data
+    }
+
+    reset () {
+        for (let field in this.originalData) {
+            this[field] = ''
+        }
+    }
+
+    submit (requestType, url) {
+        axios[requestType](url, this.data())
+            .then(this.onSuccess.bind(this))
+            .catch(this.onFail.bind(this))
+    }
+
+    onSuccess (response) {
+        alert(response.data.message)
+
+        this.errors.clear()
+        this.reset()
+    }
+
+    onFail (error) {
+        this.errors.record(error.response.data.errors)
+    }
 }
 const app = new Vue({
     el: '#app',
@@ -55,23 +91,7 @@ const app = new Vue({
     },
     methods: {
         onSubmit () {
-            axios
-                .post('/projects', this.$data)
-                // .then(response => alert('Success'))
-                .then(this.onSuccess)
-                // .catch(error => (this.errors = error.response.data))
-                .catch(error =>
-                    this.form.errors.record(error.response.data.errors)
-                )
-            // .catch(error => {
-            //     console.log(error.response.data.errors)
-            // })
-        },
-        onSuccess (response) {
-            alert(response.data.message)
-
-            this.name = ''
-            this.description = ''
+            this.form.submit('post', '/projects')
         }
     }
 })

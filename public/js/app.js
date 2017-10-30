@@ -11094,7 +11094,12 @@ var Errors = function () {
     }, {
         key: 'clear',
         value: function clear(field) {
-            delete this.errors[field];
+            if (field) {
+                delete this.errors[field];
+                return;
+            }
+
+            this.errors = {};
         }
     }, {
         key: 'any',
@@ -11111,7 +11116,7 @@ var Form = function () {
     function Form(data) {
         _classCallCheck(this, Form);
 
-        this.data = data;
+        this.originalData = data;
 
         for (var field in data) {
             this[field] = data[field];
@@ -11121,8 +11126,41 @@ var Form = function () {
     }
 
     _createClass(Form, [{
+        key: 'data',
+        value: function data() {
+            // this clones the data
+            var data = Object.assign({}, this); // {name, description, originalData, errors }
+
+            delete data.originalData;
+            delete data.errors;
+
+            return data;
+        }
+    }, {
         key: 'reset',
-        value: function reset() {}
+        value: function reset() {
+            for (var field in this.originalData) {
+                this[field] = '';
+            }
+        }
+    }, {
+        key: 'submit',
+        value: function submit(requestType, url) {
+            __WEBPACK_IMPORTED_MODULE_2_axios___default.a[requestType](url, this.data()).then(this.onSuccess.bind(this)).catch(this.onFail.bind(this));
+        }
+    }, {
+        key: 'onSuccess',
+        value: function onSuccess(response) {
+            alert(response.data.message);
+
+            this.errors.clear();
+            this.reset();
+        }
+    }, {
+        key: 'onFail',
+        value: function onFail(error) {
+            this.errors.record(error.response.data.errors);
+        }
     }]);
 
     return Form;
@@ -11138,24 +11176,7 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     },
     methods: {
         onSubmit: function onSubmit() {
-            var _this = this;
-
-            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/projects', this.$data)
-            // .then(response => alert('Success'))
-            .then(this.onSuccess)
-            // .catch(error => (this.errors = error.response.data))
-            .catch(function (error) {
-                return _this.form.errors.record(error.response.data.errors);
-            });
-            // .catch(error => {
-            //     console.log(error.response.data.errors)
-            // })
-        },
-        onSuccess: function onSuccess(response) {
-            alert(response.data.message);
-
-            this.name = '';
-            this.description = '';
+            this.form.submit('post', '/projects');
         }
     }
 });
