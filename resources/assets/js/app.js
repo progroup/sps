@@ -31,12 +31,27 @@ class Errors {
         return Object.keys(this.errors).length > 0
     }
 }
+
+class Form {
+    constructor (data) {
+        this.data = data
+
+        for (let field in data) {
+            this[field] = data[field]
+        }
+
+        this.errors = new Errors()
+    }
+
+    reset () {}
+}
 const app = new Vue({
     el: '#app',
     data: {
-        name: '',
-        description: '',
-        errors: new Errors()
+        form: new Form({
+            name: '',
+            description: ''
+        })
     },
     methods: {
         onSubmit () {
@@ -45,7 +60,9 @@ const app = new Vue({
                 // .then(response => alert('Success'))
                 .then(this.onSuccess)
                 // .catch(error => (this.errors = error.response.data))
-                .catch(error => this.errors.record(error.response.data.errors))
+                .catch(error =>
+                    this.form.errors.record(error.response.data.errors)
+                )
             // .catch(error => {
             //     console.log(error.response.data.errors)
             // })

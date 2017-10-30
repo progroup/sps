@@ -11107,12 +11107,34 @@ var Errors = function () {
     return Errors;
 }();
 
+var Form = function () {
+    function Form(data) {
+        _classCallCheck(this, Form);
+
+        this.data = data;
+
+        for (var field in data) {
+            this[field] = data[field];
+        }
+
+        this.errors = new Errors();
+    }
+
+    _createClass(Form, [{
+        key: 'reset',
+        value: function reset() {}
+    }]);
+
+    return Form;
+}();
+
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#app',
     data: {
-        name: '',
-        description: '',
-        errors: new Errors()
+        form: new Form({
+            name: '',
+            description: ''
+        })
     },
     methods: {
         onSubmit: function onSubmit() {
@@ -11123,7 +11145,7 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
             .then(this.onSuccess)
             // .catch(error => (this.errors = error.response.data))
             .catch(function (error) {
-                return _this.errors.record(error.response.data.errors);
+                return _this.form.errors.record(error.response.data.errors);
             });
             // .catch(error => {
             //     console.log(error.response.data.errors)
