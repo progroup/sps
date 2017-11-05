@@ -1,7 +1,12 @@
 const mix = require('laravel-mix')
+const tailwindcss = require('tailwindcss')
 const path = require('path')
 // mix.config.uglify.compress.drop_console = false;
 // mix.config.postCss = require("./postcss.config").plugins; TODO: Test this when I need to customize PostCSS
+
+mix.less('resources/assets/less/tailwind.less', 'public/css').options({
+    postCss: [tailwindcss('./tailwind.js')]
+})
 
 mix.config.postCss = [
     require('postcss-easy-import')(),

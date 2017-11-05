@@ -4,6 +4,7 @@
   "terminal.integrated.fontFamily": "'Inconsolata for Powerline', monospace",
   "terminal.integrated.fontSize": 16,
   "window.zoomLevel": 1,
+  "editor.formatOnSave": false,
   "editor.fontFamily": "Operator Mono, Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize": 17,
   "editor.lineHeight": 40,

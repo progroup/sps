@@ -103,6 +103,8 @@ Route::get('/mailit', function () {
 
 
 
+
+
 });
 
 Route::get('decompose', '\Lubusin\Decomposer\Controllers\DecomposerController@index');
@@ -167,3 +169,8 @@ Route::name('projects.store')->post('/projects', 'ProjectsController@store');
 
 Route::name('home')->get('/', 'PagesController@index');
 Route::name('page')->get('{url}', 'PageController')->where('url', '.*');
+
+// Route::view('/about', 'pages.about');
+// Route::view('/about', 'pages.about', ['year' => date('Y')]);
+// Route::redirect('/old-about', '/about');
+

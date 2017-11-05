@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 525);
+/******/ 	return __webpack_require__(__webpack_require__.s = 526);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -11037,15 +11037,15 @@ module.exports = Vue$3;
 
 /***/ }),
 
-/***/ 525:
+/***/ 526:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(526);
+module.exports = __webpack_require__(527);
 
 
 /***/ }),
 
-/***/ 526:
+/***/ 527:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11167,11 +11167,11 @@ var Form = function () {
     _createClass(Form, [{
         key: 'data',
         value: function data() {
-            // this clones the data
-            var data = Object.assign({}, this); // {name, description, originalData, errors }
+            var data = {};
 
-            delete data.originalData;
-            delete data.errors;
+            for (var property in this.originalData) {
+                data[property] = this[property];
+            }
 
             return data;
         }
@@ -11199,7 +11199,23 @@ var Form = function () {
     }, {
         key: 'submit',
         value: function submit(requestType, url) {
-            __WEBPACK_IMPORTED_MODULE_2_axios___default.a[requestType](url, this.data()).then(this.onSuccess.bind(this)).catch(this.onFail.bind(this));
+            var _this = this;
+
+            return new Promise(function (resolve, reject) {
+                __WEBPACK_IMPORTED_MODULE_2_axios___default.a[requestType](url, _this.data())
+                // .then(this.onSuccess.bind(this))
+                .then(function (response) {
+                    _this.onSuccess(response.data);
+
+                    resolve(response.data);
+                })
+                // .catch(this.onFail.bind(this))
+                .catch(function (error) {
+                    _this.onFail(error.response.data.errors);
+
+                    reject(error.response.data.errors);
+                });
+            });
         }
 
         /**
@@ -11219,13 +11235,13 @@ var Form = function () {
         /**
          * Handle a failed form submission.
          *
-         * @param {object} error
+         * @param {object} errors
          */
 
     }, {
         key: 'onFail',
-        value: function onFail(error) {
-            this.errors.record(error.response.data.errors);
+        value: function onFail(errors) {
+            this.errors.record(errors);
         }
     }]);
 
@@ -11242,7 +11258,11 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     },
     methods: {
         onSubmit: function onSubmit() {
-            this.form.submit('post', '/projects');
+            this.form.submit('post', '/projects').then(function (data) {
+                return console.log(data);
+            }).catch(function (errors) {
+                return console.log(errors);
+            });
         }
     }
 });
