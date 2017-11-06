@@ -22,7 +22,7 @@
                     <h2>Play Narration</h2>
 
                     <audio controls="">
-                        <source src="http://ga-sps.org/content/spf/spf-overview-introduction.m4a" type="">
+                        <source src="http://resources.ga-sps.org/content/spf/spf-overview-introduction.m4a" type="">
                     </audio>
 
                     <ul id="cbp-ntaccordion" class="cbp-ntaccordion">
@@ -32,7 +32,7 @@
                             <div class="cbp-ntcontent open-container">
                                 <h2>Play Narration</h2>
                                 <audio controls="">
-                                    <source src="http://ga-sps.org/content/spf/spf-assess-needs.m4a" type="">
+                                    <source src="http://resources.ga-sps.org/content/spf/spf-assess-needs.m4a" type="">
                                 </audio>
                                 <p>
                                     <b>Step 1</b> of the Strategic Prevention Framework (SPF) helps prevention professionals assess community needs, resources, and readiness to address substance misuse.</p>
@@ -109,7 +109,7 @@
                             <div class="cbp-ntcontent open-container">
                                 <h2>Play Narration</h2>
                                 <audio controls="">
-                                    <source src="http://ga-sps.org/content/spf/spf-capacity-building.m4a" type="">
+                                    <source src="http://resources.ga-sps.org/content/spf/spf-capacity-building.m4a" type="">
                                 </audio>
                                 <p>
                                     <b>Step 2</b> of the Strategic Prevention Framework (SPF) focuses on identifying resources and readiness for addressing substance misuse in communities.</p>
@@ -188,7 +188,7 @@
                         </li>
                         <!-- End: Step-2 Capacity Building -->
                         <li class="step-3 cbp-ntopen">
-                            <h3 class="cbp-nttrigger">
+     resources.                       <h3 class="cbp-nttrigger">
                                 <i class="flaticon-strategical"></i> Strategic Planning</h3>
                             <div class="cbp-ntcontent open-container">
                                 <h2>Play Narration</h2>
@@ -326,7 +326,7 @@
                         </li>
                         <!-- End: Step-3 Strategic Planning -->
                         <li class="step-4 cbp-ntopen">
-                            <h3 class="cbp-nttrigger">
+     resources.                       <h3 class="cbp-nttrigger">
                                 <i class="flaticon-gear42"></i> Implement</h3>
                             <div class="cbp-ntcontent open-container">
                                 <h2>Play Narration</h2>
@@ -420,7 +420,7 @@
                         </li>
                         <!-- End: Step-4 Implementation -->
                         <li class="step-5 cbp-ntopen">
-                            <h3 class="cbp-nttrigger">
+     resources.                       <h3 class="cbp-nttrigger">
                                 <span class="flaticon-workers"></span> Evaluation</h3>
                             <div class="cbp-ntcontent open-container">
                                 <h2>Play Narration</h2>
