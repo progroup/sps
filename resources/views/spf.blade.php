@@ -9,7 +9,7 @@
 </section>
 <section class="section">
     <div class="container">
-        <div class="columns">
+        <div class="columns watermark-spf">
             <div class="column is-2">
                 @include('partials.sidebar')
             </div>
@@ -187,7 +187,7 @@
                             </div>
                         </li>
                         <!-- End: Step-2 Capacity Building -->
-                        <li class="step-3">
+                        <li class="step-3 cbp-ntopen">
                             <h3 class="cbp-nttrigger">
                                 <i class="flaticon-strategical"></i> Strategic Planning</h3>
                             <div class="cbp-ntcontent open-container">
@@ -325,7 +325,7 @@
                             </div>
                         </li>
                         <!-- End: Step-3 Strategic Planning -->
-                        <li class="step-4">
+                        <li class="step-4 cbp-ntopen">
                             <h3 class="cbp-nttrigger">
                                 <i class="flaticon-gear42"></i> Implement</h3>
                             <div class="cbp-ntcontent open-container">
@@ -419,7 +419,7 @@
                             </div>
                         </li>
                         <!-- End: Step-4 Implementation -->
-                        <li class="step-5">
+                        <li class="step-5 cbp-ntopen">
                             <h3 class="cbp-nttrigger">
                                 <span class="flaticon-workers"></span> Evaluation</h3>
                             <div class="cbp-ntcontent open-container">
