@@ -37,15 +37,15 @@
 					<a class="navbar-item" href="http://ecco.ga-sps.org/help.php" target="ecco"> Upload Reports</a>
 					<a class="navbar-item" href="/#/spf-overview">SPF Overview</a>
 					<a class="navbar-item" href="/#/search">Resources</a>
-					<a class="navbar-item" href="{{route('training')}}">Training</a>
+					<a class="navbar-item" href="/#/training">Training</a>
 				</div>
 
 				<div class="navbar-end">
-                    <div class="navbar-item">
-                        <b>GA-SPS DATA CENTERS:</b>
-                        <a class="button is-link">MDS</a>
-                        <a class="button is-link">GA Data Warehouse</a>
-                    </div>
+					<div class="navbar-item">
+						<b>GA-SPS DATA CENTERS:</b>
+						<a class="button is-link">MDS</a>
+						<a class="button is-link">GA Data Warehouse</a>
+					</div>
 
 					<div class="navbar-item">
 						<a href="http://ecco.ga-sps.org/login.php" target="_new" class="button is-info is-ecco">

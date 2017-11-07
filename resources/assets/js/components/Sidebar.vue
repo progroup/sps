@@ -6,13 +6,13 @@
                 <a href="/#/search">Resources</a>
             </li>
             <li>
-                <a href="/training">Training Center</a>
+                <a href="/#/training">Training Center</a>
             </li>
             <li>
                 <a href="http://ecco.ga-sps.org/help.php" target='ecco'>Get Help</a>
             </li>
             <li>
-                <a href="/calendar">Calendar</a>
+                <a href="/#/calendar">Calendar</a>
             </li>
         </ul>
     </aside>

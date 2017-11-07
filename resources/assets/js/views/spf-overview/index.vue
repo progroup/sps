@@ -2,17 +2,12 @@
     import Sidebar from '@/components/Sidebar.vue'
 
     export default {
-      data() {
-        return {}
-      },
       methods: {
         toggle(event) {
           console.log(event.target.parentNode.classList.toggle('cbp-ntopen'))
         }
       },
-      components: {
-        Sidebar
-      }
+      components: { Sidebar }
     }
 </script>
 

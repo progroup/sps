@@ -6,12 +6,20 @@ const routes = [
         component: require('./views')
     },
     {
+        path: '/calendar',
+        component: require('./views/calendar')
+    },
+    {
         path: '/search',
         component: require('./views/search')
     },
     {
         path: '/spf-overview',
         component: require('./views/spf-overview')
+    },
+    {
+        path: '/training',
+        component: require('./views/training')
     }
 ]
 

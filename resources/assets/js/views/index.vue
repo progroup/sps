@@ -71,7 +71,7 @@
                     </div>
                     <div class="column is-half-tablet is-one-half-desktop is-one-quarter-fullhd has-text-centered">
                         <article class="media">
-                            <a href="/training">
+                            <a href="/#/training">
                                 <figure class="media-left" style="padding-right: 1rem">
                                     <p class="image is-48x48">
                                         <svg id="icon-university" viewBox="0 0 45 42">
@@ -83,7 +83,7 @@
                             <div class="media-content">
                                 <div style="padding-right: 1rem">
                                     <h3 class="is-size-3">
-                                        <a href="/training">Training Center</a>
+                                        <a href="/#/training">Training Center</a>
                                     </h3>
                                     <p class="is-size-5">Locate and Register for local and national trainings from the Training Center page.</p>
                                 </div>
@@ -269,19 +269,19 @@
 </template>
 
 <script>
-export default {
-    // props: ['query'],
-    data () {
+    export default {
+      // props: ['query'],
+      data() {
         return {
-            query: '',
-            user: window.App.user
+          query: '',
+          user: window.App.user
         }
-    },
-    methods: {
-        search () {
-            this.$router.push({ path: 'search', query: { query: this.query } })
-            console.log(this.query)
+      },
+      methods: {
+        search() {
+          this.$router.push({ path: 'search', query: { query: this.query } })
+          console.log(this.query)
         }
+      }
     }
-}
 </script>
