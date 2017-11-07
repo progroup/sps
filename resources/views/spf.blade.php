@@ -188,12 +188,12 @@
                         </li>
                         <!-- End: Step-2 Capacity Building -->
                         <li class="step-3 cbp-ntopen">
-     resources.                       <h3 class="cbp-nttrigger">
+                           <h3 class="cbp-nttrigger">
                                 <i class="flaticon-strategical"></i> Strategic Planning</h3>
                             <div class="cbp-ntcontent open-container">
                                 <h2>Play Narration</h2>
                                 <audio controls="">
-                                    <source src="http://ga-sps.org/content/spf/spf-strategic-planning.m4a" type="">
+                                    <source src="http://resources.ga-sps.org/content/spf/spf-strategic-planning.m4a" type="">
                                 </audio>
                                 <p>Step 3 of the Strategic Prevention Framework (SPF) shows how to plan effectively by prioritizing risk and protective factors and building logic models.</p>
 
@@ -326,12 +326,12 @@
                         </li>
                         <!-- End: Step-3 Strategic Planning -->
                         <li class="step-4 cbp-ntopen">
-     resources.                       <h3 class="cbp-nttrigger">
+                           <h3 class="cbp-nttrigger">
                                 <i class="flaticon-gear42"></i> Implement</h3>
                             <div class="cbp-ntcontent open-container">
                                 <h2>Play Narration</h2>
                                 <audio controls="">
-                                    <source src="http://ga-sps.org/content/spf/spf-implementation.m4a" type="">
+                                    <source src="http://resources.ga-sps.org/content/spf/spf-implementation.m4a" type="">
                                 </audio>
                                 <p>In Step 4 of the Strategic Prevention Framework (SPF), prevention professionals develop action plans to implement their chosen prevention intervention.</p>
 
@@ -420,12 +420,11 @@
                         </li>
                         <!-- End: Step-4 Implementation -->
                         <li class="step-5 cbp-ntopen">
-     resources.                       <h3 class="cbp-nttrigger">
+                           <h3 class="cbp-nttrigger">
                                 <span class="flaticon-workers"></span> Evaluation</h3>
                             <div class="cbp-ntcontent open-container">
-                                <h2>Play Narration</h2>
-                                <audio controls="">
-                                    <source src="http://ga-sps.org/content/spf/spf-evaluation.m4a" type="">
+                                <h2>Play Narration</h2> <audio controls="">
+                                    <source src="http://resources.ga-sps.org/content/spf/spf-evaluation.m4a" type="">
                                 </audio>
                                 <p>The evaluation step of SAMHSA’s Strategic Prevention Framework (SPF) quantifies the challenges and successes of implementing a prevention program.</p>
                                 <p>Evaluation is the systematic collection and analysis of information about program activities, characteristics, and outcomes. The evaluation step of the Strategic Prevention Framework (SPF) is not just about collecting information, but using that information to improve the effectiveness of a prevention program. After evaluation, planners may decide whether or not to continue the program.</p>
