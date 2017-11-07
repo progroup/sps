@@ -41,7 +41,7 @@
 				</div>
 
 				<div class="navbar-end">
-					<div class="navbar-item">>
+					<div class="navbar-item">
                         <a class="button is-link" href="https://www.georgiamds.uga.edu/PublicHome/Index" target="new">MDS</a>
                         <a class="button is-link" href="http://gaspsdata.net/" target="new">GA Data Warehouse</a>
 					</div>
