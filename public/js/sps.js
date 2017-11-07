@@ -4531,7 +4531,7 @@ return hooks;
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(27)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(28)(module)))
 
 /***/ }),
 /* 1 */
@@ -4540,7 +4540,7 @@ return hooks;
 "use strict";
 
 
-var bind = __webpack_require__(28);
+var bind = __webpack_require__(29);
 var isBuffer = __webpack_require__(68);
 
 /*global toString:true*/
@@ -4966,11 +4966,11 @@ module.exports = isObjectLike;
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseMatches = __webpack_require__(411),
-    baseMatchesProperty = __webpack_require__(426),
+var baseMatches = __webpack_require__(416),
+    baseMatchesProperty = __webpack_require__(431),
     identity = __webpack_require__(15),
     isArray = __webpack_require__(2),
-    property = __webpack_require__(432);
+    property = __webpack_require__(437);
 
 /**
  * The base implementation of `_.iteratee`.
@@ -5113,8 +5113,8 @@ module.exports = isArrayLike;
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(19),
-    getRawTag = __webpack_require__(371),
-    objectToString = __webpack_require__(372);
+    getRawTag = __webpack_require__(376),
+    objectToString = __webpack_require__(377);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -5252,10 +5252,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(29);
+    adapter = __webpack_require__(30);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(29);
+    adapter = __webpack_require__(30);
   }
   return adapter;
 }
@@ -5332,8 +5332,8 @@ module.exports = defaults;
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsNative = __webpack_require__(382),
-    getValue = __webpack_require__(385);
+var baseIsNative = __webpack_require__(387),
+    getValue = __webpack_require__(390);
 
 /**
  * Gets the native function at `key` of `object`.
@@ -5383,7 +5383,7 @@ module.exports = identity;
 /***/ (function(module, exports, __webpack_require__) {
 
 var assignValue = __webpack_require__(104),
-    baseAssignValue = __webpack_require__(41);
+    baseAssignValue = __webpack_require__(42);
 
 /**
  * Copies properties of `source` to `object`.
@@ -5768,7 +5768,7 @@ module.exports = baseRest;
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayEach = __webpack_require__(94),
-    baseEach = __webpack_require__(57),
+    baseEach = __webpack_require__(58),
     castFunction = __webpack_require__(251),
     isArray = __webpack_require__(2);
 
@@ -5816,7 +5816,7 @@ module.exports = forEach;
 
 var isArray = __webpack_require__(2),
     isKey = __webpack_require__(100),
-    stringToPath = __webpack_require__(427),
+    stringToPath = __webpack_require__(432),
     toString = __webpack_require__(101);
 
 /**
@@ -5841,7 +5841,7 @@ module.exports = castPath;
 /* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isSymbol = __webpack_require__(39);
+var isSymbol = __webpack_require__(40);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -5903,6 +5903,103 @@ module.exports = replaceHolders;
 /* 27 */
 /***/ (function(module, exports) {
 
+/* globals __VUE_SSR_CONTEXT__ */
+
+// this module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = injectStyles
+  }
+
+  if (hook) {
+    var functional = options.functional
+    var existing = functional
+      ? options.render
+      : options.beforeCreate
+    if (!functional) {
+      // inject component registration as beforeCreate hook
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    } else {
+      // register for functioal component in vue file
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return existing(h, context)
+      }
+    }
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports) {
+
 module.exports = function(module) {
 	if(!module.webpackPolyfill) {
 		module.deprecate = function() {};
@@ -5928,7 +6025,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5946,7 +6043,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5957,7 +6054,7 @@ var settle = __webpack_require__(71);
 var buildURL = __webpack_require__(73);
 var parseHeaders = __webpack_require__(74);
 var isURLSameOrigin = __webpack_require__(75);
-var createError = __webpack_require__(30);
+var createError = __webpack_require__(31);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(76);
 
 module.exports = function xhrAdapter(config) {
@@ -6133,7 +6230,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6158,7 +6255,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6170,7 +6267,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6196,7 +6293,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports) {
 
 module.exports = function clone(obj) {
@@ -6205,10 +6302,10 @@ module.exports = function clone(obj) {
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsArguments = __webpack_require__(370),
+var baseIsArguments = __webpack_require__(375),
     isObjectLike = __webpack_require__(5);
 
 /** Used for built-in method references. */
@@ -6247,11 +6344,11 @@ module.exports = isArguments;
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(3),
-    stubFalse = __webpack_require__(373);
+    stubFalse = __webpack_require__(378);
 
 /** Detect free variable `exports`. */
 var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
@@ -6289,10 +6386,10 @@ var isBuffer = nativeIsBuffer || stubFalse;
 
 module.exports = isBuffer;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(27)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(28)(module)))
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports) {
 
 /** Used as references for various `Number` constants. */
@@ -6320,12 +6417,12 @@ module.exports = isIndex;
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseFindIndex = __webpack_require__(243),
-    baseIsNaN = __webpack_require__(402),
-    strictIndexOf = __webpack_require__(403);
+    baseIsNaN = __webpack_require__(407),
+    strictIndexOf = __webpack_require__(408);
 
 /**
  * The base implementation of `_.indexOf` without `fromIndex` bounds checks.
@@ -6346,7 +6443,7 @@ module.exports = baseIndexOf;
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseFor = __webpack_require__(250),
@@ -6368,7 +6465,7 @@ module.exports = baseForOwn;
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(10),
@@ -6403,13 +6500,13 @@ module.exports = isSymbol;
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayReduce = __webpack_require__(103),
-    baseEach = __webpack_require__(57),
+    baseEach = __webpack_require__(58),
     baseIteratee = __webpack_require__(6),
-    baseReduce = __webpack_require__(435),
+    baseReduce = __webpack_require__(440),
     isArray = __webpack_require__(2);
 
 /**
@@ -6460,7 +6557,7 @@ module.exports = reduce;
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var defineProperty = __webpack_require__(247);
@@ -6491,11 +6588,11 @@ module.exports = baseAssignValue;
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayLikeKeys = __webpack_require__(236),
-    baseKeysIn = __webpack_require__(439),
+    baseKeysIn = __webpack_require__(444),
     isArrayLike = __webpack_require__(9);
 
 /**
@@ -6529,10 +6626,10 @@ module.exports = keysIn;
 
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toFinite = __webpack_require__(457);
+var toFinite = __webpack_require__(462);
 
 /**
  * Converts `value` to an integer.
@@ -6571,17 +6668,17 @@ module.exports = toInteger;
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseKeys = __webpack_require__(238),
     getTag = __webpack_require__(99),
-    isArguments = __webpack_require__(34),
+    isArguments = __webpack_require__(35),
     isArray = __webpack_require__(2),
     isArrayLike = __webpack_require__(9),
-    isBuffer = __webpack_require__(35),
-    isPrototype = __webpack_require__(51),
-    isTypedArray = __webpack_require__(50);
+    isBuffer = __webpack_require__(36),
+    isPrototype = __webpack_require__(52),
+    isTypedArray = __webpack_require__(51);
 
 /** `Object#toString` result references. */
 var mapTag = '[object Map]',
@@ -6654,7 +6751,7 @@ module.exports = isEmpty;
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(10),
@@ -6690,7 +6787,7 @@ module.exports = isString;
 
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports) {
 
 /**
@@ -6709,7 +6806,7 @@ module.exports = getHolder;
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16804,7 +16901,7 @@ module.exports = Vue$3;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16889,7 +16986,7 @@ module.exports = {
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {/**
@@ -16898,7 +16995,7 @@ module.exports = {
  * Expose `debug()` as the module.
  */
 
-exports = module.exports = __webpack_require__(355);
+exports = module.exports = __webpack_require__(360);
 exports.log = log;
 exports.formatArgs = formatArgs;
 exports.save = save;
@@ -17081,12 +17178,12 @@ function localstorage() {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsTypedArray = __webpack_require__(374),
+var baseIsTypedArray = __webpack_require__(379),
     baseUnary = __webpack_require__(90),
-    nodeUtil = __webpack_require__(375);
+    nodeUtil = __webpack_require__(380);
 
 /* Node.js helper references. */
 var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
@@ -17114,7 +17211,7 @@ module.exports = isTypedArray;
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -17138,7 +17235,7 @@ module.exports = isPrototype;
 
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(14);
@@ -17150,14 +17247,14 @@ module.exports = nativeCreate;
 
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var listCacheClear = __webpack_require__(390),
-    listCacheDelete = __webpack_require__(391),
-    listCacheGet = __webpack_require__(392),
-    listCacheHas = __webpack_require__(393),
-    listCacheSet = __webpack_require__(394);
+var listCacheClear = __webpack_require__(395),
+    listCacheDelete = __webpack_require__(396),
+    listCacheGet = __webpack_require__(397),
+    listCacheHas = __webpack_require__(398),
+    listCacheSet = __webpack_require__(399);
 
 /**
  * Creates an list cache object.
@@ -17188,7 +17285,7 @@ module.exports = ListCache;
 
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var eq = __webpack_require__(21);
@@ -17215,10 +17312,10 @@ module.exports = assocIndexOf;
 
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isKeyable = __webpack_require__(396);
+var isKeyable = __webpack_require__(401);
 
 /**
  * Gets the data for `map`.
@@ -17239,7 +17336,7 @@ module.exports = getMapData;
 
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports) {
 
 /**
@@ -17266,11 +17363,11 @@ module.exports = apply;
 
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseForOwn = __webpack_require__(38),
-    createBaseEach = __webpack_require__(409);
+var baseForOwn = __webpack_require__(39),
+    createBaseEach = __webpack_require__(414);
 
 /**
  * The base implementation of `_.forEach` without support for iteratee shorthands.
@@ -17286,15 +17383,15 @@ module.exports = baseEach;
 
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ListCache = __webpack_require__(53),
-    stackClear = __webpack_require__(413),
-    stackDelete = __webpack_require__(414),
-    stackGet = __webpack_require__(415),
-    stackHas = __webpack_require__(416),
-    stackSet = __webpack_require__(417);
+var ListCache = __webpack_require__(54),
+    stackClear = __webpack_require__(418),
+    stackDelete = __webpack_require__(419),
+    stackGet = __webpack_require__(420),
+    stackHas = __webpack_require__(421),
+    stackSet = __webpack_require__(422);
 
 /**
  * Creates a stack cache object to store key-value pairs.
@@ -17319,7 +17416,7 @@ module.exports = Stack;
 
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var castPath = __webpack_require__(24),
@@ -17349,7 +17446,7 @@ module.exports = baseGet;
 
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports) {
 
 /**
@@ -17375,7 +17472,7 @@ module.exports = copyArray;
 
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(4);
@@ -17411,11 +17508,11 @@ module.exports = baseCreate;
 
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIndexOf = __webpack_require__(37),
-    toInteger = __webpack_require__(43);
+var baseIndexOf = __webpack_require__(38),
+    toInteger = __webpack_require__(44);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeMax = Math.max;
@@ -17459,10 +17556,10 @@ module.exports = indexOf;
 
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var createFind = __webpack_require__(461),
+var createFind = __webpack_require__(466),
     findIndex = __webpack_require__(277);
 
 /**
@@ -17507,10 +17604,10 @@ module.exports = find;
 
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseCreate = __webpack_require__(61),
+var baseCreate = __webpack_require__(62),
     isObject = __webpack_require__(4);
 
 /**
@@ -17550,103 +17647,6 @@ module.exports = createCtor;
 
 
 /***/ }),
-/* 65 */
-/***/ (function(module, exports) {
-
-/* globals __VUE_SSR_CONTEXT__ */
-
-// this module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle
-
-module.exports = function normalizeComponent (
-  rawScriptExports,
-  compiledTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier /* server only */
-) {
-  var esModule
-  var scriptExports = rawScriptExports = rawScriptExports || {}
-
-  // ES6 modules interop
-  var type = typeof rawScriptExports.default
-  if (type === 'object' || type === 'function') {
-    esModule = rawScriptExports
-    scriptExports = rawScriptExports.default
-  }
-
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (compiledTemplate) {
-    options.render = compiledTemplate.render
-    options.staticRenderFns = compiledTemplate.staticRenderFns
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = injectStyles
-  }
-
-  if (hook) {
-    var functional = options.functional
-    var existing = functional
-      ? options.render
-      : options.beforeCreate
-    if (!functional) {
-      // inject component registration as beforeCreate hook
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    } else {
-      // register for functioal component in vue file
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return existing(h, context)
-      }
-    }
-  }
-
-  return {
-    esModule: esModule,
-    exports: scriptExports,
-    options: options
-  }
-}
-
-
-/***/ }),
 /* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17660,7 +17660,7 @@ module.exports = __webpack_require__(67);
 
 
 var utils = __webpack_require__(1);
-var bind = __webpack_require__(28);
+var bind = __webpack_require__(29);
 var Axios = __webpack_require__(69);
 var defaults = __webpack_require__(13);
 
@@ -17695,9 +17695,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(32);
+axios.Cancel = __webpack_require__(33);
 axios.CancelToken = __webpack_require__(83);
-axios.isCancel = __webpack_require__(31);
+axios.isCancel = __webpack_require__(32);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -17857,7 +17857,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(30);
+var createError = __webpack_require__(31);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -18276,7 +18276,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(1);
 var transformData = __webpack_require__(80);
-var isCancel = __webpack_require__(31);
+var isCancel = __webpack_require__(32);
 var defaults = __webpack_require__(13);
 
 /**
@@ -18429,7 +18429,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(32);
+var Cancel = __webpack_require__(33);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -18561,32 +18561,32 @@ module.exports = function map(arr, fn) {
 
 
 var keys = __webpack_require__(8);
-var intersection = __webpack_require__(377);
-var forOwn = __webpack_require__(407);
+var intersection = __webpack_require__(382);
+var forOwn = __webpack_require__(412);
 var forEach = __webpack_require__(23);
 var filter = __webpack_require__(95);
 var map = __webpack_require__(12);
-var reduce = __webpack_require__(40);
+var reduce = __webpack_require__(41);
 var omit = __webpack_require__(266);
-var indexOf = __webpack_require__(62);
-var isNaN = __webpack_require__(459);
+var indexOf = __webpack_require__(63);
+var isNaN = __webpack_require__(464);
 var isArray = __webpack_require__(2);
-var isEmpty = __webpack_require__(44);
-var isEqual = __webpack_require__(460);
+var isEmpty = __webpack_require__(45);
+var isEqual = __webpack_require__(465);
 var isUndefined = __webpack_require__(276);
-var isString = __webpack_require__(45);
+var isString = __webpack_require__(46);
 var isFunction = __webpack_require__(20);
-var find = __webpack_require__(63);
+var find = __webpack_require__(64);
 var trim = __webpack_require__(278);
 
 var defaults = __webpack_require__(109);
 var merge = __webpack_require__(110);
 
-var valToNumber = __webpack_require__(475);
+var valToNumber = __webpack_require__(480);
 
-var filterState = __webpack_require__(476);
+var filterState = __webpack_require__(481);
 
-var RefinementList = __webpack_require__(477);
+var RefinementList = __webpack_require__(482);
 
 /**
  * like _.find but using _.isEqual to be able to use it
@@ -20316,11 +20316,11 @@ module.exports = baseUnary;
 /* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var mapCacheClear = __webpack_require__(379),
-    mapCacheDelete = __webpack_require__(395),
-    mapCacheGet = __webpack_require__(397),
-    mapCacheHas = __webpack_require__(398),
-    mapCacheSet = __webpack_require__(399);
+var mapCacheClear = __webpack_require__(384),
+    mapCacheDelete = __webpack_require__(400),
+    mapCacheGet = __webpack_require__(402),
+    mapCacheHas = __webpack_require__(403),
+    mapCacheSet = __webpack_require__(404);
 
 /**
  * Creates a map cache object to store key-value pairs.
@@ -20367,7 +20367,7 @@ module.exports = Map;
 /* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseSetToString = __webpack_require__(405),
+var baseSetToString = __webpack_require__(410),
     shortOut = __webpack_require__(248);
 
 /**
@@ -20416,7 +20416,7 @@ module.exports = arrayEach;
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayFilter = __webpack_require__(252),
-    baseFilter = __webpack_require__(410),
+    baseFilter = __webpack_require__(415),
     baseIteratee = __webpack_require__(6),
     isArray = __webpack_require__(2);
 
@@ -20469,7 +20469,7 @@ module.exports = filter;
 /* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsEqualDeep = __webpack_require__(418),
+var baseIsEqualDeep = __webpack_require__(423),
     isObjectLike = __webpack_require__(5);
 
 /**
@@ -20565,10 +20565,10 @@ module.exports = getSymbols;
 /* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DataView = __webpack_require__(422),
+var DataView = __webpack_require__(427),
     Map = __webpack_require__(92),
-    Promise = __webpack_require__(423),
-    Set = __webpack_require__(424),
+    Promise = __webpack_require__(428),
+    Set = __webpack_require__(429),
     WeakMap = __webpack_require__(260),
     baseGetTag = __webpack_require__(10),
     toSource = __webpack_require__(241);
@@ -20630,7 +20630,7 @@ module.exports = getTag;
 /***/ (function(module, exports, __webpack_require__) {
 
 var isArray = __webpack_require__(2),
-    isSymbol = __webpack_require__(39);
+    isSymbol = __webpack_require__(40);
 
 /** Used to match property names within property paths. */
 var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
@@ -20701,7 +20701,7 @@ module.exports = toString;
 var Symbol = __webpack_require__(19),
     arrayMap = __webpack_require__(11),
     isArray = __webpack_require__(2),
-    isSymbol = __webpack_require__(39);
+    isSymbol = __webpack_require__(40);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -20773,7 +20773,7 @@ module.exports = arrayReduce;
 /* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseAssignValue = __webpack_require__(41),
+var baseAssignValue = __webpack_require__(42),
     eq = __webpack_require__(21);
 
 /** Used for built-in method references. */
@@ -20821,7 +20821,7 @@ module.exports = getPrototype;
 
 var baseGetAllKeys = __webpack_require__(258),
     getSymbolsIn = __webpack_require__(268),
-    keysIn = __webpack_require__(42);
+    keysIn = __webpack_require__(43);
 
 /**
  * Creates an array of own and inherited enumerable property names and
@@ -20932,10 +20932,10 @@ module.exports = isPlainObject;
 /* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var apply = __webpack_require__(56),
-    assignInWith = __webpack_require__(469),
+var apply = __webpack_require__(57),
+    assignInWith = __webpack_require__(474),
     baseRest = __webpack_require__(22),
-    customDefaultsAssignIn = __webpack_require__(471);
+    customDefaultsAssignIn = __webpack_require__(476);
 
 /**
  * Assigns own and inherited enumerable string keyed properties of source
@@ -20970,7 +20970,7 @@ module.exports = defaults;
 /* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseMerge = __webpack_require__(472),
+var baseMerge = __webpack_require__(477),
     createAssigner = __webpack_require__(279);
 
 /**
@@ -21016,15 +21016,15 @@ module.exports = merge;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseSetData = __webpack_require__(283),
-    createBind = __webpack_require__(489),
-    createCurry = __webpack_require__(490),
+    createBind = __webpack_require__(494),
+    createCurry = __webpack_require__(495),
     createHybrid = __webpack_require__(285),
-    createPartial = __webpack_require__(502),
+    createPartial = __webpack_require__(507),
     getData = __webpack_require__(289),
-    mergeData = __webpack_require__(503),
+    mergeData = __webpack_require__(508),
     setData = __webpack_require__(291),
     setWrapToString = __webpack_require__(292),
-    toInteger = __webpack_require__(43);
+    toInteger = __webpack_require__(44);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -21127,7 +21127,7 @@ module.exports = createWrap;
 /* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseCreate = __webpack_require__(61),
+var baseCreate = __webpack_require__(62),
     baseLodash = __webpack_require__(113);
 
 /** Used as references for the maximum length and index of an array. */
@@ -35303,7 +35303,7 @@ if (typeof Object.create === 'function') {
 
 module.exports = buildSearchMethod;
 
-var errors = __webpack_require__(48);
+var errors = __webpack_require__(49);
 
 /**
  * Creates a search method to be used in clients
@@ -35374,12 +35374,12 @@ function buildSearchMethod(queryParam, url) {
 /* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseTimes = __webpack_require__(369),
-    isArguments = __webpack_require__(34),
+var baseTimes = __webpack_require__(374),
+    isArguments = __webpack_require__(35),
     isArray = __webpack_require__(2),
-    isBuffer = __webpack_require__(35),
-    isIndex = __webpack_require__(36),
-    isTypedArray = __webpack_require__(50);
+    isBuffer = __webpack_require__(36),
+    isIndex = __webpack_require__(37),
+    isTypedArray = __webpack_require__(51);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -35440,8 +35440,8 @@ module.exports = freeGlobal;
 /* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isPrototype = __webpack_require__(51),
-    nativeKeys = __webpack_require__(376);
+var isPrototype = __webpack_require__(52),
+    nativeKeys = __webpack_require__(381);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -35498,8 +35498,8 @@ module.exports = overArg;
 /***/ (function(module, exports, __webpack_require__) {
 
 var MapCache = __webpack_require__(91),
-    setCacheAdd = __webpack_require__(400),
-    setCacheHas = __webpack_require__(401);
+    setCacheAdd = __webpack_require__(405),
+    setCacheHas = __webpack_require__(406);
 
 /**
  *
@@ -35562,7 +35562,7 @@ module.exports = toSource;
 /* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIndexOf = __webpack_require__(37);
+var baseIndexOf = __webpack_require__(38);
 
 /**
  * A specialized version of `_.includes` for arrays without support for
@@ -35634,7 +35634,7 @@ module.exports = cacheHas;
 /* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var apply = __webpack_require__(56);
+var apply = __webpack_require__(57);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeMax = Math.max;
@@ -35807,7 +35807,7 @@ module.exports = isArrayLikeObject;
 /* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var createBaseFor = __webpack_require__(408);
+var createBaseFor = __webpack_require__(413);
 
 /**
  * The base implementation of `baseForOwn` which iterates over `object`
@@ -35881,7 +35881,7 @@ module.exports = arrayFilter;
 /***/ (function(module, exports, __webpack_require__) {
 
 var SetCache = __webpack_require__(240),
-    arraySome = __webpack_require__(419),
+    arraySome = __webpack_require__(424),
     cacheHas = __webpack_require__(244);
 
 /** Used to compose bitmasks for value comparisons. */
@@ -36166,7 +36166,7 @@ module.exports = matchesStrictComparable;
 /* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGet = __webpack_require__(59);
+var baseGet = __webpack_require__(60);
 
 /**
  * Gets the value at `path` of `object`. If the resolved value is
@@ -36205,8 +36205,8 @@ module.exports = get;
 /* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseHasIn = __webpack_require__(430),
-    hasPath = __webpack_require__(431);
+var baseHasIn = __webpack_require__(435),
+    hasPath = __webpack_require__(436);
 
 /**
  * Checks if `path` is a direct or inherited property of `object`.
@@ -36245,7 +36245,7 @@ module.exports = hasIn;
 /* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseEach = __webpack_require__(57),
+var baseEach = __webpack_require__(58),
     isArrayLike = __webpack_require__(9);
 
 /**
@@ -36274,11 +36274,11 @@ module.exports = baseMap;
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayMap = __webpack_require__(11),
-    baseClone = __webpack_require__(436),
-    baseUnset = __webpack_require__(452),
+    baseClone = __webpack_require__(441),
+    baseUnset = __webpack_require__(457),
     castPath = __webpack_require__(24),
     copyObject = __webpack_require__(16),
-    customOmitClone = __webpack_require__(454),
+    customOmitClone = __webpack_require__(459),
     flatRest = __webpack_require__(273),
     getAllKeysIn = __webpack_require__(106);
 
@@ -36372,7 +36372,7 @@ function cloneBuffer(buffer, isDeep) {
 
 module.exports = cloneBuffer;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(27)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(28)(module)))
 
 /***/ }),
 /* 268 */
@@ -36431,9 +36431,9 @@ module.exports = cloneTypedArray;
 /* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseCreate = __webpack_require__(61),
+var baseCreate = __webpack_require__(62),
     getPrototype = __webpack_require__(105),
-    isPrototype = __webpack_require__(51);
+    isPrototype = __webpack_require__(52);
 
 /**
  * Initializes an object clone.
@@ -36540,7 +36540,7 @@ module.exports = flatRest;
 /* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseFlatten = __webpack_require__(455);
+var baseFlatten = __webpack_require__(460);
 
 /**
  * Flattens `array` a single level deep.
@@ -36642,7 +36642,7 @@ module.exports = isUndefined;
 
 var baseFindIndex = __webpack_require__(243),
     baseIteratee = __webpack_require__(6),
-    toInteger = __webpack_require__(43);
+    toInteger = __webpack_require__(44);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeMax = Math.max;
@@ -36702,10 +36702,10 @@ module.exports = findIndex;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseToString = __webpack_require__(102),
-    castSlice = __webpack_require__(462),
-    charsEndIndex = __webpack_require__(463),
-    charsStartIndex = __webpack_require__(464),
-    stringToArray = __webpack_require__(465),
+    castSlice = __webpack_require__(467),
+    charsEndIndex = __webpack_require__(468),
+    charsStartIndex = __webpack_require__(469),
+    stringToArray = __webpack_require__(470),
     toString = __webpack_require__(101);
 
 /** Used to match leading and trailing whitespace. */
@@ -36757,7 +36757,7 @@ module.exports = trim;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseRest = __webpack_require__(22),
-    isIterateeCall = __webpack_require__(470);
+    isIterateeCall = __webpack_require__(475);
 
 /**
  * Creates a function like `_.assign`.
@@ -36799,7 +36799,7 @@ module.exports = createAssigner;
 /* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseAssignValue = __webpack_require__(41),
+var baseAssignValue = __webpack_require__(42),
     eq = __webpack_require__(21);
 
 /**
@@ -36829,14 +36829,14 @@ module.exports = assignMergeValue;
 
 
 var forEach = __webpack_require__(23);
-var compact = __webpack_require__(478);
-var indexOf = __webpack_require__(62);
+var compact = __webpack_require__(483);
+var indexOf = __webpack_require__(63);
 var findIndex = __webpack_require__(277);
 var get = __webpack_require__(263);
 
-var sumBy = __webpack_require__(479);
-var find = __webpack_require__(63);
-var includes = __webpack_require__(481);
+var sumBy = __webpack_require__(484);
+var find = __webpack_require__(64);
+var includes = __webpack_require__(486);
 var map = __webpack_require__(12);
 var orderBy = __webpack_require__(282);
 
@@ -36846,12 +36846,12 @@ var merge = __webpack_require__(110);
 var isArray = __webpack_require__(2);
 var isFunction = __webpack_require__(20);
 
-var partial = __webpack_require__(488);
-var partialRight = __webpack_require__(504);
+var partial = __webpack_require__(493);
+var partialRight = __webpack_require__(509);
 
 var formatSort = __webpack_require__(293);
 
-var generateHierarchicalTree = __webpack_require__(507);
+var generateHierarchicalTree = __webpack_require__(512);
 
 /**
  * @typedef SearchResults.Facet
@@ -37601,7 +37601,7 @@ module.exports = SearchResults;
 /* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseOrderBy = __webpack_require__(484),
+var baseOrderBy = __webpack_require__(489),
     isArray = __webpack_require__(2);
 
 /**
@@ -37691,11 +37691,11 @@ module.exports = metaMap;
 
 var composeArgs = __webpack_require__(286),
     composeArgsRight = __webpack_require__(287),
-    countHolders = __webpack_require__(491),
-    createCtor = __webpack_require__(64),
+    countHolders = __webpack_require__(496),
+    createCtor = __webpack_require__(65),
     createRecurry = __webpack_require__(288),
-    getHolder = __webpack_require__(46),
-    reorder = __webpack_require__(501),
+    getHolder = __webpack_require__(47),
+    reorder = __webpack_require__(506),
     replaceHolders = __webpack_require__(26),
     root = __webpack_require__(3);
 
@@ -37879,7 +37879,7 @@ module.exports = composeArgsRight;
 /* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isLaziable = __webpack_require__(492),
+var isLaziable = __webpack_require__(497),
     setData = __webpack_require__(291),
     setWrapToString = __webpack_require__(292);
 
@@ -37942,7 +37942,7 @@ module.exports = createRecurry;
 /***/ (function(module, exports, __webpack_require__) {
 
 var metaMap = __webpack_require__(284),
-    noop = __webpack_require__(493);
+    noop = __webpack_require__(498);
 
 /**
  * Gets metadata for `func`.
@@ -37962,7 +37962,7 @@ module.exports = getData;
 /* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseCreate = __webpack_require__(61),
+var baseCreate = __webpack_require__(62),
     baseLodash = __webpack_require__(113);
 
 /**
@@ -38016,10 +38016,10 @@ module.exports = setData;
 /* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getWrapDetails = __webpack_require__(498),
-    insertWrapDetails = __webpack_require__(499),
+var getWrapDetails = __webpack_require__(503),
+    insertWrapDetails = __webpack_require__(504),
     setToString = __webpack_require__(93),
-    updateWrapDetails = __webpack_require__(500);
+    updateWrapDetails = __webpack_require__(505);
 
 /**
  * Sets the `toString` method of `wrapper` to mimic the source of `reference`
@@ -38046,9 +38046,9 @@ module.exports = setWrapToString;
 "use strict";
 
 
-var reduce = __webpack_require__(40);
-var find = __webpack_require__(63);
-var startsWith = __webpack_require__(505);
+var reduce = __webpack_require__(41);
+var find = __webpack_require__(64);
+var startsWith = __webpack_require__(510);
 
 /**
  * Transform sort format from user friendly notation to lodash format
@@ -38077,8 +38077,8 @@ module.exports = function formatSort(sortBy, defaults) {
 /* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGet = __webpack_require__(59),
-    baseSet = __webpack_require__(509),
+var baseGet = __webpack_require__(60),
+    baseSet = __webpack_require__(514),
     castPath = __webpack_require__(24);
 
 /**
@@ -38638,7 +38638,7 @@ function isPrimitive(arg) {
 }
 exports.isPrimitive = isPrimitive;
 
-exports.isBuffer = __webpack_require__(511);
+exports.isBuffer = __webpack_require__(516);
 
 function objectToString(o) {
   return Object.prototype.toString.call(o);
@@ -38682,7 +38682,7 @@ exports.log = function() {
  *     prototype.
  * @param {function} superCtor Constructor function to inherit prototype from.
  */
-exports.inherits = __webpack_require__(512);
+exports.inherits = __webpack_require__(517);
 
 exports._extend = function(origin, add) {
   // Don't do anything if add isn't an object
@@ -39023,21 +39023,21 @@ function isUndefined(arg) {
  * @module algoliasearchHelper.url
  */
 
-var shortener = __webpack_require__(514);
+var shortener = __webpack_require__(519);
 var SearchParameters = __webpack_require__(88);
 
-var qs = __webpack_require__(517);
+var qs = __webpack_require__(522);
 
-var bind = __webpack_require__(520);
+var bind = __webpack_require__(525);
 var forEach = __webpack_require__(23);
-var pick = __webpack_require__(521);
+var pick = __webpack_require__(526);
 var map = __webpack_require__(12);
-var mapKeys = __webpack_require__(523);
-var mapValues = __webpack_require__(524);
-var isString = __webpack_require__(45);
+var mapKeys = __webpack_require__(528);
+var mapValues = __webpack_require__(529);
+var isString = __webpack_require__(46);
 var isPlainObject = __webpack_require__(108);
 var isArray = __webpack_require__(2);
-var isEmpty = __webpack_require__(44);
+var isEmpty = __webpack_require__(45);
 var invert = __webpack_require__(298);
 
 var encode = __webpack_require__(114).encode;
@@ -39193,7 +39193,7 @@ exports.getQueryStringFromState = function(state, options) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var constant = __webpack_require__(246),
-    createInverter = __webpack_require__(515),
+    createInverter = __webpack_require__(520),
     identity = __webpack_require__(15);
 
 /**
@@ -39291,13 +39291,13 @@ module.exports = __webpack_require__(324);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__routes__ = __webpack_require__(325);
 
 
 
-__webpack_require__(341);
+__webpack_require__(346);
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#app',
@@ -39320,7 +39320,7 @@ var routes = [{
     component: __webpack_require__(329)
 }, {
     path: '/spf-overview',
-    component: __webpack_require__(535)
+    component: __webpack_require__(341)
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
@@ -39333,7 +39333,7 @@ var routes = [{
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(65)(
+var Component = __webpack_require__(27)(
   /* script */
   __webpack_require__(327),
   /* template */
@@ -40078,7 +40078,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(330)
 }
-var Component = __webpack_require__(65)(
+var Component = __webpack_require__(27)(
   /* script */
   __webpack_require__(333),
   /* template */
@@ -40698,7 +40698,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(336)
 }
-var Component = __webpack_require__(65)(
+var Component = __webpack_require__(27)(
   /* script */
   __webpack_require__(338),
   /* template */
@@ -41165,20 +41165,940 @@ if (false) {
 
 /***/ }),
 /* 341 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(27)(
+  /* script */
+  __webpack_require__(342),
+  /* template */
+  __webpack_require__(345),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/vtolbert/@progroup/sps/resources/assets/js/views/spf-overview/index.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0c27f6e8", Component.options)
+  } else {
+    hotAPI.reload("data-v-0c27f6e8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 342 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Sidebar_vue__ = __webpack_require__(343);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Sidebar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Sidebar_vue__);
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {};
+  },
+
+  methods: {
+    toggle: function toggle(event) {
+      console.log(event.target.parentNode.classList.toggle('cbp-ntopen'));
+    }
+  },
+  components: {
+    Sidebar: __WEBPACK_IMPORTED_MODULE_0__components_Sidebar_vue___default.a
+  }
+});
+
+/***/ }),
+/* 343 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(27)(
+  /* script */
+  null,
+  /* template */
+  __webpack_require__(344),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/vtolbert/@progroup/sps/resources/assets/js/components/Sidebar.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Sidebar.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b3a35f24", Component.options)
+  } else {
+    hotAPI.reload("data-v-b3a35f24", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 344 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('aside', {
+    staticClass: "menu sidebar"
+  }, [_c('h5', {
+    staticClass: "menu-label"
+  }, [_vm._v("Quick Links")]), _vm._v(" "), _c('ul', {
+    staticClass: "menu-list list-unstyled"
+  }, [_c('li', [_c('a', {
+    attrs: {
+      "href": "/#/search"
+    }
+  }, [_vm._v("Resources")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "/training"
+    }
+  }, [_vm._v("Training Center")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://ecco.ga-sps.org/help.php",
+      "target": "ecco"
+    }
+  }, [_vm._v("Get Help")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "/calendar"
+    }
+  }, [_vm._v("Calendar")])])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-b3a35f24", module.exports)
+  }
+}
+
+/***/ }),
+/* 345 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('main', [_vm._m(0), _vm._v(" "), _c('section', {
+    staticClass: "section"
+  }, [_c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "columns watermark-spf"
+  }, [_c('div', {
+    staticClass: "column is-2"
+  }, [_c('Sidebar')], 1), _vm._v(" "), _c('div', {
+    staticClass: "column is-8"
+  }, [_c('div', {
+    staticClass: "content"
+  }, [_c('h1', [_vm._v("SPF Overview")]), _vm._v(" "), _c('p', [_vm._v("The five steps that comprise SAMHSA’s Strategic Prevention Framework will enable States and communities to build the infrastructure necessary for effective and sustainable prevention. Each step contains key milestones and products that are essential to the validity of the process.")]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('h2', [_vm._v("Play Narration")]), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('ul', {
+    staticClass: "cbp-ntaccordion",
+    attrs: {
+      "id": "cbp-ntaccordion"
+    }
+  }, [_c('li', {
+    staticClass: "step-1"
+  }, [_c('h3', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_c('i', {
+    staticClass: "flaticon-flag24"
+  }), _vm._v(" Assess Needs")]), _vm._v(" "), _c('div', {
+    staticClass: "cbp-ntcontent open-container"
+  }, [_c('h2', [_vm._v("Play Narration")]), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('p', [_vm._v("In Step 1 of SAMHSA’s Strategic Prevention Framework (SPF), prevention professionals gather and assess data from a variety of sources to ensure that substance misuse prevention efforts are appropriate and targeted to the needs of communities.")]), _vm._v(" "), _vm._m(5), _vm._v(" "), _vm._m(6), _vm._v(" "), _c('p', [_vm._v("Based on their assessment of needs, resources, and readiness, prevention professionals identify one or more priorities on which to focus their prevention efforts.")]), _vm._v(" "), _c('ul', {
+    staticClass: "cbp-ntsubaccordion"
+  }, [_c('li', {}, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Determining Problem Impact")]), _vm._v(" "), _vm._m(7)]), _vm._v(" "), _c('li', {}, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Assessing Risk and Protective Factors")]), _vm._v(" "), _vm._m(8)]), _vm._v(" "), _c('li', {}, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Publications and Resources")]), _vm._v(" "), _vm._m(9)])])])]), _vm._v(" "), _c('li', {
+    staticClass: "step-2"
+  }, [_c('h3', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_c('i', {
+    staticClass: "flaticon-signal39"
+  }), _vm._v(" Build Capacity")]), _vm._v(" "), _c('div', {
+    staticClass: "cbp-ntcontent open-container"
+  }, [_c('h2', [_vm._v("Play Narration")]), _vm._v(" "), _vm._m(10), _vm._v(" "), _vm._m(11), _vm._v(" "), _c('p', [_vm._v("States and communities must have the capacity—that is, the resources and readiness—to support their chosen prevention programs and interventions. Programs that are well-supported are more likely to succeed. Community resources and community readiness often go hand-in-hand: building resource capacity also contributes to greater readiness. For example, when key stakeholders are involved in solving problems, they are more likely to engage others. This leads to more people recognizing the value of prevention and greater community readiness to accept prevention interventions.")]), _vm._v(" "), _vm._m(12), _vm._v(" "), _c('ul', {
+    staticClass: "cbp-ntsubaccordion"
+  }, [_c('li', {}, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Raise Stakeholder Awareness ")]), _vm._v(" "), _vm._m(13)]), _vm._v(" "), _c('li', {}, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Establish or Strengthen Collaboration Efforts")]), _vm._v(" "), _vm._m(14)]), _vm._v(" "), _c('li', {}, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Expand Resources")]), _vm._v(" "), _vm._m(15)]), _vm._v(" "), _c('li', {}, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Prepare the Prevention Workforce")]), _vm._v(" "), _vm._m(16)])])])]), _vm._v(" "), _c('li', {
+    staticClass: "step-3"
+  }, [_c('h3', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_c('i', {
+    staticClass: "flaticon-strategical"
+  }), _vm._v(" Strategic Planning")]), _vm._v(" "), _c('div', {
+    staticClass: "cbp-ntcontent open-container"
+  }, [_c('h2', [_vm._v("Play Narration")]), _vm._v(" "), _vm._m(17), _vm._v(" "), _c('p', [_vm._v("Step 3 of the Strategic Prevention Framework (SPF) shows how to plan effectively by prioritizing risk and protective factors and building logic models.")]), _vm._v(" "), _vm._m(18), _vm._v(" "), _vm._m(19), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("As you plan, keep in mind that decisions that reflect the input of all stakeholders, whether they are part of a formal coalition or informal group of collaborators, are more likely to keep stakeholders committed to your program.")]), _vm._v(" "), _c('p', [_vm._v("Planning is also crucial to the sustainability of prevention outcomes. It establishes the resources needed to maintain program activities and greatly increases the likelihood that you will achieve your expected outcomes.")]), _vm._v(" "), _c('h4', [_vm._v("Selecting Effective Interventions")]), _vm._v(" "), _c('p', [_vm._v("Sometimes people want to select interventions that are popular, that worked well in a different community, or that they are familiar with. However, these are not good reasons for selecting an intervention. It is more important that the prevention intervention effectively address the priority substance use problem and associated risk and protective factors, and that intervention is a good fit for the broader community.")]), _vm._v(" "), _vm._m(20), _vm._v(" "), _vm._m(21), _vm._v(" "), _c('br'), _vm._v(" "), _c('ul', {
+    staticClass: "cbp-ntsubaccordion"
+  }, [_c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Evidence-based Interventions")]), _vm._v(" "), _vm._m(22)]), _vm._v(" "), _c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Determining Fit")]), _vm._v(" "), _vm._m(23)])])])]), _vm._v(" "), _c('li', {
+    staticClass: "step-4"
+  }, [_c('h3', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_c('i', {
+    staticClass: "flaticon-gear42"
+  }), _vm._v(" Implement")]), _vm._v(" "), _c('div', {
+    staticClass: "cbp-ntcontent open-container"
+  }, [_c('h2', [_vm._v("Play Narration")]), _vm._v(" "), _vm._m(24), _vm._v(" "), _c('p', [_vm._v("In Step 4 of the Strategic Prevention Framework (SPF), prevention professionals develop action plans to implement their chosen prevention intervention.")]), _vm._v(" "), _c('p', [_vm._v("In Step 4 of the SPF, prevention planners implement their program. During this step, you will see if your assessments were accurate and also find out how your target population responds to the program. As you implement your selected interventions, develop a strong action plan and adapt it as needed. Stay aware of factors that may influence how your intervention is implemented.")]), _vm._v(" "), _c('ul', {
+    staticClass: "cbp-ntsubaccordion"
+  }, [_c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Develop an Action Plan")]), _vm._v(" "), _vm._m(25)]), _vm._v(" "), _c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Factors That May Influence Implementation")]), _vm._v(" "), _vm._m(26)]), _vm._v(" "), _c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Fidelity and Adaptation")]), _vm._v(" "), _vm._m(27)]), _vm._v(" "), _c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Publications and Resources")]), _vm._v(" "), _vm._m(28)])])])]), _vm._v(" "), _c('li', {
+    staticClass: "step-5"
+  }, [_c('h3', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_c('span', {
+    staticClass: "flaticon-workers"
+  }), _vm._v(" Evaluation")]), _vm._v(" "), _c('div', {
+    staticClass: "cbp-ntcontent open-container"
+  }, [_c('h2', [_vm._v("Play Narration")]), _vm._v(" "), _vm._m(29), _vm._v(" "), _c('p', [_vm._v("The evaluation step of SAMHSA’s Strategic Prevention Framework (SPF) quantifies the challenges and successes of implementing a prevention program.")]), _vm._v(" "), _c('p', [_vm._v("Evaluation is the systematic collection and analysis of information about program activities, characteristics, and outcomes. The evaluation step of the Strategic Prevention Framework (SPF) is not just about collecting information, but using that information to improve the effectiveness of a prevention program. After evaluation, planners may decide whether or not to continue the program.")]), _vm._v(" "), _c('p', [_vm._v("Prevention practitioners need to evaluate how well the program was delivered and how successful it was in achieving the expected outcomes. Once the program has been evaluated, prevention planners typically report evaluation results to stakeholders, which can include community members and lawmakers. Stakeholders can promote your program, increase public interest, and possibly help to secure additional funding.")]), _vm._v(" "), _c('p', [_vm._v("Learn more about:")]), _vm._v(" "), _vm._m(30), _vm._v(" "), _c('ul', {
+    staticClass: "cbp-ntsubaccordion"
+  }, [_c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Evaluation and the SPF ")]), _vm._v(" "), _vm._m(31)]), _vm._v(" "), _c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Publications and Resources ")]), _vm._v(" "), _vm._m(32)]), _vm._v(" "), _c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Cultural Competence")]), _vm._v(" "), _vm._m(33)]), _vm._v(" "), _c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Building a Culturally Competent Workforce")]), _vm._v(" "), _vm._m(34)]), _vm._v(" "), _c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Culturally Competent Organizations")]), _vm._v(" "), _vm._m(35)]), _vm._v(" "), _c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("CSAP Principles of Cultural Competence")]), _vm._v(" "), _vm._m(36)]), _vm._v(" "), _c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Publications and Resources ")]), _vm._v(" "), _vm._m(37), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
+      "target": "_blank"
+    }
+  })]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
+      "target": "_blank"
+    }
+  })]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
+      "target": "_blank"
+    }
+  })]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
+      "target": "_blank"
+    }
+  })]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
+      "target": "_blank"
+    }
+  })])])])])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', {
+    staticClass: "hero is-medium is-primary is-bold",
+    staticStyle: {
+      "background-size": "cover",
+      "background-image": "url('/images/about.jpg')"
+    }
+  }, [_c('div', {
+    staticClass: "hero-body"
+  }, [_c('div', {
+    staticClass: "container"
+  })])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('strong', [_vm._v("Note")]), _vm._v(" In order to ensure complete adherence to the SAMHSA SPF model, these notes have been derived from the SAMHSA website and other SAMHSA materials. For more information, go to www.SAMHSA.org")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('audio', {
+    attrs: {
+      "controls": ""
+    }
+  }, [_c('source', {
+    attrs: {
+      "src": "http://resources.ga-sps.org/content/spf/spf-overview-introduction.m4a",
+      "type": ""
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('audio', {
+    attrs: {
+      "controls": ""
+    }
+  }, [_c('source', {
+    attrs: {
+      "src": "http://resources.ga-sps.org/content/spf/spf-assess-needs.m4a",
+      "type": ""
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('b', [_vm._v("Step 1")]), _vm._v(" of the Strategic Prevention Framework (SPF) helps prevention professionals assess community needs, resources, and readiness to address substance misuse.")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("Data help to inform the identification and prioritization of substance misuse problems, clarify those problems’ impact on communities and vulnerable populations, and assess the readiness and resources needed to protect against those problems and their consequences. Learn more about\n                                        "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step1-assess-needs/assess-community-resources-readiness"
+    }
+  }, [_vm._v(" assessing community resources and readiness.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("Data from\n                                        "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/practicing-effective-prevention/epidemiology-prevention/epidemiological-profiles"
+    }
+  }, [_vm._v(" epidemiological profiles for states and jurisdictions")]), _vm._v(" and other sources may also show what risk and protective factors are present in the community.")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("Using one or more data sources, you can determine what needs and challenges exist in your community. As you\n                                                    "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/practicing-effective-prevention/epidemiology-prevention/finding-analyzing-data"
+    }
+  }, [_vm._v(" analyze the data")]), _vm._v(", ask yourself the following questions:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("What are the community’s most pressing problems and related behaviors?")]), _vm._v(" "), _c('li', [_vm._v("How often are the problems occurring? What are the associated issues?")]), _vm._v(" "), _c('li', [_vm._v("Where are they occurring? Do\n                                                        "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/specific-populations"
+    }
+  }, [_vm._v(" sub-populations")]), _vm._v(" exhibit different substance use patterns?")]), _vm._v(" "), _c('li', [_vm._v("Which populations experience the problems the most? Are sub-populations experiencing different problems or consequences?")]), _vm._v(" "), _c('li', [_vm._v("Are there particular places, times, or sub-populations that seem to be “driving the data”?")]), _vm._v(" "), _c('li', [_vm._v("Are there specific outcomes that stand out?\n                                                    ")])]), _vm._v(" "), _c('p', [_vm._v("Data may reveal that the community has multiple areas of need that are contributing to substance misuse. Use\n                                                    "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/criteria-analyzing-assessment-data"
+    }
+  }, [_vm._v("criteria for analyzing assessment data")]), _vm._v(" to guide your decision on which problem to make your priority.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("Every problem is related to its own set of risk and protective factors. After you have selected your prevention priority, assess the factors that are driving or alleviating the problem.")]), _vm._v(" "), _c('p', [_vm._v("As the name suggests, risk factors can make certain problems more likely to occur, and protective factors reduce the chance of certain problems occurring. Identifying which risk factors exist in your community could reveal possible areas of need. For example, after your assessment you may determine that neighborhood poverty is a risk factor in your community. Consequently, you identify it as a potential prevention priority.")]), _vm._v(" "), _c('p', [_vm._v("Your assessment may also reveal protective factors, such as afterschool activities. These protective factors may be used as resources to support your prevention efforts.")]), _vm._v(" "), _c('p', [_vm._v("The factors driving a problem in one community may differ from the factors driving it in another community. One of the most important lessons learned from prevention research is that, to be effective, prevention strategies must address the underlying factors driving a problem. It doesn’t matter how carefully a program or intervention is implemented. If it’s not a good match for the problem, it’s not going to work.")]), _vm._v(" "), _c('p', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/practicing-effective-prevention/prevention-behavioral-health/risk-protective-factors"
+    }
+  }, [_vm._v("Learn more about risk and protective factors.")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('ul', [_c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/sources-consequence-data-underage-drinking",
+      "target": "_blank"
+    }
+  }, [_vm._v("Sources of Consequence Data for Underage Drinking")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/national-data-sources"
+    }
+  }, [_vm._v("National Data Sources")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/iowa-group-strengthens-data-collection"
+    }
+  }, [_vm._v("Iowa’s Data Task Group Strengthens Data Collection at the Local Level")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/prevention-massachusetts"
+    }
+  }, [_vm._v("Prevention in Massachusetts: Following the Data Video – 2012")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('audio', {
+    attrs: {
+      "controls": ""
+    }
+  }, [_c('source', {
+    attrs: {
+      "src": "http://resources.ga-sps.org/content/spf/spf-capacity-building.m4a",
+      "type": ""
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('b', [_vm._v("Step 2")]), _vm._v(" of the Strategic Prevention Framework (SPF) focuses on identifying resources and readiness for addressing substance misuse in communities.")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention/cultural-competence",
+      "target": "_blank"
+    }
+  }, [_vm._v("Cultural competence")]), _vm._v(" and the\n                                        "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/sustainability",
+      "target": "_blank"
+    }
+  }, [_vm._v(" sustainability")]), _vm._v(" of prevention outcomes are closely linked aspects of capacity building. Broad cultural representation is essential to sustaining long-term prevention efforts: the wider your base of support, the greater the likelihood you will achieve a successful outcome.")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("Your goal is to persuade stakeholders, such as community members or policymakers, to make your issue a priority. To do that, you will need to make a strong and compelling case for why they should devote their time, energy, and resources to the problems you have identified. You’ll be in a better position to gain their support by\n                                                    "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/cultural-competence/cultural-competence-spf",
+      "target": "_blank"
+    }
+  }, [_vm._v(" incorporating cultural competence into your implementation of the Strategic Prevention Framework (SPF).")]), _vm._v(" Educate other members of the behavioral health\n                                                    "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/workforce",
+      "target": "_blank"
+    }
+  }, [_vm._v("workforce")]), _vm._v(" about how they can support prevention efforts in the work you do, because not all practitioners may recognize the role they can play.")]), _vm._v(" "), _c('p', [_vm._v("Increasing community awareness isn’t about increasing the knowledge and awareness of every community member. Rather, it often involves collaborating with key stakeholders who can influence whether your prevention initiative will succeed. To identify these stakeholders, analyze the readiness data you collected while\n                                                    "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step1-assess-needs",
+      "target": "_blank"
+    }
+  }, [_vm._v("assessing community needs.")]), _vm._v(" Use the data to find community members and groups who are not yet ready for the planned prevention approach, but who will play a role in its success as stakeholders. Then develop and implement strategies for boosting their readiness levels.")]), _vm._v(" "), _c('p', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step1-assess-needs/assess-community-resources-readiness#community-readiness",
+      "target": "_blank"
+    }
+  }, [_vm._v(" Assess readiness")]), _vm._v(" by determining how able and willing a community is to accept that a problem exists and to take action to change it. Your assessment should describe the degree to which individuals, organizations, and/or communities are:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Prepared to recognize prioritized problems as genuine local concerns")]), _vm._v(" "), _c('li', [_vm._v("Motivated to commit their resources to address those problems")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("Collaboration is an essential component of building capacity successfully. Building a team from various groups that have expertise in, or represent, the target population will yield better outcomes through collective information-sharing. Involving different sectors of the community in early planning will also help ensure that resources needed for sustainability will be available later.")]), _vm._v(" "), _c('p', [_vm._v("When thinking about collaboration, consider including a variety of organizations or individuals. Champions for prevention may be found in the local media, the legislature, and in faith or business communities. Foster relationships with those who support your prevention efforts as well as with other stakeholders who may not be ready to accept your program.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("Resources exist in your organization and in the community you serve. At the organizational level, you may decide to strengthen data collection systems, re-allocate staff workloads to improve efficiency, or increase coordination with other state systems to build capacity for implementing your prevention intervention.")]), _vm._v(" "), _c('p', [_vm._v("At the community level, create planning groups that reflect the ethnic make-up of the community. These groups can help the prevention effort be more successful through their resources and support.")]), _vm._v(" "), _c('p', [_vm._v("Resources include:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Grants or donations")]), _vm._v(" "), _c('li', [_vm._v("Donated meeting space, food, photocopying services, or computer hardware and software")]), _vm._v(" "), _c('li', [_vm._v("Program promotion or advertising outreach")]), _vm._v(" "), _c('li', [_vm._v("Consultants and/or volunteers who can supplement staff expertise")]), _vm._v(" "), _c('li', [_vm._v("Stakeholders, including those who are a part of the population the intervention will focus on")]), _vm._v(" "), _c('li', [_vm._v("Other collaborators who can provide additional expertise, necessary services, or connections to your target population")]), _vm._v(" "), _c('li', [_vm._v("Local champions who will support your prevention efforts")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("The success of any prevention effort depends on the knowledge and skill of the people delivering the intervention.\n                                                    "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/workforce",
+      "target": "_blank"
+    }
+  }, [_vm._v("Workforce")]), _vm._v(" development is more than simply preparing people to complete specific tasks. Staff must have the right credentials, training, experience, cultural competence, and expertise to address all aspects of prevention. Leaders and staff may need to be hired or may require additional training and technical assistance.")]), _vm._v(" "), _c('h5', [_vm._v("Publications and Resources")]), _vm._v(" "), _c('ul', [_c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/capacity-building-sustainability",
+      "target": "_blank"
+    }
+  }, [_vm._v("Factors that Contribute to Capacity-Building and Sustainability")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/21st-century-partners-prevention",
+      "target": "_blank"
+    }
+  }, [_vm._v("21st Century Partners in Prevention")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/partnerships-resources-substance-misuse-suicide",
+      "target": "_blank"
+    }
+  }, [_vm._v("Mobilizing Partnerships and Resources to Address Substance Abuse and Suicide Webinar – 2014")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/building-capacity-through-collaboration",
+      "target": "_blank"
+    }
+  }, [_vm._v("Building Prevention Capacity through Collaboration Video – 2012")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('audio', {
+    attrs: {
+      "controls": ""
+    }
+  }, [_c('source', {
+    attrs: {
+      "src": "http://resources.ga-sps.org/content/spf/spf-strategic-planning.m4a",
+      "type": ""
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('b', [_vm._v("Planning increases the effectiveness of prevention efforts by ensuring that prevention professionals and their stakeholders work toward the same goals. Three important parts of the planning phase are:")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('ul', [_c('li', [_vm._v("Prioritizing risk and protective factors identified in\n                                            "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step1-assess-needs",
+      "target": "_blank"
+    }
+  }, [_vm._v("Step 1: Assess Needs")]), _vm._v(" of the Strategic Prevention Framework (SPF)")]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step3-plan/building-logic-models",
+      "target": "_blank"
+    }
+  }, [_vm._v("Building a logic model")]), _vm._v(" for your program")]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step3-plan",
+      "target": "_blank"
+    }
+  }, [_vm._v(" Selecting effective interventions")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('b', [_vm._v("There are three important criteria for selecting appropriate prevention interventions:")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('ul', [_c('li', [_vm._v("The intervention is evidence-based")]), _vm._v(" "), _c('li', [_vm._v("Good conceptual fit for the community")]), _vm._v(" "), _c('li', [_vm._v("Good practical fit for the community")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("Whenever possible, you should select evidence‐based interventions. Evidence-based interventions have documented evidence of effectiveness and are those that research has shown to be effective. SAMHSA’s guidance document\n                                                    "), _c('a', {
+    attrs: {
+      "href": "http://store.samhsa.gov/product/Identifying-and-Selecting-Evidence-Based-Interventions-for-Substance-Abuse-Prevention/SMA09-4205",
+      "target": "_blank"
+    }
+  }, [_vm._v("Identifying and Selecting Evidence-Based Interventions for Substance Abuse Prevention ")]), _vm._v(" defines evidence-based interventions as those that fall into one or more of three categories:")]), _vm._v(" "), _c('ul', [_c('li', [_c('b', [_vm._v("Category 1.")]), _vm._v(" The intervention is included in federal registries of evidence-based interventions, such as the\n                                                        "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/nrepp",
+      "target": "_blank"
+    }
+  }, [_vm._v(" National Registry of Evidence-based Programs and Practices (NREPP);")]), _vm._v(" "), _c('b', [_vm._v("OR")])]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Category 2.")]), _vm._v(" The intervention is reported with positive effects on the primary targeted outcome in peer-reviewed journals;\n                                                        "), _c('b', [_vm._v("OR")])]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Category 3.")]), _vm._v(" The intervention has documented evidence of effectiveness, based on guidelines developed by\n                                                        "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/about-us/who-we-are/offices-centers/csap",
+      "target": "_blank"
+    }
+  }, [_vm._v(" CSAP")]), _vm._v(" and/or the state, tribe, or jurisdiction in which the intervention took place.")])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_c('b', [_vm._v("Documented evidence should be implemented under four recommended guidelines, all of which must be followed. These guidelines require interventions to be:")])]), _vm._v(" "), _c('ol', [_c('li', [_vm._v("Based on a theory of change that is documented in a clear logic or conceptual mode. The Department of Health and Human Services (HHS) recommends prevention professionals\n                                                        "), _c('a', {
+    attrs: {
+      "href": "http://www.hhs.gov/ash/initiatives/quality/quality/",
+      "target": "_blank"
+    }
+  }, [_vm._v(" develop a basic driver of quality diagram")]), _vm._v(" to help their programs achieve desired outcomes.\n                                                        "), _c('b', [_vm._v("AND")])]), _vm._v(" "), _c('li', [_vm._v("Similar in content and structure to interventions that appear in federal registries of evidence-based interventions and/or peer-reviewed journals.\n                                                        "), _c('b', [_vm._v("AND")])]), _vm._v(" "), _c('li', [_vm._v("Supported by documentation showing it has been effectively implemented in the past, multiple times, and in a manner attentive to scientific standards of evidence. The intervention results should show a consistent pattern of credible and positive effects.\n                                                        "), _c('b', [_vm._v("AND")])]), _vm._v(" "), _c('li', [_vm._v("Reviewed and deemed appropriate by a panel of informed prevention experts that includes qualified prevention researchers experienced in evaluating prevention interventions similar to those under review; local prevention professionals; and key community leaders, as appropriate (for example, law enforcement officials, educators, or elders within indigenous cultures).")])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("It’s important to note, however, that these sources are not exhaustive, and they may not include interventions appropriate for all problems or all populations. In these cases, you must look to other credible sources of information. Since states have different guidelines for what constitutes credible evidence of effectiveness, you could start by talking to prevention experts—including your state-level evidence‐based workgroup.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("In addition to selecting an intervention that is evidence-based, you need to ensure that the intervention, or combination of interventions, that you select are a good fit for the community.")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("There are two types of fit to consider:")])]), _vm._v(" "), _c('ul', [_c('li', [_c('b', [_vm._v("Conceptual fit:")]), _vm._v(" An intervention has good conceptual fit if it directly addresses one or more of the priority factors driving a specific substance use problem and has been shown to produce positive outcomes for members of the target population. To determine the conceptual fit, ask, “Will this intervention have an impact on at least one of our community’s priority risk and protective factors?”")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Practical fit:")]), _vm._v(" An intervention has good practical fit if it is culturally relevant for the target population, the community has capacity to support it, and if it enhances or reinforces existing prevention activities. To determine the practical fit of an intervention, ask, “Is this intervention appropriate for our community?”")])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("Evidence‐based interventions with both conceptual fit and practical fit will have the highest likelihood ofproducing positive prevention outcomes.")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("Publications and Resources")])]), _vm._v(" "), _c('ul', [_c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/finding-evidence-based-programs",
+      "target": "_blank"
+    }
+  }, [_vm._v("Finding Evidence-based Programs and Practices")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/strategies-interventions-prevent-youth-marijuana-use",
+      "target": "_blank"
+    }
+  }, [_vm._v("Strategies and Interventions to Prevent Youth Marijuana Use")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/south-carolina-workgroup-supports-local-efforts-curb-underage-drinking",
+      "target": "_blank"
+    }
+  }, [_vm._v("South Carolina Workgroup Supports Local Efforts to Curb Underage Drinking")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('audio', {
+    attrs: {
+      "controls": ""
+    }
+  }, [_c('source', {
+    attrs: {
+      "src": "http://resources.ga-sps.org/content/spf/spf-implementation.m4a",
+      "type": ""
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("An action plan is a written document that lays out exactly how you will implement your selected evidence-based intervention, which may be a program, policy, or strategy. The action plan describes:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("What you expect to accomplish")]), _vm._v(" "), _c('li', [_vm._v("Specific steps you will take to reach goals")]), _vm._v(" "), _c('li', [_vm._v("Who will be responsible for doing what")])]), _vm._v(" "), _c('p', [_vm._v("If you are implementing more than one intervention, it is helpful to develop a separate action plan for each.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("Many things can influence how a program is implemented, including staff selection, staff training, staff and program evaluation, available resources, and past experience implementing prevention programs.")]), _vm._v(" "), _c('ul', [_c('li', [_c('b', [_vm._v("Staff selection:")]), _vm._v(" In addition to academic and professional qualifications, other characteristics may also be desirable, such as bilingualism, lived experience, or familiarity with local conditions. These characteristics must be identified and be a part of your selection criteria.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Pre- and in-service training:")]), _vm._v(" Trainings are efficient ways to communicate background information, theory, program rationale, and expected outcomes. They also provide opportunities for program staff to practice new skills and receive feedback.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Ongoing consultation or coaching:")]), _vm._v(" Implementing evidence-based practices and interventions may require behavior change among program staff. Training and coaching can help bring about these changes.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Staff and program evaluation:")]), _vm._v(" Assessing performance and measuring program fidelity can provide useful feedback on how the staff and program are performing during implementation.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Program support:")]), _vm._v(" Providing clear leadership and making use of relevant data to inform decision-making helps to keep staff organized and focused on desired outcomes.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("History implementing prevention interventions in the past:")]), _vm._v(" What’s your track record? Do you have past successes that you can point to and build on?")]), _vm._v(" "), _c('li', [_vm._v("Key stakeholder support: For a program to be effective, community members must be involved in its implementation. In the short term, these stakeholders help to ensure that the prevention approach is well-matched to the target population. In the long term, stakeholders can become program champions by\n                                                        "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/sustainability",
+      "target": "_blank"
+    }
+  }, [_vm._v("sustaining program activities")]), _vm._v(" and prevention priorities.")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("When a prevention program is implemented as its developer intended, there is greater likelihood that its impact will be similar to the settings where it was first implemented or tested. Maintaining fidelity means keeping most elements of the program the same. However, programs may need to be adapted to gain greater community acceptance or in response to the contexts of a particular setting. Budget constraints, staff availability, time limitations, or other issues may make adaptation necessary.")]), _vm._v(" "), _c('p', [_vm._v("In these situations, finding the right approach to stay faithful to the original evidence-based design and address the target audience’s unique characteristics requires balancing fidelity and adaptation. When you change an intervention, you may be compromising outcomes. Even so, implementing a program that requires some adaptation may be more efficient and cost-effective than designing a program from scratch.")]), _vm._v(" "), _c('h3', [_vm._v("General Guidelines for Program Adaptation")]), _vm._v(" "), _c('ul', [_c('li', [_c('b', [_vm._v("Select programs with the best initial fit to local needs and conditions:")]), _vm._v(" This will reduce the likelihood that you will need to make adaptations later on.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Select programs with the largest effect size:")]), _vm._v(" Effect size refers to the magnitude of the effects of an intervention. The smaller an intervention’s effect size, the more careful you want to be about changing anything. You don’t want to inadvertently compromise any good you’re doing. In general, adaptations to programs with large effect sizes are less likely to affect expected outcomes.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Change capacity before changing the program:")]), _vm._v(" It may be easier to change the program, but changing local capacity to deliver it as it was designed is a better choice.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Consult experts:")]), _vm._v(" Experts can include the program developer, an environmental strategies specialist, or your evaluator. They may be able to tell you how the intervention has been adapted in the past and how well (or not) those adaptations worked.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Retain core components:")]), _vm._v(" When a program retains core components of the original intervention, it’s more likely to be effective. If you’re not sure which elements are core, consult the program developer, an environmental strategies specialist, or an evaluator.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Be consistent with evidence-based principles:")]), _vm._v(" Programs and practices that adhere to evidence-based principles are more likely to be effective. Adaptations should be consistent with the science.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Add rather than subtract:")]), _vm._v(" Doing so will decrease the likelihood that you are eliminating a program element that is important.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Effective cultural adaptation:")]), _vm._v(" Cultural adaptation refers to program modifications that are tailored to the values, attitudes, beliefs, and experiences of the target audience. This type of adaptation relies on strong relationships with cultural leaders and access to culturally competent program staff.\n                                                        "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention/cultural-competence",
+      "target": "_blank"
+    }
+  }, [_vm._v("Learn more about cultural competence.")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('ul', [_c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/core-components-why-they-matter",
+      "target": "_blank"
+    }
+  }, [_vm._v("What Are Core Components, and Why Do They Matter?")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/webinars-help-practitioners-implement-environmental-strategies",
+      "target": "_blank"
+    }
+  }, [_vm._v("CAPT Webinars Help Practitioners Implement Environmental Prevention Strategies")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('audio', {
+    attrs: {
+      "controls": ""
+    }
+  }, [_c('source', {
+    attrs: {
+      "src": "http://resources.ga-sps.org/content/spf/spf-evaluation.m4a",
+      "type": ""
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('ul', [_c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step5-evaluation/process-outcomes-evaluation",
+      "target": "_blank"
+    }
+  }, [_vm._v("Evaluating process and outcomes")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step5-evaluation/communicating-evaluation-results",
+      "target": "_blank"
+    }
+  }, [_vm._v("Communicating evaluation results")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("Prevention practitioners engage in a variety of evaluation-related activities, including identifying evaluation expertise, designing evaluation plans, and finding and analyzing epidemiological data. Evaluation is more than a final step. It should be a part of every aspect of the SPF, from assessing needs to communicating results.")]), _vm._v(" "), _c('p', [_vm._v("During an evaluation, prevention practitioners ask the following questions:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("How successful was the community in selecting and implementing appropriate strategies?")]), _vm._v(" "), _c('li', [_vm._v("Were these the “right” strategies, given the\n                                                        "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/practicing-effective-prevention/prevention-behavioral-health/risk-protective-factors",
+      "target": "_blank"
+    }
+  }, [_vm._v("risk and protective factors")]), _vm._v(" the community identified?")]), _vm._v(" "), _c('li', [_vm._v("Were representatives from across the community involved in program planning, selection, and implementation? In what ways were they involved?")]), _vm._v(" "), _c('li', [_vm._v("Was the planning group able to identify potential new partners with which to collaborate?")]), _vm._v(" "), _c('li', [_vm._v("What was the quality of the data used in decision making?")])]), _vm._v(" "), _c('p', [_vm._v("Engaging stakeholders who represent the populations you hope to reach greatly increases the chance that your evaluation efforts will be successful. Stakeholders can dictate how (or even whether) evaluation results are shared. Stakeholder involvement also helps to ensure that the evaluation design, including methods and the instruments used, is consistent with the cultural norms of the people you serve. Learn more about\n                                                    "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention/cultural-competence",
+      "target": "_blank"
+    }
+  }, [_vm._v("cultural competence")]), _vm._v(" in prevention practice.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('ul', [_c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/evaluation-tools-resources",
+      "target": "_blank"
+    }
+  }, [_vm._v("Evaluation Tools and Resources")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/minimizing-evaluation-costs",
+      "target": "_blank"
+    }
+  }, [_vm._v("Minimizing Evaluation Costs")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/building-capacity-programs-serving-aian",
+      "target": "_blank"
+    }
+  }, [_vm._v("Building the Evaluation Capacity of Local Programs Serving American Indian/Alaska Native Populations: Lessons Learned")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/effective-focus-groups",
+      "target": "_blank"
+    }
+  }, [_vm._v("Strategies for Conducting Effective Focus Groups")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/conducting-key-informant-interviews",
+      "target": "_blank"
+    }
+  }, [_vm._v("Tips for Conducting Key Informant Interviews")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("Cultural competence, the ability to interact effectively with people of different cultures, helps to ensure the needs of all community members are addressed.")]), _vm._v(" "), _c('p', [_vm._v("Cultural competence is the ability to interact effectively with people of different cultures. In practice, both individuals and organizations can be culturally competent. Culture must be considered at every step of the Strategic Prevention Framework (SPF). “Culture” is a term that goes beyond just race or ethnicity. It can also refer to such characteristics as age, gender, sexual orientation, disability, religion, income level, education, geographical location, or profession.")]), _vm._v(" "), _c('p', [_vm._v("Cultural competence means to\n                                                    "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/cultural-competence/cultural-competence-spf#be-respectful-and-responsive",
+      "target": "_blank"
+    }
+  }, [_vm._v("be respectful and responsive")]), _vm._v(" to the health beliefs and practices—and cultural and linguistic needs—of diverse population groups. Developing cultural competence is also an evolving, dynamic process that takes time and\n                                                    "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/cultural-competence/cultural-competence-spf#cultural-competence-continuum",
+      "target": "_blank"
+    }
+  }, [_vm._v("occurs along a continuum.")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("To produce positive change, prevention practitioners and other members of the behavioral health\n                                                    "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/workforce",
+      "target": "_blank"
+    }
+  }, [_vm._v("workforce")]), _vm._v(" must understand the cultural context of their target community. They must also have the willingness and skills to work within this context. This means drawing on community-based values and customs and working with knowledgeable people from the community in all prevention efforts.")]), _vm._v(" "), _c('p', [_vm._v("Practicing cultural competence throughout the program planning process ensures that all members of a community are represented and included. It can also prevent wasteful spending on programs and services that a community can’t or won’t use. This is why understanding the needs,\n                                                    "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/practicing-effective-prevention/prevention-behavioral-health/risk-protective-factors",
+      "target": "_blank"
+    }
+  }, [_vm._v("risk and protective factors,")]), _vm._v(" and potential obstacles of a community or specific population is crucial.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("Cultural competence applies to organizations and health systems, just as it does to professionals. A culturally competent organization:")]), _vm._v(" "), _c('ul', [_c('li', [_c('b', [_vm._v("Continually assesses organizational diversity:")]), _vm._v(" Organizations should conduct a regular assessment of its members’ experiences working with diverse communities and focus populations. It also regularly assesses the range of values, beliefs, knowledge, and experiences within the organization that would allow for working with focus communities.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Invests in building capacity for cultural competency and inclusion:")]), _vm._v(" Organizations should have policies, procedures, and resources in place that make ongoing development of cultural competence and inclusion possible. It must also be willing to commit the resources necessary to build or strengthen relationships with groups and communities. Including representatives of the focus population within the organization’s ranks is especially useful.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Practices strategic planning that incorporates community culture and diversity:")]), _vm._v(" Organizations are urged to collaborate with other community groups. Its members are also encouraged to develop supportive relationships with other community groups. When these steps are taken, the organization is seen as a partner by other groups and their members.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Implements prevention strategies using culture and diversity as a resource:")]), _vm._v(" Community members and organizations must have an opportunity to create and/or review audiovisual materials, public service announcements, training guides, printed resources, and other materials to ensure they are accessible to, and attuned to their community or focus population.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Evaluates the incorporation of cultural competence:")]), _vm._v(" Community members must have a forum to provide both formal and informal feedback on the impact of all prevention interventions.")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/about-us/who-we-are/offices-centers/csap",
+      "target": "_blank"
+    }
+  }, [_vm._v("SAMHSA’s Center for Substance Abuse Prevention (CSAP)")]), _vm._v(" has identified the following principles of cultural competence:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Ensure community involvement in all areas")]), _vm._v(" "), _c('li', [_vm._v("Use a population-based definition of community (let the community define itself)")]), _vm._v(" "), _c('li', [_vm._v("Stress the importance of relevant, culturally-appropriate prevention approaches")]), _vm._v(" "), _c('li', [_vm._v("Employ culturally-competent evaluators")]), _vm._v(" "), _c('li', [_vm._v("Promote cultural competence among program staff that reflect the community they serve")]), _vm._v(" "), _c('li', [_vm._v("Include the target population in all aspects of prevention planning")])]), _vm._v(" "), _c('p', [_vm._v("Learn more about the Department of Health and Human Services (HHS) Office of Minority Health’s\n                                                    "), _c('a', {
+    attrs: {
+      "href": "https://www.thinkculturalhealth.hhs.gov/Content/clas.asp",
+      "target": "_blank"
+    }
+  }, [_vm._v("National Standards for Culturally and Linguistically Appropriate Services in Health and Health Care: A Blueprint for Advancing and Sustaining CLAS Policy and Practice.")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('ul', [_c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/resources-related-cultural-competence",
+      "target": "_blank"
+    }
+  }, [_vm._v("Resources Related to Cultural Competence")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/elements-culturally-competent-prevention-system",
+      "target": "_blank"
+    }
+  }, [_vm._v("Elements of a Culturally Competent Prevention System")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/red-lake-nation-highlights-culture-prevention",
+      "target": "_blank"
+    }
+  }, [_vm._v("Red Lake Nation Highlights Culture as Prevention")])]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/red-lake-nation-highlights-culture-prevention",
+      "target": "_blank"
+    }
+  }), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/red-lake-nation-highlights-culture-prevention",
+      "target": "_blank"
+    }
+  }), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/protective-factors-factsheet",
+      "target": "_blank"
+    }
+  }, [_vm._v("Protective Factors Factsheet")])]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/protective-factors-factsheet",
+      "target": "_blank"
+    }
+  }), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/protective-factors-factsheet",
+      "target": "_blank"
+    }
+  }), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
+      "target": "_blank"
+    }
+  }, [_vm._v("Michigan Weaves Cultural Competency into its Substance Abuse Services")])]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
+      "target": "_blank"
+    }
+  })]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
+      "target": "_blank"
+    }
+  })])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-0c27f6e8", module.exports)
+  }
+}
+
+/***/ }),
+/* 346 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash__ = __webpack_require__(342);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash__ = __webpack_require__(347);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_buefy__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_buefy___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_buefy__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_instantsearch__ = __webpack_require__(343);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_instantsearch__ = __webpack_require__(348);
 
 
 
@@ -41219,7 +42139,7 @@ if (token) {
 }
 
 /***/ }),
-/* 342 */
+/* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -58308,10 +59228,10 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(27)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(28)(module)))
 
 /***/ }),
-/* 343 */
+/* 348 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -58340,11 +59260,11 @@ if (token) {
 /* unused harmony export RefinementList */
 /* unused harmony export PriceRange */
 /* unused harmony export PoweredBy */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_algoliasearch_lite__ = __webpack_require__(344);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_algoliasearch_lite__ = __webpack_require__(349);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_algoliasearch_lite___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_algoliasearch_lite__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_algoliasearch_helper__ = __webpack_require__(367);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_algoliasearch_helper__ = __webpack_require__(372);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_algoliasearch_helper___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_algoliasearch_helper__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_escape_html__ = __webpack_require__(525);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_escape_html__ = __webpack_require__(530);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_escape_html___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_escape_html__);
 
 
@@ -60117,28 +61037,28 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 
 /***/ }),
-/* 344 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var AlgoliaSearchCore = __webpack_require__(345);
-var createAlgoliasearch = __webpack_require__(357);
+var AlgoliaSearchCore = __webpack_require__(350);
+var createAlgoliasearch = __webpack_require__(362);
 
 module.exports = createAlgoliasearch(AlgoliaSearchCore, '(lite) ');
 
 
 /***/ }),
-/* 345 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = AlgoliaSearchCore;
 
-var errors = __webpack_require__(48);
-var exitPromise = __webpack_require__(346);
-var IndexCore = __webpack_require__(347);
-var store = __webpack_require__(354);
+var errors = __webpack_require__(49);
+var exitPromise = __webpack_require__(351);
+var IndexCore = __webpack_require__(352);
+var store = __webpack_require__(359);
 
 // We will always put the API KEY in the JSON body in case of too long API KEY,
 // to avoid query string being too long and failing in various conditions (our server limit, browser limit,
@@ -60174,9 +61094,9 @@ var RESET_APP_DATA_TIMER =
  *           If you provide them, you will less benefit from our HA implementation
  */
 function AlgoliaSearchCore(applicationID, apiKey, opts) {
-  var debug = __webpack_require__(49)('algoliasearch');
+  var debug = __webpack_require__(50)('algoliasearch');
 
-  var clone = __webpack_require__(33);
+  var clone = __webpack_require__(34);
   var isArray = __webpack_require__(86);
   var map = __webpack_require__(87);
 
@@ -60316,7 +61236,7 @@ AlgoliaSearchCore.prototype.addAlgoliaAgent = function(algoliaAgent) {
 AlgoliaSearchCore.prototype._jsonRequest = function(initialOpts) {
   this._checkAppIdData();
 
-  var requestDebug = __webpack_require__(49)('algoliasearch:' + initialOpts.url);
+  var requestDebug = __webpack_require__(50)('algoliasearch:' + initialOpts.url);
 
   var body;
   var additionalUA = initialOpts.additionalUA || '';
@@ -60847,7 +61767,7 @@ AlgoliaSearchCore.prototype._getHostIndexByType = function(hostType) {
 };
 
 AlgoliaSearchCore.prototype._setHostIndexByType = function(hostIndex, hostType) {
-  var clone = __webpack_require__(33);
+  var clone = __webpack_require__(34);
   var newHostIndexes = clone(this._hostIndexes);
   newHostIndexes[hostType] = hostIndex;
   this._partialAppIdDataUpdate({hostIndexes: newHostIndexes});
@@ -60942,7 +61862,7 @@ function removeCredentials(headers) {
 
 
 /***/ }),
-/* 346 */
+/* 351 */
 /***/ (function(module, exports) {
 
 // Parse cloud does not supports setTimeout
@@ -60955,12 +61875,12 @@ module.exports = function exitPromise(fn, _setTimeout) {
 
 
 /***/ }),
-/* 347 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var buildSearchMethod = __webpack_require__(235);
-var deprecate = __webpack_require__(348);
-var deprecatedMessage = __webpack_require__(349);
+var deprecate = __webpack_require__(353);
+var deprecatedMessage = __webpack_require__(354);
 
 module.exports = IndexCore;
 
@@ -61112,7 +62032,7 @@ IndexCore.prototype.similarSearch = buildSearchMethod('similarQuery');
 * @see {@link https://www.algolia.com/doc/rest_api#Browse|Algolia REST API Documentation}
 */
 IndexCore.prototype.browse = function(query, queryParameters, callback) {
-  var merge = __webpack_require__(350);
+  var merge = __webpack_require__(355);
 
   var indexObj = this;
 
@@ -61207,8 +62127,8 @@ IndexCore.prototype.browseFrom = function(cursor, callback) {
 * @param callback (optional)
 */
 IndexCore.prototype.searchForFacetValues = function(params, callback) {
-  var clone = __webpack_require__(33);
-  var omit = __webpack_require__(351);
+  var clone = __webpack_require__(34);
+  var omit = __webpack_require__(356);
   var usage = 'Usage: index.searchForFacetValues({facetName, facetQuery, ...params}[, callback])';
 
   if (params.facetName === undefined || params.facetQuery === undefined) {
@@ -61344,7 +62264,7 @@ IndexCore.prototype.typeAheadValueOption = null;
 
 
 /***/ }),
-/* 348 */
+/* 353 */
 /***/ (function(module, exports) {
 
 module.exports = function deprecate(fn, message) {
@@ -61365,7 +62285,7 @@ module.exports = function deprecate(fn, message) {
 
 
 /***/ }),
-/* 349 */
+/* 354 */
 /***/ (function(module, exports) {
 
 module.exports = function deprecatedMessage(previousUsage, newUsage) {
@@ -61378,7 +62298,7 @@ module.exports = function deprecatedMessage(previousUsage, newUsage) {
 
 
 /***/ }),
-/* 350 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var foreach = __webpack_require__(18);
@@ -61403,11 +62323,11 @@ module.exports = function merge(destination/* , sources */) {
 
 
 /***/ }),
-/* 351 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = function omit(obj, test) {
-  var keys = __webpack_require__(352);
+  var keys = __webpack_require__(357);
   var foreach = __webpack_require__(18);
 
   var filtered = {};
@@ -61423,7 +62343,7 @@ module.exports = function omit(obj, test) {
 
 
 /***/ }),
-/* 352 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61433,7 +62353,7 @@ module.exports = function omit(obj, test) {
 var has = Object.prototype.hasOwnProperty;
 var toStr = Object.prototype.toString;
 var slice = Array.prototype.slice;
-var isArgs = __webpack_require__(353);
+var isArgs = __webpack_require__(358);
 var isEnumerable = Object.prototype.propertyIsEnumerable;
 var hasDontEnumBug = !isEnumerable.call({ toString: null }, 'toString');
 var hasProtoEnumBug = isEnumerable.call(function () {}, 'prototype');
@@ -61570,7 +62490,7 @@ module.exports = keysShim;
 
 
 /***/ }),
-/* 353 */
+/* 358 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61594,10 +62514,10 @@ module.exports = function isArguments(value) {
 
 
 /***/ }),
-/* 354 */
+/* 359 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {var debug = __webpack_require__(49)('algoliasearch:src/hostIndexState.js');
+/* WEBPACK VAR INJECTION */(function(global) {var debug = __webpack_require__(50)('algoliasearch:src/hostIndexState.js');
 var localStorageNamespace = 'algoliasearch-client-js';
 
 var store;
@@ -61687,7 +62607,7 @@ function cleanup() {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
-/* 355 */
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -61703,7 +62623,7 @@ exports.coerce = coerce;
 exports.disable = disable;
 exports.enable = enable;
 exports.enabled = enabled;
-exports.humanize = __webpack_require__(356);
+exports.humanize = __webpack_require__(361);
 
 /**
  * The currently active debug mode names, and names to skip.
@@ -61895,7 +62815,7 @@ function coerce(val) {
 
 
 /***/ }),
-/* 356 */
+/* 361 */
 /***/ (function(module, exports) {
 
 /**
@@ -62053,24 +62973,24 @@ function plural(ms, n, name) {
 
 
 /***/ }),
-/* 357 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var global = __webpack_require__(358);
-var Promise = global.Promise || __webpack_require__(359).Promise;
+var global = __webpack_require__(363);
+var Promise = global.Promise || __webpack_require__(364).Promise;
 
 // This is the standalone browser build entry point
 // Browser implementation of the Algolia Search JavaScript client,
 // using XMLHttpRequest, XDomainRequest and JSONP as fallback
 module.exports = function createAlgoliasearch(AlgoliaSearch, uaSuffix) {
   var inherits = __webpack_require__(234);
-  var errors = __webpack_require__(48);
-  var inlineHeaders = __webpack_require__(361);
-  var jsonpRequest = __webpack_require__(363);
-  var places = __webpack_require__(364);
+  var errors = __webpack_require__(49);
+  var inlineHeaders = __webpack_require__(366);
+  var jsonpRequest = __webpack_require__(368);
+  var places = __webpack_require__(369);
   uaSuffix = uaSuffix || '';
 
   if (false) {
@@ -62078,9 +62998,9 @@ module.exports = function createAlgoliasearch(AlgoliaSearch, uaSuffix) {
   }
 
   function algoliasearch(applicationID, apiKey, opts) {
-    var cloneDeep = __webpack_require__(33);
+    var cloneDeep = __webpack_require__(34);
 
-    var getDocumentProtocol = __webpack_require__(365);
+    var getDocumentProtocol = __webpack_require__(370);
 
     opts = cloneDeep(opts || {});
 
@@ -62093,14 +63013,14 @@ module.exports = function createAlgoliasearch(AlgoliaSearch, uaSuffix) {
     return new AlgoliaSearchBrowser(applicationID, apiKey, opts);
   }
 
-  algoliasearch.version = __webpack_require__(366);
+  algoliasearch.version = __webpack_require__(371);
   algoliasearch.ua = 'Algolia for vanilla JavaScript ' + uaSuffix + algoliasearch.version;
   algoliasearch.initPlaces = places(algoliasearch);
 
   // we expose into window no matter how we are used, this will allow
   // us to easily debug any website running algolia
   global.__algolia = {
-    debug: __webpack_require__(49),
+    debug: __webpack_require__(50),
     algoliasearch: algoliasearch
   };
 
@@ -62279,7 +63199,7 @@ module.exports = function createAlgoliasearch(AlgoliaSearch, uaSuffix) {
 
 
 /***/ }),
-/* 358 */
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var win;
@@ -62299,7 +63219,7 @@ module.exports = win;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
-/* 359 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process, global) {var require;/*!
@@ -62439,7 +63359,7 @@ function flush() {
 function attemptVertx() {
   try {
     var r = require;
-    var vertx = __webpack_require__(360);
+    var vertx = __webpack_require__(365);
     vertxNext = vertx.runOnLoop || vertx.runOnContext;
     return useVertxTimer();
   } catch (e) {
@@ -63463,13 +64383,13 @@ return Promise$2;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17), __webpack_require__(7)))
 
 /***/ }),
-/* 360 */
+/* 365 */
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
-/* 361 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63477,7 +64397,7 @@ return Promise$2;
 
 module.exports = inlineHeaders;
 
-var encode = __webpack_require__(362);
+var encode = __webpack_require__(367);
 
 function inlineHeaders(url, headers) {
   if (/\?/.test(url)) {
@@ -63491,7 +64411,7 @@ function inlineHeaders(url, headers) {
 
 
 /***/ }),
-/* 362 */
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63583,7 +64503,7 @@ var objectKeys = Object.keys || function (obj) {
 
 
 /***/ }),
-/* 363 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63591,7 +64511,7 @@ var objectKeys = Object.keys || function (obj) {
 
 module.exports = jsonpRequest;
 
-var errors = __webpack_require__(48);
+var errors = __webpack_require__(49);
 
 var JSONPCounter = 0;
 
@@ -63715,7 +64635,7 @@ function jsonpRequest(url, opts, cb) {
 
 
 /***/ }),
-/* 364 */
+/* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = createPlacesClient;
@@ -63724,7 +64644,7 @@ var buildSearchMethod = __webpack_require__(235);
 
 function createPlacesClient(algoliasearch) {
   return function places(appID, apiKey, opts) {
-    var cloneDeep = __webpack_require__(33);
+    var cloneDeep = __webpack_require__(34);
 
     opts = opts && cloneDeep(opts) || {};
     opts.hosts = opts.hosts || [
@@ -63758,7 +64678,7 @@ function createPlacesClient(algoliasearch) {
 
 
 /***/ }),
-/* 365 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63779,7 +64699,7 @@ function getDocumentProtocol() {
 
 
 /***/ }),
-/* 366 */
+/* 371 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63789,13 +64709,13 @@ module.exports = '3.24.3';
 
 
 /***/ }),
-/* 367 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var AlgoliaSearchHelper = __webpack_require__(368);
+var AlgoliaSearchHelper = __webpack_require__(373);
 
 var SearchParameters = __webpack_require__(88);
 var SearchResults = __webpack_require__(281);
@@ -63875,7 +64795,7 @@ module.exports = algoliasearchHelper;
 
 
 /***/ }),
-/* 368 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63883,15 +64803,15 @@ module.exports = algoliasearchHelper;
 
 var SearchParameters = __webpack_require__(88);
 var SearchResults = __webpack_require__(281);
-var DerivedHelper = __webpack_require__(510);
-var requestBuilder = __webpack_require__(513);
+var DerivedHelper = __webpack_require__(515);
+var requestBuilder = __webpack_require__(518);
 
 var util = __webpack_require__(295);
 var events = __webpack_require__(296);
 
 var flatten = __webpack_require__(274);
 var forEach = __webpack_require__(23);
-var isEmpty = __webpack_require__(44);
+var isEmpty = __webpack_require__(45);
 var map = __webpack_require__(12);
 
 var url = __webpack_require__(297);
@@ -65285,7 +66205,7 @@ module.exports = AlgoliaSearchHelper;
 
 
 /***/ }),
-/* 369 */
+/* 374 */
 /***/ (function(module, exports) {
 
 /**
@@ -65311,7 +66231,7 @@ module.exports = baseTimes;
 
 
 /***/ }),
-/* 370 */
+/* 375 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(10),
@@ -65335,7 +66255,7 @@ module.exports = baseIsArguments;
 
 
 /***/ }),
-/* 371 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(19);
@@ -65387,7 +66307,7 @@ module.exports = getRawTag;
 
 
 /***/ }),
-/* 372 */
+/* 377 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -65415,7 +66335,7 @@ module.exports = objectToString;
 
 
 /***/ }),
-/* 373 */
+/* 378 */
 /***/ (function(module, exports) {
 
 /**
@@ -65439,7 +66359,7 @@ module.exports = stubFalse;
 
 
 /***/ }),
-/* 374 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(10),
@@ -65505,7 +66425,7 @@ module.exports = baseIsTypedArray;
 
 
 /***/ }),
-/* 375 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var freeGlobal = __webpack_require__(237);
@@ -65531,10 +66451,10 @@ var nodeUtil = (function() {
 
 module.exports = nodeUtil;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(27)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(28)(module)))
 
 /***/ }),
-/* 376 */
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var overArg = __webpack_require__(239);
@@ -65546,13 +66466,13 @@ module.exports = nativeKeys;
 
 
 /***/ }),
-/* 377 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayMap = __webpack_require__(11),
-    baseIntersection = __webpack_require__(378),
+    baseIntersection = __webpack_require__(383),
     baseRest = __webpack_require__(22),
-    castArrayLikeObject = __webpack_require__(406);
+    castArrayLikeObject = __webpack_require__(411);
 
 /**
  * Creates an array of unique values that are included in all given arrays
@@ -65582,12 +66502,12 @@ module.exports = intersection;
 
 
 /***/ }),
-/* 378 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var SetCache = __webpack_require__(240),
     arrayIncludes = __webpack_require__(242),
-    arrayIncludesWith = __webpack_require__(404),
+    arrayIncludesWith = __webpack_require__(409),
     arrayMap = __webpack_require__(11),
     baseUnary = __webpack_require__(90),
     cacheHas = __webpack_require__(244);
@@ -65662,11 +66582,11 @@ module.exports = baseIntersection;
 
 
 /***/ }),
-/* 379 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Hash = __webpack_require__(380),
-    ListCache = __webpack_require__(53),
+var Hash = __webpack_require__(385),
+    ListCache = __webpack_require__(54),
     Map = __webpack_require__(92);
 
 /**
@@ -65689,14 +66609,14 @@ module.exports = mapCacheClear;
 
 
 /***/ }),
-/* 380 */
+/* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var hashClear = __webpack_require__(381),
-    hashDelete = __webpack_require__(386),
-    hashGet = __webpack_require__(387),
-    hashHas = __webpack_require__(388),
-    hashSet = __webpack_require__(389);
+var hashClear = __webpack_require__(386),
+    hashDelete = __webpack_require__(391),
+    hashGet = __webpack_require__(392),
+    hashHas = __webpack_require__(393),
+    hashSet = __webpack_require__(394);
 
 /**
  * Creates a hash object.
@@ -65727,10 +66647,10 @@ module.exports = Hash;
 
 
 /***/ }),
-/* 381 */
+/* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nativeCreate = __webpack_require__(52);
+var nativeCreate = __webpack_require__(53);
 
 /**
  * Removes all key-value entries from the hash.
@@ -65748,11 +66668,11 @@ module.exports = hashClear;
 
 
 /***/ }),
-/* 382 */
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isFunction = __webpack_require__(20),
-    isMasked = __webpack_require__(383),
+    isMasked = __webpack_require__(388),
     isObject = __webpack_require__(4),
     toSource = __webpack_require__(241);
 
@@ -65801,10 +66721,10 @@ module.exports = baseIsNative;
 
 
 /***/ }),
-/* 383 */
+/* 388 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var coreJsData = __webpack_require__(384);
+var coreJsData = __webpack_require__(389);
 
 /** Used to detect methods masquerading as native. */
 var maskSrcKey = (function() {
@@ -65827,7 +66747,7 @@ module.exports = isMasked;
 
 
 /***/ }),
-/* 384 */
+/* 389 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var root = __webpack_require__(3);
@@ -65839,7 +66759,7 @@ module.exports = coreJsData;
 
 
 /***/ }),
-/* 385 */
+/* 390 */
 /***/ (function(module, exports) {
 
 /**
@@ -65858,7 +66778,7 @@ module.exports = getValue;
 
 
 /***/ }),
-/* 386 */
+/* 391 */
 /***/ (function(module, exports) {
 
 /**
@@ -65881,10 +66801,10 @@ module.exports = hashDelete;
 
 
 /***/ }),
-/* 387 */
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nativeCreate = __webpack_require__(52);
+var nativeCreate = __webpack_require__(53);
 
 /** Used to stand-in for `undefined` hash values. */
 var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -65917,10 +66837,10 @@ module.exports = hashGet;
 
 
 /***/ }),
-/* 388 */
+/* 393 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nativeCreate = __webpack_require__(52);
+var nativeCreate = __webpack_require__(53);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -65946,10 +66866,10 @@ module.exports = hashHas;
 
 
 /***/ }),
-/* 389 */
+/* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nativeCreate = __webpack_require__(52);
+var nativeCreate = __webpack_require__(53);
 
 /** Used to stand-in for `undefined` hash values. */
 var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -65975,7 +66895,7 @@ module.exports = hashSet;
 
 
 /***/ }),
-/* 390 */
+/* 395 */
 /***/ (function(module, exports) {
 
 /**
@@ -65994,10 +66914,10 @@ module.exports = listCacheClear;
 
 
 /***/ }),
-/* 391 */
+/* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assocIndexOf = __webpack_require__(54);
+var assocIndexOf = __webpack_require__(55);
 
 /** Used for built-in method references. */
 var arrayProto = Array.prototype;
@@ -66035,10 +66955,10 @@ module.exports = listCacheDelete;
 
 
 /***/ }),
-/* 392 */
+/* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assocIndexOf = __webpack_require__(54);
+var assocIndexOf = __webpack_require__(55);
 
 /**
  * Gets the list cache value for `key`.
@@ -66060,10 +66980,10 @@ module.exports = listCacheGet;
 
 
 /***/ }),
-/* 393 */
+/* 398 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assocIndexOf = __webpack_require__(54);
+var assocIndexOf = __webpack_require__(55);
 
 /**
  * Checks if a list cache value for `key` exists.
@@ -66082,10 +67002,10 @@ module.exports = listCacheHas;
 
 
 /***/ }),
-/* 394 */
+/* 399 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assocIndexOf = __webpack_require__(54);
+var assocIndexOf = __webpack_require__(55);
 
 /**
  * Sets the list cache `key` to `value`.
@@ -66114,10 +67034,10 @@ module.exports = listCacheSet;
 
 
 /***/ }),
-/* 395 */
+/* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getMapData = __webpack_require__(55);
+var getMapData = __webpack_require__(56);
 
 /**
  * Removes `key` and its value from the map.
@@ -66138,7 +67058,7 @@ module.exports = mapCacheDelete;
 
 
 /***/ }),
-/* 396 */
+/* 401 */
 /***/ (function(module, exports) {
 
 /**
@@ -66159,10 +67079,10 @@ module.exports = isKeyable;
 
 
 /***/ }),
-/* 397 */
+/* 402 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getMapData = __webpack_require__(55);
+var getMapData = __webpack_require__(56);
 
 /**
  * Gets the map value for `key`.
@@ -66181,10 +67101,10 @@ module.exports = mapCacheGet;
 
 
 /***/ }),
-/* 398 */
+/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getMapData = __webpack_require__(55);
+var getMapData = __webpack_require__(56);
 
 /**
  * Checks if a map value for `key` exists.
@@ -66203,10 +67123,10 @@ module.exports = mapCacheHas;
 
 
 /***/ }),
-/* 399 */
+/* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getMapData = __webpack_require__(55);
+var getMapData = __webpack_require__(56);
 
 /**
  * Sets the map `key` to `value`.
@@ -66231,7 +67151,7 @@ module.exports = mapCacheSet;
 
 
 /***/ }),
-/* 400 */
+/* 405 */
 /***/ (function(module, exports) {
 
 /** Used to stand-in for `undefined` hash values. */
@@ -66256,7 +67176,7 @@ module.exports = setCacheAdd;
 
 
 /***/ }),
-/* 401 */
+/* 406 */
 /***/ (function(module, exports) {
 
 /**
@@ -66276,7 +67196,7 @@ module.exports = setCacheHas;
 
 
 /***/ }),
-/* 402 */
+/* 407 */
 /***/ (function(module, exports) {
 
 /**
@@ -66294,7 +67214,7 @@ module.exports = baseIsNaN;
 
 
 /***/ }),
-/* 403 */
+/* 408 */
 /***/ (function(module, exports) {
 
 /**
@@ -66323,7 +67243,7 @@ module.exports = strictIndexOf;
 
 
 /***/ }),
-/* 404 */
+/* 409 */
 /***/ (function(module, exports) {
 
 /**
@@ -66351,7 +67271,7 @@ module.exports = arrayIncludesWith;
 
 
 /***/ }),
-/* 405 */
+/* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var constant = __webpack_require__(246),
@@ -66379,7 +67299,7 @@ module.exports = baseSetToString;
 
 
 /***/ }),
-/* 406 */
+/* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isArrayLikeObject = __webpack_require__(249);
@@ -66399,10 +67319,10 @@ module.exports = castArrayLikeObject;
 
 
 /***/ }),
-/* 407 */
+/* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseForOwn = __webpack_require__(38),
+var baseForOwn = __webpack_require__(39),
     castFunction = __webpack_require__(251);
 
 /**
@@ -66441,7 +67361,7 @@ module.exports = forOwn;
 
 
 /***/ }),
-/* 408 */
+/* 413 */
 /***/ (function(module, exports) {
 
 /**
@@ -66472,7 +67392,7 @@ module.exports = createBaseFor;
 
 
 /***/ }),
-/* 409 */
+/* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isArrayLike = __webpack_require__(9);
@@ -66510,10 +67430,10 @@ module.exports = createBaseEach;
 
 
 /***/ }),
-/* 410 */
+/* 415 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseEach = __webpack_require__(57);
+var baseEach = __webpack_require__(58);
 
 /**
  * The base implementation of `_.filter` without support for iteratee shorthands.
@@ -66537,11 +67457,11 @@ module.exports = baseFilter;
 
 
 /***/ }),
-/* 411 */
+/* 416 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsMatch = __webpack_require__(412),
-    getMatchData = __webpack_require__(425),
+var baseIsMatch = __webpack_require__(417),
+    getMatchData = __webpack_require__(430),
     matchesStrictComparable = __webpack_require__(262);
 
 /**
@@ -66565,10 +67485,10 @@ module.exports = baseMatches;
 
 
 /***/ }),
-/* 412 */
+/* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(58),
+var Stack = __webpack_require__(59),
     baseIsEqual = __webpack_require__(96);
 
 /** Used to compose bitmasks for value comparisons. */
@@ -66633,10 +67553,10 @@ module.exports = baseIsMatch;
 
 
 /***/ }),
-/* 413 */
+/* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ListCache = __webpack_require__(53);
+var ListCache = __webpack_require__(54);
 
 /**
  * Removes all key-value entries from the stack.
@@ -66654,7 +67574,7 @@ module.exports = stackClear;
 
 
 /***/ }),
-/* 414 */
+/* 419 */
 /***/ (function(module, exports) {
 
 /**
@@ -66678,7 +67598,7 @@ module.exports = stackDelete;
 
 
 /***/ }),
-/* 415 */
+/* 420 */
 /***/ (function(module, exports) {
 
 /**
@@ -66698,7 +67618,7 @@ module.exports = stackGet;
 
 
 /***/ }),
-/* 416 */
+/* 421 */
 /***/ (function(module, exports) {
 
 /**
@@ -66718,10 +67638,10 @@ module.exports = stackHas;
 
 
 /***/ }),
-/* 417 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ListCache = __webpack_require__(53),
+var ListCache = __webpack_require__(54),
     Map = __webpack_require__(92),
     MapCache = __webpack_require__(91);
 
@@ -66758,17 +67678,17 @@ module.exports = stackSet;
 
 
 /***/ }),
-/* 418 */
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(58),
+var Stack = __webpack_require__(59),
     equalArrays = __webpack_require__(253),
-    equalByTag = __webpack_require__(420),
-    equalObjects = __webpack_require__(421),
+    equalByTag = __webpack_require__(425),
+    equalObjects = __webpack_require__(426),
     getTag = __webpack_require__(99),
     isArray = __webpack_require__(2),
-    isBuffer = __webpack_require__(35),
-    isTypedArray = __webpack_require__(50);
+    isBuffer = __webpack_require__(36),
+    isTypedArray = __webpack_require__(51);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -66847,7 +67767,7 @@ module.exports = baseIsEqualDeep;
 
 
 /***/ }),
-/* 419 */
+/* 424 */
 /***/ (function(module, exports) {
 
 /**
@@ -66876,7 +67796,7 @@ module.exports = arraySome;
 
 
 /***/ }),
-/* 420 */
+/* 425 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(19),
@@ -66994,7 +67914,7 @@ module.exports = equalByTag;
 
 
 /***/ }),
-/* 421 */
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getAllKeys = __webpack_require__(257);
@@ -67089,7 +68009,7 @@ module.exports = equalObjects;
 
 
 /***/ }),
-/* 422 */
+/* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(14),
@@ -67102,7 +68022,7 @@ module.exports = DataView;
 
 
 /***/ }),
-/* 423 */
+/* 428 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(14),
@@ -67115,7 +68035,7 @@ module.exports = Promise;
 
 
 /***/ }),
-/* 424 */
+/* 429 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(14),
@@ -67128,7 +68048,7 @@ module.exports = Set;
 
 
 /***/ }),
-/* 425 */
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isStrictComparable = __webpack_require__(261),
@@ -67158,7 +68078,7 @@ module.exports = getMatchData;
 
 
 /***/ }),
-/* 426 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsEqual = __webpack_require__(96),
@@ -67197,10 +68117,10 @@ module.exports = baseMatchesProperty;
 
 
 /***/ }),
-/* 427 */
+/* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var memoizeCapped = __webpack_require__(428);
+var memoizeCapped = __webpack_require__(433);
 
 /** Used to match property names within property paths. */
 var reLeadingDot = /^\./,
@@ -67231,10 +68151,10 @@ module.exports = stringToPath;
 
 
 /***/ }),
-/* 428 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var memoize = __webpack_require__(429);
+var memoize = __webpack_require__(434);
 
 /** Used as the maximum memoize cache size. */
 var MAX_MEMOIZE_SIZE = 500;
@@ -67263,7 +68183,7 @@ module.exports = memoizeCapped;
 
 
 /***/ }),
-/* 429 */
+/* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var MapCache = __webpack_require__(91);
@@ -67342,7 +68262,7 @@ module.exports = memoize;
 
 
 /***/ }),
-/* 430 */
+/* 435 */
 /***/ (function(module, exports) {
 
 /**
@@ -67361,13 +68281,13 @@ module.exports = baseHasIn;
 
 
 /***/ }),
-/* 431 */
+/* 436 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var castPath = __webpack_require__(24),
-    isArguments = __webpack_require__(34),
+    isArguments = __webpack_require__(35),
     isArray = __webpack_require__(2),
-    isIndex = __webpack_require__(36),
+    isIndex = __webpack_require__(37),
     isLength = __webpack_require__(89),
     toKey = __webpack_require__(25);
 
@@ -67406,11 +68326,11 @@ module.exports = hasPath;
 
 
 /***/ }),
-/* 432 */
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseProperty = __webpack_require__(433),
-    basePropertyDeep = __webpack_require__(434),
+var baseProperty = __webpack_require__(438),
+    basePropertyDeep = __webpack_require__(439),
     isKey = __webpack_require__(100),
     toKey = __webpack_require__(25);
 
@@ -67444,7 +68364,7 @@ module.exports = property;
 
 
 /***/ }),
-/* 433 */
+/* 438 */
 /***/ (function(module, exports) {
 
 /**
@@ -67464,10 +68384,10 @@ module.exports = baseProperty;
 
 
 /***/ }),
-/* 434 */
+/* 439 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGet = __webpack_require__(59);
+var baseGet = __webpack_require__(60);
 
 /**
  * A specialized version of `baseProperty` which supports deep paths.
@@ -67486,7 +68406,7 @@ module.exports = basePropertyDeep;
 
 
 /***/ }),
-/* 435 */
+/* 440 */
 /***/ (function(module, exports) {
 
 /**
@@ -67515,26 +68435,26 @@ module.exports = baseReduce;
 
 
 /***/ }),
-/* 436 */
+/* 441 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(58),
+var Stack = __webpack_require__(59),
     arrayEach = __webpack_require__(94),
     assignValue = __webpack_require__(104),
-    baseAssign = __webpack_require__(437),
-    baseAssignIn = __webpack_require__(438),
+    baseAssign = __webpack_require__(442),
+    baseAssignIn = __webpack_require__(443),
     cloneBuffer = __webpack_require__(267),
-    copyArray = __webpack_require__(60),
-    copySymbols = __webpack_require__(441),
-    copySymbolsIn = __webpack_require__(442),
+    copyArray = __webpack_require__(61),
+    copySymbols = __webpack_require__(446),
+    copySymbolsIn = __webpack_require__(447),
     getAllKeys = __webpack_require__(257),
     getAllKeysIn = __webpack_require__(106),
     getTag = __webpack_require__(99),
-    initCloneArray = __webpack_require__(443),
-    initCloneByTag = __webpack_require__(444),
+    initCloneArray = __webpack_require__(448),
+    initCloneByTag = __webpack_require__(449),
     initCloneObject = __webpack_require__(270),
     isArray = __webpack_require__(2),
-    isBuffer = __webpack_require__(35),
+    isBuffer = __webpack_require__(36),
     isObject = __webpack_require__(4),
     keys = __webpack_require__(8);
 
@@ -67674,7 +68594,7 @@ module.exports = baseClone;
 
 
 /***/ }),
-/* 437 */
+/* 442 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(16),
@@ -67697,11 +68617,11 @@ module.exports = baseAssign;
 
 
 /***/ }),
-/* 438 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(16),
-    keysIn = __webpack_require__(42);
+    keysIn = __webpack_require__(43);
 
 /**
  * The base implementation of `_.assignIn` without support for multiple sources
@@ -67720,12 +68640,12 @@ module.exports = baseAssignIn;
 
 
 /***/ }),
-/* 439 */
+/* 444 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(4),
-    isPrototype = __webpack_require__(51),
-    nativeKeysIn = __webpack_require__(440);
+    isPrototype = __webpack_require__(52),
+    nativeKeysIn = __webpack_require__(445);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -67759,7 +68679,7 @@ module.exports = baseKeysIn;
 
 
 /***/ }),
-/* 440 */
+/* 445 */
 /***/ (function(module, exports) {
 
 /**
@@ -67785,7 +68705,7 @@ module.exports = nativeKeysIn;
 
 
 /***/ }),
-/* 441 */
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(16),
@@ -67807,7 +68727,7 @@ module.exports = copySymbols;
 
 
 /***/ }),
-/* 442 */
+/* 447 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(16),
@@ -67829,7 +68749,7 @@ module.exports = copySymbolsIn;
 
 
 /***/ }),
-/* 443 */
+/* 448 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -67861,15 +68781,15 @@ module.exports = initCloneArray;
 
 
 /***/ }),
-/* 444 */
+/* 449 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var cloneArrayBuffer = __webpack_require__(107),
-    cloneDataView = __webpack_require__(445),
-    cloneMap = __webpack_require__(446),
-    cloneRegExp = __webpack_require__(448),
-    cloneSet = __webpack_require__(449),
-    cloneSymbol = __webpack_require__(451),
+    cloneDataView = __webpack_require__(450),
+    cloneMap = __webpack_require__(451),
+    cloneRegExp = __webpack_require__(453),
+    cloneSet = __webpack_require__(454),
+    cloneSymbol = __webpack_require__(456),
     cloneTypedArray = __webpack_require__(269);
 
 /** `Object#toString` result references. */
@@ -67947,7 +68867,7 @@ module.exports = initCloneByTag;
 
 
 /***/ }),
-/* 445 */
+/* 450 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var cloneArrayBuffer = __webpack_require__(107);
@@ -67969,10 +68889,10 @@ module.exports = cloneDataView;
 
 
 /***/ }),
-/* 446 */
+/* 451 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var addMapEntry = __webpack_require__(447),
+var addMapEntry = __webpack_require__(452),
     arrayReduce = __webpack_require__(103),
     mapToArray = __webpack_require__(255);
 
@@ -67997,7 +68917,7 @@ module.exports = cloneMap;
 
 
 /***/ }),
-/* 447 */
+/* 452 */
 /***/ (function(module, exports) {
 
 /**
@@ -68018,7 +68938,7 @@ module.exports = addMapEntry;
 
 
 /***/ }),
-/* 448 */
+/* 453 */
 /***/ (function(module, exports) {
 
 /** Used to match `RegExp` flags from their coerced string values. */
@@ -68041,10 +68961,10 @@ module.exports = cloneRegExp;
 
 
 /***/ }),
-/* 449 */
+/* 454 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var addSetEntry = __webpack_require__(450),
+var addSetEntry = __webpack_require__(455),
     arrayReduce = __webpack_require__(103),
     setToArray = __webpack_require__(256);
 
@@ -68069,7 +68989,7 @@ module.exports = cloneSet;
 
 
 /***/ }),
-/* 450 */
+/* 455 */
 /***/ (function(module, exports) {
 
 /**
@@ -68090,7 +69010,7 @@ module.exports = addSetEntry;
 
 
 /***/ }),
-/* 451 */
+/* 456 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(19);
@@ -68114,12 +69034,12 @@ module.exports = cloneSymbol;
 
 
 /***/ }),
-/* 452 */
+/* 457 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var castPath = __webpack_require__(24),
     last = __webpack_require__(271),
-    parent = __webpack_require__(453),
+    parent = __webpack_require__(458),
     toKey = __webpack_require__(25);
 
 /**
@@ -68140,10 +69060,10 @@ module.exports = baseUnset;
 
 
 /***/ }),
-/* 453 */
+/* 458 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGet = __webpack_require__(59),
+var baseGet = __webpack_require__(60),
     baseSlice = __webpack_require__(272);
 
 /**
@@ -68162,7 +69082,7 @@ module.exports = parent;
 
 
 /***/ }),
-/* 454 */
+/* 459 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isPlainObject = __webpack_require__(108);
@@ -68184,11 +69104,11 @@ module.exports = customOmitClone;
 
 
 /***/ }),
-/* 455 */
+/* 460 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayPush = __webpack_require__(97),
-    isFlattenable = __webpack_require__(456);
+    isFlattenable = __webpack_require__(461);
 
 /**
  * The base implementation of `_.flatten` with support for restricting flattening.
@@ -68228,11 +69148,11 @@ module.exports = baseFlatten;
 
 
 /***/ }),
-/* 456 */
+/* 461 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(19),
-    isArguments = __webpack_require__(34),
+    isArguments = __webpack_require__(35),
     isArray = __webpack_require__(2);
 
 /** Built-in value references. */
@@ -68254,10 +69174,10 @@ module.exports = isFlattenable;
 
 
 /***/ }),
-/* 457 */
+/* 462 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toNumber = __webpack_require__(458);
+var toNumber = __webpack_require__(463);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0,
@@ -68302,11 +69222,11 @@ module.exports = toFinite;
 
 
 /***/ }),
-/* 458 */
+/* 463 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(4),
-    isSymbol = __webpack_require__(39);
+    isSymbol = __webpack_require__(40);
 
 /** Used as references for various `Number` constants. */
 var NAN = 0 / 0;
@@ -68374,7 +69294,7 @@ module.exports = toNumber;
 
 
 /***/ }),
-/* 459 */
+/* 464 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isNumber = __webpack_require__(275);
@@ -68418,7 +69338,7 @@ module.exports = isNaN;
 
 
 /***/ }),
-/* 460 */
+/* 465 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsEqual = __webpack_require__(96);
@@ -68459,7 +69379,7 @@ module.exports = isEqual;
 
 
 /***/ }),
-/* 461 */
+/* 466 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIteratee = __webpack_require__(6),
@@ -68490,7 +69410,7 @@ module.exports = createFind;
 
 
 /***/ }),
-/* 462 */
+/* 467 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseSlice = __webpack_require__(272);
@@ -68514,10 +69434,10 @@ module.exports = castSlice;
 
 
 /***/ }),
-/* 463 */
+/* 468 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIndexOf = __webpack_require__(37);
+var baseIndexOf = __webpack_require__(38);
 
 /**
  * Used by `_.trim` and `_.trimEnd` to get the index of the last string symbol
@@ -68539,10 +69459,10 @@ module.exports = charsEndIndex;
 
 
 /***/ }),
-/* 464 */
+/* 469 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIndexOf = __webpack_require__(37);
+var baseIndexOf = __webpack_require__(38);
 
 /**
  * Used by `_.trim` and `_.trimStart` to get the index of the first string symbol
@@ -68565,12 +69485,12 @@ module.exports = charsStartIndex;
 
 
 /***/ }),
-/* 465 */
+/* 470 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var asciiToArray = __webpack_require__(466),
-    hasUnicode = __webpack_require__(467),
-    unicodeToArray = __webpack_require__(468);
+var asciiToArray = __webpack_require__(471),
+    hasUnicode = __webpack_require__(472),
+    unicodeToArray = __webpack_require__(473);
 
 /**
  * Converts `string` to an array.
@@ -68589,7 +69509,7 @@ module.exports = stringToArray;
 
 
 /***/ }),
-/* 466 */
+/* 471 */
 /***/ (function(module, exports) {
 
 /**
@@ -68607,7 +69527,7 @@ module.exports = asciiToArray;
 
 
 /***/ }),
-/* 467 */
+/* 472 */
 /***/ (function(module, exports) {
 
 /** Used to compose unicode character classes. */
@@ -68639,7 +69559,7 @@ module.exports = hasUnicode;
 
 
 /***/ }),
-/* 468 */
+/* 473 */
 /***/ (function(module, exports) {
 
 /** Used to compose unicode character classes. */
@@ -68685,12 +69605,12 @@ module.exports = unicodeToArray;
 
 
 /***/ }),
-/* 469 */
+/* 474 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(16),
     createAssigner = __webpack_require__(279),
-    keysIn = __webpack_require__(42);
+    keysIn = __webpack_require__(43);
 
 /**
  * This method is like `_.assignIn` except that it accepts `customizer`
@@ -68729,12 +69649,12 @@ module.exports = assignInWith;
 
 
 /***/ }),
-/* 470 */
+/* 475 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var eq = __webpack_require__(21),
     isArrayLike = __webpack_require__(9),
-    isIndex = __webpack_require__(36),
+    isIndex = __webpack_require__(37),
     isObject = __webpack_require__(4);
 
 /**
@@ -68765,7 +69685,7 @@ module.exports = isIterateeCall;
 
 
 /***/ }),
-/* 471 */
+/* 476 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var eq = __webpack_require__(21);
@@ -68800,15 +69720,15 @@ module.exports = customDefaultsAssignIn;
 
 
 /***/ }),
-/* 472 */
+/* 477 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(58),
+var Stack = __webpack_require__(59),
     assignMergeValue = __webpack_require__(280),
     baseFor = __webpack_require__(250),
-    baseMergeDeep = __webpack_require__(473),
+    baseMergeDeep = __webpack_require__(478),
     isObject = __webpack_require__(4),
-    keysIn = __webpack_require__(42);
+    keysIn = __webpack_require__(43);
 
 /**
  * The base implementation of `_.merge` without support for multiple sources.
@@ -68847,23 +69767,23 @@ module.exports = baseMerge;
 
 
 /***/ }),
-/* 473 */
+/* 478 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assignMergeValue = __webpack_require__(280),
     cloneBuffer = __webpack_require__(267),
     cloneTypedArray = __webpack_require__(269),
-    copyArray = __webpack_require__(60),
+    copyArray = __webpack_require__(61),
     initCloneObject = __webpack_require__(270),
-    isArguments = __webpack_require__(34),
+    isArguments = __webpack_require__(35),
     isArray = __webpack_require__(2),
     isArrayLikeObject = __webpack_require__(249),
-    isBuffer = __webpack_require__(35),
+    isBuffer = __webpack_require__(36),
     isFunction = __webpack_require__(20),
     isObject = __webpack_require__(4),
     isPlainObject = __webpack_require__(108),
-    isTypedArray = __webpack_require__(50),
-    toPlainObject = __webpack_require__(474);
+    isTypedArray = __webpack_require__(51),
+    toPlainObject = __webpack_require__(479);
 
 /**
  * A specialized version of `baseMerge` for arrays and objects which performs
@@ -68946,11 +69866,11 @@ module.exports = baseMergeDeep;
 
 
 /***/ }),
-/* 474 */
+/* 479 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(16),
-    keysIn = __webpack_require__(42);
+    keysIn = __webpack_require__(43);
 
 /**
  * Converts `value` to a plain object flattening inherited enumerable string
@@ -68984,7 +69904,7 @@ module.exports = toPlainObject;
 
 
 /***/ }),
-/* 475 */
+/* 480 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68993,7 +69913,7 @@ module.exports = toPlainObject;
 var map = __webpack_require__(12);
 var isArray = __webpack_require__(2);
 var isNumber = __webpack_require__(275);
-var isString = __webpack_require__(45);
+var isString = __webpack_require__(46);
 function valToNumber(v) {
   if (isNumber(v)) {
     return v;
@@ -69010,7 +69930,7 @@ module.exports = valToNumber;
 
 
 /***/ }),
-/* 476 */
+/* 481 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69019,8 +69939,8 @@ module.exports = valToNumber;
 var forEach = __webpack_require__(23);
 var filter = __webpack_require__(95);
 var map = __webpack_require__(12);
-var isEmpty = __webpack_require__(44);
-var indexOf = __webpack_require__(62);
+var isEmpty = __webpack_require__(45);
+var indexOf = __webpack_require__(63);
 
 function filterState(state, filters) {
   var partialState = {};
@@ -69084,7 +70004,7 @@ module.exports = filterState;
 
 
 /***/ }),
-/* 477 */
+/* 482 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69103,12 +70023,12 @@ module.exports = filterState;
  */
 
 var isUndefined = __webpack_require__(276);
-var isString = __webpack_require__(45);
+var isString = __webpack_require__(46);
 var isFunction = __webpack_require__(20);
-var isEmpty = __webpack_require__(44);
+var isEmpty = __webpack_require__(45);
 var defaults = __webpack_require__(109);
 
-var reduce = __webpack_require__(40);
+var reduce = __webpack_require__(41);
 var filter = __webpack_require__(95);
 var omit = __webpack_require__(266);
 
@@ -69211,7 +70131,7 @@ var lib = {
    * @return {boolean}
    */
   isRefined: function isRefined(refinementList, attribute, refinementValue) {
-    var indexOf = __webpack_require__(62);
+    var indexOf = __webpack_require__(63);
 
     var containsRefinements = !!refinementList[attribute] &&
       refinementList[attribute].length > 0;
@@ -69230,7 +70150,7 @@ module.exports = lib;
 
 
 /***/ }),
-/* 478 */
+/* 483 */
 /***/ (function(module, exports) {
 
 /**
@@ -69267,11 +70187,11 @@ module.exports = compact;
 
 
 /***/ }),
-/* 479 */
+/* 484 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIteratee = __webpack_require__(6),
-    baseSum = __webpack_require__(480);
+    baseSum = __webpack_require__(485);
 
 /**
  * This method is like `_.sum` except that it accepts `iteratee` which is
@@ -69306,7 +70226,7 @@ module.exports = sumBy;
 
 
 /***/ }),
-/* 480 */
+/* 485 */
 /***/ (function(module, exports) {
 
 /**
@@ -69336,14 +70256,14 @@ module.exports = baseSum;
 
 
 /***/ }),
-/* 481 */
+/* 486 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIndexOf = __webpack_require__(37),
+var baseIndexOf = __webpack_require__(38),
     isArrayLike = __webpack_require__(9),
-    isString = __webpack_require__(45),
-    toInteger = __webpack_require__(43),
-    values = __webpack_require__(482);
+    isString = __webpack_require__(46),
+    toInteger = __webpack_require__(44),
+    values = __webpack_require__(487);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeMax = Math.max;
@@ -69395,10 +70315,10 @@ module.exports = includes;
 
 
 /***/ }),
-/* 482 */
+/* 487 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseValues = __webpack_require__(483),
+var baseValues = __webpack_require__(488),
     keys = __webpack_require__(8);
 
 /**
@@ -69435,7 +70355,7 @@ module.exports = values;
 
 
 /***/ }),
-/* 483 */
+/* 488 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayMap = __webpack_require__(11);
@@ -69460,15 +70380,15 @@ module.exports = baseValues;
 
 
 /***/ }),
-/* 484 */
+/* 489 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayMap = __webpack_require__(11),
     baseIteratee = __webpack_require__(6),
     baseMap = __webpack_require__(265),
-    baseSortBy = __webpack_require__(485),
+    baseSortBy = __webpack_require__(490),
     baseUnary = __webpack_require__(90),
-    compareMultiple = __webpack_require__(486),
+    compareMultiple = __webpack_require__(491),
     identity = __webpack_require__(15);
 
 /**
@@ -69500,7 +70420,7 @@ module.exports = baseOrderBy;
 
 
 /***/ }),
-/* 485 */
+/* 490 */
 /***/ (function(module, exports) {
 
 /**
@@ -69527,10 +70447,10 @@ module.exports = baseSortBy;
 
 
 /***/ }),
-/* 486 */
+/* 491 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var compareAscending = __webpack_require__(487);
+var compareAscending = __webpack_require__(492);
 
 /**
  * Used by `_.orderBy` to compare multiple properties of a value to another
@@ -69577,10 +70497,10 @@ module.exports = compareMultiple;
 
 
 /***/ }),
-/* 487 */
+/* 492 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isSymbol = __webpack_require__(39);
+var isSymbol = __webpack_require__(40);
 
 /**
  * Compares values to sort them in ascending order.
@@ -69624,12 +70544,12 @@ module.exports = compareAscending;
 
 
 /***/ }),
-/* 488 */
+/* 493 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseRest = __webpack_require__(22),
     createWrap = __webpack_require__(111),
-    getHolder = __webpack_require__(46),
+    getHolder = __webpack_require__(47),
     replaceHolders = __webpack_require__(26);
 
 /** Used to compose bitmasks for function metadata. */
@@ -69680,10 +70600,10 @@ module.exports = partial;
 
 
 /***/ }),
-/* 489 */
+/* 494 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var createCtor = __webpack_require__(64),
+var createCtor = __webpack_require__(65),
     root = __webpack_require__(3);
 
 /** Used to compose bitmasks for function metadata. */
@@ -69714,14 +70634,14 @@ module.exports = createBind;
 
 
 /***/ }),
-/* 490 */
+/* 495 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var apply = __webpack_require__(56),
-    createCtor = __webpack_require__(64),
+var apply = __webpack_require__(57),
+    createCtor = __webpack_require__(65),
     createHybrid = __webpack_require__(285),
     createRecurry = __webpack_require__(288),
-    getHolder = __webpack_require__(46),
+    getHolder = __webpack_require__(47),
     replaceHolders = __webpack_require__(26),
     root = __webpack_require__(3);
 
@@ -69766,7 +70686,7 @@ module.exports = createCurry;
 
 
 /***/ }),
-/* 491 */
+/* 496 */
 /***/ (function(module, exports) {
 
 /**
@@ -69793,13 +70713,13 @@ module.exports = countHolders;
 
 
 /***/ }),
-/* 492 */
+/* 497 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var LazyWrapper = __webpack_require__(112),
     getData = __webpack_require__(289),
-    getFuncName = __webpack_require__(494),
-    lodash = __webpack_require__(496);
+    getFuncName = __webpack_require__(499),
+    lodash = __webpack_require__(501);
 
 /**
  * Checks if `func` has a lazy counterpart.
@@ -69827,7 +70747,7 @@ module.exports = isLaziable;
 
 
 /***/ }),
-/* 493 */
+/* 498 */
 /***/ (function(module, exports) {
 
 /**
@@ -69850,10 +70770,10 @@ module.exports = noop;
 
 
 /***/ }),
-/* 494 */
+/* 499 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var realNames = __webpack_require__(495);
+var realNames = __webpack_require__(500);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -69887,7 +70807,7 @@ module.exports = getFuncName;
 
 
 /***/ }),
-/* 495 */
+/* 500 */
 /***/ (function(module, exports) {
 
 /** Used to lookup unminified function names. */
@@ -69897,7 +70817,7 @@ module.exports = realNames;
 
 
 /***/ }),
-/* 496 */
+/* 501 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var LazyWrapper = __webpack_require__(112),
@@ -69905,7 +70825,7 @@ var LazyWrapper = __webpack_require__(112),
     baseLodash = __webpack_require__(113),
     isArray = __webpack_require__(2),
     isObjectLike = __webpack_require__(5),
-    wrapperClone = __webpack_require__(497);
+    wrapperClone = __webpack_require__(502);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -70050,12 +70970,12 @@ module.exports = lodash;
 
 
 /***/ }),
-/* 497 */
+/* 502 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var LazyWrapper = __webpack_require__(112),
     LodashWrapper = __webpack_require__(290),
-    copyArray = __webpack_require__(60);
+    copyArray = __webpack_require__(61);
 
 /**
  * Creates a clone of `wrapper`.
@@ -70079,7 +70999,7 @@ module.exports = wrapperClone;
 
 
 /***/ }),
-/* 498 */
+/* 503 */
 /***/ (function(module, exports) {
 
 /** Used to match wrap detail comments. */
@@ -70102,7 +71022,7 @@ module.exports = getWrapDetails;
 
 
 /***/ }),
-/* 499 */
+/* 504 */
 /***/ (function(module, exports) {
 
 /** Used to match wrap detail comments. */
@@ -70131,7 +71051,7 @@ module.exports = insertWrapDetails;
 
 
 /***/ }),
-/* 500 */
+/* 505 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayEach = __webpack_require__(94),
@@ -70183,11 +71103,11 @@ module.exports = updateWrapDetails;
 
 
 /***/ }),
-/* 501 */
+/* 506 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var copyArray = __webpack_require__(60),
-    isIndex = __webpack_require__(36);
+var copyArray = __webpack_require__(61),
+    isIndex = __webpack_require__(37);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeMin = Math.min;
@@ -70218,11 +71138,11 @@ module.exports = reorder;
 
 
 /***/ }),
-/* 502 */
+/* 507 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var apply = __webpack_require__(56),
-    createCtor = __webpack_require__(64),
+var apply = __webpack_require__(57),
+    createCtor = __webpack_require__(65),
     root = __webpack_require__(3);
 
 /** Used to compose bitmasks for function metadata. */
@@ -70267,7 +71187,7 @@ module.exports = createPartial;
 
 
 /***/ }),
-/* 503 */
+/* 508 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var composeArgs = __webpack_require__(286),
@@ -70363,12 +71283,12 @@ module.exports = mergeData;
 
 
 /***/ }),
-/* 504 */
+/* 509 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseRest = __webpack_require__(22),
     createWrap = __webpack_require__(111),
-    getHolder = __webpack_require__(46),
+    getHolder = __webpack_require__(47),
     replaceHolders = __webpack_require__(26);
 
 /** Used to compose bitmasks for function metadata. */
@@ -70418,12 +71338,12 @@ module.exports = partialRight;
 
 
 /***/ }),
-/* 505 */
+/* 510 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseClamp = __webpack_require__(506),
+var baseClamp = __webpack_require__(511),
     baseToString = __webpack_require__(102),
-    toInteger = __webpack_require__(43),
+    toInteger = __webpack_require__(44),
     toString = __webpack_require__(101);
 
 /**
@@ -70463,7 +71383,7 @@ module.exports = startsWith;
 
 
 /***/ }),
-/* 506 */
+/* 511 */
 /***/ (function(module, exports) {
 
 /**
@@ -70491,7 +71411,7 @@ module.exports = baseClamp;
 
 
 /***/ }),
-/* 507 */
+/* 512 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70501,11 +71421,11 @@ module.exports = generateTrees;
 
 var last = __webpack_require__(271);
 var map = __webpack_require__(12);
-var reduce = __webpack_require__(40);
+var reduce = __webpack_require__(41);
 var orderBy = __webpack_require__(282);
 var trim = __webpack_require__(278);
-var find = __webpack_require__(63);
-var pickBy = __webpack_require__(508);
+var find = __webpack_require__(64);
+var pickBy = __webpack_require__(513);
 
 var prepareHierarchicalFacetSortBy = __webpack_require__(293);
 
@@ -70623,7 +71543,7 @@ function formatHierarchicalFacetValue(hierarchicalSeparator, currentRefinement) 
 
 
 /***/ }),
-/* 508 */
+/* 513 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayMap = __webpack_require__(11),
@@ -70666,12 +71586,12 @@ module.exports = pickBy;
 
 
 /***/ }),
-/* 509 */
+/* 514 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assignValue = __webpack_require__(104),
     castPath = __webpack_require__(24),
-    isIndex = __webpack_require__(36),
+    isIndex = __webpack_require__(37),
     isObject = __webpack_require__(4),
     toKey = __webpack_require__(25);
 
@@ -70719,7 +71639,7 @@ module.exports = baseSet;
 
 
 /***/ }),
-/* 510 */
+/* 515 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70763,7 +71683,7 @@ module.exports = DerivedHelper;
 
 
 /***/ }),
-/* 511 */
+/* 516 */
 /***/ (function(module, exports) {
 
 module.exports = function isBuffer(arg) {
@@ -70774,7 +71694,7 @@ module.exports = function isBuffer(arg) {
 }
 
 /***/ }),
-/* 512 */
+/* 517 */
 /***/ (function(module, exports) {
 
 if (typeof Object.create === 'function') {
@@ -70803,7 +71723,7 @@ if (typeof Object.create === 'function') {
 
 
 /***/ }),
-/* 513 */
+/* 518 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70811,7 +71731,7 @@ if (typeof Object.create === 'function') {
 
 var forEach = __webpack_require__(23);
 var map = __webpack_require__(12);
-var reduce = __webpack_require__(40);
+var reduce = __webpack_require__(41);
 var merge = __webpack_require__(110);
 var isArray = __webpack_require__(2);
 
@@ -71119,7 +72039,7 @@ module.exports = requestBuilder;
 
 
 /***/ }),
-/* 514 */
+/* 519 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71211,10 +72131,10 @@ module.exports = {
 
 
 /***/ }),
-/* 515 */
+/* 520 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseInverter = __webpack_require__(516);
+var baseInverter = __webpack_require__(521);
 
 /**
  * Creates a function like `_.invertBy`.
@@ -71234,10 +72154,10 @@ module.exports = createInverter;
 
 
 /***/ }),
-/* 516 */
+/* 521 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseForOwn = __webpack_require__(38);
+var baseForOwn = __webpack_require__(39);
 
 /**
  * The base implementation of `_.invert` and `_.invertBy` which inverts
@@ -71261,14 +72181,14 @@ module.exports = baseInverter;
 
 
 /***/ }),
-/* 517 */
+/* 522 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var stringify = __webpack_require__(518);
-var parse = __webpack_require__(519);
+var stringify = __webpack_require__(523);
+var parse = __webpack_require__(524);
 var formats = __webpack_require__(299);
 
 module.exports = {
@@ -71279,7 +72199,7 @@ module.exports = {
 
 
 /***/ }),
-/* 518 */
+/* 523 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71496,7 +72416,7 @@ module.exports = function (object, opts) {
 
 
 /***/ }),
-/* 519 */
+/* 524 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71675,12 +72595,12 @@ module.exports = function (str, opts) {
 
 
 /***/ }),
-/* 520 */
+/* 525 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseRest = __webpack_require__(22),
     createWrap = __webpack_require__(111),
-    getHolder = __webpack_require__(46),
+    getHolder = __webpack_require__(47),
     replaceHolders = __webpack_require__(26);
 
 /** Used to compose bitmasks for function metadata. */
@@ -71738,10 +72658,10 @@ module.exports = bind;
 
 
 /***/ }),
-/* 521 */
+/* 526 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var basePick = __webpack_require__(522),
+var basePick = __webpack_require__(527),
     flatRest = __webpack_require__(273);
 
 /**
@@ -71769,7 +72689,7 @@ module.exports = pick;
 
 
 /***/ }),
-/* 522 */
+/* 527 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var basePickBy = __webpack_require__(294),
@@ -71794,11 +72714,11 @@ module.exports = basePick;
 
 
 /***/ }),
-/* 523 */
+/* 528 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseAssignValue = __webpack_require__(41),
-    baseForOwn = __webpack_require__(38),
+var baseAssignValue = __webpack_require__(42),
+    baseForOwn = __webpack_require__(39),
     baseIteratee = __webpack_require__(6);
 
 /**
@@ -71836,11 +72756,11 @@ module.exports = mapKeys;
 
 
 /***/ }),
-/* 524 */
+/* 529 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseAssignValue = __webpack_require__(41),
-    baseForOwn = __webpack_require__(38),
+var baseAssignValue = __webpack_require__(42),
+    baseForOwn = __webpack_require__(39),
     baseIteratee = __webpack_require__(6);
 
 /**
@@ -71885,7 +72805,7 @@ module.exports = mapValues;
 
 
 /***/ }),
-/* 525 */
+/* 530 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71968,848 +72888,6 @@ function escapeHtml(string) {
     : html;
 }
 
-
-/***/ }),
-/* 526 */,
-/* 527 */,
-/* 528 */,
-/* 529 */,
-/* 530 */,
-/* 531 */,
-/* 532 */,
-/* 533 */,
-/* 534 */,
-/* 535 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(65)(
-  /* script */
-  __webpack_require__(537),
-  /* template */
-  __webpack_require__(536),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/vtolbert/@progroup/sps/resources/assets/js/views/spf-overview/index.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0c27f6e8", Component.options)
-  } else {
-    hotAPI.reload("data-v-0c27f6e8", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 536 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('main', [_vm._m(0), _vm._v(" "), _c('section', {
-    staticClass: "section"
-  }, [_c('div', {
-    staticClass: "container"
-  }, [_c('div', {
-    staticClass: "columns watermark-spf"
-  }, [_c('div', {
-    staticClass: "column is-2"
-  }), _vm._v(" "), _c('div', {
-    staticClass: "column is-8"
-  }, [_c('div', {
-    staticClass: "content"
-  }, [_c('h1', [_vm._v("SPF Overview")]), _vm._v(" "), _c('p', [_vm._v("The five steps that comprise SAMHSA’s Strategic Prevention Framework will enable States and communities to build the infrastructure necessary for effective and sustainable prevention. Each step contains key milestones and products that are essential to the validity of the process.")]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('h2', [_vm._v("Play Narration")]), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('ul', {
-    staticClass: "cbp-ntaccordion",
-    attrs: {
-      "id": "cbp-ntaccordion"
-    }
-  }, [_c('li', {
-    staticClass: "step-1"
-  }, [_c('h3', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_c('i', {
-    staticClass: "flaticon-flag24"
-  }), _vm._v(" Assess Needs")]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-ntcontent open-container"
-  }, [_c('h2', [_vm._v("Play Narration")]), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('p', [_vm._v("In Step 1 of SAMHSA’s Strategic Prevention Framework (SPF), prevention professionals gather and assess data from a variety of sources to ensure that substance misuse prevention efforts are appropriate and targeted to the needs of communities.")]), _vm._v(" "), _vm._m(5), _vm._v(" "), _vm._m(6), _vm._v(" "), _c('p', [_vm._v("Based on their assessment of needs, resources, and readiness, prevention professionals identify one or more priorities on which to focus their prevention efforts.")]), _vm._v(" "), _c('ul', {
-    staticClass: "cbp-ntsubaccordion"
-  }, [_c('li', {}, [_c('h4', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_vm._v("Determining Problem Impact")]), _vm._v(" "), _vm._m(7)]), _vm._v(" "), _c('li', {}, [_c('h4', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_vm._v("Assessing Risk and Protective Factors")]), _vm._v(" "), _vm._m(8)]), _vm._v(" "), _c('li', {}, [_c('h4', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_vm._v("Publications and Resources")]), _vm._v(" "), _vm._m(9)])])])]), _vm._v(" "), _c('li', {
-    staticClass: "step-2"
-  }, [_c('h3', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_c('i', {
-    staticClass: "flaticon-signal39"
-  }), _vm._v(" Build Capacity")]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-ntcontent open-container"
-  }, [_c('h2', [_vm._v("Play Narration")]), _vm._v(" "), _vm._m(10), _vm._v(" "), _vm._m(11), _vm._v(" "), _c('p', [_vm._v("States and communities must have the capacity—that is, the resources and readiness—to support their chosen prevention programs and interventions. Programs that are well-supported are more likely to succeed. Community resources and community readiness often go hand-in-hand: building resource capacity also contributes to greater readiness. For example, when key stakeholders are involved in solving problems, they are more likely to engage others. This leads to more people recognizing the value of prevention and greater community readiness to accept prevention interventions.")]), _vm._v(" "), _vm._m(12), _vm._v(" "), _c('ul', {
-    staticClass: "cbp-ntsubaccordion"
-  }, [_c('li', {}, [_c('h4', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_vm._v("Raise Stakeholder Awareness ")]), _vm._v(" "), _vm._m(13)]), _vm._v(" "), _c('li', {}, [_c('h4', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_vm._v("Establish or Strengthen Collaboration Efforts")]), _vm._v(" "), _vm._m(14)]), _vm._v(" "), _c('li', {}, [_c('h4', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_vm._v("Expand Resources")]), _vm._v(" "), _vm._m(15)]), _vm._v(" "), _c('li', {}, [_c('h4', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_vm._v("Prepare the Prevention Workforce")]), _vm._v(" "), _vm._m(16)])])])]), _vm._v(" "), _c('li', {
-    staticClass: "step-3"
-  }, [_c('h3', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_c('i', {
-    staticClass: "flaticon-strategical"
-  }), _vm._v(" Strategic Planning")]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-ntcontent open-container"
-  }, [_c('h2', [_vm._v("Play Narration")]), _vm._v(" "), _vm._m(17), _vm._v(" "), _c('p', [_vm._v("Step 3 of the Strategic Prevention Framework (SPF) shows how to plan effectively by prioritizing risk and protective factors and building logic models.")]), _vm._v(" "), _vm._m(18), _vm._v(" "), _vm._m(19), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("As you plan, keep in mind that decisions that reflect the input of all stakeholders, whether they are part of a formal coalition or informal group of collaborators, are more likely to keep stakeholders committed to your program.")]), _vm._v(" "), _c('p', [_vm._v("Planning is also crucial to the sustainability of prevention outcomes. It establishes the resources needed to maintain program activities and greatly increases the likelihood that you will achieve your expected outcomes.")]), _vm._v(" "), _c('h4', [_vm._v("Selecting Effective Interventions")]), _vm._v(" "), _c('p', [_vm._v("Sometimes people want to select interventions that are popular, that worked well in a different community, or that they are familiar with. However, these are not good reasons for selecting an intervention. It is more important that the prevention intervention effectively address the priority substance use problem and associated risk and protective factors, and that intervention is a good fit for the broader community.")]), _vm._v(" "), _vm._m(20), _vm._v(" "), _vm._m(21), _vm._v(" "), _c('br'), _vm._v(" "), _c('ul', {
-    staticClass: "cbp-ntsubaccordion"
-  }, [_c('li', {
-    staticClass: "cbp-ntopen"
-  }, [_c('h4', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_vm._v("Evidence-based Interventions")]), _vm._v(" "), _vm._m(22)]), _vm._v(" "), _c('li', {
-    staticClass: "cbp-ntopen"
-  }, [_c('h4', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_vm._v("Determining Fit")]), _vm._v(" "), _vm._m(23)])])])]), _vm._v(" "), _c('li', {
-    staticClass: "step-4"
-  }, [_c('h3', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_c('i', {
-    staticClass: "flaticon-gear42"
-  }), _vm._v(" Implement")]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-ntcontent open-container"
-  }, [_c('h2', [_vm._v("Play Narration")]), _vm._v(" "), _vm._m(24), _vm._v(" "), _c('p', [_vm._v("In Step 4 of the Strategic Prevention Framework (SPF), prevention professionals develop action plans to implement their chosen prevention intervention.")]), _vm._v(" "), _c('p', [_vm._v("In Step 4 of the SPF, prevention planners implement their program. During this step, you will see if your assessments were accurate and also find out how your target population responds to the program. As you implement your selected interventions, develop a strong action plan and adapt it as needed. Stay aware of factors that may influence how your intervention is implemented.")]), _vm._v(" "), _c('ul', {
-    staticClass: "cbp-ntsubaccordion"
-  }, [_c('li', {
-    staticClass: "cbp-ntopen"
-  }, [_c('h4', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_vm._v("Develop an Action Plan")]), _vm._v(" "), _vm._m(25)]), _vm._v(" "), _c('li', {
-    staticClass: "cbp-ntopen"
-  }, [_c('h4', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_vm._v("Factors That May Influence Implementation")]), _vm._v(" "), _vm._m(26)]), _vm._v(" "), _c('li', {
-    staticClass: "cbp-ntopen"
-  }, [_c('h4', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_vm._v("Fidelity and Adaptation")]), _vm._v(" "), _vm._m(27)]), _vm._v(" "), _c('li', {
-    staticClass: "cbp-ntopen"
-  }, [_c('h4', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_vm._v("Publications and Resources")]), _vm._v(" "), _vm._m(28)])])])]), _vm._v(" "), _c('li', {
-    staticClass: "step-5"
-  }, [_c('h3', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_c('span', {
-    staticClass: "flaticon-workers"
-  }), _vm._v(" Evaluation")]), _vm._v(" "), _c('div', {
-    staticClass: "cbp-ntcontent open-container"
-  }, [_c('h2', [_vm._v("Play Narration")]), _vm._v(" "), _vm._m(29), _vm._v(" "), _c('p', [_vm._v("The evaluation step of SAMHSA’s Strategic Prevention Framework (SPF) quantifies the challenges and successes of implementing a prevention program.")]), _vm._v(" "), _c('p', [_vm._v("Evaluation is the systematic collection and analysis of information about program activities, characteristics, and outcomes. The evaluation step of the Strategic Prevention Framework (SPF) is not just about collecting information, but using that information to improve the effectiveness of a prevention program. After evaluation, planners may decide whether or not to continue the program.")]), _vm._v(" "), _c('p', [_vm._v("Prevention practitioners need to evaluate how well the program was delivered and how successful it was in achieving the expected outcomes. Once the program has been evaluated, prevention planners typically report evaluation results to stakeholders, which can include community members and lawmakers. Stakeholders can promote your program, increase public interest, and possibly help to secure additional funding.")]), _vm._v(" "), _c('p', [_vm._v("Learn more about:")]), _vm._v(" "), _vm._m(30), _vm._v(" "), _c('ul', {
-    staticClass: "cbp-ntsubaccordion"
-  }, [_c('li', {
-    staticClass: "cbp-ntopen"
-  }, [_c('h4', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_vm._v("Evaluation and the SPF ")]), _vm._v(" "), _vm._m(31)]), _vm._v(" "), _c('li', {
-    staticClass: "cbp-ntopen"
-  }, [_c('h4', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_vm._v("Publications and Resources ")]), _vm._v(" "), _vm._m(32)]), _vm._v(" "), _c('li', {
-    staticClass: "cbp-ntopen"
-  }, [_c('h4', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_vm._v("Cultural Competence")]), _vm._v(" "), _vm._m(33)]), _vm._v(" "), _c('li', {
-    staticClass: "cbp-ntopen"
-  }, [_c('h4', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_vm._v("Building a Culturally Competent Workforce")]), _vm._v(" "), _vm._m(34)]), _vm._v(" "), _c('li', {
-    staticClass: "cbp-ntopen"
-  }, [_c('h4', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_vm._v("Culturally Competent Organizations")]), _vm._v(" "), _vm._m(35)]), _vm._v(" "), _c('li', {
-    staticClass: "cbp-ntopen"
-  }, [_c('h4', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_vm._v("CSAP Principles of Cultural Competence")]), _vm._v(" "), _vm._m(36)]), _vm._v(" "), _c('li', {
-    staticClass: "cbp-ntopen"
-  }, [_c('h4', {
-    staticClass: "cbp-nttrigger",
-    on: {
-      "click": function($event) {
-        _vm.toggle($event)
-      }
-    }
-  }, [_vm._v("Publications and Resources ")]), _vm._v(" "), _vm._m(37), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
-      "target": "_blank"
-    }
-  })]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
-      "target": "_blank"
-    }
-  })]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
-      "target": "_blank"
-    }
-  })]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
-      "target": "_blank"
-    }
-  })]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
-      "target": "_blank"
-    }
-  })])])])])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', {
-    staticClass: "hero is-medium is-primary is-bold",
-    staticStyle: {
-      "background-size": "cover",
-      "background-image": "url('/images/about.jpg')"
-    }
-  }, [_c('div', {
-    staticClass: "hero-body"
-  }, [_c('div', {
-    staticClass: "container"
-  })])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('strong', [_vm._v("Note")]), _vm._v(" In order to ensure complete adherence to the SAMHSA SPF model, these notes have been derived from the SAMHSA website and other SAMHSA materials.  For more information, go to www.SAMHSA.org")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('audio', {
-    attrs: {
-      "controls": ""
-    }
-  }, [_c('source', {
-    attrs: {
-      "src": "http://resources.ga-sps.org/content/spf/spf-overview-introduction.m4a",
-      "type": ""
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('audio', {
-    attrs: {
-      "controls": ""
-    }
-  }, [_c('source', {
-    attrs: {
-      "src": "http://resources.ga-sps.org/content/spf/spf-assess-needs.m4a",
-      "type": ""
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('b', [_vm._v("Step 1")]), _vm._v(" of the Strategic Prevention Framework (SPF) helps prevention professionals assess community needs, resources, and readiness to address substance misuse.")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("Data help to inform the identification and prioritization of substance misuse problems, clarify those problems’ impact on communities and vulnerable populations, and assess the readiness and resources needed to protect against those problems and their consequences. Learn more about\n                                    "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step1-assess-needs/assess-community-resources-readiness"
-    }
-  }, [_vm._v(" assessing community resources and readiness.")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("Data from\n                                    "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/practicing-effective-prevention/epidemiology-prevention/epidemiological-profiles"
-    }
-  }, [_vm._v(" epidemiological profiles for states and jurisdictions")]), _vm._v(" and other sources may also show what risk and protective factors are present in the community.")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "cbp-ntcontent"
-  }, [_c('p', [_vm._v("Using one or more data sources, you can determine what needs and challenges exist in your community. As you\n                                                "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/practicing-effective-prevention/epidemiology-prevention/finding-analyzing-data"
-    }
-  }, [_vm._v(" analyze the data")]), _vm._v(", ask yourself the following questions:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("What are the community’s most pressing problems and related behaviors?")]), _vm._v(" "), _c('li', [_vm._v("How often are the problems occurring? What are the associated issues?")]), _vm._v(" "), _c('li', [_vm._v("Where are they occurring? Do\n                                                    "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/specific-populations"
-    }
-  }, [_vm._v(" sub-populations")]), _vm._v(" exhibit different substance use patterns?")]), _vm._v(" "), _c('li', [_vm._v("Which populations experience the problems the most? Are sub-populations experiencing different problems or consequences?")]), _vm._v(" "), _c('li', [_vm._v("Are there particular places, times, or sub-populations that seem to be “driving the data”?")]), _vm._v(" "), _c('li', [_vm._v("Are there specific outcomes that stand out?\n                                                ")])]), _vm._v(" "), _c('p', [_vm._v("Data may reveal that the community has multiple areas of need that are contributing to substance misuse. Use\n                                                "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/criteria-analyzing-assessment-data"
-    }
-  }, [_vm._v("criteria for analyzing assessment data")]), _vm._v(" to guide your decision on which problem to make your priority.")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "cbp-ntcontent"
-  }, [_c('p', [_vm._v("Every problem is related to its own set of risk and protective factors. After you have selected your prevention priority, assess the factors that are driving or alleviating the problem.")]), _vm._v(" "), _c('p', [_vm._v("As the name suggests, risk factors can make certain problems more likely to occur, and protective factors reduce the chance of certain problems occurring. Identifying which risk factors exist in your community could reveal possible areas of need. For example, after your assessment you may determine that neighborhood poverty is a risk factor in your community. Consequently, you identify it as a potential prevention priority.")]), _vm._v(" "), _c('p', [_vm._v("Your assessment may also reveal protective factors, such as afterschool activities. These protective factors may be used as resources to support your prevention efforts.")]), _vm._v(" "), _c('p', [_vm._v("The factors driving a problem in one community may differ from the factors driving it in another community. One of the most important lessons learned from prevention research is that, to be effective, prevention strategies must address the underlying factors driving a problem. It doesn’t matter how carefully a program or intervention is implemented. If it’s not a good match for the problem, it’s not going to work.")]), _vm._v(" "), _c('p', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/practicing-effective-prevention/prevention-behavioral-health/risk-protective-factors"
-    }
-  }, [_vm._v("Learn more about risk and protective factors.")])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "cbp-ntcontent"
-  }, [_c('ul', [_c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/sources-consequence-data-underage-drinking",
-      "target": "_blank"
-    }
-  }, [_vm._v("Sources of Consequence Data for Underage Drinking")])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/national-data-sources"
-    }
-  }, [_vm._v("National Data Sources")])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/iowa-group-strengthens-data-collection"
-    }
-  }, [_vm._v("Iowa’s Data Task Group Strengthens Data Collection at the Local Level")])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/prevention-massachusetts"
-    }
-  }, [_vm._v("Prevention in Massachusetts: Following the Data Video – 2012")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('audio', {
-    attrs: {
-      "controls": ""
-    }
-  }, [_c('source', {
-    attrs: {
-      "src": "http://resources.ga-sps.org/content/spf/spf-capacity-building.m4a",
-      "type": ""
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('b', [_vm._v("Step 2")]), _vm._v(" of the Strategic Prevention Framework (SPF) focuses on identifying resources and readiness for addressing substance misuse in communities.")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention/cultural-competence",
-      "target": "_blank"
-    }
-  }, [_vm._v("Cultural competence")]), _vm._v(" and the\n                                    "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/sustainability",
-      "target": "_blank"
-    }
-  }, [_vm._v(" sustainability")]), _vm._v(" of prevention outcomes are closely linked aspects of capacity building. Broad cultural representation is essential to sustaining long-term prevention efforts: the wider your base of support, the greater the likelihood you will achieve a successful outcome.")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "cbp-ntcontent"
-  }, [_c('p', [_vm._v("Your goal is to persuade stakeholders, such as community members or policymakers, to make your issue a priority. To do that, you will need to make a strong and compelling case for why they should devote their time, energy, and resources to the problems you have identified. You’ll be in a better position to gain their support by\n                                                "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/cultural-competence/cultural-competence-spf",
-      "target": "_blank"
-    }
-  }, [_vm._v(" incorporating cultural competence into your implementation of the Strategic Prevention Framework (SPF).")]), _vm._v(" Educate other members of the behavioral health\n                                                "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/workforce",
-      "target": "_blank"
-    }
-  }, [_vm._v("workforce")]), _vm._v(" about how they can support prevention efforts in the work you do, because not all practitioners may recognize the role they can play.")]), _vm._v(" "), _c('p', [_vm._v("Increasing community awareness isn’t about increasing the knowledge and awareness of every community member. Rather, it often involves collaborating with key stakeholders who can influence whether your prevention initiative will succeed. To identify these stakeholders, analyze the readiness data you collected while\n                                                "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step1-assess-needs",
-      "target": "_blank"
-    }
-  }, [_vm._v("assessing community needs.")]), _vm._v(" Use the data to find community members and groups who are not yet ready for the planned prevention approach, but who will play a role in its success as stakeholders. Then develop and implement strategies for boosting their readiness levels.")]), _vm._v(" "), _c('p', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step1-assess-needs/assess-community-resources-readiness#community-readiness",
-      "target": "_blank"
-    }
-  }, [_vm._v(" Assess readiness")]), _vm._v(" by determining how able and willing a community is to accept that a problem exists and to take action to change it. Your assessment should describe the degree to which individuals, organizations, and/or communities are:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Prepared to recognize prioritized problems as genuine local concerns")]), _vm._v(" "), _c('li', [_vm._v("Motivated to commit their resources to address those problems")])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "cbp-ntcontent"
-  }, [_c('p', [_vm._v("Collaboration is an essential component of building capacity successfully. Building a team from various groups that have expertise in, or represent, the target population will yield better outcomes through collective information-sharing. Involving different sectors of the community in early planning will also help ensure that resources needed for sustainability will be available later.")]), _vm._v(" "), _c('p', [_vm._v("When thinking about collaboration, consider including a variety of organizations or individuals. Champions for prevention may be found in the local media, the legislature, and in faith or business communities. Foster relationships with those who support your prevention efforts as well as with other stakeholders who may not be ready to accept your program.")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "cbp-ntcontent"
-  }, [_c('p', [_vm._v("Resources exist in your organization and in the community you serve. At the organizational level, you may decide to strengthen data collection systems, re-allocate staff workloads to improve efficiency, or increase coordination with other state systems to build capacity for implementing your prevention intervention.")]), _vm._v(" "), _c('p', [_vm._v("At the community level, create planning groups that reflect the ethnic make-up of the community. These groups can help the prevention effort be more successful through their resources and support.")]), _vm._v(" "), _c('p', [_vm._v("Resources include:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Grants or donations")]), _vm._v(" "), _c('li', [_vm._v("Donated meeting space, food, photocopying services, or computer hardware and software")]), _vm._v(" "), _c('li', [_vm._v("Program promotion or advertising outreach")]), _vm._v(" "), _c('li', [_vm._v("Consultants and/or volunteers who can supplement staff expertise")]), _vm._v(" "), _c('li', [_vm._v("Stakeholders, including those who are a part of the population the intervention will focus on")]), _vm._v(" "), _c('li', [_vm._v("Other collaborators who can provide additional expertise, necessary services, or connections to your target population")]), _vm._v(" "), _c('li', [_vm._v("Local champions who will support your prevention efforts")])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "cbp-ntcontent"
-  }, [_c('p', [_vm._v("The success of any prevention effort depends on the knowledge and skill of the people delivering the intervention.\n                                                "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/workforce",
-      "target": "_blank"
-    }
-  }, [_vm._v("Workforce")]), _vm._v(" development is more than simply preparing people to complete specific tasks. Staff must have the right credentials, training, experience, cultural competence, and expertise to address all aspects of prevention. Leaders and staff may need to be hired or may require additional training and technical assistance.")]), _vm._v(" "), _c('h5', [_vm._v("Publications and Resources")]), _vm._v(" "), _c('ul', [_c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/capacity-building-sustainability",
-      "target": "_blank"
-    }
-  }, [_vm._v("Factors that Contribute to Capacity-Building and Sustainability")])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/21st-century-partners-prevention",
-      "target": "_blank"
-    }
-  }, [_vm._v("21st Century Partners in Prevention")])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/partnerships-resources-substance-misuse-suicide",
-      "target": "_blank"
-    }
-  }, [_vm._v("Mobilizing Partnerships and Resources to Address Substance Abuse and Suicide Webinar – 2014")])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/building-capacity-through-collaboration",
-      "target": "_blank"
-    }
-  }, [_vm._v("Building Prevention Capacity through Collaboration Video – 2012")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('audio', {
-    attrs: {
-      "controls": ""
-    }
-  }, [_c('source', {
-    attrs: {
-      "src": "http://resources.ga-sps.org/content/spf/spf-strategic-planning.m4a",
-      "type": ""
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('b', [_vm._v("Planning increases the effectiveness of prevention efforts by ensuring that prevention professionals and their stakeholders work toward the same goals. Three important parts of the planning phase are:")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('ul', [_c('li', [_vm._v("Prioritizing risk and protective factors identified in\n                                        "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step1-assess-needs",
-      "target": "_blank"
-    }
-  }, [_vm._v("Step 1: Assess Needs")]), _vm._v(" of the Strategic Prevention Framework (SPF)")]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step3-plan/building-logic-models",
-      "target": "_blank"
-    }
-  }, [_vm._v("Building a logic model")]), _vm._v(" for your program")]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step3-plan",
-      "target": "_blank"
-    }
-  }, [_vm._v(" Selecting effective interventions")])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('b', [_vm._v("There are three important criteria for selecting appropriate prevention interventions:")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('ul', [_c('li', [_vm._v("The intervention is evidence-based")]), _vm._v(" "), _c('li', [_vm._v("Good conceptual fit for the community")]), _vm._v(" "), _c('li', [_vm._v("Good practical fit for the community")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "cbp-ntcontent"
-  }, [_c('p', [_vm._v("Whenever possible, you should select evidence‐based interventions. Evidence-based interventions have documented evidence of effectiveness and are those that research has shown to be effective. SAMHSA’s guidance document\n                                                "), _c('a', {
-    attrs: {
-      "href": "http://store.samhsa.gov/product/Identifying-and-Selecting-Evidence-Based-Interventions-for-Substance-Abuse-Prevention/SMA09-4205",
-      "target": "_blank"
-    }
-  }, [_vm._v("Identifying and Selecting Evidence-Based Interventions for Substance Abuse Prevention ")]), _vm._v(" defines evidence-based interventions as those that fall into one or more of three categories:")]), _vm._v(" "), _c('ul', [_c('li', [_c('b', [_vm._v("Category 1.")]), _vm._v(" The intervention is included in federal registries of evidence-based interventions, such as the\n                                                    "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/nrepp",
-      "target": "_blank"
-    }
-  }, [_vm._v(" National Registry of Evidence-based Programs and Practices (NREPP);")]), _vm._v(" "), _c('b', [_vm._v("OR")])]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Category 2.")]), _vm._v(" The intervention is reported with positive effects on the primary targeted outcome in peer-reviewed journals;\n                                                    "), _c('b', [_vm._v("OR")])]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Category 3.")]), _vm._v(" The intervention has documented evidence of effectiveness, based on guidelines developed by\n                                                    "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/about-us/who-we-are/offices-centers/csap",
-      "target": "_blank"
-    }
-  }, [_vm._v(" CSAP")]), _vm._v(" and/or the state, tribe, or jurisdiction in which the intervention took place.")])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_c('b', [_vm._v("Documented evidence should be implemented under four recommended guidelines, all of which must be followed. These guidelines require interventions to be:")])]), _vm._v(" "), _c('ol', [_c('li', [_vm._v("Based on a theory of change that is documented in a clear logic or conceptual mode. The Department of Health and Human Services (HHS) recommends prevention professionals\n                                                    "), _c('a', {
-    attrs: {
-      "href": "http://www.hhs.gov/ash/initiatives/quality/quality/",
-      "target": "_blank"
-    }
-  }, [_vm._v(" develop a basic driver of quality diagram")]), _vm._v(" to help their programs achieve desired outcomes.\n                                                    "), _c('b', [_vm._v("AND")])]), _vm._v(" "), _c('li', [_vm._v("Similar in content and structure to interventions that appear in federal registries of evidence-based interventions and/or peer-reviewed journals.\n                                                    "), _c('b', [_vm._v("AND")])]), _vm._v(" "), _c('li', [_vm._v("Supported by documentation showing it has been effectively implemented in the past, multiple times, and in a manner attentive to scientific standards of evidence. The intervention results should show a consistent pattern of credible and positive effects.\n                                                    "), _c('b', [_vm._v("AND")])]), _vm._v(" "), _c('li', [_vm._v("Reviewed and deemed appropriate by a panel of informed prevention experts that includes qualified prevention researchers experienced in evaluating prevention interventions similar to those under review; local prevention professionals; and key community leaders, as appropriate (for example, law enforcement officials, educators, or elders within indigenous cultures).")])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("It’s important to note, however, that these sources are not exhaustive, and they may not include interventions appropriate for all problems or all populations. In these cases, you must look to other credible sources of information. Since states have different guidelines for what constitutes credible evidence of effectiveness, you could start by talking to prevention experts—including your state-level evidence‐based workgroup.")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "cbp-ntcontent"
-  }, [_c('p', [_vm._v("In addition to selecting an intervention that is evidence-based, you need to ensure that the intervention, or combination of interventions, that you select are a good fit for the community.")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("There are two types of fit to consider:")])]), _vm._v(" "), _c('ul', [_c('li', [_c('b', [_vm._v("Conceptual fit:")]), _vm._v(" An intervention has good conceptual fit if it directly addresses one or more of the priority factors driving a specific substance use problem and has been shown to produce positive outcomes for members of the target population. To determine the conceptual fit, ask, “Will this intervention have an impact on at least one of our community’s priority risk and protective factors?”")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Practical fit:")]), _vm._v(" An intervention has good practical fit if it is culturally relevant for the target population, the community has capacity to support it, and if it enhances or reinforces existing prevention activities. To determine the practical fit of an intervention, ask, “Is this intervention appropriate for our community?”")])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("Evidence‐based interventions with both conceptual fit and practical fit will have the highest likelihood ofproducing positive prevention outcomes.")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("Publications and Resources")])]), _vm._v(" "), _c('ul', [_c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/finding-evidence-based-programs",
-      "target": "_blank"
-    }
-  }, [_vm._v("Finding Evidence-based Programs and Practices")])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/strategies-interventions-prevent-youth-marijuana-use",
-      "target": "_blank"
-    }
-  }, [_vm._v("Strategies and Interventions to Prevent Youth Marijuana Use")])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/south-carolina-workgroup-supports-local-efforts-curb-underage-drinking",
-      "target": "_blank"
-    }
-  }, [_vm._v("South Carolina Workgroup Supports Local Efforts to Curb Underage Drinking")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('audio', {
-    attrs: {
-      "controls": ""
-    }
-  }, [_c('source', {
-    attrs: {
-      "src": "http://resources.ga-sps.org/content/spf/spf-implementation.m4a",
-      "type": ""
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "cbp-ntcontent"
-  }, [_c('p', [_vm._v("An action plan is a written document that lays out exactly how you will implement your selected evidence-based intervention, which may be a program, policy, or strategy. The action plan describes:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("What you expect to accomplish")]), _vm._v(" "), _c('li', [_vm._v("Specific steps you will take to reach goals")]), _vm._v(" "), _c('li', [_vm._v("Who will be responsible for doing what")])]), _vm._v(" "), _c('p', [_vm._v("If you are implementing more than one intervention, it is helpful to develop a separate action plan for each.")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "cbp-ntcontent"
-  }, [_c('p', [_vm._v("Many things can influence how a program is implemented, including staff selection, staff training, staff and program evaluation, available resources, and past experience implementing prevention programs.")]), _vm._v(" "), _c('ul', [_c('li', [_c('b', [_vm._v("Staff selection:")]), _vm._v(" In addition to academic and professional qualifications, other characteristics may also be desirable, such as bilingualism, lived experience, or familiarity with local conditions. These characteristics must be identified and be a part of your selection criteria.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Pre- and in-service training:")]), _vm._v(" Trainings are efficient ways to communicate background information, theory, program rationale, and expected outcomes. They also provide opportunities for program staff to practice new skills and receive feedback.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Ongoing consultation or coaching:")]), _vm._v(" Implementing evidence-based practices and interventions may require behavior change among program staff. Training and coaching can help bring about these changes.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Staff and program evaluation:")]), _vm._v(" Assessing performance and measuring program fidelity can provide useful feedback on how the staff and program are performing during implementation.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Program support:")]), _vm._v(" Providing clear leadership and making use of relevant data to inform decision-making helps to keep staff organized and focused on desired outcomes.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("History implementing prevention interventions in the past:")]), _vm._v(" What’s your track record? Do you have past successes that you can point to and build on?")]), _vm._v(" "), _c('li', [_vm._v("Key stakeholder support: For a program to be effective, community members must be involved in its implementation. In the short term, these stakeholders help to ensure that the prevention approach is well-matched to the target population. In the long term, stakeholders can become program champions by\n                                                    "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/sustainability",
-      "target": "_blank"
-    }
-  }, [_vm._v("sustaining program activities")]), _vm._v(" and prevention priorities.")])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "cbp-ntcontent"
-  }, [_c('p', [_vm._v("When a prevention program is implemented as its developer intended, there is greater likelihood that its impact will be similar to the settings where it was first implemented or tested. Maintaining fidelity means keeping most elements of the program the same. However, programs may need to be adapted to gain greater community acceptance or in response to the contexts of a particular setting. Budget constraints, staff availability, time limitations, or other issues may make adaptation necessary.")]), _vm._v(" "), _c('p', [_vm._v("In these situations, finding the right approach to stay faithful to the original evidence-based design and address the target audience’s unique characteristics requires balancing fidelity and adaptation. When you change an intervention, you may be compromising outcomes. Even so, implementing a program that requires some adaptation may be more efficient and cost-effective than designing a program from scratch.")]), _vm._v(" "), _c('h3', [_vm._v("General Guidelines for Program Adaptation")]), _vm._v(" "), _c('ul', [_c('li', [_c('b', [_vm._v("Select programs with the best initial fit to local needs and conditions:")]), _vm._v(" This will reduce the likelihood that you will need to make adaptations later on.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Select programs with the largest effect size:")]), _vm._v(" Effect size refers to the magnitude of the effects of an intervention. The smaller an intervention’s effect size, the more careful you want to be about changing anything. You don’t want to inadvertently compromise any good you’re doing. In general, adaptations to programs with large effect sizes are less likely to affect expected outcomes.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Change capacity before changing the program:")]), _vm._v(" It may be easier to change the program, but changing local capacity to deliver it as it was designed is a better choice.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Consult experts:")]), _vm._v(" Experts can include the program developer, an environmental strategies specialist, or your evaluator. They may be able to tell you how the intervention has been adapted in the past and how well (or not) those adaptations worked.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Retain core components:")]), _vm._v(" When a program retains core components of the original intervention, it’s more likely to be effective. If you’re not sure which elements are core, consult the program developer, an environmental strategies specialist, or an evaluator.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Be consistent with evidence-based principles:")]), _vm._v(" Programs and practices that adhere to evidence-based principles are more likely to be effective. Adaptations should be consistent with the science.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Add rather than subtract:")]), _vm._v(" Doing so will decrease the likelihood that you are eliminating a program element that is important.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Effective cultural adaptation:")]), _vm._v(" Cultural adaptation refers to program modifications that are tailored to the values, attitudes, beliefs, and experiences of the target audience. This type of adaptation relies on strong relationships with cultural leaders and access to culturally competent program staff.\n                                                    "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention/cultural-competence",
-      "target": "_blank"
-    }
-  }, [_vm._v("Learn more about cultural competence.")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "cbp-ntcontent"
-  }, [_c('ul', [_c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/core-components-why-they-matter",
-      "target": "_blank"
-    }
-  }, [_vm._v("What Are Core Components, and Why Do They Matter?")])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/webinars-help-practitioners-implement-environmental-strategies",
-      "target": "_blank"
-    }
-  }, [_vm._v("CAPT Webinars Help Practitioners Implement Environmental Prevention Strategies")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('audio', {
-    attrs: {
-      "controls": ""
-    }
-  }, [_c('source', {
-    attrs: {
-      "src": "http://resources.ga-sps.org/content/spf/spf-evaluation.m4a",
-      "type": ""
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('ul', [_c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step5-evaluation/process-outcomes-evaluation",
-      "target": "_blank"
-    }
-  }, [_vm._v("Evaluating process and outcomes")])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step5-evaluation/communicating-evaluation-results",
-      "target": "_blank"
-    }
-  }, [_vm._v("Communicating evaluation results")])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "cbp-ntcontent"
-  }, [_c('p', [_vm._v("Prevention practitioners engage in a variety of evaluation-related activities, including identifying evaluation expertise, designing evaluation plans, and finding and analyzing epidemiological data. Evaluation is more than a final step. It should be a part of every aspect of the SPF, from assessing needs to communicating results.")]), _vm._v(" "), _c('p', [_vm._v("During an evaluation, prevention practitioners ask the following questions:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("How successful was the community in selecting and implementing appropriate strategies?")]), _vm._v(" "), _c('li', [_vm._v("Were these the “right” strategies, given the\n                                                    "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/practicing-effective-prevention/prevention-behavioral-health/risk-protective-factors",
-      "target": "_blank"
-    }
-  }, [_vm._v("risk and protective factors")]), _vm._v(" the community identified?")]), _vm._v(" "), _c('li', [_vm._v("Were representatives from across the community involved in program planning, selection, and implementation? In what ways were they involved?")]), _vm._v(" "), _c('li', [_vm._v("Was the planning group able to identify potential new partners with which to collaborate?")]), _vm._v(" "), _c('li', [_vm._v("What was the quality of the data used in decision making?")])]), _vm._v(" "), _c('p', [_vm._v("Engaging stakeholders who represent the populations you hope to reach greatly increases the chance that your evaluation efforts will be successful. Stakeholders can dictate how (or even whether) evaluation results are shared. Stakeholder involvement also helps to ensure that the evaluation design, including methods and the instruments used, is consistent with the cultural norms of the people you serve. Learn more about\n                                                "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention/cultural-competence",
-      "target": "_blank"
-    }
-  }, [_vm._v("cultural competence")]), _vm._v(" in prevention practice.")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "cbp-ntcontent"
-  }, [_c('ul', [_c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/evaluation-tools-resources",
-      "target": "_blank"
-    }
-  }, [_vm._v("Evaluation Tools and Resources")])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/minimizing-evaluation-costs",
-      "target": "_blank"
-    }
-  }, [_vm._v("Minimizing Evaluation Costs")])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/building-capacity-programs-serving-aian",
-      "target": "_blank"
-    }
-  }, [_vm._v("Building the Evaluation Capacity of Local Programs Serving American Indian/Alaska Native Populations: Lessons Learned")])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/effective-focus-groups",
-      "target": "_blank"
-    }
-  }, [_vm._v("Strategies for Conducting Effective Focus Groups")])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/conducting-key-informant-interviews",
-      "target": "_blank"
-    }
-  }, [_vm._v("Tips for Conducting Key Informant Interviews")])])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "cbp-ntcontent"
-  }, [_c('p', [_vm._v("Cultural competence, the ability to interact effectively with people of different cultures, helps to ensure the needs of all community members are addressed.")]), _vm._v(" "), _c('p', [_vm._v("Cultural competence is the ability to interact effectively with people of different cultures. In practice, both individuals and organizations can be culturally competent. Culture must be considered at every step of the Strategic Prevention Framework (SPF). “Culture” is a term that goes beyond just race or ethnicity. It can also refer to such characteristics as age, gender, sexual orientation, disability, religion, income level, education, geographical location, or profession.")]), _vm._v(" "), _c('p', [_vm._v("Cultural competence means to\n                                                "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/cultural-competence/cultural-competence-spf#be-respectful-and-responsive",
-      "target": "_blank"
-    }
-  }, [_vm._v("be respectful and responsive")]), _vm._v(" to the health beliefs and practices—and cultural and linguistic needs—of diverse population groups. Developing cultural competence is also an evolving, dynamic process that takes time and\n                                                "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/cultural-competence/cultural-competence-spf#cultural-competence-continuum",
-      "target": "_blank"
-    }
-  }, [_vm._v("occurs along a continuum.")])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "cbp-ntcontent"
-  }, [_c('p', [_vm._v("To produce positive change, prevention practitioners and other members of the behavioral health\n                                                "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/workforce",
-      "target": "_blank"
-    }
-  }, [_vm._v("workforce")]), _vm._v(" must understand the cultural context of their target community. They must also have the willingness and skills to work within this context. This means drawing on community-based values and customs and working with knowledgeable people from the community in all prevention efforts.")]), _vm._v(" "), _c('p', [_vm._v("Practicing cultural competence throughout the program planning process ensures that all members of a community are represented and included. It can also prevent wasteful spending on programs and services that a community can’t or won’t use. This is why understanding the needs,\n                                                "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/practicing-effective-prevention/prevention-behavioral-health/risk-protective-factors",
-      "target": "_blank"
-    }
-  }, [_vm._v("risk and protective factors,")]), _vm._v(" and potential obstacles of a community or specific population is crucial.")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "cbp-ntcontent"
-  }, [_c('p', [_vm._v("Cultural competence applies to organizations and health systems, just as it does to professionals. A culturally competent organization:")]), _vm._v(" "), _c('ul', [_c('li', [_c('b', [_vm._v("Continually assesses organizational diversity:")]), _vm._v(" Organizations should conduct a regular assessment of its members’ experiences working with diverse communities and focus populations. It also regularly assesses the range of values, beliefs, knowledge, and experiences within the organization that would allow for working with focus communities.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Invests in building capacity for cultural competency and inclusion:")]), _vm._v(" Organizations should have policies, procedures, and resources in place that make ongoing development of cultural competence and inclusion possible. It must also be willing to commit the resources necessary to build or strengthen relationships with groups and communities. Including representatives of the focus population within the organization’s ranks is especially useful.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Practices strategic planning that incorporates community culture and diversity:")]), _vm._v(" Organizations are urged to collaborate with other community groups. Its members are also encouraged to develop supportive relationships with other community groups. When these steps are taken, the organization is seen as a partner by other groups and their members.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Implements prevention strategies using culture and diversity as a resource:")]), _vm._v(" Community members and organizations must have an opportunity to create and/or review audiovisual materials, public service announcements, training guides, printed resources, and other materials to ensure they are accessible to, and attuned to their community or focus population.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Evaluates the incorporation of cultural competence:")]), _vm._v(" Community members must have a forum to provide both formal and informal feedback on the impact of all prevention interventions.")])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "cbp-ntcontent"
-  }, [_c('p', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/about-us/who-we-are/offices-centers/csap",
-      "target": "_blank"
-    }
-  }, [_vm._v("SAMHSA’s Center for Substance Abuse Prevention (CSAP)")]), _vm._v(" has identified the following principles of cultural competence:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Ensure community involvement in all areas")]), _vm._v(" "), _c('li', [_vm._v("Use a population-based definition of community (let the community define itself)")]), _vm._v(" "), _c('li', [_vm._v("Stress the importance of relevant, culturally-appropriate prevention approaches")]), _vm._v(" "), _c('li', [_vm._v("Employ culturally-competent evaluators")]), _vm._v(" "), _c('li', [_vm._v("Promote cultural competence among program staff that reflect the community they serve")]), _vm._v(" "), _c('li', [_vm._v("Include the target population in all aspects of prevention planning")])]), _vm._v(" "), _c('p', [_vm._v("Learn more about the Department of Health and Human Services (HHS) Office of Minority Health’s\n                                                "), _c('a', {
-    attrs: {
-      "href": "https://www.thinkculturalhealth.hhs.gov/Content/clas.asp",
-      "target": "_blank"
-    }
-  }, [_vm._v("National Standards for Culturally and Linguistically Appropriate Services in Health and Health Care: A Blueprint for Advancing and Sustaining CLAS Policy and Practice.")])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "cbp-ntcontent"
-  }, [_c('ul', [_c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/resources-related-cultural-competence",
-      "target": "_blank"
-    }
-  }, [_vm._v("Resources Related to Cultural Competence")])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/elements-culturally-competent-prevention-system",
-      "target": "_blank"
-    }
-  }, [_vm._v("Elements of a Culturally Competent Prevention System")])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/red-lake-nation-highlights-culture-prevention",
-      "target": "_blank"
-    }
-  }, [_vm._v("Red Lake Nation Highlights Culture as Prevention")])]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/red-lake-nation-highlights-culture-prevention",
-      "target": "_blank"
-    }
-  }), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/red-lake-nation-highlights-culture-prevention",
-      "target": "_blank"
-    }
-  }), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/protective-factors-factsheet",
-      "target": "_blank"
-    }
-  }, [_vm._v("Protective Factors Factsheet")])]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/protective-factors-factsheet",
-      "target": "_blank"
-    }
-  }), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/protective-factors-factsheet",
-      "target": "_blank"
-    }
-  }), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
-      "target": "_blank"
-    }
-  }, [_vm._v("Michigan Weaves Cultural Competency into its Substance Abuse Services")])]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
-      "target": "_blank"
-    }
-  })]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
-      "target": "_blank"
-    }
-  })])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-0c27f6e8", module.exports)
-  }
-}
-
-/***/ }),
-/* 537 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {};
-    },
-
-    methods: {
-        toggle: function toggle(event) {
-            console.log(event.target.parentNode.classList.toggle('cbp-ntopen'));
-        }
-    }
-});
 
 /***/ })
 /******/ ]);
