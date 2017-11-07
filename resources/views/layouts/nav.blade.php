@@ -42,7 +42,6 @@
 
 				<div class="navbar-end">
 					<div class="navbar-item">
-						<b>GA-SPS DATA CENTERS:</b>
 						<a class="button is-link">MDS</a>
 						<a class="button is-link">GA Data Warehouse</a>
 					</div>
