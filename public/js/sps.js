@@ -39849,7 +39849,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "media"
   }, [_c('a', {
     attrs: {
-      "href": "/calendar"
+      "href": "/#/calendar"
     }
   }, [_c('figure', {
     staticClass: "media-left",
@@ -39982,7 +39982,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "is-size-3"
   }, [_c('a', {
     attrs: {
-      "href": "/calendar"
+      "href": "/#/calendar"
     }
   }, [_vm._v("Calendar")])]), _vm._v(" "), _c('p', {
     staticClass: "is-size-5"
@@ -40214,18 +40214,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('main', [_c('section', {
-    staticClass: "hero is-primary is-bold",
-    staticStyle: {
-      "background-image": "url('/assets/images/banners/calendar.jpg')"
-    }
-  }, [_c('div', {
-    staticClass: "hero-body"
-  }, [_c('div', {
-    staticClass: "container"
-  })])]), _vm._v(" "), _c('section', {
+  return _c('main', [_vm._m(0), _vm._v(" "), _c('section', {
     staticClass: "section"
   }, [_c('div', {
     staticClass: "container"
@@ -40233,7 +40222,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "columns"
   }, [_c('div', {
     staticClass: "column is-2"
-  }), _vm._v(" "), _c('div', {
+  }, [_c('Sidebar')], 1), _vm._v(" "), _vm._m(1)])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', {
+    staticClass: "hero is-primary is-bold",
+    staticStyle: {
+      "min-height": "250px",
+      "background-size": "cover",
+      "background-image": "url('/assets/images/banners/calendar.jpg')"
+    }
+  }, [_c('div', {
+    staticClass: "hero-body"
+  }, [_c('div', {
+    staticClass: "container"
+  })])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "column is-8"
   }, [_c('div', {
     staticClass: "content"
@@ -40253,7 +40257,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "frameborder": "0",
       "scrolling": "no"
     }
-  })])])])])])])
+  })])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

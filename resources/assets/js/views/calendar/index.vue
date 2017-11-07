@@ -7,7 +7,7 @@
 
 <template>
     <main>
-        <section class="hero is-primary is-bold" style="background-image: url('/assets/images/banners/calendar.jpg')">
+        <section class="hero is-primary is-bold" style="min-height: 250px;background-size: cover; background-image: url('/assets/images/banners/calendar.jpg')">
             <div class="hero-body">
                 <div class="container">
 
@@ -18,7 +18,7 @@
             <div class="container">
                 <div class="columns">
                     <div class="column is-2">
-
+                        <Sidebar />
                     </div>
                     <div class="column is-8">
                         <div class="content">

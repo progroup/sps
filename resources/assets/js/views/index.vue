@@ -113,7 +113,7 @@
                     </div>
                     <div class="column is-half-tablet is-one-half-desktop is-one-quarter-fullhd has-text-centered">
                         <article class="media">
-                            <a href="/calendar">
+                            <a href="/#/calendar">
                                 <figure class="media-left" style="padding-right: 1rem">
                                     <p class="image is-48x48">
                                         <svg id="icon-calendar" viewBox="0 0 26 28">
@@ -125,7 +125,7 @@
                             <div class="media-content">
                                 <div style="padding-right: 1rem">
                                     <h3 class="is-size-3">
-                                        <a href="/calendar">Calendar</a>
+                                        <a href="/#/calendar">Calendar</a>
                                     </h3>
                                     <p class="is-size-5">What to keep up with all that's going on? Take a look at the GASPS calendar. Where we list upcoming events, trainings and Major due dates for in the GASPS systems.</p>
                                 </div>
