@@ -8,6 +8,10 @@ const routes = [
     {
         path: '/search',
         component: require('./views/search')
+    },
+    {
+        path: '/spf-overview',
+        component: require('./views/spf-overview')
     }
 ]
 

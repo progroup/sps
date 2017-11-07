@@ -35,7 +35,7 @@
 						</div>
 					</div>
 					<a class="navbar-item" href="http://ecco.ga-sps.org/help.php" target="ecco"> Upload Reports</a>
-					<a class="navbar-item" href="{{route('spf')}}">SPF Overview</a>
+					<a class="navbar-item" href="/#/spf-overview">SPF Overview</a>
 					<a class="navbar-item" href="/#/search">Resources</a>
 					<a class="navbar-item" href="{{route('training')}}">Training</a>
 				</div>

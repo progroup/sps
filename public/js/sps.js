@@ -39318,6 +39318,9 @@ var routes = [{
 }, {
     path: '/search',
     component: __webpack_require__(329)
+}, {
+    path: '/spf-overview',
+    component: __webpack_require__(535)
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
@@ -71965,6 +71968,848 @@ function escapeHtml(string) {
     : html;
 }
 
+
+/***/ }),
+/* 526 */,
+/* 527 */,
+/* 528 */,
+/* 529 */,
+/* 530 */,
+/* 531 */,
+/* 532 */,
+/* 533 */,
+/* 534 */,
+/* 535 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(65)(
+  /* script */
+  __webpack_require__(537),
+  /* template */
+  __webpack_require__(536),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/vtolbert/@progroup/sps/resources/assets/js/views/spf-overview/index.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0c27f6e8", Component.options)
+  } else {
+    hotAPI.reload("data-v-0c27f6e8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 536 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('main', [_vm._m(0), _vm._v(" "), _c('section', {
+    staticClass: "section"
+  }, [_c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "columns watermark-spf"
+  }, [_c('div', {
+    staticClass: "column is-2"
+  }), _vm._v(" "), _c('div', {
+    staticClass: "column is-8"
+  }, [_c('div', {
+    staticClass: "content"
+  }, [_c('h1', [_vm._v("SPF Overview")]), _vm._v(" "), _c('p', [_vm._v("The five steps that comprise SAMHSA’s Strategic Prevention Framework will enable States and communities to build the infrastructure necessary for effective and sustainable prevention. Each step contains key milestones and products that are essential to the validity of the process.")]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('h2', [_vm._v("Play Narration")]), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('ul', {
+    staticClass: "cbp-ntaccordion",
+    attrs: {
+      "id": "cbp-ntaccordion"
+    }
+  }, [_c('li', {
+    staticClass: "step-1"
+  }, [_c('h3', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_c('i', {
+    staticClass: "flaticon-flag24"
+  }), _vm._v(" Assess Needs")]), _vm._v(" "), _c('div', {
+    staticClass: "cbp-ntcontent open-container"
+  }, [_c('h2', [_vm._v("Play Narration")]), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('p', [_vm._v("In Step 1 of SAMHSA’s Strategic Prevention Framework (SPF), prevention professionals gather and assess data from a variety of sources to ensure that substance misuse prevention efforts are appropriate and targeted to the needs of communities.")]), _vm._v(" "), _vm._m(5), _vm._v(" "), _vm._m(6), _vm._v(" "), _c('p', [_vm._v("Based on their assessment of needs, resources, and readiness, prevention professionals identify one or more priorities on which to focus their prevention efforts.")]), _vm._v(" "), _c('ul', {
+    staticClass: "cbp-ntsubaccordion"
+  }, [_c('li', {}, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Determining Problem Impact")]), _vm._v(" "), _vm._m(7)]), _vm._v(" "), _c('li', {}, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Assessing Risk and Protective Factors")]), _vm._v(" "), _vm._m(8)]), _vm._v(" "), _c('li', {}, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Publications and Resources")]), _vm._v(" "), _vm._m(9)])])])]), _vm._v(" "), _c('li', {
+    staticClass: "step-2"
+  }, [_c('h3', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_c('i', {
+    staticClass: "flaticon-signal39"
+  }), _vm._v(" Build Capacity")]), _vm._v(" "), _c('div', {
+    staticClass: "cbp-ntcontent open-container"
+  }, [_c('h2', [_vm._v("Play Narration")]), _vm._v(" "), _vm._m(10), _vm._v(" "), _vm._m(11), _vm._v(" "), _c('p', [_vm._v("States and communities must have the capacity—that is, the resources and readiness—to support their chosen prevention programs and interventions. Programs that are well-supported are more likely to succeed. Community resources and community readiness often go hand-in-hand: building resource capacity also contributes to greater readiness. For example, when key stakeholders are involved in solving problems, they are more likely to engage others. This leads to more people recognizing the value of prevention and greater community readiness to accept prevention interventions.")]), _vm._v(" "), _vm._m(12), _vm._v(" "), _c('ul', {
+    staticClass: "cbp-ntsubaccordion"
+  }, [_c('li', {}, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Raise Stakeholder Awareness ")]), _vm._v(" "), _vm._m(13)]), _vm._v(" "), _c('li', {}, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Establish or Strengthen Collaboration Efforts")]), _vm._v(" "), _vm._m(14)]), _vm._v(" "), _c('li', {}, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Expand Resources")]), _vm._v(" "), _vm._m(15)]), _vm._v(" "), _c('li', {}, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Prepare the Prevention Workforce")]), _vm._v(" "), _vm._m(16)])])])]), _vm._v(" "), _c('li', {
+    staticClass: "step-3"
+  }, [_c('h3', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_c('i', {
+    staticClass: "flaticon-strategical"
+  }), _vm._v(" Strategic Planning")]), _vm._v(" "), _c('div', {
+    staticClass: "cbp-ntcontent open-container"
+  }, [_c('h2', [_vm._v("Play Narration")]), _vm._v(" "), _vm._m(17), _vm._v(" "), _c('p', [_vm._v("Step 3 of the Strategic Prevention Framework (SPF) shows how to plan effectively by prioritizing risk and protective factors and building logic models.")]), _vm._v(" "), _vm._m(18), _vm._v(" "), _vm._m(19), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("As you plan, keep in mind that decisions that reflect the input of all stakeholders, whether they are part of a formal coalition or informal group of collaborators, are more likely to keep stakeholders committed to your program.")]), _vm._v(" "), _c('p', [_vm._v("Planning is also crucial to the sustainability of prevention outcomes. It establishes the resources needed to maintain program activities and greatly increases the likelihood that you will achieve your expected outcomes.")]), _vm._v(" "), _c('h4', [_vm._v("Selecting Effective Interventions")]), _vm._v(" "), _c('p', [_vm._v("Sometimes people want to select interventions that are popular, that worked well in a different community, or that they are familiar with. However, these are not good reasons for selecting an intervention. It is more important that the prevention intervention effectively address the priority substance use problem and associated risk and protective factors, and that intervention is a good fit for the broader community.")]), _vm._v(" "), _vm._m(20), _vm._v(" "), _vm._m(21), _vm._v(" "), _c('br'), _vm._v(" "), _c('ul', {
+    staticClass: "cbp-ntsubaccordion"
+  }, [_c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Evidence-based Interventions")]), _vm._v(" "), _vm._m(22)]), _vm._v(" "), _c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Determining Fit")]), _vm._v(" "), _vm._m(23)])])])]), _vm._v(" "), _c('li', {
+    staticClass: "step-4"
+  }, [_c('h3', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_c('i', {
+    staticClass: "flaticon-gear42"
+  }), _vm._v(" Implement")]), _vm._v(" "), _c('div', {
+    staticClass: "cbp-ntcontent open-container"
+  }, [_c('h2', [_vm._v("Play Narration")]), _vm._v(" "), _vm._m(24), _vm._v(" "), _c('p', [_vm._v("In Step 4 of the Strategic Prevention Framework (SPF), prevention professionals develop action plans to implement their chosen prevention intervention.")]), _vm._v(" "), _c('p', [_vm._v("In Step 4 of the SPF, prevention planners implement their program. During this step, you will see if your assessments were accurate and also find out how your target population responds to the program. As you implement your selected interventions, develop a strong action plan and adapt it as needed. Stay aware of factors that may influence how your intervention is implemented.")]), _vm._v(" "), _c('ul', {
+    staticClass: "cbp-ntsubaccordion"
+  }, [_c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Develop an Action Plan")]), _vm._v(" "), _vm._m(25)]), _vm._v(" "), _c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Factors That May Influence Implementation")]), _vm._v(" "), _vm._m(26)]), _vm._v(" "), _c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Fidelity and Adaptation")]), _vm._v(" "), _vm._m(27)]), _vm._v(" "), _c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Publications and Resources")]), _vm._v(" "), _vm._m(28)])])])]), _vm._v(" "), _c('li', {
+    staticClass: "step-5"
+  }, [_c('h3', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_c('span', {
+    staticClass: "flaticon-workers"
+  }), _vm._v(" Evaluation")]), _vm._v(" "), _c('div', {
+    staticClass: "cbp-ntcontent open-container"
+  }, [_c('h2', [_vm._v("Play Narration")]), _vm._v(" "), _vm._m(29), _vm._v(" "), _c('p', [_vm._v("The evaluation step of SAMHSA’s Strategic Prevention Framework (SPF) quantifies the challenges and successes of implementing a prevention program.")]), _vm._v(" "), _c('p', [_vm._v("Evaluation is the systematic collection and analysis of information about program activities, characteristics, and outcomes. The evaluation step of the Strategic Prevention Framework (SPF) is not just about collecting information, but using that information to improve the effectiveness of a prevention program. After evaluation, planners may decide whether or not to continue the program.")]), _vm._v(" "), _c('p', [_vm._v("Prevention practitioners need to evaluate how well the program was delivered and how successful it was in achieving the expected outcomes. Once the program has been evaluated, prevention planners typically report evaluation results to stakeholders, which can include community members and lawmakers. Stakeholders can promote your program, increase public interest, and possibly help to secure additional funding.")]), _vm._v(" "), _c('p', [_vm._v("Learn more about:")]), _vm._v(" "), _vm._m(30), _vm._v(" "), _c('ul', {
+    staticClass: "cbp-ntsubaccordion"
+  }, [_c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Evaluation and the SPF ")]), _vm._v(" "), _vm._m(31)]), _vm._v(" "), _c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Publications and Resources ")]), _vm._v(" "), _vm._m(32)]), _vm._v(" "), _c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Cultural Competence")]), _vm._v(" "), _vm._m(33)]), _vm._v(" "), _c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Building a Culturally Competent Workforce")]), _vm._v(" "), _vm._m(34)]), _vm._v(" "), _c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Culturally Competent Organizations")]), _vm._v(" "), _vm._m(35)]), _vm._v(" "), _c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("CSAP Principles of Cultural Competence")]), _vm._v(" "), _vm._m(36)]), _vm._v(" "), _c('li', {
+    staticClass: "cbp-ntopen"
+  }, [_c('h4', {
+    staticClass: "cbp-nttrigger",
+    on: {
+      "click": function($event) {
+        _vm.toggle($event)
+      }
+    }
+  }, [_vm._v("Publications and Resources ")]), _vm._v(" "), _vm._m(37), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
+      "target": "_blank"
+    }
+  })]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
+      "target": "_blank"
+    }
+  })]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
+      "target": "_blank"
+    }
+  })]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
+      "target": "_blank"
+    }
+  })]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
+      "target": "_blank"
+    }
+  })])])])])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', {
+    staticClass: "hero is-medium is-primary is-bold",
+    staticStyle: {
+      "background-size": "cover",
+      "background-image": "url('/images/about.jpg')"
+    }
+  }, [_c('div', {
+    staticClass: "hero-body"
+  }, [_c('div', {
+    staticClass: "container"
+  })])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('strong', [_vm._v("Note")]), _vm._v(" In order to ensure complete adherence to the SAMHSA SPF model, these notes have been derived from the SAMHSA website and other SAMHSA materials.  For more information, go to www.SAMHSA.org")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('audio', {
+    attrs: {
+      "controls": ""
+    }
+  }, [_c('source', {
+    attrs: {
+      "src": "http://resources.ga-sps.org/content/spf/spf-overview-introduction.m4a",
+      "type": ""
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('audio', {
+    attrs: {
+      "controls": ""
+    }
+  }, [_c('source', {
+    attrs: {
+      "src": "http://resources.ga-sps.org/content/spf/spf-assess-needs.m4a",
+      "type": ""
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('b', [_vm._v("Step 1")]), _vm._v(" of the Strategic Prevention Framework (SPF) helps prevention professionals assess community needs, resources, and readiness to address substance misuse.")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("Data help to inform the identification and prioritization of substance misuse problems, clarify those problems’ impact on communities and vulnerable populations, and assess the readiness and resources needed to protect against those problems and their consequences. Learn more about\n                                    "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step1-assess-needs/assess-community-resources-readiness"
+    }
+  }, [_vm._v(" assessing community resources and readiness.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_vm._v("Data from\n                                    "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/practicing-effective-prevention/epidemiology-prevention/epidemiological-profiles"
+    }
+  }, [_vm._v(" epidemiological profiles for states and jurisdictions")]), _vm._v(" and other sources may also show what risk and protective factors are present in the community.")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("Using one or more data sources, you can determine what needs and challenges exist in your community. As you\n                                                "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/practicing-effective-prevention/epidemiology-prevention/finding-analyzing-data"
+    }
+  }, [_vm._v(" analyze the data")]), _vm._v(", ask yourself the following questions:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("What are the community’s most pressing problems and related behaviors?")]), _vm._v(" "), _c('li', [_vm._v("How often are the problems occurring? What are the associated issues?")]), _vm._v(" "), _c('li', [_vm._v("Where are they occurring? Do\n                                                    "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/specific-populations"
+    }
+  }, [_vm._v(" sub-populations")]), _vm._v(" exhibit different substance use patterns?")]), _vm._v(" "), _c('li', [_vm._v("Which populations experience the problems the most? Are sub-populations experiencing different problems or consequences?")]), _vm._v(" "), _c('li', [_vm._v("Are there particular places, times, or sub-populations that seem to be “driving the data”?")]), _vm._v(" "), _c('li', [_vm._v("Are there specific outcomes that stand out?\n                                                ")])]), _vm._v(" "), _c('p', [_vm._v("Data may reveal that the community has multiple areas of need that are contributing to substance misuse. Use\n                                                "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/criteria-analyzing-assessment-data"
+    }
+  }, [_vm._v("criteria for analyzing assessment data")]), _vm._v(" to guide your decision on which problem to make your priority.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("Every problem is related to its own set of risk and protective factors. After you have selected your prevention priority, assess the factors that are driving or alleviating the problem.")]), _vm._v(" "), _c('p', [_vm._v("As the name suggests, risk factors can make certain problems more likely to occur, and protective factors reduce the chance of certain problems occurring. Identifying which risk factors exist in your community could reveal possible areas of need. For example, after your assessment you may determine that neighborhood poverty is a risk factor in your community. Consequently, you identify it as a potential prevention priority.")]), _vm._v(" "), _c('p', [_vm._v("Your assessment may also reveal protective factors, such as afterschool activities. These protective factors may be used as resources to support your prevention efforts.")]), _vm._v(" "), _c('p', [_vm._v("The factors driving a problem in one community may differ from the factors driving it in another community. One of the most important lessons learned from prevention research is that, to be effective, prevention strategies must address the underlying factors driving a problem. It doesn’t matter how carefully a program or intervention is implemented. If it’s not a good match for the problem, it’s not going to work.")]), _vm._v(" "), _c('p', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/practicing-effective-prevention/prevention-behavioral-health/risk-protective-factors"
+    }
+  }, [_vm._v("Learn more about risk and protective factors.")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('ul', [_c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/sources-consequence-data-underage-drinking",
+      "target": "_blank"
+    }
+  }, [_vm._v("Sources of Consequence Data for Underage Drinking")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/national-data-sources"
+    }
+  }, [_vm._v("National Data Sources")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/iowa-group-strengthens-data-collection"
+    }
+  }, [_vm._v("Iowa’s Data Task Group Strengthens Data Collection at the Local Level")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/prevention-massachusetts"
+    }
+  }, [_vm._v("Prevention in Massachusetts: Following the Data Video – 2012")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('audio', {
+    attrs: {
+      "controls": ""
+    }
+  }, [_c('source', {
+    attrs: {
+      "src": "http://resources.ga-sps.org/content/spf/spf-capacity-building.m4a",
+      "type": ""
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('b', [_vm._v("Step 2")]), _vm._v(" of the Strategic Prevention Framework (SPF) focuses on identifying resources and readiness for addressing substance misuse in communities.")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention/cultural-competence",
+      "target": "_blank"
+    }
+  }, [_vm._v("Cultural competence")]), _vm._v(" and the\n                                    "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/sustainability",
+      "target": "_blank"
+    }
+  }, [_vm._v(" sustainability")]), _vm._v(" of prevention outcomes are closely linked aspects of capacity building. Broad cultural representation is essential to sustaining long-term prevention efforts: the wider your base of support, the greater the likelihood you will achieve a successful outcome.")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("Your goal is to persuade stakeholders, such as community members or policymakers, to make your issue a priority. To do that, you will need to make a strong and compelling case for why they should devote their time, energy, and resources to the problems you have identified. You’ll be in a better position to gain their support by\n                                                "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/cultural-competence/cultural-competence-spf",
+      "target": "_blank"
+    }
+  }, [_vm._v(" incorporating cultural competence into your implementation of the Strategic Prevention Framework (SPF).")]), _vm._v(" Educate other members of the behavioral health\n                                                "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/workforce",
+      "target": "_blank"
+    }
+  }, [_vm._v("workforce")]), _vm._v(" about how they can support prevention efforts in the work you do, because not all practitioners may recognize the role they can play.")]), _vm._v(" "), _c('p', [_vm._v("Increasing community awareness isn’t about increasing the knowledge and awareness of every community member. Rather, it often involves collaborating with key stakeholders who can influence whether your prevention initiative will succeed. To identify these stakeholders, analyze the readiness data you collected while\n                                                "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step1-assess-needs",
+      "target": "_blank"
+    }
+  }, [_vm._v("assessing community needs.")]), _vm._v(" Use the data to find community members and groups who are not yet ready for the planned prevention approach, but who will play a role in its success as stakeholders. Then develop and implement strategies for boosting their readiness levels.")]), _vm._v(" "), _c('p', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step1-assess-needs/assess-community-resources-readiness#community-readiness",
+      "target": "_blank"
+    }
+  }, [_vm._v(" Assess readiness")]), _vm._v(" by determining how able and willing a community is to accept that a problem exists and to take action to change it. Your assessment should describe the degree to which individuals, organizations, and/or communities are:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Prepared to recognize prioritized problems as genuine local concerns")]), _vm._v(" "), _c('li', [_vm._v("Motivated to commit their resources to address those problems")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("Collaboration is an essential component of building capacity successfully. Building a team from various groups that have expertise in, or represent, the target population will yield better outcomes through collective information-sharing. Involving different sectors of the community in early planning will also help ensure that resources needed for sustainability will be available later.")]), _vm._v(" "), _c('p', [_vm._v("When thinking about collaboration, consider including a variety of organizations or individuals. Champions for prevention may be found in the local media, the legislature, and in faith or business communities. Foster relationships with those who support your prevention efforts as well as with other stakeholders who may not be ready to accept your program.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("Resources exist in your organization and in the community you serve. At the organizational level, you may decide to strengthen data collection systems, re-allocate staff workloads to improve efficiency, or increase coordination with other state systems to build capacity for implementing your prevention intervention.")]), _vm._v(" "), _c('p', [_vm._v("At the community level, create planning groups that reflect the ethnic make-up of the community. These groups can help the prevention effort be more successful through their resources and support.")]), _vm._v(" "), _c('p', [_vm._v("Resources include:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Grants or donations")]), _vm._v(" "), _c('li', [_vm._v("Donated meeting space, food, photocopying services, or computer hardware and software")]), _vm._v(" "), _c('li', [_vm._v("Program promotion or advertising outreach")]), _vm._v(" "), _c('li', [_vm._v("Consultants and/or volunteers who can supplement staff expertise")]), _vm._v(" "), _c('li', [_vm._v("Stakeholders, including those who are a part of the population the intervention will focus on")]), _vm._v(" "), _c('li', [_vm._v("Other collaborators who can provide additional expertise, necessary services, or connections to your target population")]), _vm._v(" "), _c('li', [_vm._v("Local champions who will support your prevention efforts")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("The success of any prevention effort depends on the knowledge and skill of the people delivering the intervention.\n                                                "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/workforce",
+      "target": "_blank"
+    }
+  }, [_vm._v("Workforce")]), _vm._v(" development is more than simply preparing people to complete specific tasks. Staff must have the right credentials, training, experience, cultural competence, and expertise to address all aspects of prevention. Leaders and staff may need to be hired or may require additional training and technical assistance.")]), _vm._v(" "), _c('h5', [_vm._v("Publications and Resources")]), _vm._v(" "), _c('ul', [_c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/capacity-building-sustainability",
+      "target": "_blank"
+    }
+  }, [_vm._v("Factors that Contribute to Capacity-Building and Sustainability")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/21st-century-partners-prevention",
+      "target": "_blank"
+    }
+  }, [_vm._v("21st Century Partners in Prevention")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/partnerships-resources-substance-misuse-suicide",
+      "target": "_blank"
+    }
+  }, [_vm._v("Mobilizing Partnerships and Resources to Address Substance Abuse and Suicide Webinar – 2014")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/building-capacity-through-collaboration",
+      "target": "_blank"
+    }
+  }, [_vm._v("Building Prevention Capacity through Collaboration Video – 2012")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('audio', {
+    attrs: {
+      "controls": ""
+    }
+  }, [_c('source', {
+    attrs: {
+      "src": "http://resources.ga-sps.org/content/spf/spf-strategic-planning.m4a",
+      "type": ""
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('b', [_vm._v("Planning increases the effectiveness of prevention efforts by ensuring that prevention professionals and their stakeholders work toward the same goals. Three important parts of the planning phase are:")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('ul', [_c('li', [_vm._v("Prioritizing risk and protective factors identified in\n                                        "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step1-assess-needs",
+      "target": "_blank"
+    }
+  }, [_vm._v("Step 1: Assess Needs")]), _vm._v(" of the Strategic Prevention Framework (SPF)")]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step3-plan/building-logic-models",
+      "target": "_blank"
+    }
+  }, [_vm._v("Building a logic model")]), _vm._v(" for your program")]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step3-plan",
+      "target": "_blank"
+    }
+  }, [_vm._v(" Selecting effective interventions")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('b', [_vm._v("There are three important criteria for selecting appropriate prevention interventions:")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('ul', [_c('li', [_vm._v("The intervention is evidence-based")]), _vm._v(" "), _c('li', [_vm._v("Good conceptual fit for the community")]), _vm._v(" "), _c('li', [_vm._v("Good practical fit for the community")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("Whenever possible, you should select evidence‐based interventions. Evidence-based interventions have documented evidence of effectiveness and are those that research has shown to be effective. SAMHSA’s guidance document\n                                                "), _c('a', {
+    attrs: {
+      "href": "http://store.samhsa.gov/product/Identifying-and-Selecting-Evidence-Based-Interventions-for-Substance-Abuse-Prevention/SMA09-4205",
+      "target": "_blank"
+    }
+  }, [_vm._v("Identifying and Selecting Evidence-Based Interventions for Substance Abuse Prevention ")]), _vm._v(" defines evidence-based interventions as those that fall into one or more of three categories:")]), _vm._v(" "), _c('ul', [_c('li', [_c('b', [_vm._v("Category 1.")]), _vm._v(" The intervention is included in federal registries of evidence-based interventions, such as the\n                                                    "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/nrepp",
+      "target": "_blank"
+    }
+  }, [_vm._v(" National Registry of Evidence-based Programs and Practices (NREPP);")]), _vm._v(" "), _c('b', [_vm._v("OR")])]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Category 2.")]), _vm._v(" The intervention is reported with positive effects on the primary targeted outcome in peer-reviewed journals;\n                                                    "), _c('b', [_vm._v("OR")])]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Category 3.")]), _vm._v(" The intervention has documented evidence of effectiveness, based on guidelines developed by\n                                                    "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/about-us/who-we-are/offices-centers/csap",
+      "target": "_blank"
+    }
+  }, [_vm._v(" CSAP")]), _vm._v(" and/or the state, tribe, or jurisdiction in which the intervention took place.")])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_c('b', [_vm._v("Documented evidence should be implemented under four recommended guidelines, all of which must be followed. These guidelines require interventions to be:")])]), _vm._v(" "), _c('ol', [_c('li', [_vm._v("Based on a theory of change that is documented in a clear logic or conceptual mode. The Department of Health and Human Services (HHS) recommends prevention professionals\n                                                    "), _c('a', {
+    attrs: {
+      "href": "http://www.hhs.gov/ash/initiatives/quality/quality/",
+      "target": "_blank"
+    }
+  }, [_vm._v(" develop a basic driver of quality diagram")]), _vm._v(" to help their programs achieve desired outcomes.\n                                                    "), _c('b', [_vm._v("AND")])]), _vm._v(" "), _c('li', [_vm._v("Similar in content and structure to interventions that appear in federal registries of evidence-based interventions and/or peer-reviewed journals.\n                                                    "), _c('b', [_vm._v("AND")])]), _vm._v(" "), _c('li', [_vm._v("Supported by documentation showing it has been effectively implemented in the past, multiple times, and in a manner attentive to scientific standards of evidence. The intervention results should show a consistent pattern of credible and positive effects.\n                                                    "), _c('b', [_vm._v("AND")])]), _vm._v(" "), _c('li', [_vm._v("Reviewed and deemed appropriate by a panel of informed prevention experts that includes qualified prevention researchers experienced in evaluating prevention interventions similar to those under review; local prevention professionals; and key community leaders, as appropriate (for example, law enforcement officials, educators, or elders within indigenous cultures).")])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("It’s important to note, however, that these sources are not exhaustive, and they may not include interventions appropriate for all problems or all populations. In these cases, you must look to other credible sources of information. Since states have different guidelines for what constitutes credible evidence of effectiveness, you could start by talking to prevention experts—including your state-level evidence‐based workgroup.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("In addition to selecting an intervention that is evidence-based, you need to ensure that the intervention, or combination of interventions, that you select are a good fit for the community.")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("There are two types of fit to consider:")])]), _vm._v(" "), _c('ul', [_c('li', [_c('b', [_vm._v("Conceptual fit:")]), _vm._v(" An intervention has good conceptual fit if it directly addresses one or more of the priority factors driving a specific substance use problem and has been shown to produce positive outcomes for members of the target population. To determine the conceptual fit, ask, “Will this intervention have an impact on at least one of our community’s priority risk and protective factors?”")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Practical fit:")]), _vm._v(" An intervention has good practical fit if it is culturally relevant for the target population, the community has capacity to support it, and if it enhances or reinforces existing prevention activities. To determine the practical fit of an intervention, ask, “Is this intervention appropriate for our community?”")])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('p', [_vm._v("Evidence‐based interventions with both conceptual fit and practical fit will have the highest likelihood ofproducing positive prevention outcomes.")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("Publications and Resources")])]), _vm._v(" "), _c('ul', [_c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/finding-evidence-based-programs",
+      "target": "_blank"
+    }
+  }, [_vm._v("Finding Evidence-based Programs and Practices")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/strategies-interventions-prevent-youth-marijuana-use",
+      "target": "_blank"
+    }
+  }, [_vm._v("Strategies and Interventions to Prevent Youth Marijuana Use")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/south-carolina-workgroup-supports-local-efforts-curb-underage-drinking",
+      "target": "_blank"
+    }
+  }, [_vm._v("South Carolina Workgroup Supports Local Efforts to Curb Underage Drinking")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('audio', {
+    attrs: {
+      "controls": ""
+    }
+  }, [_c('source', {
+    attrs: {
+      "src": "http://resources.ga-sps.org/content/spf/spf-implementation.m4a",
+      "type": ""
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("An action plan is a written document that lays out exactly how you will implement your selected evidence-based intervention, which may be a program, policy, or strategy. The action plan describes:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("What you expect to accomplish")]), _vm._v(" "), _c('li', [_vm._v("Specific steps you will take to reach goals")]), _vm._v(" "), _c('li', [_vm._v("Who will be responsible for doing what")])]), _vm._v(" "), _c('p', [_vm._v("If you are implementing more than one intervention, it is helpful to develop a separate action plan for each.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("Many things can influence how a program is implemented, including staff selection, staff training, staff and program evaluation, available resources, and past experience implementing prevention programs.")]), _vm._v(" "), _c('ul', [_c('li', [_c('b', [_vm._v("Staff selection:")]), _vm._v(" In addition to academic and professional qualifications, other characteristics may also be desirable, such as bilingualism, lived experience, or familiarity with local conditions. These characteristics must be identified and be a part of your selection criteria.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Pre- and in-service training:")]), _vm._v(" Trainings are efficient ways to communicate background information, theory, program rationale, and expected outcomes. They also provide opportunities for program staff to practice new skills and receive feedback.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Ongoing consultation or coaching:")]), _vm._v(" Implementing evidence-based practices and interventions may require behavior change among program staff. Training and coaching can help bring about these changes.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Staff and program evaluation:")]), _vm._v(" Assessing performance and measuring program fidelity can provide useful feedback on how the staff and program are performing during implementation.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Program support:")]), _vm._v(" Providing clear leadership and making use of relevant data to inform decision-making helps to keep staff organized and focused on desired outcomes.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("History implementing prevention interventions in the past:")]), _vm._v(" What’s your track record? Do you have past successes that you can point to and build on?")]), _vm._v(" "), _c('li', [_vm._v("Key stakeholder support: For a program to be effective, community members must be involved in its implementation. In the short term, these stakeholders help to ensure that the prevention approach is well-matched to the target population. In the long term, stakeholders can become program champions by\n                                                    "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/sustainability",
+      "target": "_blank"
+    }
+  }, [_vm._v("sustaining program activities")]), _vm._v(" and prevention priorities.")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("When a prevention program is implemented as its developer intended, there is greater likelihood that its impact will be similar to the settings where it was first implemented or tested. Maintaining fidelity means keeping most elements of the program the same. However, programs may need to be adapted to gain greater community acceptance or in response to the contexts of a particular setting. Budget constraints, staff availability, time limitations, or other issues may make adaptation necessary.")]), _vm._v(" "), _c('p', [_vm._v("In these situations, finding the right approach to stay faithful to the original evidence-based design and address the target audience’s unique characteristics requires balancing fidelity and adaptation. When you change an intervention, you may be compromising outcomes. Even so, implementing a program that requires some adaptation may be more efficient and cost-effective than designing a program from scratch.")]), _vm._v(" "), _c('h3', [_vm._v("General Guidelines for Program Adaptation")]), _vm._v(" "), _c('ul', [_c('li', [_c('b', [_vm._v("Select programs with the best initial fit to local needs and conditions:")]), _vm._v(" This will reduce the likelihood that you will need to make adaptations later on.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Select programs with the largest effect size:")]), _vm._v(" Effect size refers to the magnitude of the effects of an intervention. The smaller an intervention’s effect size, the more careful you want to be about changing anything. You don’t want to inadvertently compromise any good you’re doing. In general, adaptations to programs with large effect sizes are less likely to affect expected outcomes.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Change capacity before changing the program:")]), _vm._v(" It may be easier to change the program, but changing local capacity to deliver it as it was designed is a better choice.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Consult experts:")]), _vm._v(" Experts can include the program developer, an environmental strategies specialist, or your evaluator. They may be able to tell you how the intervention has been adapted in the past and how well (or not) those adaptations worked.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Retain core components:")]), _vm._v(" When a program retains core components of the original intervention, it’s more likely to be effective. If you’re not sure which elements are core, consult the program developer, an environmental strategies specialist, or an evaluator.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Be consistent with evidence-based principles:")]), _vm._v(" Programs and practices that adhere to evidence-based principles are more likely to be effective. Adaptations should be consistent with the science.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Add rather than subtract:")]), _vm._v(" Doing so will decrease the likelihood that you are eliminating a program element that is important.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Effective cultural adaptation:")]), _vm._v(" Cultural adaptation refers to program modifications that are tailored to the values, attitudes, beliefs, and experiences of the target audience. This type of adaptation relies on strong relationships with cultural leaders and access to culturally competent program staff.\n                                                    "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention/cultural-competence",
+      "target": "_blank"
+    }
+  }, [_vm._v("Learn more about cultural competence.")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('ul', [_c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/core-components-why-they-matter",
+      "target": "_blank"
+    }
+  }, [_vm._v("What Are Core Components, and Why Do They Matter?")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/webinars-help-practitioners-implement-environmental-strategies",
+      "target": "_blank"
+    }
+  }, [_vm._v("CAPT Webinars Help Practitioners Implement Environmental Prevention Strategies")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('audio', {
+    attrs: {
+      "controls": ""
+    }
+  }, [_c('source', {
+    attrs: {
+      "src": "http://resources.ga-sps.org/content/spf/spf-evaluation.m4a",
+      "type": ""
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('ul', [_c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step5-evaluation/process-outcomes-evaluation",
+      "target": "_blank"
+    }
+  }, [_vm._v("Evaluating process and outcomes")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/step5-evaluation/communicating-evaluation-results",
+      "target": "_blank"
+    }
+  }, [_vm._v("Communicating evaluation results")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("Prevention practitioners engage in a variety of evaluation-related activities, including identifying evaluation expertise, designing evaluation plans, and finding and analyzing epidemiological data. Evaluation is more than a final step. It should be a part of every aspect of the SPF, from assessing needs to communicating results.")]), _vm._v(" "), _c('p', [_vm._v("During an evaluation, prevention practitioners ask the following questions:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("How successful was the community in selecting and implementing appropriate strategies?")]), _vm._v(" "), _c('li', [_vm._v("Were these the “right” strategies, given the\n                                                    "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/practicing-effective-prevention/prevention-behavioral-health/risk-protective-factors",
+      "target": "_blank"
+    }
+  }, [_vm._v("risk and protective factors")]), _vm._v(" the community identified?")]), _vm._v(" "), _c('li', [_vm._v("Were representatives from across the community involved in program planning, selection, and implementation? In what ways were they involved?")]), _vm._v(" "), _c('li', [_vm._v("Was the planning group able to identify potential new partners with which to collaborate?")]), _vm._v(" "), _c('li', [_vm._v("What was the quality of the data used in decision making?")])]), _vm._v(" "), _c('p', [_vm._v("Engaging stakeholders who represent the populations you hope to reach greatly increases the chance that your evaluation efforts will be successful. Stakeholders can dictate how (or even whether) evaluation results are shared. Stakeholder involvement also helps to ensure that the evaluation design, including methods and the instruments used, is consistent with the cultural norms of the people you serve. Learn more about\n                                                "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention/cultural-competence",
+      "target": "_blank"
+    }
+  }, [_vm._v("cultural competence")]), _vm._v(" in prevention practice.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('ul', [_c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/evaluation-tools-resources",
+      "target": "_blank"
+    }
+  }, [_vm._v("Evaluation Tools and Resources")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/minimizing-evaluation-costs",
+      "target": "_blank"
+    }
+  }, [_vm._v("Minimizing Evaluation Costs")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/building-capacity-programs-serving-aian",
+      "target": "_blank"
+    }
+  }, [_vm._v("Building the Evaluation Capacity of Local Programs Serving American Indian/Alaska Native Populations: Lessons Learned")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/effective-focus-groups",
+      "target": "_blank"
+    }
+  }, [_vm._v("Strategies for Conducting Effective Focus Groups")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/conducting-key-informant-interviews",
+      "target": "_blank"
+    }
+  }, [_vm._v("Tips for Conducting Key Informant Interviews")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("Cultural competence, the ability to interact effectively with people of different cultures, helps to ensure the needs of all community members are addressed.")]), _vm._v(" "), _c('p', [_vm._v("Cultural competence is the ability to interact effectively with people of different cultures. In practice, both individuals and organizations can be culturally competent. Culture must be considered at every step of the Strategic Prevention Framework (SPF). “Culture” is a term that goes beyond just race or ethnicity. It can also refer to such characteristics as age, gender, sexual orientation, disability, religion, income level, education, geographical location, or profession.")]), _vm._v(" "), _c('p', [_vm._v("Cultural competence means to\n                                                "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/cultural-competence/cultural-competence-spf#be-respectful-and-responsive",
+      "target": "_blank"
+    }
+  }, [_vm._v("be respectful and responsive")]), _vm._v(" to the health beliefs and practices—and cultural and linguistic needs—of diverse population groups. Developing cultural competence is also an evolving, dynamic process that takes time and\n                                                "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/applying-strategic-prevention-framework/cultural-competence/cultural-competence-spf#cultural-competence-continuum",
+      "target": "_blank"
+    }
+  }, [_vm._v("occurs along a continuum.")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("To produce positive change, prevention practitioners and other members of the behavioral health\n                                                "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/workforce",
+      "target": "_blank"
+    }
+  }, [_vm._v("workforce")]), _vm._v(" must understand the cultural context of their target community. They must also have the willingness and skills to work within this context. This means drawing on community-based values and customs and working with knowledgeable people from the community in all prevention efforts.")]), _vm._v(" "), _c('p', [_vm._v("Practicing cultural competence throughout the program planning process ensures that all members of a community are represented and included. It can also prevent wasteful spending on programs and services that a community can’t or won’t use. This is why understanding the needs,\n                                                "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/practicing-effective-prevention/prevention-behavioral-health/risk-protective-factors",
+      "target": "_blank"
+    }
+  }, [_vm._v("risk and protective factors,")]), _vm._v(" and potential obstacles of a community or specific population is crucial.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_vm._v("Cultural competence applies to organizations and health systems, just as it does to professionals. A culturally competent organization:")]), _vm._v(" "), _c('ul', [_c('li', [_c('b', [_vm._v("Continually assesses organizational diversity:")]), _vm._v(" Organizations should conduct a regular assessment of its members’ experiences working with diverse communities and focus populations. It also regularly assesses the range of values, beliefs, knowledge, and experiences within the organization that would allow for working with focus communities.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Invests in building capacity for cultural competency and inclusion:")]), _vm._v(" Organizations should have policies, procedures, and resources in place that make ongoing development of cultural competence and inclusion possible. It must also be willing to commit the resources necessary to build or strengthen relationships with groups and communities. Including representatives of the focus population within the organization’s ranks is especially useful.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Practices strategic planning that incorporates community culture and diversity:")]), _vm._v(" Organizations are urged to collaborate with other community groups. Its members are also encouraged to develop supportive relationships with other community groups. When these steps are taken, the organization is seen as a partner by other groups and their members.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Implements prevention strategies using culture and diversity as a resource:")]), _vm._v(" Community members and organizations must have an opportunity to create and/or review audiovisual materials, public service announcements, training guides, printed resources, and other materials to ensure they are accessible to, and attuned to their community or focus population.")]), _vm._v(" "), _c('li', [_c('b', [_vm._v("Evaluates the incorporation of cultural competence:")]), _vm._v(" Community members must have a forum to provide both formal and informal feedback on the impact of all prevention interventions.")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('p', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/about-us/who-we-are/offices-centers/csap",
+      "target": "_blank"
+    }
+  }, [_vm._v("SAMHSA’s Center for Substance Abuse Prevention (CSAP)")]), _vm._v(" has identified the following principles of cultural competence:")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Ensure community involvement in all areas")]), _vm._v(" "), _c('li', [_vm._v("Use a population-based definition of community (let the community define itself)")]), _vm._v(" "), _c('li', [_vm._v("Stress the importance of relevant, culturally-appropriate prevention approaches")]), _vm._v(" "), _c('li', [_vm._v("Employ culturally-competent evaluators")]), _vm._v(" "), _c('li', [_vm._v("Promote cultural competence among program staff that reflect the community they serve")]), _vm._v(" "), _c('li', [_vm._v("Include the target population in all aspects of prevention planning")])]), _vm._v(" "), _c('p', [_vm._v("Learn more about the Department of Health and Human Services (HHS) Office of Minority Health’s\n                                                "), _c('a', {
+    attrs: {
+      "href": "https://www.thinkculturalhealth.hhs.gov/Content/clas.asp",
+      "target": "_blank"
+    }
+  }, [_vm._v("National Standards for Culturally and Linguistically Appropriate Services in Health and Health Care: A Blueprint for Advancing and Sustaining CLAS Policy and Practice.")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "cbp-ntcontent"
+  }, [_c('ul', [_c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/resources-related-cultural-competence",
+      "target": "_blank"
+    }
+  }, [_vm._v("Resources Related to Cultural Competence")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/elements-culturally-competent-prevention-system",
+      "target": "_blank"
+    }
+  }, [_vm._v("Elements of a Culturally Competent Prevention System")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/red-lake-nation-highlights-culture-prevention",
+      "target": "_blank"
+    }
+  }, [_vm._v("Red Lake Nation Highlights Culture as Prevention")])]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/red-lake-nation-highlights-culture-prevention",
+      "target": "_blank"
+    }
+  }), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/red-lake-nation-highlights-culture-prevention",
+      "target": "_blank"
+    }
+  }), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/protective-factors-factsheet",
+      "target": "_blank"
+    }
+  }, [_vm._v("Protective Factors Factsheet")])]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/protective-factors-factsheet",
+      "target": "_blank"
+    }
+  }), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/protective-factors-factsheet",
+      "target": "_blank"
+    }
+  }), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
+      "target": "_blank"
+    }
+  }, [_vm._v("Michigan Weaves Cultural Competency into its Substance Abuse Services")])]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
+      "target": "_blank"
+    }
+  })]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "http://www.samhsa.gov/capt/tools-learning-resources/michigan-weaves-cultural-competency-its-substance-misuse-services",
+      "target": "_blank"
+    }
+  })])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-0c27f6e8", module.exports)
+  }
+}
+
+/***/ }),
+/* 537 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {};
+    },
+
+    methods: {
+        toggle: function toggle(event) {
+            console.log(event.target.parentNode.classList.toggle('cbp-ntopen'));
+        }
+    }
+});
 
 /***/ })
 /******/ ]);
