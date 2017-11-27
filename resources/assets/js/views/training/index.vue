@@ -7,6 +7,18 @@
 <template>
     <main>
         <section class="hero is-light is-medium is-bold" style="background-size: cover; background-image: url('/assets/images/banners/training.jpg')">
+            <div class="hero-header" style="padding: 1rem">
+                <div class="container">
+                    <div class="field has-addons">
+                        <div class="control is-expanded has-icons-left">
+                            <input type="text" class="input is-medium" placeholder="What resources can we help you find today?" v-model="query" name="query">
+                            <span class="icon is-left">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="hero-body">
                 <div class="container">
 
@@ -197,3 +209,29 @@
 
     </main>
 </template>
+
+<style>
+.hero-header {
+    background-color: #ccc;
+}
+
+.input::-webkit-input-placeholder {
+    font-style: italic;
+    font-weight: 100
+}
+
+.input:-moz-placeholder {
+    font-style: italic;
+    font-weight: 100
+}
+
+.input::-moz-placeholder {
+    font-style: italic;
+    font-weight: 100
+}
+
+.input:-ms-input-placeholder {
+    font-style: italic;
+    font-weight: 100
+}
+</style>
