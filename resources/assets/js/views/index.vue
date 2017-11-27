@@ -270,18 +270,18 @@
 
 <script>
     export default {
-      // props: ['query'],
-      data() {
-        return {
-          query: '',
-          user: window.App.user
+        // props: ['query'],
+        data () {
+            return {
+                query: '',
+                user: window.App.user
+            }
+        },
+        methods: {
+            search () {
+                this.$router.push({ path: 'search', query: { query: this.query } })
+                console.log(this.query)
+            }
         }
-      },
-      methods: {
-        search() {
-          this.$router.push({ path: 'search', query: { query: this.query } })
-          console.log(this.query)
-        }
-      }
     }
 </script>
