@@ -48,7 +48,7 @@
         <section class="section">
             <div class="container is-medium">
                 <div class="columns is-multiline">
-                    <div class="column is-half-tablet is-one-half-desktop is-one-quarter-fullhd has-text-centered">
+                    <div class="column is-half-tablet is-half-desktop is-half-fullhd has-text-centered">
                         <article class="media">
                             <a href="/#/search">
                                 <figure class="media-left" style="padding-right: 1rem">
@@ -69,7 +69,7 @@
                             </div>
                         </article>
                     </div>
-                    <div class="column is-half-tablet is-one-half-desktop is-one-quarter-fullhd has-text-centered">
+                    <div class="column is-half-tablet is-half-desktop is-half-fullhd has-text-centered">
                         <article class="media">
                             <a href="/#/training">
                                 <figure class="media-left" style="padding-right: 1rem">
@@ -90,7 +90,7 @@
                             </div>
                         </article>
                     </div>
-                    <div class="column is-half-tablet is-one-half-desktop is-one-quarter-fullhd has-text-centered">
+                    <div class="column is-half-tablet is-half-desktop is-half-fullhd has-text-centered">
                         <article class="media">
                             <a href="http://ecco.ga-sps.org/help.php" target="ecco">
                                 <figure class="media-left" style="padding-right: 1rem">
@@ -111,7 +111,7 @@
                             </div>
                         </article>
                     </div>
-                    <div class="column is-half-tablet is-one-half-desktop is-one-quarter-fullhd has-text-centered">
+                    <div class="column is-half-tablet is-half-desktop is-half-fullhd has-text-centered">
                         <article class="media">
                             <a href="/#/calendar">
                                 <figure class="media-left" style="padding-right: 1rem">
