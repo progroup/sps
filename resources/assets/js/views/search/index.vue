@@ -18,7 +18,7 @@
             <div class="container">
                 <div class="columns">
                     <div class="column is-8">
-                        <ais-index app-id="WTEU7RU64C" api-key="84cd67fa388e3c50b3a0a1710fae55ad" index-name="resources" :cache="true" :auto-search="true" :query="query">
+                        <ais-index app-id="WTEU7RU64C" api-key="84cd67fa388e3c50b3a0a1710fae55ad" index-name="resource_index" :cache="true" :auto-search="true" :query="query">
                             <div class="columns">
                                 <div class="column is-3 is-hidden-touch">
 
@@ -38,7 +38,7 @@
                                         </div>
 
                                         <div>
-                                            <ais-refinement-list attribute-name="_tags">
+                                            <ais-refinement-list attribute-name="tags">
                                                 <template slot="header">
                                                     <p class="menu-label">
                                                         Tags
@@ -100,7 +100,7 @@
 
                                                         <p>{{ result.description }}</p>
 
-                                                        <span class="tag is-rounded" :key="index" v-for="(tag, index) in result._tags">
+                                                        <span class="tag is-rounded" :key="index" v-for="(tag, index) in result.tags">
                                                             {{tag}}
                                                         </span>
 
@@ -184,127 +184,127 @@
 </template>
 
 <script>
-import moment from 'moment'
-import AccordionMenu from '@/components/AccordionMenu'
+import moment from "moment";
+import AccordionMenu from "@/components/AccordionMenu";
 
 export default {
-    // props: ['query'],
-    components: {
-        AccordionMenu
-    },
-    data () {
-        return {
-            query: this.$route.query.query || '',
-            user: window.App.user,
-            value: [{ name: 'Vue.js', language: 'JavaScript' }],
-            options: [
-                { name: 'Vue.js', language: 'JavaScript' },
-                { name: 'Adonis', language: 'JavaScript' },
-                { name: 'Rails', language: 'Ruby' },
-                { name: 'Sinatra', language: 'Ruby' },
-                { name: 'Laravel', language: 'PHP' },
-                { name: 'Phoenix', language: 'Elixir' }
-            ],
-            contents: [
-                {
-                    title: 'How are you?',
-                    msg: 'Test for fun!'
-                },
-                {
-                    title: 'Who let the dog out?',
-                    msg: 'I do not know, dude.'
-                },
-                {
-                    title: '肚子好餓?',
-                    msg: '吃芭樂啦！'
-                },
-                {
-                    title: 'Find hotels?',
-                    msg: 'Trivago！'
-                }
-            ],
-            colors: {
-                laravel: '#333'
-            }
-        }
-    },
-
-    methods: {
-        publishDate (date) {
-            return moment(date).format('LL')
+  // props: ['query'],
+  components: {
+    AccordionMenu
+  },
+  data() {
+    return {
+      query: this.$route.query.query || "",
+      user: window.App.user,
+      value: [{ name: "Vue.js", language: "JavaScript" }],
+      options: [
+        { name: "Vue.js", language: "JavaScript" },
+        { name: "Adonis", language: "JavaScript" },
+        { name: "Rails", language: "Ruby" },
+        { name: "Sinatra", language: "Ruby" },
+        { name: "Laravel", language: "PHP" },
+        { name: "Phoenix", language: "Elixir" }
+      ],
+      contents: [
+        {
+          title: "How are you?",
+          msg: "Test for fun!"
         },
-
-        videoType (type) {
-            type = type.replace(/^(.)|\+s(.)/g, $1 => {
-                return $1.toUpperCase()
-            })
-
-            if (type === 'Lesson') {
-                type = 'Standalone Lesson'
-            }
-
-            return type
+        {
+          title: "Who let the dog out?",
+          msg: "I do not know, dude."
         },
-
-        seriesName (name) {
-            return name
+        {
+          title: "肚子好餓?",
+          msg: "吃芭樂啦！"
+        },
+        {
+          title: "Find hotels?",
+          msg: "Trivago！"
         }
+      ],
+      colors: {
+        laravel: "#333"
+      }
+    };
+  },
+
+  methods: {
+    publishDate(date) {
+      return moment(date).format("LL");
+    },
+
+    videoType(type) {
+      type = type.replace(/^(.)|\+s(.)/g, $1 => {
+        return $1.toUpperCase();
+      });
+
+      if (type === "Lesson") {
+        type = "Standalone Lesson";
+      }
+
+      return type;
+    },
+
+    seriesName(name) {
+      return name;
     }
-}
+  }
+};
 </script>
 
 <style>
-    .ais-highlight em {
-      background-color: #ff9;
-      font-style: normal;
-    }
+.ais-highlight em {
+  background-color: #ff9;
+  font-style: normal;
+}
 
-    .tile {
-      outline: 1px dotted red;
-    }
+.tile {
+  outline: 1px dotted red;
+}
 
-    .ais-refinement-list {
-      margin-bottom: 2rem;
-    }
+.ais-refinement-list {
+  margin-bottom: 2rem;
+}
 
-    .ais-refinement-list__item {
-      margin-bottom: 0.5rem;
-    }
+.ais-refinement-list__item {
+  margin-bottom: 0.5rem;
+}
 
-    .ais-refinement-list__label {
-      display: flex;
-      align-items: center;
-    }
+.ais-refinement-list__label {
+  display: flex;
+  align-items: center;
+}
 
-    .ais-refinement-list__checkbox {
-      margin-right: 0.5rem;
-    }
+.ais-refinement-list__checkbox {
+  margin-right: 0.5rem;
+}
 
-    .ais-refinement-list__value {
-      flex-grow: 1;
-    }
+.ais-refinement-list__value {
+  flex-grow: 1;
+}
 
-    form[role='search'] {
-    }
+form[role="search"] {
+}
 
-    input.ais-input {
-    }
+input.ais-input {
+}
 
-    button.ais-search-box__submit {
-    }
+button.ais-search-box__submit {
+}
 
-    svg {
-    }
+svg {
+}
 
-    button.ais-clear.ais-clear--disabled svg {
-    }
+button.ais-clear.ais-clear--disabled svg {
+}
 
-    .icon.is-xx-large {
-      width: 84px;
-      height: 84px;
-    }
+.icon.is-xx-large {
+  width: 84px;
+  height: 84px;
+}
 
-    .icon.is-xx-large .fa {
-      font-size: 96px;
-    }
+.icon.is-xx-large .fa {
+  font-size: 96px;
+}
 </style>

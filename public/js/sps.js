@@ -17745,7 +17745,7 @@ var Component = __webpack_require__(13)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/vtolbert/@progroup/sps/resources/assets/js/components/Sidebar.vue"
+Component.options.__file = "/Users/vtolbert/Sites/sps/resources/assets/js/components/Sidebar.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Sidebar.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -39394,7 +39394,7 @@ var Component = __webpack_require__(13)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/vtolbert/@progroup/sps/resources/assets/js/views/index.vue"
+Component.options.__file = "/Users/vtolbert/Sites/sps/resources/assets/js/views/index.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -40135,7 +40135,7 @@ var Component = __webpack_require__(13)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/vtolbert/@progroup/sps/resources/assets/js/views/calendar/index.vue"
+Component.options.__file = "/Users/vtolbert/Sites/sps/resources/assets/js/views/calendar/index.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -40291,7 +40291,7 @@ var Component = __webpack_require__(13)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/vtolbert/@progroup/sps/resources/assets/js/views/search/index.vue"
+Component.options.__file = "/Users/vtolbert/Sites/sps/resources/assets/js/views/search/index.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -40349,7 +40349,7 @@ exports = module.exports = __webpack_require__(66)(undefined);
 
 
 // module
-exports.push([module.i, "\n.ais-highlight em {\n  background-color: #ff9;\n  font-style: normal;\n}\n.tile {\n  outline: 1px dotted red;\n}\n.ais-refinement-list {\n  margin-bottom: 32px;\n  margin-bottom: 2rem;\n}\n.ais-refinement-list__item {\n  margin-bottom: 8px;\n  margin-bottom: 0.5rem;\n}\n.ais-refinement-list__label {\n  display: flex;\n  align-items: center;\n}\n.ais-refinement-list__checkbox {\n  margin-right: 8px;\n  margin-right: 0.5rem;\n}\n.ais-refinement-list__value {\n  flex-grow: 1;\n}\nform[role='search'] {\n}\ninput.ais-input {\n}\nbutton.ais-search-box__submit {\n}\nsvg {\n}\nbutton.ais-clear.ais-clear--disabled svg {\n}\n.icon.is-xx-large {\n  width: 84px;\n  height: 84px;\n}\n.icon.is-xx-large .fa {\n  font-size: 96px;\n}\n", ""]);
+exports.push([module.i, "\n.ais-highlight em {\n  background-color: #ff9;\n  font-style: normal;\n}\n.tile {\n  outline: 1px dotted red;\n}\n.ais-refinement-list {\n  margin-bottom: 32px;\n  margin-bottom: 2rem;\n}\n.ais-refinement-list__item {\n  margin-bottom: 8px;\n  margin-bottom: 0.5rem;\n}\n.ais-refinement-list__label {\n  display: flex;\n  align-items: center;\n}\n.ais-refinement-list__checkbox {\n  margin-right: 8px;\n  margin-right: 0.5rem;\n}\n.ais-refinement-list__value {\n  flex-grow: 1;\n}\nform[role=\"search\"] {\n}\ninput.ais-input {\n}\nbutton.ais-search-box__submit {\n}\nsvg {\n}\nbutton.ais-clear.ais-clear--disabled svg {\n}\n.icon.is-xx-large {\n  width: 84px;\n  height: 84px;\n}\n.icon.is-xx-large .fa {\n  font-size: 96px;\n}\n", ""]);
 
 // exports
 
@@ -40587,55 +40587,55 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    // props: ['query'],
-    components: {
-        AccordionMenu: __WEBPACK_IMPORTED_MODULE_1__components_AccordionMenu___default.a
+  // props: ['query'],
+  components: {
+    AccordionMenu: __WEBPACK_IMPORTED_MODULE_1__components_AccordionMenu___default.a
+  },
+  data: function data() {
+    return {
+      query: this.$route.query.query || "",
+      user: window.App.user,
+      value: [{ name: "Vue.js", language: "JavaScript" }],
+      options: [{ name: "Vue.js", language: "JavaScript" }, { name: "Adonis", language: "JavaScript" }, { name: "Rails", language: "Ruby" }, { name: "Sinatra", language: "Ruby" }, { name: "Laravel", language: "PHP" }, { name: "Phoenix", language: "Elixir" }],
+      contents: [{
+        title: "How are you?",
+        msg: "Test for fun!"
+      }, {
+        title: "Who let the dog out?",
+        msg: "I do not know, dude."
+      }, {
+        title: "肚子好餓?",
+        msg: "吃芭樂啦！"
+      }, {
+        title: "Find hotels?",
+        msg: "Trivago！"
+      }],
+      colors: {
+        laravel: "#333"
+      }
+    };
+  },
+
+
+  methods: {
+    publishDate: function publishDate(date) {
+      return __WEBPACK_IMPORTED_MODULE_0_moment___default()(date).format("LL");
     },
-    data: function data() {
-        return {
-            query: this.$route.query.query || '',
-            user: window.App.user,
-            value: [{ name: 'Vue.js', language: 'JavaScript' }],
-            options: [{ name: 'Vue.js', language: 'JavaScript' }, { name: 'Adonis', language: 'JavaScript' }, { name: 'Rails', language: 'Ruby' }, { name: 'Sinatra', language: 'Ruby' }, { name: 'Laravel', language: 'PHP' }, { name: 'Phoenix', language: 'Elixir' }],
-            contents: [{
-                title: 'How are you?',
-                msg: 'Test for fun!'
-            }, {
-                title: 'Who let the dog out?',
-                msg: 'I do not know, dude.'
-            }, {
-                title: '肚子好餓?',
-                msg: '吃芭樂啦！'
-            }, {
-                title: 'Find hotels?',
-                msg: 'Trivago！'
-            }],
-            colors: {
-                laravel: '#333'
-            }
-        };
+    videoType: function videoType(type) {
+      type = type.replace(/^(.)|\+s(.)/g, function ($1) {
+        return $1.toUpperCase();
+      });
+
+      if (type === "Lesson") {
+        type = "Standalone Lesson";
+      }
+
+      return type;
     },
-
-
-    methods: {
-        publishDate: function publishDate(date) {
-            return __WEBPACK_IMPORTED_MODULE_0_moment___default()(date).format('LL');
-        },
-        videoType: function videoType(type) {
-            type = type.replace(/^(.)|\+s(.)/g, function ($1) {
-                return $1.toUpperCase();
-            });
-
-            if (type === 'Lesson') {
-                type = 'Standalone Lesson';
-            }
-
-            return type;
-        },
-        seriesName: function seriesName(name) {
-            return name;
-        }
+    seriesName: function seriesName(name) {
+      return name;
     }
+  }
 });
 
 /***/ }),
@@ -40911,7 +40911,7 @@ var Component = __webpack_require__(13)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/vtolbert/@progroup/sps/resources/assets/js/components/AccordionMenu.vue"
+Component.options.__file = "/Users/vtolbert/Sites/sps/resources/assets/js/components/AccordionMenu.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] AccordionMenu.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -41119,7 +41119,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "app-id": "WTEU7RU64C",
       "api-key": "84cd67fa388e3c50b3a0a1710fae55ad",
-      "index-name": "resources",
+      "index-name": "resource_index",
       "cache": true,
       "auto-search": true,
       "query": _vm.query
@@ -41150,7 +41150,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "menu-label"
   }, [_vm._v("\n                                                    Category\n                                                ")])])], 2)], 1), _vm._v(" "), _c('div', [_c('ais-refinement-list', {
     attrs: {
-      "attribute-name": "_tags"
+      "attribute-name": "tags"
     },
     scopedSlots: _vm._u([{
       key: "default",
@@ -41241,7 +41241,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             "result": result,
             "attribute-name": "title"
           }
-        })], 1)]), _vm._v(" "), _c('p', [_vm._v(_vm._s(result.description))]), _vm._v(" "), _vm._l((result._tags), function(tag, index) {
+        })], 1)]), _vm._v(" "), _c('p', [_vm._v(_vm._s(result.description))]), _vm._v(" "), _vm._l((result.tags), function(tag, index) {
           return _c('span', {
             key: index,
             staticClass: "tag is-rounded"
@@ -41381,7 +41381,7 @@ var Component = __webpack_require__(13)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/vtolbert/@progroup/sps/resources/assets/js/views/spf-overview/index.vue"
+Component.options.__file = "/Users/vtolbert/Sites/sps/resources/assets/js/views/spf-overview/index.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -42219,7 +42219,7 @@ var Component = __webpack_require__(13)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/vtolbert/@progroup/sps/resources/assets/js/views/training/index.vue"
+Component.options.__file = "/Users/vtolbert/Sites/sps/resources/assets/js/views/training/index.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] index.vue: functional components are not supported with templates, they should use render functions.")}
 
