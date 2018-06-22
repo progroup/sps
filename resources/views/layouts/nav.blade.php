@@ -17,11 +17,11 @@
 
             <div class="navbar-menu" id="navMenuIndex">
                 <div class="navbar-start">
-                    <div class="navbar-item has-dropdown" :class="[menuOpen ? 'is-active' : '']">
-                        <a @click="menuOpen = !menuOpen" class="navbar-link">
+                    <div class="navbar-item has-dropdown" :class="[aboutMenuOpen ? 'is-active' : '']">
+                        <a @click="aboutMenuOpen = !aboutMenuOpen" class="navbar-link">
                             About
                         </a>
-                        <div id="moreDropdown" class="navbar-dropdown">
+                        <div id="aboutDropdown" class="navbar-dropdown">
                             <a class="navbar-item" href="{{ route('about') }}">
                                 About Us
                             </a>
@@ -33,11 +33,11 @@
                             </a>
                         </div>
                     </div>
-                    <div class="navbar-item has-dropdown" :class="[menuOpen ? 'is-active' : '']">
-                        <a @click="menuOpen = !menuOpen" class="navbar-link">
+                    <div class="navbar-item has-dropdown" :class="[eccoMenuOpen ? 'is-active' : '']">
+                        <a @click="eccoMenuOpen = !eccoMenuOpen" class="navbar-link">
                             New to Ecco
                         </a>
-                        <div id="moreDropdown" class="navbar-dropdown">
+                        <div id="eccoDropdown" class="navbar-dropdown">
                             <a class="navbar-item" href="http://resources.ga-sps.org/resources/ecco-overview-using-brifecase">
                                 Users Manual w/ Progress Reporting
                             </a>
@@ -77,7 +77,7 @@
                             {{ Auth::user()->name }}
                             <span class="caret"></span>
                         </div>
-                        <div id="moreDropdown" class="navbar-dropdown">
+                        <div id="authDropdown" class="navbar-dropdown">
                             <a class="navbar-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
                         </div>
