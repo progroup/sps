@@ -33,7 +33,28 @@
                             </a>
                         </div>
                     </div>
-                    <a class="navbar-item" href="http://ecco.ga-sps.org/help.php" target="ecco"> Upload Reports</a>
+                    <div class="navbar-item has-dropdown" :class="[menuOpen ? 'is-active' : '']">
+                        <a @click="menuOpen = !menuOpen" class="navbar-link">
+                            New to Ecco
+                        </a>
+                        <div id="moreDropdown" class="navbar-dropdown">
+                            <a class="navbar-item" href="http://resources.ga-sps.org/resources/ecco-overview-using-brifecase">
+                                Users Manual w/ Progress Reporting
+                            </a>
+                            <a class="navbar-item" href="http://resources.ga-sps.org/resources/ecco-overview-using-brifecase">
+                                Using Briefcase
+                            </a>
+                            <a class="navbar-item" href="http://resources.ga-sps.org/resources/ecco-overview-ta-entry-and-updates">
+                                TA Entry and Updates
+                            </a>
+                            <a class="navbar-item" href="http://resources.ga-sps.org/resources/ecco-overview-entering-progress-level-data">
+                                Entering Process Level Data
+                            </a>
+                            <a class="navbar-item" href="http://resources.ga-sps.org/resources/ecco-overview-adding-an-intervention-profile">
+                                Adding an Intervention Profile
+                            </a>
+                        </div>
+                    </div>
                     <a class="navbar-item" href="/#/spf-overview">SPF Overview</a>
                     <a class="navbar-item" href="/#/search">Resources</a>
                     <a class="navbar-item" href="/#/training">Training</a>
