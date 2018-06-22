@@ -3,7 +3,5 @@
     "/js/app.js": "/js/app.js",
     "/js/docs.js": "/js/docs.js",
     "/css/tailwind.css": "/css/tailwind.css",
-    "/css/docs.css": "/css/docs.css",
-    "/css/app.css": "/css/app.css",
-    "/css/sps.css": "/css/sps.css"
+    "/css/docs.css": "/css/docs.css"
 }
