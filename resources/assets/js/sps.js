@@ -7,6 +7,7 @@ const app = new Vue({
     el: '#app',
     router,
     data: {
-        menuOpen: false
+        aboutMenuOpen: false,
+        eccoMenuOpen: false
     }
 })
