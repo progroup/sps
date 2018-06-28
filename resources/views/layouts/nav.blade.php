@@ -38,7 +38,7 @@
                             New to Ecco
                         </a>
                         <div id="eccoDropdown" class="navbar-dropdown">
-                            <a class="navbar-item" href="http://resources.ga-sps.org/resources/ecco-overview-using-brifecase">
+                            <a class="navbar-item" href="http://resources.ga-sps.org/resources/ecco-users-manual">
                                 Users Manual w/ Progress Reporting
                             </a>
                             <a class="navbar-item" href="http://resources.ga-sps.org/resources/ecco-overview-using-brifecase">
