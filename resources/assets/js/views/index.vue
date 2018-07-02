@@ -138,6 +138,32 @@
         <hr>
         <section class="section">
             <div class="container content is-medium">
+                <h2 class="is-size-3">Georgia Prevention Media Showcase</h2>
+                <div class="column is-3">
+                    <div class="content">
+                        <a href="/assets/media/dawson-co-voices-billboard.pdf">
+                            <img src="/assets/media/dawson-co-voices-billboard.png">
+                        </a>
+                    </div>
+                </div>
+                <div class="column is-3">
+                    <div class="content">
+                        <a href="/assets/media/forsyth-tobacco-cards.pdf">
+                            <img src="/assets/media/forsyth-tobacco-cards.png">
+                        </a>
+                    </div>
+                </div>
+                <div class="column is-3">
+                    <div class="content">
+                        <a href="/assets/media/hall-co-gdbd-football.pdf">
+                            <img src="/assets/media/hall-co-gdbd-football.png">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container content is-medium">
                 <div class="columns">
                     <div class="column is-4">
                         <div class="content">
