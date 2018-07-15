@@ -48,104 +48,6 @@
                             </p>
                         </div>
                         <b-tabs type="is-boxed">
-                            <b-tab-item label="National">
-                                <section class="section">
-                                    <table class="table is-bordered is-fullwidth">
-                                        <caption></caption>
-                                        <thead>
-                                            <tr>
-                                                <th class="training-table-date">Dates</th>
-                                                <th class="training-table-training" colspan="2">Training</th>
-                                                <th class="training-table-modality">Modality</th>
-                                                <th class="training-table-ceus">CEUs</th>
-                                                <th class="training-table-archived">Archived</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    May 16, 2017 at 1:30 p.m. Eastern
-                                                </td>
-                                                <td colspan="2">
-                                                    Emerging Issues in Tobacco Use
-                                                </td>
-                                                <td>
-                                                    Webinar
-                                                </td>
-                                                <td class="training-table-ceus">
-                                                    NA
-                                                </td>
-                                                <td class="training-table-archived">
-                                                    NA
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="6">
-                                                    <p>
-                                                        <b>Description:</b>
-                                                        <br>
-                                                    </p>
-                                                    <p>Emerging Issues in Tobacco Use – Tuesday, May 16, 2017 at 1:30 p.m. Eastern<br> This webinar will discuss the current landscape on tobacco use and address emerging issues in tobacco misuse and prevention. It will feature experts from SAMHSA and the CDC, as well as NPW partner Campaign for Tobacco Free Kids.</p>
-                                                    <p>
-                                                        <b>Logistics</b>
-                                                        <br>
-                                                    </p>
-                                                    <p>Register today:
-                                                        <a href="https://cc.readytalk.com/r/aw7y9kj6ybk&amp;eom">https://cc.readytalk.com/r/aw7y9kj6ybk&amp;eom</a>
-                                                    </p>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <table class="table is-bordered is-fullwidth">
-                                        <caption></caption>
-                                        <thead>
-                                            <tr>
-                                                <th class="training-table-date">Dates</th>
-                                                <th class="training-table-training" colspan="2">Training</th>
-                                                <th class="training-table-modality">Modality</th>
-                                                <th class="training-table-ceus">CEUs</th>
-                                                <th class="training-table-archived">Archived</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    Wednesday, May 17, 2017 at 1:30 p.m. Eastern
-                                                </td>
-                                                <td colspan="2">
-                                                    Opioid Addiction and Prevention
-                                                </td>
-                                                <td>
-                                                    Webinar
-                                                </td>
-                                                <td class="training-table-ceus">
-                                                    NA
-                                                </td>
-                                                <td class="training-table-archived">
-                                                    NA
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="6">
-                                                    <p>
-                                                        <b>Description:</b>
-                                                        <br>
-                                                    </p>
-                                                    <p>Opioid Addiction and Prevention – Wednesday, May 17, 2017 at 1:30 p.m. Eastern<br>This webinar will discuss the growing issue of opioid addiction and how partner engagement can support prevention efforts. It will feature SAMHSA and state prevention experts, and NPW partner American Society for Addiction Medicine.<br>m/r/749hzwn4sivd&amp;eom</p>
-                                                    <p>
-                                                        <b>Logistics</b>
-                                                        <br>
-                                                    </p>
-                                                    <p>
-                                                        <a href="https://cc.readytalk.com/r/749hzwn4sivd&amp;eom">https://cc.readytalk.com/r/749hzwn4sivd&amp;eom</a>
-                                                    </p>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </section>
-                            </b-tab-item>
 
                             <b-tab-item label="State">
                                 <section class="section">
@@ -518,6 +420,104 @@
                                                         <br> FACILITATORS: Tiffiany Aholou</p>
                                                     <p>The hotels nearest to Tower Place 200 are the Courtyard by Marriott and the Doubletree. Both hotels offer government and GSU rates. All attendees qualify for both rates and may want to inquire about each and compare pricing.</p>
                                                     <p></p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+                            </b-tab-item>
+                            <b-tab-item label="National">
+                                <section class="section">
+                                    <table class="table is-bordered is-fullwidth">
+                                        <caption></caption>
+                                        <thead>
+                                            <tr>
+                                                <th class="training-table-date">Dates</th>
+                                                <th class="training-table-training" colspan="2">Training</th>
+                                                <th class="training-table-modality">Modality</th>
+                                                <th class="training-table-ceus">CEUs</th>
+                                                <th class="training-table-archived">Archived</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    May 16, 2017 at 1:30 p.m. Eastern
+                                                </td>
+                                                <td colspan="2">
+                                                    Emerging Issues in Tobacco Use
+                                                </td>
+                                                <td>
+                                                    Webinar
+                                                </td>
+                                                <td class="training-table-ceus">
+                                                    NA
+                                                </td>
+                                                <td class="training-table-archived">
+                                                    NA
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="6">
+                                                    <p>
+                                                        <b>Description:</b>
+                                                        <br>
+                                                    </p>
+                                                    <p>Emerging Issues in Tobacco Use – Tuesday, May 16, 2017 at 1:30 p.m. Eastern<br> This webinar will discuss the current landscape on tobacco use and address emerging issues in tobacco misuse and prevention. It will feature experts from SAMHSA and the CDC, as well as NPW partner Campaign for Tobacco Free Kids.</p>
+                                                    <p>
+                                                        <b>Logistics</b>
+                                                        <br>
+                                                    </p>
+                                                    <p>Register today:
+                                                        <a href="https://cc.readytalk.com/r/aw7y9kj6ybk&amp;eom">https://cc.readytalk.com/r/aw7y9kj6ybk&amp;eom</a>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="table is-bordered is-fullwidth">
+                                        <caption></caption>
+                                        <thead>
+                                            <tr>
+                                                <th class="training-table-date">Dates</th>
+                                                <th class="training-table-training" colspan="2">Training</th>
+                                                <th class="training-table-modality">Modality</th>
+                                                <th class="training-table-ceus">CEUs</th>
+                                                <th class="training-table-archived">Archived</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    Wednesday, May 17, 2017 at 1:30 p.m. Eastern
+                                                </td>
+                                                <td colspan="2">
+                                                    Opioid Addiction and Prevention
+                                                </td>
+                                                <td>
+                                                    Webinar
+                                                </td>
+                                                <td class="training-table-ceus">
+                                                    NA
+                                                </td>
+                                                <td class="training-table-archived">
+                                                    NA
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="6">
+                                                    <p>
+                                                        <b>Description:</b>
+                                                        <br>
+                                                    </p>
+                                                    <p>Opioid Addiction and Prevention – Wednesday, May 17, 2017 at 1:30 p.m. Eastern<br>This webinar will discuss the growing issue of opioid addiction and how partner engagement can support prevention efforts. It will feature SAMHSA and state prevention experts, and NPW partner American Society for Addiction Medicine.<br>m/r/749hzwn4sivd&amp;eom</p>
+                                                    <p>
+                                                        <b>Logistics</b>
+                                                        <br>
+                                                    </p>
+                                                    <p>
+                                                        <a href="https://cc.readytalk.com/r/749hzwn4sivd&amp;eom">https://cc.readytalk.com/r/749hzwn4sivd&amp;eom</a>
+                                                    </p>
                                                 </td>
                                             </tr>
                                         </tbody>
