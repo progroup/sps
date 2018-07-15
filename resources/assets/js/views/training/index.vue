@@ -163,20 +163,15 @@
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    June 20, 2017 10 - 11am
-                                                </td>
+                                                    June 20, 2017 10 - 11am </td>
                                                 <td colspan="2">
-                                                    Key Stakeholder Analysis Tool Overview
-                                                </td>
+                                                    Key Stakeholder Analysis Tool Overview </td>
                                                 <td>
-                                                    Webinar
-                                                </td>
+                                                    Webinar </td>
                                                 <td class="training-table-ceus">
-                                                    no
-                                                </td>
+                                                    no </td>
                                                 <td class="training-table-archived">
-                                                    no
-                                                </td>
+                                                    no </td>
                                             </tr>
                                             <tr>
                                                 <td colspan="6">
@@ -185,16 +180,344 @@
                                                         <br>
                                                     </p>
                                                     <p>Key Stakeholder Analysis Tool Overview:</p>
+                                                    <p></p>
                                                     <p>
                                                         <b>Logistics</b>
                                                         <br>
                                                     </p>
-                                                    <p>Key Stakeholder Analysis Review<br>Tue, Jun 20, 2017 10:00 AM - 11:00 AM EDT</p>
-                                                    <p>Please join my meeting from your computer, tablet or smartphone.<br>
-                                                        <a href="https://global.gotomeeting.com/join/798228261">https://global.gotomeeting.com/join/798228261</a>
-                                                    </p>
-                                                    <p>You can also dial in using your phone.<br>United States: +1 (872) 240-3212</p>
+                                                    <p>Key Stakeholder Analysis Review
+                                                        <br> Tue, Jun 20, 2017 10:00 AM - 11:00 AM EDT</p>
+                                                    <p>Please join my meeting from your computer, tablet or smartphone.
+                                                        <br>
+                                                        <a href="https://global.gotomeeting.com/join/798228261">https://global.gotomeeting.com/join/798228261</a></p>
+                                                    <p>You can also dial in using your phone.
+                                                        <br> United States: +1 (872) 240-3212</p>
                                                     <p>Access Code: 798-228-261</p>
+                                                    <p></p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="table is-bordered is-fullwidth">
+                                        <caption></caption>
+                                        <thead>
+                                            <tr>
+                                                <th class="training-table-date">Dates</th>
+                                                <th class="training-table-training" colspan="2">Training</th>
+                                                <th class="training-table-modality">Modality</th>
+                                                <th class="training-table-ceus">CEUs</th>
+                                                <th class="training-table-archived">Archived</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    October 9, 2018- 8:15 AM – 4:30 PM </td>
+                                                <td colspan="2">
+                                                    Sustainability </td>
+                                                <td>
+                                                    In-person Meeting </td>
+                                                <td class="training-table-ceus">
+                                                </td>
+                                                <td class="training-table-archived">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="6">
+                                                    <p>
+                                                        <b>Description:</b>
+                                                        <br>
+                                                    </p>
+                                                    <p>This training will address how to develop and implement ongoing sustainability plans for maintaining prevention outcomes. Presenters will discuss 1.) how to build long-term partnerships with community organization and institutions, and 2.) practical solutions for building diverse financial streams.</p>
+                                                    <p></p>
+                                                    <p>
+                                                        <b>Logistics</b>
+                                                        <br>
+                                                    </p>
+                                                    <p>GSU Buckhead Center, Tower Place 200 | 3348 Peachtree Rd NE, Atlanta, GA 30326
+                                                        <br> The hotels nearest to Tower Place 200 are the Courtyard by Marriott and the Doubletree. Both hotels offer government and GSU rates. Attendees may want to ask about both rates and compare pricing.</p>
+                                                    <p></p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="table is-bordered is-fullwidth">
+                                        <caption></caption>
+                                        <thead>
+                                            <tr>
+                                                <th class="training-table-date">Dates</th>
+                                                <th class="training-table-training" colspan="2">Training</th>
+                                                <th class="training-table-modality">Modality</th>
+                                                <th class="training-table-ceus">CEUs</th>
+                                                <th class="training-table-archived">Archived</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    October 10, 2018- 9:00 AM – 4:30 PM </td>
+                                                <td colspan="2">
+                                                    Tri-Ethnic Community Readiness Model </td>
+                                                <td>
+                                                    In-Person Meeting </td>
+                                                <td class="training-table-ceus">
+                                                </td>
+                                                <td class="training-table-archived">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="6">
+                                                    <p>
+                                                        <b>Description:</b>
+                                                        <br>
+                                                    </p>
+                                                    <p>This training will take participants through the process of conducting a community readiness assessment. Participants will learn how to accurately capture community readiness, and the importance of fidelity when carrying out these assessments.</p>
+                                                    <p></p>
+                                                    <p>
+                                                        <b>Logistics</b>
+                                                        <br>
+                                                    </p>
+                                                    <p>GSU Buckhead Center, Tower Place 200 | 3348 Peachtree Rd NE, Atlanta, GA 30326</p>
+                                                    <p></p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="table is-bordered is-fullwidth">
+                                        <caption></caption>
+                                        <thead>
+                                            <tr>
+                                                <th class="training-table-date">Dates</th>
+                                                <th class="training-table-training" colspan="2">Training</th>
+                                                <th class="training-table-modality">Modality</th>
+                                                <th class="training-table-ceus">CEUs</th>
+                                                <th class="training-table-archived">Archived</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    TBD, 10:00 AM – 11:30 AM </td>
+                                                <td colspan="2">
+                                                    Proposal/Technical Writing </td>
+                                                <td>
+                                                    Webinar </td>
+                                                <td class="training-table-ceus">
+                                                </td>
+                                                <td class="training-table-archived">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="6">
+                                                    <p>
+                                                        <b>Description:</b>
+                                                        <br>
+                                                    </p>
+                                                    <p>This webinar will address the following objectives: 1.) using data to raise awareness and demonstrate need, 2.) formatting and proofing, and 3.) citing sources and avoiding unintentional plagiarism.</p>
+                                                    <p></p>
+                                                    <p>
+                                                        <b>Logistics</b>
+                                                        <br>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="table is-bordered is-fullwidth">
+                                        <caption></caption>
+                                        <thead>
+                                            <tr>
+                                                <th class="training-table-date">Dates</th>
+                                                <th class="training-table-training" colspan="2">Training</th>
+                                                <th class="training-table-modality">Modality</th>
+                                                <th class="training-table-ceus">CEUs</th>
+                                                <th class="training-table-archived">Archived</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    July 18, 2018, 10:00 AM to 11:00 AM </td>
+                                                <td colspan="2">
+                                                    Ecco Clinic </td>
+                                                <td>
+                                                    Webinar </td>
+                                                <td class="training-table-ceus">
+                                                </td>
+                                                <td class="training-table-archived">
+                                                    yes </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="6">
+                                                    <p>
+                                                        <b>Description:</b>
+                                                        <br>
+                                                    </p>
+                                                    <p>TARGET AUDIENCE: ASAPP providers using the Ecco system to enter MDS data.
+                                                        <br> This webinar will allow ASAPP providers to come with questions they have concerning developing/editing their Intervention Profiles, entering monthly process data, or other challenges they may have navigating the Ecco system. Providers are encouraged to email their questions in advance to Fiana Thacker at fiana@progroup.us; however, questions posed during the webinar are also welcomed.</p>
+                                                    <p></p>
+                                                    <p>
+                                                        <b>Logistics</b>
+                                                        <br>
+                                                    </p>
+                                                    <p>GoToMeeting
+                                                        <br> Please join my meeting from your computer, tablet or smartphone.
+                                                        <br>
+                                                        <a href="https://global.gotomeeting.com/join/391064077">https://global.gotomeeting.com/join/391064077</a>
+                                                        <br> You can also dial in using your phone.
+                                                        <br> United States: +1 (646) 749-3112
+                                                        <br> Access Code: 391-064-077
+                                                        <br> Joining from a video-conferencing room or system?
+                                                        <br> Dial: 67.217.95.2##391064077
+                                                        <br> Cisco devices: 391064077@67.217.95.2
+                                                        <br> First GoToMeeting? Let's do a quick system check:
+                                                        <br>
+                                                        <a href="https://link.gotomeeting.com/system-check">https://link.gotomeeting.com/system-check</a></p>
+                                                    <p></p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="table is-bordered is-fullwidth">
+                                        <caption></caption>
+                                        <thead>
+                                            <tr>
+                                                <th class="training-table-date">Dates</th>
+                                                <th class="training-table-training" colspan="2">Training</th>
+                                                <th class="training-table-modality">Modality</th>
+                                                <th class="training-table-ceus">CEUs</th>
+                                                <th class="training-table-archived">Archived</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    October 9, 2018, 8:15 AM to 4:30 AM </td>
+                                                <td colspan="2">
+                                                    Sustainability </td>
+                                                <td>
+                                                    In-person </td>
+                                                <td class="training-table-ceus">
+                                                </td>
+                                                <td class="training-table-archived">
+                                                    no </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="6">
+                                                    <p>
+                                                        <b>Description:</b>
+                                                        <br>
+                                                    </p>
+                                                    <p>The purpose of the one-day training is to address the important role substance abuse prevention coalitions play in creating safe communities and to provide strategies for increasing the involvement of various segments of the community in prevention efforts and programs.</p>
+                                                    <p>Facilitator: Maxine Fuller</p>
+                                                    <p></p>
+                                                    <p>
+                                                        <b>Logistics</b>
+                                                        <br>
+                                                    </p>
+                                                    <p>The hotels nearest to Tower Place 200 are the Courtyard by Marriott and the Doubletree. Both hotels offer government and GSU rates. All attendees qualify for both rates and may want to inquire about each and compare pricing.</p>
+                                                    <p>GSU Buckhead Center, Tower Place 200 | 3348 Peachtree Rd NE, Atlanta, GA 30326</p>
+                                                    <p></p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="table is-bordered is-fullwidth">
+                                        <caption></caption>
+                                        <thead>
+                                            <tr>
+                                                <th class="training-table-date">Dates</th>
+                                                <th class="training-table-training" colspan="2">Training</th>
+                                                <th class="training-table-modality">Modality</th>
+                                                <th class="training-table-ceus">CEUs</th>
+                                                <th class="training-table-archived">Archived</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    August 15, 2018, 10:00 AM to 11:30 AM </td>
+                                                <td colspan="2">
+                                                    Technical Writing </td>
+                                                <td>
+                                                    Webinar </td>
+                                                <td class="training-table-ceus">
+                                                </td>
+                                                <td class="training-table-archived">
+                                                    yes </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="6">
+                                                    <p>
+                                                        <b>Description:</b>
+                                                        <br>
+                                                    </p>
+                                                    <p>TARGET AUDIENCE: All ASAPP providers are encouraged to join. For those who are unable to attend the live webinar, a recorded version will be available on www.ga-sps.org.</p>
+                                                    <p>This webinar will provide helpful tips for report writing. The objectives include 1.) techniques for infusing data into reports, and 2.) methods for keeping writing concise and clear.</p>
+                                                    <p>Facilitator: Fiana Thacker</p>
+                                                    <p></p>
+                                                    <p>
+                                                        <b>Logistics</b>
+                                                        <br>
+                                                    </p>
+                                                    <p>GoToMeeting
+                                                        <br> Please join my meeting from your computer, tablet or smartphone.
+                                                        <br>
+                                                        <a href="https://global.gotomeeting.com/join/137306045">https://global.gotomeeting.com/join/137306045</a>
+                                                        <br> You can also dial in using your phone.
+                                                        <br> United States: +1 (408) 650-3123
+                                                        <br> Access Code: 137-306-045
+                                                        <br> Joining from a video-conferencing room or system?
+                                                        <br> Dial: 67.217.95.2##137306045
+                                                        <br> Cisco devices: 137306045@67.217.95.2
+                                                        <br> First GoToMeeting? Let's do a quick system check:
+                                                        <br>
+                                                        <a href="https://link.gotomeeting.com/system-check">https://link.gotomeeting.com/system-check</a></p>
+                                                    <p></p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="table is-bordered is-fullwidth">
+                                        <caption></caption>
+                                        <thead>
+                                            <tr>
+                                                <th class="training-table-date">Dates</th>
+                                                <th class="training-table-training" colspan="2">Training</th>
+                                                <th class="training-table-modality">Modality</th>
+                                                <th class="training-table-ceus">CEUs</th>
+                                                <th class="training-table-archived">Archived</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    October 10, 8:15 AM to 4:30 PM </td>
+                                                <td colspan="2">
+                                                    Tri-Ethnic Community Readiness Model </td>
+                                                <td>
+                                                    In-person </td>
+                                                <td class="training-table-ceus">
+                                                </td>
+                                                <td class="training-table-archived">
+                                                    no </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="6">
+                                                    <p>
+                                                        <b>Description:</b>
+                                                        <br>
+                                                    </p>
+                                                    <p>This training will take participants through the process of conducting a community readiness assessment. Participants will learn how to accurately capture community readiness, and the importance of fidelity when carrying out these assessments.</p>
+                                                    <p></p>
+                                                    <p>
+                                                        <b>Logistics</b>
+                                                        <br>
+                                                    </p>
+                                                    <p>GSU Buckhead Center, Tower Place 200 | 3348 Peachtree Rd NE, Atlanta, GA 30326
+                                                        <br> FACILITATORS: Tiffiany Aholou</p>
+                                                    <p>The hotels nearest to Tower Place 200 are the Courtyard by Marriott and the Doubletree. Both hotels offer government and GSU rates. All attendees qualify for both rates and may want to inquire about each and compare pricing.</p>
+                                                    <p></p>
                                                 </td>
                                             </tr>
                                         </tbody>
