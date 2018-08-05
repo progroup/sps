@@ -10,6 +10,10 @@ const routes = [
         component: require('./views/calendar')
     },
     {
+        path: '/media',
+        component: require('./views/media')
+    },
+    {
         path: '/search',
         component: require('./views/search')
     },
