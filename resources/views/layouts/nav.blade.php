@@ -57,6 +57,7 @@
                     </div>
                     <a class="navbar-item" href="/#/spf-overview">SPF Overview</a>
                     <a class="navbar-item" href="/#/search">Resources</a>
+                    <a class="navbar-item" href="/#/media">Media</a>
                     <a class="navbar-item" href="/#/training">Training</a>
                 </div>
 

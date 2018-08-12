@@ -7,36 +7,26 @@
                 </div>
             </div>
         </section> -->
-        <section classs="section" style="margin-top: 2rem">
+        <section classs="section" style="margin-top: 2rem;">
             <div class="container">
                 <div class="content">
                     <h1>Shared Media</h1>
                     <p>Providers can share media messaging with one another that they've created and have been approved by DBHDD</p>
                     <slick ref="slick" :options="slickOptions">
-                        <a href="/assets/media/augusta-university_1.png">
-                            <img src="/assets/media/augusta-university_1.png" alt="">
-                        </a>
-                        <a href="/assets/media/augusta-university_2.png">
-                            <img src="/assets/media/augusta-university_2.png" alt="">
-                        </a>
-                        <a href="/assets/media/augusta-university_3.png">
-                            <img src="/assets/media/augusta-university_3.png" alt="">
-                        </a>
-                        <a href="/assets/media/columbia-county_1.jpg">
-                            <img src="/assets/media/columbia-county_1.jpg" alt="">
-                        </a>
-                        <a href="/assets/media/dawson-co-voices-billboard.pdf">
-                            <img src="/assets/media/dawson-co-voices-billboard.png" alt="">
-                        </a>
-                        <a href="/assets/media/forsyth-tobacco-cards.png">
-                            <img src="/assets/media/forsyth-tobacco-cards.png" alt="">
-                        </a>
-                        <a href="/assets/media/hall-co-gdbd-football.png">
-                            <img src="/assets/media/hall-co-gdbd-football.png" alt="">
-                        </a>
-                        <a href="/assets/media/tcad_1.png">
-                            <img src="/assets/media/tcad_1.png" alt="">
-                        </a>
+                        <article class="media" v-for="(slide, index) in slides" :key="index">
+                            <!-- <figure class="media-left" style="display: flex; outline: 1px solid green;">
+                                <p class="image is-3by5" style="outline: 1px solid red;">
+                                      <img :src="slide.img">
+                                </p>
+                            </figure> -->
+                            <div class="media-content">
+                                <figure class="image is-3by5">
+                                    <a :href="slidesPath + slide.img">
+                                        <img :src="slidesPath + slide.img" alt="" style="padding: 1px;">
+                                    </a>
+                                </figure>
+                            </div>
+                        </article>
                     </slick>
                 </div>
             </div>
@@ -45,42 +35,96 @@
 </template>
 
 <script>
- import Slick from 'vue-slick'
- import 'slick-carousel/slick/slick.css';
- import 'slick-carousel/slick/slick-theme.css';
+import Slick from "vue-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
- export default {
-    components: { Slick },
-    data() {
-            return {
-                    slickOptions: {
-                        //options can be used from the plugin documentation
-                        slidesToShow: 4,
-                        infinite: true,
-                        accessibility: true,
-                        adaptiveHeight: true,
-                        // asNavFor: '',
-                        centerMode: true,
-                        arrows: true,
-                        dots: true,
-                        draggable: true,
-                        edgeFriction: 0.30,
-                        swipe: true
-                    }
-            }
-    },
-    // All slick methods can be used too, example here
-    methods: {
-            next() {
-                    this.$refs.slick.next()
-            },
-            prev() {
-                    this.$refs.slick.prev()
-            },
-            reInit() {
-                    // Helpful if you have to deal with v-for to update dynamic lists
-                    this.$refs.slick.reSlick()
-            }
-    }
- }
+export default {
+	components: { Slick },
+	data() {
+		return {
+			slickOptions: {
+				// nextArrow: '<i class="fa fa-arrow-right"></i>',
+				// prevArrow: '<i class="fa fa-arrow-left"></i>',
+				//options can be used from the plugin documentation
+				slidesToShow: 3,
+				// slidesToScroll: 1,
+				infinite: true,
+				accessibility: true,
+				adaptiveHeight: true,
+				// asNavFor: '',
+				// slide: '.slide',
+				centerMode: true,
+				arrows: true,
+				dots: true,
+				draggable: true,
+				edgeFriction: 0.3,
+				swipe: true,
+				responsive: [
+					{
+						breakpoint: 1280,
+						settings: {
+							arrows: true,
+							slidesToShow: 3,
+							slidesToScroll: 3
+						}
+					},
+					{
+						breakpoint: 768 - 1,
+						settings: {
+							arrows: true,
+							swipeToSlide: true,
+							slidesToShow: 3,
+							slidesToScroll: 3
+						}
+					},
+					{
+						breakpoint: 600 - 1,
+						settings: {
+							arrows: false,
+							centerMode: true,
+							dots: false,
+							touchMove: true,
+							swipeToSlide: true,
+							slidesToShow: 1
+						}
+					}
+				]
+			},
+			slidesPath: "/assets/media/",
+			slides: [
+				{ img: "augusta-university_1.png" },
+				{ img: "augusta-university_2.png" },
+				{ img: "augusta-university_3.png" },
+				{ img: "columbia-county_1.jpg" },
+				{ img: "dawson-co-voices-billboard.png" },
+				{ img: "forsyth-tobacco-cards.png" },
+				{ img: "hall-co-gdbd-football.png" },
+				{ img: "tcad_1.png" }
+			]
+		};
+	},
+	// All slick methods can be used too, example here
+	methods: {
+		next() {
+			this.$refs.slick.next();
+		},
+		prev() {
+			this.$refs.slick.prev();
+		},
+		reInit() {
+			// Helpful if you have to deal with v-for to update dynamic lists
+			this.$refs.slick.reSlick();
+		}
+	}
+};
 </script>
+
+<style>
+.slick-track {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+</style>
+
