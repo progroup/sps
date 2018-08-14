@@ -96,11 +96,16 @@ export default {
 				{ img: "augusta-university_1.png" },
 				{ img: "augusta-university_2.png" },
 				{ img: "augusta-university_3.png" },
+				{ img: "cling-logo.png" },
 				{ img: "columbia-county_1.jpg" },
 				{ img: "dawson-co-voices-billboard.png" },
 				{ img: "forsyth-tobacco-cards.png" },
 				{ img: "hall-co-gdbd-football.png" },
-				{ img: "tcad_1.png" }
+				{ img: "hearts.png" },
+				{ img: "save-brains-thank-you-billboard.png" },
+				{ img: "ssyp-billboard.png" },
+				{ img: "tcad_1.png" },
+				{ img: "we-check-id.png" }
 			]
 		};
 	},
