@@ -56,6 +56,8 @@ export default {
 				// slide: '.slide',
 				centerMode: true,
 				arrows: true,
+				autoplay: true,
+				autoplaySpeed: 3000,
 				dots: true,
 				draggable: true,
 				edgeFriction: 0.3,
@@ -97,7 +99,7 @@ export default {
 				{ img: "augusta-university_2.png" },
 				{ img: "augusta-university_3.png" },
 				{ img: "cling-logo.png" },
-				{ img: "columbia-county_1.jpg" },
+				{ img: "columbia-county_1.png" },
 				{ img: "dawson-co-voices-billboard.png" },
 				{ img: "forsyth-tobacco-cards.png" },
 				{ img: "hall-co-gdbd-football.png" },
@@ -127,9 +129,9 @@ export default {
 
 <style>
 .slick-track {
-	display: flex;
+	/* display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: center; */
 }
 </style>
 
