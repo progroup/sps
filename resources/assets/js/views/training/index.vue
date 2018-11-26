@@ -65,6 +65,67 @@
                                         <tbody>
                                             <tr>
                                                 <td>
+                                                    January 15--18, 2019<br>
+                                                    Check-in: 8:30 - 9:00 AM<br>
+                                                    Training: 9:00 AM - 5:00 PM
+                                                </td>
+                                                <td colspan="2">
+                                                    The Substance Abuse Prevention Skills Training (SAPST)</td>
+                                                <td>
+                                                    Webinar </td>
+                                                <td class="training-table-ceus">
+                                                    no </td>
+                                                <td class="training-table-archived">
+                                                    no </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="6">
+                                                    <p>
+                                                        <b>Location:</b>
+                                                        <br>
+                                                    </p>
+                                                    <p>GSU Buckhead Center, Tower Place 200 | 3348 Peachtree Rd NE, Atlanta, GA 30326</p>
+                                                    <p>
+                                                        <b>Description:</b>
+                                                        <br>
+                                                    </p>
+                                                    <p>The Substance Abuse Prevention Skills Training (SAPST) is a four-day foundation course in the study of substance
+                                                        abuse prevention. Developed by SAMHSA and grounded in current research, this training covers each step of the
+                                                        Strategic Prevention Framework. The SAPST training provides knowledge and skills to implement effective,
+                                                        data-driven prevention programs, practices, and policies that reduce behavioral health disparities and
+                                                        improve wellness.
+                                                    </p>
+                                                    <p>
+                                                        <b>Facilitators:</b>
+                                                        <br>
+                                                    </p>
+                                                    <p>Prospectus Group and DBHDD Office of Behavioral Health Prevention
+                                                    </p>
+                                                    <p>
+                                                        <b>Hotels:</b>
+                                                        <br>
+                                                    </p>
+                                                    <p>The hotels nearest to Tower Place 200 are the Courtyard by Marriott and the Doubletree. Both hotels offer government
+                                                        and GSU rates. All attendees qualify for both rates and may want to inquire about each and compare pricing.
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="table is-bordered is-fullwidth">
+                                        <caption></caption>
+                                        <thead>
+                                            <tr>
+                                                <th class="training-table-date">Dates</th>
+                                                <th class="training-table-training" colspan="2">Training</th>
+                                                <th class="training-table-modality">Modality</th>
+                                                <th class="training-table-ceus">CEUs</th>
+                                                <th class="training-table-archived">Archived</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
                                                     June 20, 2017 10 - 11am </td>
                                                 <td colspan="2">
                                                     Key Stakeholder Analysis Tool Overview </td>
