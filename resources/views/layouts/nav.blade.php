@@ -53,6 +53,9 @@
                             <a class="navbar-item" href="http://resources.ga-sps.org/resources/ecco-overview-adding-an-intervention-profile">
                                 Adding an Intervention Profile
                             </a>
+                            <a class="navbar-item" href="http://resources.ga-sps.org/resources/ecco-mds-data-entry-guidance-document">
+                                ECCO MDS Data Entry Guidance Document
+                            </a>
                         </div>
                     </div>
                     <a class="navbar-item" href="/#/spf-overview">SPF Overview</a>
