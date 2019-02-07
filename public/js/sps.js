@@ -56684,6 +56684,41 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "training-table-ceus"
   }, [_vm._v("CEUs")]), _vm._v(" "), _c('th', {
     staticClass: "training-table-archived"
+  }, [_vm._v("Archived")])])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', [_vm._v("\n                                                February 26, 2019"), _c('br'), _vm._v("\n                                                10:00 AM - 5:00 PM\n                                            ")]), _vm._v(" "), _c('td', {
+    attrs: {
+      "colspan": "2"
+    }
+  }, [_vm._v("\n                                                Ethics Training")]), _vm._v(" "), _c('td', [_vm._v("\n                                                Webinar ")]), _vm._v(" "), _c('td', {
+    staticClass: "training-table-ceus"
+  }, [_vm._v("\n                                                no ")]), _vm._v(" "), _c('td', {
+    staticClass: "training-table-archived"
+  }, [_vm._v("\n                                                no ")])]), _vm._v(" "), _c('tr', [_c('td', {
+    attrs: {
+      "colspan": "6"
+    }
+  }, [_c('p', [_c('b', [_vm._v("Location:")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("GoToMeeting Webinar")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("Description:")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("Please join my meeting from your computer, tablet or\n                                                smartphone.")]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "https://global.gotomeeting.com/join/908301725"
+    }
+  }, [_vm._v("https://global.gotomeeting.com/join/908301725")]), _c('br'), _vm._v(" "), _c('b', [_vm._v("You can also dial in using your phone.")]), _c('br'), _vm._v("\n                                                United States: +1 (408) 650-3123"), _c('br'), _vm._v(" "), _c('b', [_vm._v("Access Code: 908-301-725")]), _c('br'), _vm._v(" "), _c('b', [_vm._v("Joining from a video-conferencing room or system?")]), _c('br'), _vm._v("\n                                                Dial: 67.217.95.2##908301725"), _c('br'), _vm._v("\n                                                Cisco devices: 908301725@67.217.95.2"), _c('br'), _vm._v(" "), _c('b', [_vm._v("First GoToMeeting? Let's do a quick system check:")]), _c('br'), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": "https://link.gotomeeting.com/system-check"
+    }
+  }, [_vm._v("https://link.gotomeeting.com/system-check")]), _c('br'), _vm._v(" "), _c('p', [_c('b', [_vm._v("Target Audience:")]), _vm._v(" "), _c('br'), _vm._v("\n                                                    OBHP providers\n                                                ")])])])])]), _vm._v(" "), _c('table', {
+    staticClass: "table is-bordered is-fullwidth"
+  }, [_c('caption'), _vm._v(" "), _c('thead', [_c('tr', [_c('th', {
+    staticClass: "training-table-date"
+  }, [_vm._v("Dates")]), _vm._v(" "), _c('th', {
+    staticClass: "training-table-training",
+    attrs: {
+      "colspan": "2"
+    }
+  }, [_vm._v("Training")]), _vm._v(" "), _c('th', {
+    staticClass: "training-table-modality"
+  }, [_vm._v("Modality")]), _vm._v(" "), _c('th', {
+    staticClass: "training-table-ceus"
+  }, [_vm._v("CEUs")]), _vm._v(" "), _c('th', {
+    staticClass: "training-table-archived"
   }, [_vm._v("Archived")])])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', [_vm._v("\n                                                January 15--18, 2019"), _c('br'), _vm._v("\n                                                Check-in: 8:30 - 9:00 AM"), _c('br'), _vm._v("\n                                                Training: 9:00 AM - 5:00 PM\n                                            ")]), _vm._v(" "), _c('td', {
     attrs: {
       "colspan": "2"
@@ -56781,7 +56816,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "colspan": "6"
     }
-  }, [_c('p', [_c('b', [_vm._v("Description:")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("This training will take participants through the process of conducting a community readiness assessment. Participants will learn how to accurately capture community readiness, and the importance of fidelity when carrying out these assessments.")]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('b', [_vm._v("Logistics")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("GSU Buckhead Center, Tower Place 200 | 3348 Peachtree Rd NE, Atlanta, GA 30326")]), _vm._v(" "), _c('p')])])])]), _vm._v(" "), _c('table', {
+  }, [_c('p', [_c('b', [_vm._v("Description:")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("This training will take participants through the process of conducting a community readiness assessment. Participants will learn how to accurately capture community readiness, and the importance of fidelity when carrying out these assessments.")]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('b', [_vm._v("Logistics")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("GSU Buckhead Center, Tower Place 200 | 3348 Peachtree Rd NE, Atlanta, GA 30326")]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('b', [_vm._v("Facilitators")]), _vm._v(" "), _c('br')]), _vm._v("\n                                                Tiffiany Aholou\n                                            ")])])])]), _vm._v(" "), _c('table', {
     staticClass: "table is-bordered is-fullwidth"
   }, [_c('caption'), _vm._v(" "), _c('thead', [_c('tr', [_c('th', {
     staticClass: "training-table-date"
