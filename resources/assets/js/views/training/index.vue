@@ -65,6 +65,64 @@
                                         <tbody>
                                             <tr>
                                                 <td>
+                                                    February 26, 2019<br>
+                                                    10:00 AM - 5:00 PM
+                                                </td>
+                                                <td colspan="2">
+                                                    Ethics Training</td>
+                                                <td>
+                                                    Webinar </td>
+                                                <td class="training-table-ceus">
+                                                    no </td>
+                                                <td class="training-table-archived">
+                                                    no </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="6">
+                                                    <p>
+                                                        <b>Location:</b>
+                                                        <br>
+                                                    </p>
+                                                    <p>GoToMeeting Webinar</p>
+                                                    <p>
+                                                        <b>Description:</b>
+                                                        <br>
+                                                    </p>
+
+                                                    <p>Please join my meeting from your computer, tablet or
+                                                    smartphone.</p>
+                                                    <a href="https://global.gotomeeting.com/join/908301725">https://global.gotomeeting.com/join/908301725</a><br>
+                                                    <b>You can also dial in using your phone.</b><br>
+                                                    United States: +1 (408) 650-3123<br>
+                                                    <b>Access Code: 908-301-725</b><br>
+                                                    <b>Joining from a video-conferencing room or system?</b><br>
+                                                    Dial: 67.217.95.2##908301725<br>
+                                                    Cisco devices: 908301725@67.217.95.2<br>
+                                                    <b>First GoToMeeting? Let's do a quick system check:</b><br>
+                                                    <a href="https://link.gotomeeting.com/system-check">https://link.gotomeeting.com/system-check</a><br>
+                                                    <p>
+                                                        <b>Target Audience:</b>
+                                                        <br>
+                                                        OBHP providers
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="table is-bordered is-fullwidth">
+                                        <caption></caption>
+                                        <thead>
+                                            <tr>
+                                                <th class="training-table-date">Dates</th>
+                                                <th class="training-table-training" colspan="2">Training</th>
+                                                <th class="training-table-modality">Modality</th>
+                                                <th class="training-table-ceus">CEUs</th>
+                                                <th class="training-table-archived">Archived</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
                                                     January 15--18, 2019<br>
                                                     Check-in: 8:30 - 9:00 AM<br>
                                                     Training: 9:00 AM - 5:00 PM
@@ -242,6 +300,12 @@
                                                     </p>
                                                     <p>GSU Buckhead Center, Tower Place 200 | 3348 Peachtree Rd NE, Atlanta, GA 30326</p>
                                                     <p></p>
+
+                                                    <p>
+                                                        <b>Facilitators</b>
+                                                        <br>
+                                                    </p>
+                                                    Tiffiany Aholou
                                                 </td>
                                             </tr>
                                         </tbody>
