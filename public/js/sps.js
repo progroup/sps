@@ -56586,7 +56586,7 @@ exports = module.exports = __webpack_require__(18)(undefined);
 
 
 // module
-exports.push([module.i, "\n.hero-header {\n    background-color: #ccc;\n}\n.input::-webkit-input-placeholder {\n    font-style: italic;\n    font-weight: 100\n}\n.input:-moz-placeholder {\n    font-style: italic;\n    font-weight: 100\n}\n.input::-moz-placeholder {\n    font-style: italic;\n    font-weight: 100\n}\n.input:-ms-input-placeholder {\n    font-style: italic;\n    font-weight: 100\n}\n", ""]);
+exports.push([module.i, "\n.hero-header {\n  background-color: #ccc;\n}\n.input::-webkit-input-placeholder {\n  font-style: italic;\n  font-weight: 100;\n}\n.input:-moz-placeholder {\n  font-style: italic;\n  font-weight: 100;\n}\n.input::-moz-placeholder {\n  font-style: italic;\n  font-weight: 100;\n}\n.input:-ms-input-placeholder {\n  font-style: italic;\n  font-weight: 100;\n}\n", ""]);
 
 // exports
 
@@ -56599,10 +56599,238 @@ exports.push([module.i, "\n.hero-header {\n    background-color: #ccc;\n}\n.inpu
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Sidebar_vue__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Sidebar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Sidebar_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: { Sidebar: __WEBPACK_IMPORTED_MODULE_0__components_Sidebar_vue___default.a }
+  components: { Sidebar: __WEBPACK_IMPORTED_MODULE_0__components_Sidebar_vue___default.a },
+  data: function data() {
+    return {
+      events: [{
+        id: 1,
+        name: 'Ethics Training',
+        description: '<p><b>Location:</b> <br></p> <p>GoToMeeting Webinar</p> <p><b>Description:</b> <br></p> <p>Please join my meeting from your computer, tablet or\n                    smartphone.</p> <a href="https://global.gotomeeting.com/join/908301725">https://global.gotomeeting.com/join/908301725</a><br> <b>You can also dial in using your phone.</b><br>\n                    United States: +1 (408) 650-3123<br> <b>Access Code: 908-301-725</b><br> <b>Joining from a video-conferencing room or system?</b><br>\n                    Dial: 67.217.95.2##908301725<br>\n                    Cisco devices: 908301725@67.217.95.2<br> <b>First GoToMeeting? Let\'s do a quick system check:</b><br> <a href="https://link.gotomeeting.com/system-check">https://link.gotomeeting.com/system-check</a><br> <p><b>Target Audience:</b> <br>\n                        OBHP providers\n                    </p>',
+        date: 'February 26, 2019',
+        time: '10:00AM - 11:30AM',
+        modality: 'Webinar',
+        presenter: 'Tiffiany Aholou',
+        more: 'Needed for prevention certification'
+      }, {
+        id: 2,
+        name: 'CPAW Engagement and Utilization',
+        description: 'Provide knowledge on how to use and engage the CPAW',
+        date: 'April 17, 2019',
+        time: '10:00AM - 11:30AM',
+        modality: 'Webinar',
+        presenter: 'Prospectus Group',
+        more: ''
+      }, {
+        id: 3,
+        name: 'Current Trends in Substance Abuse Prevention',
+        description: 'Provide knowledge on current practices, techniques, and research in the field of prevention',
+        date: 'September 18, 2019',
+        time: '10:00AM - 11:30AM',
+        modality: 'Webinar',
+        presenter: 'Prospectus Group, Ben Gleason',
+        more: 'Should occur yearly<br>Ben Gleason / Lit review.'
+      }]
+    };
+  }
 });
 
 /***/ }),
@@ -56669,305 +56897,49 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('section', {
     staticClass: "section"
-  }, [_c('table', {
-    staticClass: "table is-bordered is-fullwidth"
-  }, [_c('caption'), _vm._v(" "), _c('thead', [_c('tr', [_c('th', {
-    staticClass: "training-table-date"
-  }, [_vm._v("Dates")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-training",
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_vm._v("Training")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-modality"
-  }, [_vm._v("Modality")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-ceus"
-  }, [_vm._v("CEUs")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-archived"
-  }, [_vm._v("Archived")])])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', [_vm._v("\n                                                February 26, 2019"), _c('br'), _vm._v("\n                                                10:00 AM - 5:00 PM\n                                            ")]), _vm._v(" "), _c('td', {
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_vm._v("\n                                                Ethics Training")]), _vm._v(" "), _c('td', [_vm._v("\n                                                Webinar ")]), _vm._v(" "), _c('td', {
-    staticClass: "training-table-ceus"
-  }, [_vm._v("\n                                                no ")]), _vm._v(" "), _c('td', {
-    staticClass: "training-table-archived"
-  }, [_vm._v("\n                                                no ")])]), _vm._v(" "), _c('tr', [_c('td', {
-    attrs: {
-      "colspan": "6"
-    }
-  }, [_c('p', [_c('b', [_vm._v("Location:")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("GoToMeeting Webinar")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("Description:")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("Please join my meeting from your computer, tablet or\n                                                smartphone.")]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "https://global.gotomeeting.com/join/908301725"
-    }
-  }, [_vm._v("https://global.gotomeeting.com/join/908301725")]), _c('br'), _vm._v(" "), _c('b', [_vm._v("You can also dial in using your phone.")]), _c('br'), _vm._v("\n                                                United States: +1 (408) 650-3123"), _c('br'), _vm._v(" "), _c('b', [_vm._v("Access Code: 908-301-725")]), _c('br'), _vm._v(" "), _c('b', [_vm._v("Joining from a video-conferencing room or system?")]), _c('br'), _vm._v("\n                                                Dial: 67.217.95.2##908301725"), _c('br'), _vm._v("\n                                                Cisco devices: 908301725@67.217.95.2"), _c('br'), _vm._v(" "), _c('b', [_vm._v("First GoToMeeting? Let's do a quick system check:")]), _c('br'), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "https://link.gotomeeting.com/system-check"
-    }
-  }, [_vm._v("https://link.gotomeeting.com/system-check")]), _c('br'), _vm._v(" "), _c('p', [_c('b', [_vm._v("Target Audience:")]), _vm._v(" "), _c('br'), _vm._v("\n                                                    OBHP providers\n                                                ")])])])])]), _vm._v(" "), _c('table', {
-    staticClass: "table is-bordered is-fullwidth"
-  }, [_c('caption'), _vm._v(" "), _c('thead', [_c('tr', [_c('th', {
-    staticClass: "training-table-date"
-  }, [_vm._v("Dates")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-training",
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_vm._v("Training")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-modality"
-  }, [_vm._v("Modality")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-ceus"
-  }, [_vm._v("CEUs")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-archived"
-  }, [_vm._v("Archived")])])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', [_vm._v("\n                                                January 15--18, 2019"), _c('br'), _vm._v("\n                                                Check-in: 8:30 - 9:00 AM"), _c('br'), _vm._v("\n                                                Training: 9:00 AM - 5:00 PM\n                                            ")]), _vm._v(" "), _c('td', {
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_vm._v("\n                                                The Substance Abuse Prevention Skills Training (SAPST)")]), _vm._v(" "), _c('td', [_vm._v("\n                                                Webinar ")]), _vm._v(" "), _c('td', {
-    staticClass: "training-table-ceus"
-  }, [_vm._v("\n                                                no ")]), _vm._v(" "), _c('td', {
-    staticClass: "training-table-archived"
-  }, [_vm._v("\n                                                no ")])]), _vm._v(" "), _c('tr', [_c('td', {
-    attrs: {
-      "colspan": "6"
-    }
-  }, [_c('p', [_c('b', [_vm._v("Location:")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("GSU Buckhead Center, Tower Place 200 | 3348 Peachtree Rd NE, Atlanta, GA 30326")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("Description:")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("The Substance Abuse Prevention Skills Training (SAPST) is a four-day foundation course in the study of substance\n                                                    abuse prevention. Developed by SAMHSA and grounded in current research, this training covers each step of the\n                                                    Strategic Prevention Framework. The SAPST training provides knowledge and skills to implement effective,\n                                                    data-driven prevention programs, practices, and policies that reduce behavioral health disparities and\n                                                    improve wellness.\n                                                ")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("Facilitators:")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("Prospectus Group and DBHDD Office of Behavioral Health Prevention\n                                                ")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("Hotels:")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("The hotels nearest to Tower Place 200 are the Courtyard by Marriott and the Doubletree. Both hotels offer government\n                                                    and GSU rates. All attendees qualify for both rates and may want to inquire about each and compare pricing.\n                                                ")])])])])]), _vm._v(" "), _c('table', {
-    staticClass: "table is-bordered is-fullwidth"
-  }, [_c('caption'), _vm._v(" "), _c('thead', [_c('tr', [_c('th', {
-    staticClass: "training-table-date"
-  }, [_vm._v("Dates")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-training",
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_vm._v("Training")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-modality"
-  }, [_vm._v("Modality")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-ceus"
-  }, [_vm._v("CEUs")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-archived"
-  }, [_vm._v("Archived")])])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', [_vm._v("\n                                                June 20, 2017 10 - 11am ")]), _vm._v(" "), _c('td', {
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_vm._v("\n                                                Key Stakeholder Analysis Tool Overview ")]), _vm._v(" "), _c('td', [_vm._v("\n                                                Webinar ")]), _vm._v(" "), _c('td', {
-    staticClass: "training-table-ceus"
-  }, [_vm._v("\n                                                no ")]), _vm._v(" "), _c('td', {
-    staticClass: "training-table-archived"
-  }, [_vm._v("\n                                                no ")])]), _vm._v(" "), _c('tr', [_c('td', {
-    attrs: {
-      "colspan": "6"
-    }
-  }, [_c('p', [_c('b', [_vm._v("Description:")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("Key Stakeholder Analysis Tool Overview:")]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('b', [_vm._v("Logistics")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("Key Stakeholder Analysis Review\n                                                    "), _c('br'), _vm._v(" Tue, Jun 20, 2017 10:00 AM - 11:00 AM EDT")]), _vm._v(" "), _c('p', [_vm._v("Please join my meeting from your computer, tablet or smartphone.\n                                                    "), _c('br'), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "https://global.gotomeeting.com/join/798228261"
-    }
-  }, [_vm._v("https://global.gotomeeting.com/join/798228261")])]), _vm._v(" "), _c('p', [_vm._v("You can also dial in using your phone.\n                                                    "), _c('br'), _vm._v(" United States: +1 (872) 240-3212")]), _vm._v(" "), _c('p', [_vm._v("Access Code: 798-228-261")]), _vm._v(" "), _c('p')])])])]), _vm._v(" "), _c('table', {
-    staticClass: "table is-bordered is-fullwidth"
-  }, [_c('caption'), _vm._v(" "), _c('thead', [_c('tr', [_c('th', {
-    staticClass: "training-table-date"
-  }, [_vm._v("Dates")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-training",
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_vm._v("Training")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-modality"
-  }, [_vm._v("Modality")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-ceus"
-  }, [_vm._v("CEUs")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-archived"
-  }, [_vm._v("Archived")])])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', [_vm._v("\n                                                October 9, 2018- 8:15 AM – 4:30 PM ")]), _vm._v(" "), _c('td', {
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_vm._v("\n                                                Sustainability ")]), _vm._v(" "), _c('td', [_vm._v("\n                                                In-person Meeting ")]), _vm._v(" "), _c('td', {
-    staticClass: "training-table-ceus"
-  }), _vm._v(" "), _c('td', {
-    staticClass: "training-table-archived"
-  })]), _vm._v(" "), _c('tr', [_c('td', {
-    attrs: {
-      "colspan": "6"
-    }
-  }, [_c('p', [_c('b', [_vm._v("Description:")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("This training will address how to develop and implement ongoing sustainability plans for maintaining prevention outcomes. Presenters will discuss 1.) how to build long-term partnerships with community organization and institutions, and 2.) practical solutions for building diverse financial streams.")]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('b', [_vm._v("Logistics")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("GSU Buckhead Center, Tower Place 200 | 3348 Peachtree Rd NE, Atlanta, GA 30326\n                                                    "), _c('br'), _vm._v(" The hotels nearest to Tower Place 200 are the Courtyard by Marriott and the Doubletree. Both hotels offer government and GSU rates. Attendees may want to ask about both rates and compare pricing.")]), _vm._v(" "), _c('p')])])])]), _vm._v(" "), _c('table', {
-    staticClass: "table is-bordered is-fullwidth"
-  }, [_c('caption'), _vm._v(" "), _c('thead', [_c('tr', [_c('th', {
-    staticClass: "training-table-date"
-  }, [_vm._v("Dates")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-training",
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_vm._v("Training")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-modality"
-  }, [_vm._v("Modality")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-ceus"
-  }, [_vm._v("CEUs")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-archived"
-  }, [_vm._v("Archived")])])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', [_vm._v("\n                                                October 10, 2018- 9:00 AM – 4:30 PM ")]), _vm._v(" "), _c('td', {
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_vm._v("\n                                                Tri-Ethnic Community Readiness Model ")]), _vm._v(" "), _c('td', [_vm._v("\n                                                In-Person Meeting ")]), _vm._v(" "), _c('td', {
-    staticClass: "training-table-ceus"
-  }), _vm._v(" "), _c('td', {
-    staticClass: "training-table-archived"
-  })]), _vm._v(" "), _c('tr', [_c('td', {
-    attrs: {
-      "colspan": "6"
-    }
-  }, [_c('p', [_c('b', [_vm._v("Description:")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("This training will take participants through the process of conducting a community readiness assessment. Participants will learn how to accurately capture community readiness, and the importance of fidelity when carrying out these assessments.")]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('b', [_vm._v("Logistics")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("GSU Buckhead Center, Tower Place 200 | 3348 Peachtree Rd NE, Atlanta, GA 30326")]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('b', [_vm._v("Facilitators")]), _vm._v(" "), _c('br')]), _vm._v("\n                                                Tiffiany Aholou\n                                            ")])])])]), _vm._v(" "), _c('table', {
-    staticClass: "table is-bordered is-fullwidth"
-  }, [_c('caption'), _vm._v(" "), _c('thead', [_c('tr', [_c('th', {
-    staticClass: "training-table-date"
-  }, [_vm._v("Dates")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-training",
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_vm._v("Training")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-modality"
-  }, [_vm._v("Modality")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-ceus"
-  }, [_vm._v("CEUs")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-archived"
-  }, [_vm._v("Archived")])])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', [_vm._v("\n                                                TBD, 10:00 AM – 11:30 AM ")]), _vm._v(" "), _c('td', {
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_vm._v("\n                                                Proposal/Technical Writing ")]), _vm._v(" "), _c('td', [_vm._v("\n                                                Webinar ")]), _vm._v(" "), _c('td', {
-    staticClass: "training-table-ceus"
-  }), _vm._v(" "), _c('td', {
-    staticClass: "training-table-archived"
-  })]), _vm._v(" "), _c('tr', [_c('td', {
-    attrs: {
-      "colspan": "6"
-    }
-  }, [_c('p', [_c('b', [_vm._v("Description:")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("This webinar will address the following objectives: 1.) using data to raise awareness and demonstrate need, 2.) formatting and proofing, and 3.) citing sources and avoiding unintentional plagiarism.")]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('b', [_vm._v("Logistics")]), _vm._v(" "), _c('br')])])])])]), _vm._v(" "), _c('table', {
-    staticClass: "table is-bordered is-fullwidth"
-  }, [_c('caption'), _vm._v(" "), _c('thead', [_c('tr', [_c('th', {
-    staticClass: "training-table-date"
-  }, [_vm._v("Dates")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-training",
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_vm._v("Training")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-modality"
-  }, [_vm._v("Modality")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-ceus"
-  }, [_vm._v("CEUs")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-archived"
-  }, [_vm._v("Archived")])])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', [_vm._v("\n                                                July 18, 2018, 10:00 AM to 11:00 AM ")]), _vm._v(" "), _c('td', {
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_vm._v("\n                                                Ecco Clinic ")]), _vm._v(" "), _c('td', [_vm._v("\n                                                Webinar ")]), _vm._v(" "), _c('td', {
-    staticClass: "training-table-ceus"
-  }), _vm._v(" "), _c('td', {
-    staticClass: "training-table-archived"
-  }, [_vm._v("\n                                                yes ")])]), _vm._v(" "), _c('tr', [_c('td', {
-    attrs: {
-      "colspan": "6"
-    }
-  }, [_c('p', [_c('b', [_vm._v("Description:")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("TARGET AUDIENCE: ASAPP providers using the Ecco system to enter MDS data.\n                                                    "), _c('br'), _vm._v(" This webinar will allow ASAPP providers to come with questions they have concerning developing/editing their Intervention Profiles, entering monthly process data, or other challenges they may have navigating the Ecco system. Providers are encouraged to email their questions in advance to Fiana Thacker at fiana@progroup.us; however, questions posed during the webinar are also welcomed.")]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('b', [_vm._v("Logistics")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("GoToMeeting\n                                                    "), _c('br'), _vm._v(" Please join my meeting from your computer, tablet or smartphone.\n                                                    "), _c('br'), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "https://global.gotomeeting.com/join/391064077"
-    }
-  }, [_vm._v("https://global.gotomeeting.com/join/391064077")]), _vm._v(" "), _c('br'), _vm._v(" You can also dial in using your phone.\n                                                    "), _c('br'), _vm._v(" United States: +1 (646) 749-3112\n                                                    "), _c('br'), _vm._v(" Access Code: 391-064-077\n                                                    "), _c('br'), _vm._v(" Joining from a video-conferencing room or system?\n                                                    "), _c('br'), _vm._v(" Dial: 67.217.95.2##391064077\n                                                    "), _c('br'), _vm._v(" Cisco devices: 391064077@67.217.95.2\n                                                    "), _c('br'), _vm._v(" First GoToMeeting? Let's do a quick system check:\n                                                    "), _c('br'), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "https://link.gotomeeting.com/system-check"
-    }
-  }, [_vm._v("https://link.gotomeeting.com/system-check")])]), _vm._v(" "), _c('p')])])])]), _vm._v(" "), _c('table', {
-    staticClass: "table is-bordered is-fullwidth"
-  }, [_c('caption'), _vm._v(" "), _c('thead', [_c('tr', [_c('th', {
-    staticClass: "training-table-date"
-  }, [_vm._v("Dates")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-training",
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_vm._v("Training")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-modality"
-  }, [_vm._v("Modality")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-ceus"
-  }, [_vm._v("CEUs")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-archived"
-  }, [_vm._v("Archived")])])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', [_vm._v("\n                                                October 9, 2018, 8:15 AM to 4:30 AM ")]), _vm._v(" "), _c('td', {
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_vm._v("\n                                                Sustainability ")]), _vm._v(" "), _c('td', [_vm._v("\n                                                In-person ")]), _vm._v(" "), _c('td', {
-    staticClass: "training-table-ceus"
-  }), _vm._v(" "), _c('td', {
-    staticClass: "training-table-archived"
-  }, [_vm._v("\n                                                no ")])]), _vm._v(" "), _c('tr', [_c('td', {
-    attrs: {
-      "colspan": "6"
-    }
-  }, [_c('p', [_c('b', [_vm._v("Description:")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("The purpose of the one-day training is to address the important role substance abuse prevention coalitions play in creating safe communities and to provide strategies for increasing the involvement of various segments of the community in prevention efforts and programs.")]), _vm._v(" "), _c('p', [_vm._v("Facilitator: Maxine Fuller")]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('b', [_vm._v("Logistics")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("The hotels nearest to Tower Place 200 are the Courtyard by Marriott and the Doubletree. Both hotels offer government and GSU rates. All attendees qualify for both rates and may want to inquire about each and compare pricing.")]), _vm._v(" "), _c('p', [_vm._v("GSU Buckhead Center, Tower Place 200 | 3348 Peachtree Rd NE, Atlanta, GA 30326")]), _vm._v(" "), _c('p')])])])]), _vm._v(" "), _c('table', {
-    staticClass: "table is-bordered is-fullwidth"
-  }, [_c('caption'), _vm._v(" "), _c('thead', [_c('tr', [_c('th', {
-    staticClass: "training-table-date"
-  }, [_vm._v("Dates")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-training",
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_vm._v("Training")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-modality"
-  }, [_vm._v("Modality")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-ceus"
-  }, [_vm._v("CEUs")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-archived"
-  }, [_vm._v("Archived")])])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', [_vm._v("\n                                                August 15, 2018, 10:00 AM to 11:30 AM ")]), _vm._v(" "), _c('td', {
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_vm._v("\n                                                Technical Writing ")]), _vm._v(" "), _c('td', [_vm._v("\n                                                Webinar ")]), _vm._v(" "), _c('td', {
-    staticClass: "training-table-ceus"
-  }), _vm._v(" "), _c('td', {
-    staticClass: "training-table-archived"
-  }, [_vm._v("\n                                                yes ")])]), _vm._v(" "), _c('tr', [_c('td', {
-    attrs: {
-      "colspan": "6"
-    }
-  }, [_c('p', [_c('b', [_vm._v("Description:")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("TARGET AUDIENCE: All ASAPP providers are encouraged to join. For those who are unable to attend the live webinar, a recorded version will be available on www.ga-sps.org.")]), _vm._v(" "), _c('p', [_vm._v("This webinar will provide helpful tips for report writing. The objectives include 1.) techniques for infusing data into reports, and 2.) methods for keeping writing concise and clear.")]), _vm._v(" "), _c('p', [_vm._v("Facilitator: Fiana Thacker")]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('b', [_vm._v("Logistics")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("GoToMeeting\n                                                    "), _c('br'), _vm._v(" Please join my meeting from your computer, tablet or smartphone.\n                                                    "), _c('br'), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "https://global.gotomeeting.com/join/137306045"
-    }
-  }, [_vm._v("https://global.gotomeeting.com/join/137306045")]), _vm._v(" "), _c('br'), _vm._v(" You can also dial in using your phone.\n                                                    "), _c('br'), _vm._v(" United States: +1 (408) 650-3123\n                                                    "), _c('br'), _vm._v(" Access Code: 137-306-045\n                                                    "), _c('br'), _vm._v(" Joining from a video-conferencing room or system?\n                                                    "), _c('br'), _vm._v(" Dial: 67.217.95.2##137306045\n                                                    "), _c('br'), _vm._v(" Cisco devices: 137306045@67.217.95.2\n                                                    "), _c('br'), _vm._v(" First GoToMeeting? Let's do a quick system check:\n                                                    "), _c('br'), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "https://link.gotomeeting.com/system-check"
-    }
-  }, [_vm._v("https://link.gotomeeting.com/system-check")])]), _vm._v(" "), _c('p')])])])]), _vm._v(" "), _c('table', {
-    staticClass: "table is-bordered is-fullwidth"
-  }, [_c('caption'), _vm._v(" "), _c('thead', [_c('tr', [_c('th', {
-    staticClass: "training-table-date"
-  }, [_vm._v("Dates")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-training",
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_vm._v("Training")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-modality"
-  }, [_vm._v("Modality")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-ceus"
-  }, [_vm._v("CEUs")]), _vm._v(" "), _c('th', {
-    staticClass: "training-table-archived"
-  }, [_vm._v("Archived")])])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', [_vm._v("\n                                                October 10, 8:15 AM to 4:30 PM ")]), _vm._v(" "), _c('td', {
-    attrs: {
-      "colspan": "2"
-    }
-  }, [_vm._v("\n                                                Tri-Ethnic Community Readiness Model ")]), _vm._v(" "), _c('td', [_vm._v("\n                                                In-person ")]), _vm._v(" "), _c('td', {
-    staticClass: "training-table-ceus"
-  }), _vm._v(" "), _c('td', {
-    staticClass: "training-table-archived"
-  }, [_vm._v("\n                                                no ")])]), _vm._v(" "), _c('tr', [_c('td', {
-    attrs: {
-      "colspan": "6"
-    }
-  }, [_c('p', [_c('b', [_vm._v("Description:")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("This training will take participants through the process of conducting a community readiness assessment. Participants will learn how to accurately capture community readiness, and the importance of fidelity when carrying out these assessments.")]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('b', [_vm._v("Logistics")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("GSU Buckhead Center, Tower Place 200 | 3348 Peachtree Rd NE, Atlanta, GA 30326\n                                                    "), _c('br'), _vm._v(" FACILITATORS: Tiffiany Aholou")]), _vm._v(" "), _c('p', [_vm._v("The hotels nearest to Tower Place 200 are the Courtyard by Marriott and the Doubletree. Both hotels offer government and GSU rates. All attendees qualify for both rates and may want to inquire about each and compare pricing.")]), _vm._v(" "), _c('p')])])])])])]), _vm._v(" "), _c('b-tab-item', {
+  }, _vm._l((_vm.events), function(event) {
+    return _c('table', {
+      key: event.id,
+      staticClass: "table is-bordered is-fullwidth"
+    }, [_c('caption'), _vm._v(" "), _c('thead', [_c('tr', [_c('th', {
+      staticClass: "training-table-date"
+    }, [_vm._v("Dates")]), _vm._v(" "), _c('th', {
+      staticClass: "training-table-training",
+      attrs: {
+        "colspan": "2"
+      }
+    }, [_vm._v("Training")]), _vm._v(" "), _c('th', {
+      staticClass: "training-table-modality"
+    }, [_vm._v("Modality")]), _vm._v(" "), _c('th', {
+      staticClass: "training-table-ceus"
+    }, [_vm._v("CEUs")]), _vm._v(" "), _c('th', {
+      staticClass: "training-table-archived"
+    }, [_vm._v("Archived")])])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', [_vm._v(_vm._s(event.date) + " " + _vm._s(event.time))]), _vm._v(" "), _c('td', {
+      attrs: {
+        "colspan": "2"
+      }
+    }, [_vm._v(_vm._s(event.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(event.modality))]), _vm._v(" "), _c('td', {
+      staticClass: "training-table-ceus"
+    }, [_vm._v("no")]), _vm._v(" "), _c('td', {
+      staticClass: "training-table-archived"
+    }, [_vm._v("no")])]), _vm._v(" "), _c('tr', [_c('td', {
+      attrs: {
+        "colspan": "6"
+      }
+    }, [_c('div', {
+      domProps: {
+        "innerHTML": _vm._s(event.description)
+      }
+    }), _vm._v(" "), _c('div', {
+      domProps: {
+        "innerHTML": _vm._s(event.more)
+      }
+    }), _vm._v(" "), _c('b', [_vm._v("Facilitators:")]), _vm._v(" "), _c('div', {
+      domProps: {
+        "innerHTML": _vm._s(event.presenter)
+      }
+    })])])])])
+  }))]), _vm._v(" "), _c('b-tab-item', {
     attrs: {
       "label": "National"
     }
@@ -56988,19 +56960,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "training-table-ceus"
   }, [_vm._v("CEUs")]), _vm._v(" "), _c('th', {
     staticClass: "training-table-archived"
-  }, [_vm._v("Archived")])])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', [_vm._v("\n                                                May 16, 2017 at 1:30 p.m. Eastern\n                                            ")]), _vm._v(" "), _c('td', {
+  }, [_vm._v("Archived")])])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', [_vm._v("May 16, 2017 at 1:30 p.m. Eastern")]), _vm._v(" "), _c('td', {
     attrs: {
       "colspan": "2"
     }
-  }, [_vm._v("\n                                                Emerging Issues in Tobacco Use\n                                            ")]), _vm._v(" "), _c('td', [_vm._v("\n                                                Webinar\n                                            ")]), _vm._v(" "), _c('td', {
+  }, [_vm._v("Emerging Issues in Tobacco Use")]), _vm._v(" "), _c('td', [_vm._v("Webinar")]), _vm._v(" "), _c('td', {
     staticClass: "training-table-ceus"
-  }, [_vm._v("\n                                                NA\n                                            ")]), _vm._v(" "), _c('td', {
+  }, [_vm._v("NA")]), _vm._v(" "), _c('td', {
     staticClass: "training-table-archived"
-  }, [_vm._v("\n                                                NA\n                                            ")])]), _vm._v(" "), _c('tr', [_c('td', {
+  }, [_vm._v("NA")])]), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "colspan": "6"
     }
-  }, [_c('p', [_c('b', [_vm._v("Description:")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("Emerging Issues in Tobacco Use – Tuesday, May 16, 2017 at 1:30 p.m. Eastern"), _c('br'), _vm._v(" This webinar will discuss the current landscape on tobacco use and address emerging issues in tobacco misuse and prevention. It will feature experts from SAMHSA and the CDC, as well as NPW partner Campaign for Tobacco Free Kids.")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("Logistics")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("Register today:\n                                                    "), _c('a', {
+  }, [_c('p', [_c('b', [_vm._v("Description:")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("Emerging Issues in Tobacco Use – Tuesday, May 16, 2017 at 1:30 p.m. Eastern\n                          "), _c('br'), _vm._v("This webinar will discuss the current landscape on tobacco use and address emerging issues in tobacco misuse and prevention. It will feature experts from SAMHSA and the CDC, as well as NPW partner Campaign for Tobacco Free Kids.\n                        ")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("Logistics")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("\n                          Register today:\n                          "), _c('a', {
     attrs: {
       "href": "https://cc.readytalk.com/r/aw7y9kj6ybk&eom"
     }
@@ -57019,19 +56991,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "training-table-ceus"
   }, [_vm._v("CEUs")]), _vm._v(" "), _c('th', {
     staticClass: "training-table-archived"
-  }, [_vm._v("Archived")])])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', [_vm._v("\n                                                Wednesday, May 17, 2017 at 1:30 p.m. Eastern\n                                            ")]), _vm._v(" "), _c('td', {
+  }, [_vm._v("Archived")])])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', [_vm._v("Wednesday, May 17, 2017 at 1:30 p.m. Eastern")]), _vm._v(" "), _c('td', {
     attrs: {
       "colspan": "2"
     }
-  }, [_vm._v("\n                                                Opioid Addiction and Prevention\n                                            ")]), _vm._v(" "), _c('td', [_vm._v("\n                                                Webinar\n                                            ")]), _vm._v(" "), _c('td', {
+  }, [_vm._v("Opioid Addiction and Prevention")]), _vm._v(" "), _c('td', [_vm._v("Webinar")]), _vm._v(" "), _c('td', {
     staticClass: "training-table-ceus"
-  }, [_vm._v("\n                                                NA\n                                            ")]), _vm._v(" "), _c('td', {
+  }, [_vm._v("NA")]), _vm._v(" "), _c('td', {
     staticClass: "training-table-archived"
-  }, [_vm._v("\n                                                NA\n                                            ")])]), _vm._v(" "), _c('tr', [_c('td', {
+  }, [_vm._v("NA")])]), _vm._v(" "), _c('tr', [_c('td', {
     attrs: {
       "colspan": "6"
     }
-  }, [_c('p', [_c('b', [_vm._v("Description:")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("Opioid Addiction and Prevention – Wednesday, May 17, 2017 at 1:30 p.m. Eastern"), _c('br'), _vm._v("This webinar will discuss the growing issue of opioid addiction and how partner engagement can support prevention efforts. It will feature SAMHSA and state prevention experts, and NPW partner American Society for Addiction Medicine."), _c('br'), _vm._v("m/r/749hzwn4sivd&eom")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("Logistics")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_c('a', {
+  }, [_c('p', [_c('b', [_vm._v("Description:")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_vm._v("Opioid Addiction and Prevention – Wednesday, May 17, 2017 at 1:30 p.m. Eastern\n                          "), _c('br'), _vm._v("This webinar will discuss the growing issue of opioid addiction and how partner engagement can support prevention efforts. It will feature SAMHSA and state prevention experts, and NPW partner American Society for Addiction Medicine.\n                          "), _c('br'), _vm._v("m/r/749hzwn4sivd&eom\n                        ")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("Logistics")]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('p', [_c('a', {
     attrs: {
       "href": "https://cc.readytalk.com/r/749hzwn4sivd&eom"
     }
@@ -57054,7 +57026,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "content"
-  }, [_c('h1', [_vm._v("Training")]), _vm._v(" "), _c('p', [_c('strong', [_vm._v("Welcome the GASPS Training Center.")])]), _vm._v(" "), _c('p', [_vm._v("From this page you can access and register for statewide GASPS trainings, as well as national trainings provided by our federal partners at the Center for the Application of Prevention Technologies (CAPT). ")]), _vm._v(" "), _c('p', [_vm._v("Current and future training events are listed on this page. Past trainings are removed and web based trainings are archived to the resources page under the “webinar” heading. ")]), _vm._v(" "), _c('p', [_c('a', {
+  }, [_c('h1', [_vm._v("Training")]), _vm._v(" "), _c('p', [_c('strong', [_vm._v("Welcome the GASPS Training Center.")])]), _vm._v(" "), _c('p', [_vm._v("From this page you can access and register for statewide GASPS trainings, as well as national trainings provided by our federal partners at the Center for the Application of Prevention Technologies (CAPT).")]), _vm._v(" "), _c('p', [_vm._v("Current and future training events are listed on this page. Past trainings are removed and web based trainings are archived to the resources page under the “webinar” heading.")]), _vm._v(" "), _c('p', [_c('a', {
     attrs: {
       "href": "http://ga-sps.org/search?q=webinar"
     }
