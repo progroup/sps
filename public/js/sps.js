@@ -50371,22 +50371,224 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	// props: ['query'],
-	data: function data() {
-		return {
-			query: "",
-			user: window.App.user
-		};
-	},
+  // props: ['query'],
+  data: function data() {
+    return {
+      query: '',
+      user: window.App.user
+    };
+  },
 
-	methods: {
-		search: function search() {
-			this.$router.push({ path: "search", query: { query: this.query } });
-			console.log(this.query);
-		}
-	}
+  methods: {
+    search: function search() {
+      this.$router.push({ path: 'search', query: { query: this.query } });
+      console.log(this.query);
+    }
+  }
 });
 
 /***/ }),
@@ -50395,7 +50597,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('main', [_c('section', {
-    staticClass: "hero",
+    staticClass: "hero is-large",
     staticStyle: {
       "background-size": "cover",
       "background-image": "url('/images/atlanta.jpg')"
@@ -54891,6 +55093,63 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -54902,25 +55161,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   data: function data() {
     return {
-      query: this.$route.query.query || "",
+      query: this.$route.query.query || '',
       user: window.App.user,
-      value: [{ name: "Vue.js", language: "JavaScript" }],
-      options: [{ name: "Vue.js", language: "JavaScript" }, { name: "Adonis", language: "JavaScript" }, { name: "Rails", language: "Ruby" }, { name: "Sinatra", language: "Ruby" }, { name: "Laravel", language: "PHP" }, { name: "Phoenix", language: "Elixir" }],
+      value: [{ name: 'Vue.js', language: 'JavaScript' }],
+      options: [{ name: 'Vue.js', language: 'JavaScript' }, { name: 'Adonis', language: 'JavaScript' }, { name: 'Rails', language: 'Ruby' }, { name: 'Sinatra', language: 'Ruby' }, { name: 'Laravel', language: 'PHP' }, { name: 'Phoenix', language: 'Elixir' }],
       contents: [{
-        title: "How are you?",
-        msg: "Test for fun!"
+        title: 'How are you?',
+        msg: 'Test for fun!'
       }, {
-        title: "Who let the dog out?",
-        msg: "I do not know, dude."
+        title: 'Who let the dog out?',
+        msg: 'I do not know, dude.'
       }, {
-        title: "肚子好餓?",
-        msg: "吃芭樂啦！"
+        title: '肚子好餓?',
+        msg: '吃芭樂啦！'
       }, {
-        title: "Find hotels?",
-        msg: "Trivago！"
+        title: 'Find hotels?',
+        msg: 'Trivago！'
       }],
       colors: {
-        laravel: "#333"
+        laravel: '#333'
       }
     };
   },
@@ -54928,21 +55187,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     publishDate: function publishDate(date) {
-      return __WEBPACK_IMPORTED_MODULE_0_moment___default()(date).format("LL");
+      return __WEBPACK_IMPORTED_MODULE_0_moment___default()(date).format('LL');
     },
     videoType: function videoType(type) {
       type = type.replace(/^(.)|\+s(.)/g, function ($1) {
         return $1.toUpperCase();
       });
 
-      if (type === "Lesson") {
-        type = "Standalone Lesson";
+      if (type === 'Lesson') {
+        type = 'Standalone Lesson';
       }
 
       return type;
     },
     seriesName: function seriesName(name) {
-      return name;
+      return name.toUpperCase();
     }
   }
 });
@@ -55428,7 +55687,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "app-id": "WTEU7RU64C",
       "api-key": "84cd67fa388e3c50b3a0a1710fae55ad",
-      "index-name": "resource_index",
+      "index-name": "dev_resource_index",
       "cache": true,
       "auto-search": true,
       "query": _vm.query
@@ -55439,26 +55698,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "column is-3 is-hidden-touch"
   }, [_c('aside', [_c('div', [_c('ais-refinement-list', {
     attrs: {
-      "attribute-name": "category",
-      "sort-by": ['name:asc']
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(props) {
-        return [_c('span', {
-          staticClass: "ais-refinement-list__value",
-          domProps: {
-            "textContent": _vm._s(_vm.seriesName(props.value))
-          }
-        })]
-      }
-    }])
-  }, [_c('template', {
-    slot: "header"
-  }, [_c('p', {
-    staticClass: "menu-label"
-  }, [_vm._v("\n                                                    Category\n                                                ")])])], 2)], 1), _vm._v(" "), _c('div', [_c('ais-refinement-list', {
-    attrs: {
       "attribute-name": "tags"
     },
     scopedSlots: _vm._u([{
@@ -55466,6 +55705,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       fn: function(props) {
         return [_c('span', {
           staticClass: "ais-refinement-list__value",
+          staticStyle: {
+            "font-size": "0.75rem"
+          },
           domProps: {
             "textContent": _vm._s(_vm.seriesName(props.value))
           }
@@ -55476,7 +55718,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     slot: "header"
   }, [_c('p', {
     staticClass: "menu-label"
-  }, [_vm._v("\n                                                    Tags\n                                                ")])])], 2)], 1), _vm._v(" "), _c('div', [_c('ais-refinement-list', {
+  }, [_vm._v("\n                          Tags\n                        ")])])], 2)], 1), _vm._v(" "), _c('div', [_c('ais-refinement-list', {
     attrs: {
       "attribute-name": "filetype",
       "sort-by": ['count:desc']
@@ -55496,7 +55738,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     slot: "header"
   }, [_c('p', {
     staticClass: "menu-label"
-  }, [_vm._v("\n                                                    File Type\n                                                ")])])], 2)], 1)])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                          File Type\n                        ")])])], 2)], 1)])]), _vm._v(" "), _c('div', {
     staticClass: "column"
   }, [_c('h2', {
     staticClass: "is-size-4"
@@ -55508,14 +55750,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         var processingTime = ref.processingTime;
         var query = ref.query;
 
-        return [_c('hr'), _vm._v(" There are " + _vm._s(totalResults) + " resources matching your search\n                                        "), _c('b', [_vm._v(_vm._s(query))])]
+        return [_c('hr'), _vm._v(" There are " + _vm._s(totalResults) + " resources matching your search\n                    "), _c('b', [_vm._v(_vm._s(query))])]
       }
     }])
   }), _vm._v(" "), _c('ais-no-results', {
     scopedSlots: _vm._u([{
       key: "default",
       fn: function(props) {
-        return [_c('hr'), _vm._v(" No resources were found for\n                                        "), _c('b', [_vm._v(_vm._s(props.query))]), _vm._v(".\n                                    ")]
+        return [_c('hr'), _vm._v(" No resources were found for\n                    "), _c('b', [_vm._v(_vm._s(props.query))]), _vm._v(".\n                  ")]
       }
     }])
   }), _vm._v(" "), _c('ais-results', {
@@ -55543,7 +55785,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           staticClass: "content"
         }, [_c('h5', [_c('a', {
           attrs: {
-            "href": result.url
+            "href": result.file_url,
+            "target": "_new"
           }
         }, [_c('ais-highlight', {
           attrs: {
@@ -55554,7 +55797,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           return _c('span', {
             key: index,
             staticClass: "tag is-rounded"
-          }, [_vm._v("\n                                                        " + _vm._s(tag) + "\n                                                    ")])
+          }, [_vm._v("\n                            " + _vm._s(tag) + "\n                          ")])
         }), _vm._v(" "), _c('p', {
           staticClass: "lesson-list in-caps fs-smaller is-bold mbt-1 is-hidden-mobile"
         }, [_c('a', {
@@ -55582,20 +55825,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     scopedSlots: _vm._u([{
       key: "default",
       fn: function(props) {
-        return [_vm._v("\n                                            " + _vm._s(props.value) + "\n                                        ")]
+        return [_vm._v("\n                      " + _vm._s(props.value) + "\n                    ")]
       }
     }])
   }, [_c('template', {
     slot: "first"
-  }, [_vm._v("\n                                            <<\n                                        ")]), _vm._v(" "), _c('template', {
+  }, [_vm._v("\n                      <<\n                    ")]), _vm._v(" "), _c('template', {
     staticClass: "pagination-previous",
     slot: "previous"
-  }, [_vm._v("\n                                            <\n                                        ")]), _vm._v(" "), _c('template', {
+  }, [_vm._v("\n                      <\n                    ")]), _vm._v(" "), _c('template', {
     staticClass: "pagination-next",
     slot: "next"
-  }, [_vm._v("\n                                            >\n                                        ")]), _vm._v(" "), _c('template', {
+  }, [_vm._v("\n                      >\n                    ")]), _vm._v(" "), _c('template', {
     slot: "last"
-  }, [_vm._v("\n                                            >>\n                                        ")])], 2)], 1)], 1)])])], 1), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                      >>\n                    ")])], 2)], 1)], 1)])])], 1), _vm._v(" "), _c('div', {
     staticClass: "column is-4"
   }, [_c('ais-index', {
     attrs: {
@@ -55616,14 +55859,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         var processingTime = ref.processingTime;
         var query = ref.query;
 
-        return [_c('hr'), _vm._v(" There are " + _vm._s(totalResults) + " FAQs matching your search\n                                "), _c('b', [_vm._v(_vm._s(query))])]
+        return [_c('hr'), _vm._v(" There are " + _vm._s(totalResults) + " FAQs matching your search\n                "), _c('b', [_vm._v(_vm._s(query))])]
       }
     }])
   }), _vm._v(" "), _c('ais-no-results', {
     scopedSlots: _vm._u([{
       key: "default",
       fn: function(props) {
-        return [_c('hr'), _vm._v(" No FAQs were found for\n                                "), _c('b', [_vm._v(_vm._s(props.query))]), _vm._v(".\n                            ")]
+        return [_c('hr'), _vm._v(" No FAQs were found for\n                "), _c('b', [_vm._v(_vm._s(props.query))]), _vm._v(".\n              ")]
       }
     }])
   }), _vm._v(" "), _c('ais-results', {
