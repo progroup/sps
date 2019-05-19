@@ -41,8 +41,14 @@
                             <a class="navbar-item" href="http://resources.ga-sps.org/resources/ecco-users-manual">
                                 Users Manual w/ Progress Reporting
                             </a>
-                            <a class="navbar-item" href="http://resources.ga-sps.org/resources/ecco-overview-using-brifecase">
+                            <a class="navbar-item" href="http://resources.ga-sps.org/resources/ecco-overview-using-brifecase/EccoBriefcase.mp4">
                                 Using Briefcase
+                            </a>
+                            <a class="navbar-item" href="http://resources.ga-sps.org/resources/briefcase-dashboard/briefcase-dashboard.mp4">
+                                Briefcase Dashboard
+                            </a>
+                            <a class="navbar-item" href="http://resources.ga-sps.org/resources/help-dashboard/help-dashboard.mp4">
+                                Help Dashboard
                             </a>
                             <a class="navbar-item" href="http://resources.ga-sps.org/resources/ecco-overview-ta-entry-and-updates">
                                 TA Entry and Updates
