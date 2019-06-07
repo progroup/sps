@@ -53,10 +53,10 @@
                             <a class="navbar-item" href="http://resources.ga-sps.org/resources/ecco-overview-ta-entry-and-updates">
                                 TA Entry and Updates
                             </a>
-                            <a class="navbar-item" href="http://resources.ga-sps.org/resources/ecco-overview-entering-progress-level-data">
+                            <a class="navbar-item" href="http://resources.ga-sps.org/content/resources/entering-process-data/entering_process_data.mp4">
                                 Entering Process Level Data
                             </a>
-                            <a class="navbar-item" href="http://resources.ga-sps.org/resources/ecco-overview-adding-an-intervention-profile">
+                            <a class="navbar-item" href="http://resources.ga-sps.org/content/resources/creating-an-intervention-profile/creating_an_intervention_profile.mp4">
                                 Adding an Intervention Profile
                             </a>
                             <a class="navbar-item" href="http://resources.ga-sps.org/resources/ecco-mds-data-entry-guidance-document">
