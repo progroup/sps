@@ -44,6 +44,9 @@
                             <a class="navbar-item" href="http://resources.ga-sps.org/resources/briefcase-dashboard/briefcase-dashboard.mp4">
                                 Briefcase Dashboard
                             </a>
+                            <a class="navbar-item" href="http://resources.ga-sps.org/content/resources/pulling-reports/pulling_reports.mp4">
+                                Pulling Reports
+                            </a>
                             <a class="navbar-item" href="http://resources.ga-sps.org/resources/help-dashboard/help-dashboard.mp4">
                                 Help Dashboard
                             </a>
