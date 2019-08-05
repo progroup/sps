@@ -55150,6 +55150,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -55183,7 +55209,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
     };
   },
-
+  beforeRouteUpdate: function beforeRouteUpdate(to, from, next) {
+    // called when the route that renders this component has changed,
+    // but this component is reused in the new route.
+    // For example, for a route with dynamic params `/foo/:id`, when we
+    // navigate between `/foo/1` and `/foo/2`, the same `Foo` component instance
+    // will be reused, and this hook will be called when that happens.
+    // has access to `this` component instance.
+    this.name = to.params.name;
+    next();
+  },
 
   methods: {
     publishDate: function publishDate(date) {
@@ -55202,6 +55237,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     seriesName: function seriesName(name) {
       return name.toUpperCase();
+    },
+    goTo: function goTo(query) {
+      window.location = '#/search?query=' + query;
+      window.location.reload(true);
     }
   }
 });
@@ -55696,7 +55735,59 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "columns"
   }, [_c('div', {
     staticClass: "column is-3 is-hidden-touch"
-  }, [_c('aside', [_c('div', [_c('ais-refinement-list', {
+  }, [_c('aside', [_c('div', [_c('div', {
+    staticClass: "ais-refinement-list"
+  }, [_c('p', {
+    staticClass: "menu-label"
+  }, [_vm._v("Resource Quick Links")]), _vm._v(" "), _c('ul', [_c('li', {
+    staticClass: "ais-refinement-list__item"
+  }, [_c('a', {
+    on: {
+      "click": function($event) {
+        _vm.goTo('needs ssassessment')
+      }
+    }
+  }, [_vm._v("Need Assessment")])]), _vm._v(" "), _c('li', {
+    staticClass: "ais-refinement-list__item"
+  }, [_c('a', {
+    on: {
+      "click": function($event) {
+        _vm.goTo('capacity')
+      }
+    }
+  }, [_vm._v("Capacity")])]), _vm._v(" "), _c('li', {
+    staticClass: "ais-refinement-list__item"
+  }, [_c('a', {
+    on: {
+      "click": function($event) {
+        _vm.goTo('Planning')
+      }
+    }
+  }, [_vm._v("Planning")])]), _vm._v(" "), _c('li', {
+    staticClass: "ais-refinement-list__item"
+  }, [_c('a', {
+    on: {
+      "click": function($event) {
+        _vm.goTo('Implementation')
+      }
+    }
+  }, [_vm._v("Implementation")])]), _vm._v(" "), _c('li', {
+    staticClass: "ais-refinement-list__item"
+  }, [_c('a', {
+    on: {
+      "click": function($event) {
+        _vm.goTo('Evaluation')
+      }
+    }
+  }, [_vm._v("Evaluation")])]), _vm._v(" "), _c('li', {
+    staticClass: "ais-refinement-list__item"
+  }, [_c('a', {
+    on: {
+      "click": function($event) {
+        _vm.goTo('Literature Review')
+      }
+    }
+  }, [_vm._v("Literature Review")])])])])]), _vm._v(" "), _c('div', [_c('ais-refinement-list', {
     attrs: {
       "attribute-name": "tags"
     },
