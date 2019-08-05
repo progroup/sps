@@ -45,6 +45,32 @@
 
                   <aside>
                     <div>
+                      <div class="ais-refinement-list">
+                        <p class="menu-label">Resource Quick Links</p>
+                        <ul>
+                          <li class="ais-refinement-list__item">
+                            <a @click="goTo('needs ssassessment')">Need Assessment</a>
+                          </li>
+                          <li class="ais-refinement-list__item">
+                            <a @click="goTo('capacity')">Capacity</a>
+                          </li>
+                          <li class="ais-refinement-list__item">
+                            <a @click="goTo('Planning')">Planning</a>
+                          </li>
+                          <li class="ais-refinement-list__item">
+                            <a @click="goTo('Implementation')">Implementation</a>
+                          </li>
+                          <li class="ais-refinement-list__item">
+                            <a @click="goTo('Evaluation')">Evaluation</a>
+                          </li>
+                          <li class="ais-refinement-list__item">
+                            <a @click="goTo('Literature Review')">Literature Review</a>
+                          </li>
+                        </ul>
+                      </div>
+
+                    </div>
+                    <div>
                       <ais-refinement-list attribute-name="tags">
                         <template slot="header">
                           <p class="menu-label">
@@ -285,7 +311,16 @@ export default {
       }
     }
   },
-
+  beforeRouteUpdate (to, from, next) {
+    // called when the route that renders this component has changed,
+    // but this component is reused in the new route.
+    // For example, for a route with dynamic params `/foo/:id`, when we
+    // navigate between `/foo/1` and `/foo/2`, the same `Foo` component instance
+    // will be reused, and this hook will be called when that happens.
+    // has access to `this` component instance.
+    this.name = to.params.name
+    next()
+  },
   methods: {
     publishDate (date) {
       return moment(date).format('LL')
@@ -305,6 +340,10 @@ export default {
 
     seriesName (name) {
       return name.toUpperCase()
+    },
+    goTo (query) {
+      window.location = `#/search?query=${query}`
+      window.location.reload(true)
     }
   }
 }
