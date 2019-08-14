@@ -195,52 +195,69 @@
 </template>
 
 <script>
-  import Sidebar from '@/components/Sidebar.vue'
-  export default {
-    components: { Sidebar },
-    data() {
-      return {
-        events: [
-          {
-            id: 1,
-            name: 'Ethics Training',
-            description: `<p><b>Location:</b> <br></p> <p>GoToMeeting Webinar</p> <p><b>Description:</b> <br></p> <p>Please join my meeting from your computer, tablet or
+import Sidebar from '@/components/Sidebar.vue'
+export default {
+  components: { Sidebar },
+  data () {
+    return {
+      events: [
+        {
+          id: 1,
+          name: 'Ethics Training',
+          description: `<p><b>Location:</b> <br></p> <p>GoToMeeting Webinar</p> <p><b>Description:</b> <br></p> <p>Please join my meeting from your computer, tablet or
                       smartphone.</p> <a href="https://global.gotomeeting.com/join/908301725">https://global.gotomeeting.com/join/908301725</a><br> <b>You can also dial in using your phone.</b><br>
                       United States: +1 (408) 650-3123<br> <b>Access Code: 908-301-725</b><br> <b>Joining from a video-conferencing room or system?</b><br>
                       Dial: 67.217.95.2##908301725<br>
                       Cisco devices: 908301725@67.217.95.2<br> <b>First GoToMeeting? Let's do a quick system check:</b><br> <a href="https://link.gotomeeting.com/system-check">https://link.gotomeeting.com/system-check</a><br> <p><b>Target Audience:</b> <br>
                           OBHP providers
                       </p>`,
-            date: 'February 26, 2019',
-            time: '10:00AM - 11:30AM',
-            modality: 'Webinar',
-            presenter: 'Tiffiany Aholou',
-            more: 'Needed for prevention certification'
-          },
-          {
-            id: 2,
-            name: 'CPAW Engagement and Utilization',
-            description: 'Provide knowledge on how to use and engage the CPAW',
-            date: 'April 17, 2019',
-            time: '10:00AM - 11:30AM',
-            modality: 'Webinar',
-            presenter: 'Prospectus Group',
-            more: ''
-          },
-          {
-            id: 3,
-            name: 'Current Trends in Substance Abuse Prevention',
-            description: 'Provide knowledge on current practices, techniques, and research in the field of prevention',
-            date: 'September 18, 2019',
-            time: '10:00AM - 11:30AM',
-            modality: 'Webinar',
-            presenter: 'Prospectus Group, Ben Gleason',
-            more: 'Should occur yearly<br>Ben Gleason / Lit review.'
-          }
-        ]
-      }
+          date: 'February 26, 2019',
+          time: '10:00AM - 11:30AM',
+          modality: 'Webinar',
+          presenter: 'Tiffiany Aholou',
+          more: 'Needed for prevention certification'
+        },
+        {
+          id: 2,
+          name: 'CPAW Engagement and Utilization',
+          description: 'Provide knowledge on how to use and engage the CPAW',
+          date: 'April 17, 2019',
+          time: '10:00AM - 11:30AM',
+          modality: 'Webinar',
+          presenter: 'Prospectus Group',
+          more: ''
+        },
+        {
+          id: 3,
+          name: 'ECCO Clinic',
+          description: `<p><b>Location:</b> <br></p> <p>GoToMeeting Webinar</p> <p><b>Description:</b> <br></p> <p>Please join my meeting from your computer, tablet or
+                      smartphone.</p> <a href="https://global.gotomeeting.com/join/266496557">https://global.gotomeeting.com/join/266496557</a><br> <b>You can also dial in using your phone.</b><br>
+                      United States: +1 (872) 240-3311<br> <b>Access Code: 266-496-557</b><br> <b>Joining from a video-conferencing room or system?</b><br>
+                      Depending on your device dial:<br>
+                      266496557@67.217.95.2 or 67.217.95.2##266496557<br>
+                      <br> <b>New to GoToMeeting? Get the app now and be ready when your first meeting starts:</b><br> <a href="https://global.gotomeeting.com/join/266496557">https://global.gotomeeting.com/join/266496557</a><br> <p><b>Target Audience:</b> <br>
+                          OBHP prevention providers on ECCO.
+                      </p>`,
+          date: 'August 21, 2019',
+          time: '10:00AM - 11:00AM',
+          modality: 'GoToMeeting',
+          presenter: 'Ted Mulherin and Fiana Thacker',
+          more: 'This webinar will include an overview of the new workflow and data guideline changes on ECCO.'
+        },
+        {
+          id: 4,
+          name: 'Current Trends in Substance Abuse Prevention',
+          description: 'Provide knowledge on current practices, techniques, and research in the field of prevention',
+          date: 'September 18, 2019',
+          time: '10:00AM - 11:30AM',
+          modality: 'Webinar',
+          presenter: 'Prospectus Group, Ben Gleason',
+          more: 'Should occur yearly<br>Ben Gleason / Lit review.'
+        }
+      ]
     }
   }
+}
 </script>
 
 <style>
