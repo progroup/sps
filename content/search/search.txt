@@ -1,0 +1,13 @@
+Title: Search
+
+----
+
+Description: Search ga-sps.org and our docs to find enlightenment.
+
+----
+
+Changefreq: never
+
+----
+
+Priority: .5
