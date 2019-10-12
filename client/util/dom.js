@@ -1,13 +1,13 @@
 export function $(selector, scope = document) {
-    return scope.querySelector(selector);
+  return scope.querySelector(selector)
 }
 
 export function $$(selector, scope = document) {
-    return [...scope.querySelectorAll(selector)];
+  return [...scope.querySelectorAll(selector)]
 }
 
 export function on(event, element, handler) {
-    element.addEventListener(event, e => {
-        handler.call(element, e);
-    });
+  element.addEventListener(event, e => {
+    handler.call(element, e)
+  })
 }

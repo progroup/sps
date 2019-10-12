@@ -1,3 +1,3 @@
-import { focusWithin } from '../utils/polyfills';
+import { focusWithin } from '../utils/polyfills'
 
-focusWithin(document.querySelector('.js-search-field'));
+focusWithin(document.querySelector('.js-search-field'))
