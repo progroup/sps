@@ -2,7 +2,7 @@ Title: State Training
 
 ----
 
-Trainings: 
+Trainings:
 
 - 
   dates: 'June 20, 2017 10 - 11am'

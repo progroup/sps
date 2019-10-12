@@ -3,31 +3,31 @@ import VueRouter from 'vue-router'
 const routes = [
     {
         path: '/',
-        component: require('./views')
+        component: require('./pages'),
     },
     {
         path: '/calendar',
-        component: require('./views/calendar')
+        component: require('./pages/calendar'),
     },
     {
         path: '/media',
-        component: require('./views/media')
+        component: require('./pages/media'),
     },
     {
         path: '/search',
-        component: require('./views/search')
+        component: require('./pages/search'),
     },
     {
         path: '/spf-overview',
-        component: require('./views/spf-overview')
+        component: require('./pages/spf-overview'),
     },
     {
         path: '/training',
-        component: require('./views/training')
-    }
+        component: require('./pages/training'),
+    },
 ]
 
 export default new VueRouter({
     routes,
-    linkActiveClass: 'is-active'
+    linkActiveClass: 'is-active',
 })

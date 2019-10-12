@@ -1,6 +1,5 @@
 import { $$, on } from '../util/dom';
 
-
 /*
  * Sidebar
  */
@@ -22,7 +21,6 @@ function registerSidebarEvents() {
     $$('.js-sidebar-hide').forEach(el => on('click', el, hideSidebar));
     $$('.js-sidebar-toggle').forEach(el => on('click', el, toggleSidebar));
 }
-
 
 /*
  * Sidebar toggler
@@ -72,7 +70,6 @@ function registerSidebarTogglerEvents() {
 
     updateSidebarTogglerState({ lastChange: window.scrollY });
 }
-
 
 /*
  * Main export

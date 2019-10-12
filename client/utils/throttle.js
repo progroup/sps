@@ -6,18 +6,16 @@
  * @return {undefined}
  */
 export default function(fn, limit) {
-  
   let inThrottle = false;
-  
+
   return function () {
-    if(!inThrottle) {
+    if (!inThrottle) {
       fn();
       inThrottle = true;
-      
+
       setTimeout(function() {
         inThrottle = false;
       }, limit);
-
     }
   };
 }

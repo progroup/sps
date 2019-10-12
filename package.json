@@ -2,10 +2,73 @@
   "name": "ga-sps.org",
   "version": "3.0.0",
   "description": "The ga-sps.org website.",
+  "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "build": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "lint": "./node_modules/.bin/eslint ./src/js/"
+  },
+  "dependencies": {
+    "algoliasearch": "^3.35.1",
+    "awesomplete": "^1.1.5",
+    "body-scroll-lock": "^2.6.4",
+    "dart-sass": "^1.23.0",
+    "es6-promise": "^4.2.8",
+    "fibers": "^4.0.1",
+    "focus-visible": "^5.0.2",
+    "node-sass": "^4.12.0",
+    "respimage": "^1.4.2",
+    "smoothscroll-polyfill": "^0.4.4",
+    "vue": "^2.6.10",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.41.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@tailwindcss/custom-forms": "^0.2.1",
+    "@vue/babel-preset-app": "^3.12.0",
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "animate.css": "^3.7.2",
+    "autoprefixer": "^9.6.1",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "cross-env": "^5.2.0",
+    "eslint": "^6.5.1",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.19.0",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^5.2.3",
+    "extend": "^3.0.2",
+    "jest": "^24.9.0",
+    "jest-serializer-vue": "^2.0.2",
+    "jest-transform-stub": "^2.0.0",
+    "laravel-mix": "^5.0.0",
+    "markdownlint": "^0.17.0",
+    "nodemon": "^1.19.3",
+    "postcss-calc": "^7.0.1",
+    "postcss-cli": "^6.1.3",
+    "postcss-nested": "^4.1.2",
+    "raw-loader": "3.0.0",
+    "resolve-url-loader": "^3.1.0",
+    "sass": "^1.23.0",
+    "sass-loader": "^8.0.0",
+    "tailwindcss": "^1.1.2",
+    "tailwindcss-aspect-ratio": "^2.0.0",
+    "tailwindcss-elevation": "^0.3.3",
+    "tailwindcss-responsive-embed": "^0.2.2",
+    "tailwindcss-scrims": "^1.0.0",
+    "vue-feather-icons": "^5.0.0",
+    "vue-jest": "^3.0.4",
+    "vue-svgicon": "^3.2.6",
+    "vue2-google-maps": "^0.10.7",
+    "webpack-cli": "^3.3.9"
   },
   "repository": {
     "type": "git",
@@ -15,33 +78,11 @@
     "url": "https://github.com/progroup/ga-sps.org/issues"
   },
   "homepage": "https://github.com/progroup/ga-sps.org#readme",
-  "devDependencies": {
-    "babel-eslint": "^10.0.1",
-    "babel-plugin-syntax-dynamic-import": "^6.18.0",
-    "browser-sync": "^2.26.3",
-    "browser-sync-webpack-plugin": "^2.2.2",
-    "cross-env": "^5.2.0",
-    "eslint": "^5",
-    "extend": "^3.0.2",
-    "laravel-mix": "^2.1.14",
-    "postcss-calc": "^7"
-  },
-  "dependencies": {
-    "algoliasearch": "^3.32.1",
-    "awesomplete": "^1.1.4",
-    "body-scroll-lock": "^2.6.1",
-    "clipboard": "^2",
-    "es6-promise": "^4.2.6",
-    "focus-visible": "^4.1.5",
-    "lazysizes": "^4.1.8",
-    "list.js": "^1.5.0",
-    "loadjs": "^3.6.1",
-    "respimage": "^1.4.2",
-    "smoothscroll-polyfill": "^0.4.4",
-    "svgo": "^1.2.0",
-    "svgxuse": "^1.2.6",
-    "tippy.js": "^4.2.1"
-  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
   "eslintConfig": {
     "root": true,
     "parser": "babel-eslint",
@@ -50,16 +91,64 @@
       "es6": true
     },
     "extends": [
-      "eslint:recommended"
+      "plugin:vue/recommended",
+      "standard"
     ],
     "rules": {
-      "quotes": [
+      "arrow-parens": "off",
+      "camelcase": "off",
+      "comma-dangle": [
         "error",
-        "double",
-        {
-          "avoidEscape": true
-        }
-      ]
+        "always-multiline"
+      ],
+      "curly": "off",
+      "eqeqeq": "off",
+      "indent": "off",
+      "no-console": "off",
+      "no-unused-vars": "off",
+      "object-curly-spacing": "off",
+      "object-shorthand": "off",
+      "prefer-const": "off",
+      "semi": "off",
+      "space-before-function-paren": "off",
+      "vue/html-indent": "off",
+      "vue/max-attributes-per-line": "off",
+      "vue/multiline-html-element-content-newline": "off",
+      "vue/no-template-shadow": "off",
+      "vue/no-unused-components": "off",
+      "vue/no-v-html": "off",
+      "vue/require-valid-default-prop": "off",
+      "vue/return-in-computed-property": "off"
     }
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.vue$": "vue-jest",
+      ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
+    "snapshotSerializers": [
+      "jest-serializer-vue"
+    ],
+    "testMatch": [
+      "**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)"
+    ],
+    "testURL": "http://localhost/",
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
+    ]
   }
 }
