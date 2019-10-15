@@ -38,6 +38,9 @@
                             New to Ecco
                         </a>
                         <div id="eccoDropdown" class="navbar-dropdown">
+                            <a class="navbar-item" href="http://resources.ga-sps.org/content/resources/welcome-to-ecco-pdf/welcome-to-ecco-1-2.pdf">
+                                Welcome to ECCO
+                            </a>
                             <a class="navbar-item" href="http://resources.ga-sps.org/resources/ecco-users-manual">
                                 Users Manual w/ Progress Reporting
                             </a>
