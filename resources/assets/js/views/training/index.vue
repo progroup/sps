@@ -88,7 +88,7 @@
 
                           <div v-html="event.description"></div>
                           <div v-html="event.more"></div>
-                          <b>Facilitators:</b>
+                          <p style="margin-top: 1rem"><b>Facilitators:</b></p>
                           <div v-html="event.presenter"></div>
                         </td>
                       </tr>
@@ -253,6 +253,291 @@ export default {
           modality: 'Webinar',
           presenter: 'Prospectus Group, Ben Gleason',
           more: 'Should occur yearly<br>Ben Gleason / Lit review.'
+        },
+        {
+          id: 5,
+          name: 'Proposal/Technical Writing',
+          description: 'This webinar will address the following objectives: 1.) using data to raise awareness and demonstrate need, 2.) formatting and proofing, and 3.) citing sources and avoiding unintentional plagiarism.',
+          date: 'TBD',
+          time: '10:00AM - 11:30AM',
+          modality: 'Webinar',
+          presenter: '',
+          more: ''
+        },
+        {
+          id: 10,
+          name: 'ECCO Training',
+          description: `
+            <div class="content">
+              <p>These ECCO trainings will cover:</p>
+              <ol>
+                <li>Quick review of Ga-SPS Website</li>
+                <li>Review Ecco’s core features</li>
+                <li>IP development process</li>
+                <li>Entering monthly process data</li>
+              </ol>
+              <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us
+              RSVPs must be sent no later than 5:00 PM on the Friday before the training date.
+              In-person trainings will be held at 270 Peachtree St NW, GA, Atlanta 30303, Floor 22.</p>
+            </div>
+          `,
+          date: 'October 2, 2019',
+          time: '08:15AM - 04:30PM',
+          modality: 'In-person',
+          presenter: '',
+          more: ''
+        },
+        {
+          id: 10,
+          name: 'ECCO Training',
+          description: `
+            <div class="content">
+              <p>These ECCO trainings will cover:</p>
+              <ol>
+                <li>Quick review of Ga-SPS Website</li>
+                <li>Review Ecco’s core features</li>
+                <li>IP development process</li>
+                <li>Entering monthly process data</li>
+              </ol>
+              <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us
+              RSVPs must be sent no later than 5:00 PM on the Friday before the training date.
+              In-person trainings will be held at 270 Peachtree St NW, GA, Atlanta 30303, Floor 22.</p>
+            </div>
+          `,
+          date: 'November 6, 2019',
+          time: '10:00 AM - 11:30 AM',
+          modality: 'In-person',
+          presenter: 'Tiffiany Aholou',
+          more: ''
+        },
+        {
+          id: 10,
+          name: 'Tri-Ethnic Community Readiness Model Training Highlights',
+          description: `
+            <div class="content">
+              <p>Please join my meeting from your computer, tablet or smartphone. https://global.gotomeeting.com/join/938210085</p>
+              <p>You can also dial in using your phone. United States: +1 (646) 749-3112 Access Code: 938-210-085</p>
+              <p>Joining from a video-conferencing room or system? Dial: 67.217.95.2##938210085 Cisco devices: 938210085@67.217.95.2</p>
+              <p>First GoToMeeting? Let's do a quick system check: https://link.gotomeeting.com/system-check</p>
+              <p>TARGET AUDIENCE ASAPP providers unable to attend the in-person training do to Hurricane Michael. ASAPP providers who would like a refresher on the TECRM are also encouraged to attend.</p>
+              <p>This training will highlight the processes for interviewing and scoring transcribed interviews for community readiness assessments.</p>
+            </div>
+          `,
+          date: 'November 15th, 2019',
+          time: '10:00AM - 11:30PM',
+          modality: 'Webinar',
+          presenter: 'Tiffiany Aholou',
+          more: ''
+        },
+        {
+          id: 10,
+          name: 'ECCO Training',
+          description: `
+            <div class="content">
+              <p>These ECCO trainings will cover:</p>
+              <ol>
+                <li>Quick review of Ga-SPS Website</li>
+                <li>Review Ecco’s core features</li>
+                <li>IP development process</li>
+                <li>Entering monthly process data</li>
+              </ol>
+             <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
+            </div>
+          `,
+          date: 'December 4, 2019',
+          time: '10:00 AM - 11:30 AM',
+          modality: 'Webinar',
+          presenter: '',
+          more: ''
+        },
+        {
+          id: 10,
+          name: 'ECCO Training',
+          description: `
+            <div class="content">
+              <p>These ECCO trainings will cover:</p>
+              <ol>
+                <li>Quick review of Ga-SPS Website</li>
+                <li>Review Ecco’s core features</li>
+                <li>IP development process</li>
+                <li>Entering monthly process data</li>
+              </ol>
+             <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
+            </div>
+          `,
+          date: 'January 8, 2020',
+          time: '10:00 AM - 11:30 AM',
+          modality: 'Webinar',
+          presenter: '',
+          more: ''
+        },
+        {
+          id: 10,
+          name: 'ECCO Training',
+          description: `
+            <div class="content">
+              <p>These ECCO trainings will cover:</p>
+              <ol>
+                <li>Quick review of Ga-SPS Website</li>
+                <li>Review Ecco’s core features</li>
+                <li>IP development process</li>
+                <li>Entering monthly process data</li>
+              </ol>
+             <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
+            </div>
+          `,
+          date: 'February 5, 2020',
+          time: '10:00 AM - 11:30 PM',
+          modality: 'Webinar',
+          presenter: '',
+          more: ''
+        },
+        {
+          id: 10,
+          name: 'ECCO Training',
+          description: `
+            <div class="content">
+              <p>These ECCO trainings will cover:</p>
+              <ol>
+                <li>Quick review of Ga-SPS Website</li>
+                <li>Review Ecco’s core features</li>
+                <li>IP development process</li>
+                <li>Entering monthly process data</li>
+              </ol>
+             <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
+            </div>
+          `,
+          date: 'March 4, 2020',
+          time: '10:00 AM - 11:30 AM',
+          modality: 'Webinar',
+          presenter: '',
+          more: ''
+        },
+        {
+          id: 10,
+          name: 'ECCO Training',
+          description: `
+            <div class="content">
+              <p>These ECCO trainings will cover:</p>
+              <ol>
+                <li>Quick review of Ga-SPS Website</li>
+                <li>Review Ecco’s core features</li>
+                <li>IP development process</li>
+                <li>Entering monthly process data</li>
+              </ol>
+             <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
+            </div>
+          `,
+          date: 'April 1, 2020',
+          time: '10:00 AM - 11:30 AM',
+          modality: 'Webinar',
+          presenter: '',
+          more: ''
+        },
+        {
+          id: 10,
+          name: 'ECCO Training',
+          description: `
+            <div class="content">
+              <p>These ECCO trainings will cover:</p>
+              <ol>
+                <li>Quick review of Ga-SPS Website</li>
+                <li>Review Ecco’s core features</li>
+                <li>IP development process</li>
+                <li>Entering monthly process data</li>
+              </ol>
+             <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
+            </div>
+          `,
+          date: 'May 6, 2020',
+          time: '10:00 AM - 11:30 AM',
+          modality: 'Webinar',
+          presenter: '',
+          more: ''
+        },
+        {
+          id: 10,
+          name: 'ECCO Training',
+          description: `
+            <div class="content">
+              <p>These ECCO trainings will cover:</p>
+              <ol>
+                <li>Quick review of Ga-SPS Website</li>
+                <li>Review Ecco’s core features</li>
+                <li>IP development process</li>
+                <li>Entering monthly process data</li>
+              </ol>
+             <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
+            </div>
+          `,
+          date: 'June 3, 2020',
+          time: '10:00 AM - 11:30 AM',
+          modality: 'Webinar',
+          presenter: '',
+          more: ''
+        },
+        {
+          id: 10,
+          name: 'ECCO Training',
+          description: `
+            <div class="content">
+              <p>These ECCO trainings will cover:</p>
+              <ol>
+                <li>Quick review of Ga-SPS Website</li>
+                <li>Review Ecco’s core features</li>
+                <li>IP development process</li>
+                <li>Entering monthly process data</li>
+              </ol>
+             <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
+            </div>
+          `,
+          date: 'July 1, 2020',
+          time: '10:00 AM - 11:30 AM',
+          modality: 'Webinar',
+          presenter: '',
+          more: ''
+        },
+        {
+          id: 10,
+          name: 'ECCO Training',
+          description: `
+            <div class="content">
+              <p>These ECCO trainings will cover:</p>
+              <ol>
+                <li>Quick review of Ga-SPS Website</li>
+                <li>Review Ecco’s core features</li>
+                <li>IP development process</li>
+                <li>Entering monthly process data</li>
+              </ol>
+             <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
+            </div>
+          `,
+          date: 'August 5, 2019',
+          time: '10:00 AM - 11:30 AM',
+          modality: 'Webinar',
+          presenter: '',
+          more: ''
+        },
+        {
+          id: 10,
+          name: 'ECCO Training',
+          description: `
+            <div class="content">
+              <p>These ECCO trainings will cover:</p>
+              <ol>
+                <li>Quick review of Ga-SPS Website</li>
+                <li>Review Ecco’s core features</li>
+                <li>IP development process</li>
+                <li>Entering monthly process data</li>
+              </ol>
+             <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
+            </div>
+          `,
+          date: 'September 2, 2020',
+          time: '10:00 AM - 11:30 AM',
+          modality: 'Webinar',
+          presenter: '',
+          more: ''
         }
       ]
     }
@@ -260,7 +545,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .hero-header {
   background-color: #ccc;
 }
