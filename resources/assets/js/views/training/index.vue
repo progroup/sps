@@ -195,144 +195,16 @@
 </template>
 
 <script>
-import Sidebar from '@/components/Sidebar.vue'
-export default {
-  components: { Sidebar },
-  data () {
-    return {
-      events: [
-        {
-          id: 1,
-          name: 'Ethics Training',
-          description: `<p><b>Location:</b> <br></p> <p>GoToMeeting Webinar</p> <p><b>Description:</b> <br></p> <p>Please join my meeting from your computer, tablet or
-                      smartphone.</p> <a href="https://global.gotomeeting.com/join/908301725">https://global.gotomeeting.com/join/908301725</a><br> <b>You can also dial in using your phone.</b><br>
-                      United States: +1 (408) 650-3123<br> <b>Access Code: 908-301-725</b><br> <b>Joining from a video-conferencing room or system?</b><br>
-                      Dial: 67.217.95.2##908301725<br>
-                      Cisco devices: 908301725@67.217.95.2<br> <b>First GoToMeeting? Let's do a quick system check:</b><br> <a href="https://link.gotomeeting.com/system-check">https://link.gotomeeting.com/system-check</a><br> <p><b>Target Audience:</b> <br>
-                          OBHP providers
-                      </p>`,
-          date: 'February 26, 2019',
-          time: '10:00AM - 11:30AM',
-          modality: 'Webinar',
-          presenter: 'Tiffiany Aholou',
-          more: 'Needed for prevention certification'
-        },
-        {
-          id: 2,
-          name: 'CPAW Engagement and Utilization',
-          description: 'Provide knowledge on how to use and engage the CPAW',
-          date: 'April 17, 2019',
-          time: '10:00AM - 11:30AM',
-          modality: 'Webinar',
-          presenter: 'Prospectus Group',
-          more: ''
-        },
-        {
-          id: 3,
-          name: 'ECCO Clinic',
-          description: `<p><b>Location:</b> <br></p> <p>GoToMeeting Webinar</p> <p><b>Description:</b> <br></p> <p>Please join my meeting from your computer, tablet or
-                      smartphone.</p> <a href="https://global.gotomeeting.com/join/266496557">https://global.gotomeeting.com/join/266496557</a><br> <b>You can also dial in using your phone.</b><br>
-                      United States: +1 (872) 240-3311<br> <b>Access Code: 266-496-557</b><br> <b>Joining from a video-conferencing room or system?</b><br>
-                      Depending on your device dial:<br>
-                      266496557@67.217.95.2 or 67.217.95.2##266496557<br>
-                      <br> <b>New to GoToMeeting? Get the app now and be ready when your first meeting starts:</b><br> <a href="https://global.gotomeeting.com/join/266496557">https://global.gotomeeting.com/join/266496557</a><br> <p><b>Target Audience:</b> <br>
-                          OBHP prevention providers on ECCO.
-                      </p>`,
-          date: 'August 21, 2019',
-          time: '10:00AM - 11:00AM',
-          modality: 'GoToMeeting',
-          presenter: 'Ted Mulherin and Fiana Thacker',
-          more: 'This webinar will include an overview of the new workflow and data guideline changes on ECCO.'
-        },
-        {
-          id: 4,
-          name: 'Current Trends in Substance Abuse Prevention',
-          description: 'Provide knowledge on current practices, techniques, and research in the field of prevention',
-          date: 'September 18, 2019',
-          time: '10:00AM - 11:30AM',
-          modality: 'Webinar',
-          presenter: 'Prospectus Group, Ben Gleason',
-          more: 'Should occur yearly<br>Ben Gleason / Lit review.'
-        },
-        {
-          id: 5,
-          name: 'Proposal/Technical Writing',
-          description: 'This webinar will address the following objectives: 1.) using data to raise awareness and demonstrate need, 2.) formatting and proofing, and 3.) citing sources and avoiding unintentional plagiarism.',
-          date: 'TBD',
-          time: '10:00AM - 11:30AM',
-          modality: 'Webinar',
-          presenter: '',
-          more: ''
-        },
-        {
-          id: 10,
-          name: 'ECCO Training',
-          description: `
-            <div class="content">
-              <p>These ECCO trainings will cover:</p>
-              <ol>
-                <li>Quick review of Ga-SPS Website</li>
-                <li>Review Ecco’s core features</li>
-                <li>IP development process</li>
-                <li>Entering monthly process data</li>
-              </ol>
-              <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us
-              RSVPs must be sent no later than 5:00 PM on the Friday before the training date.
-              In-person trainings will be held at 270 Peachtree St NW, GA, Atlanta 30303, Floor 22.</p>
-            </div>
-          `,
-          date: 'October 2, 2019',
-          time: '08:15AM - 04:30PM',
-          modality: 'In-person',
-          presenter: '',
-          more: ''
-        },
-        {
-          id: 10,
-          name: 'ECCO Training',
-          description: `
-            <div class="content">
-              <p>These ECCO trainings will cover:</p>
-              <ol>
-                <li>Quick review of Ga-SPS Website</li>
-                <li>Review Ecco’s core features</li>
-                <li>IP development process</li>
-                <li>Entering monthly process data</li>
-              </ol>
-              <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us
-              RSVPs must be sent no later than 5:00 PM on the Friday before the training date.
-              In-person trainings will be held at 270 Peachtree St NW, GA, Atlanta 30303, Floor 22.</p>
-            </div>
-          `,
-          date: 'November 6, 2019',
-          time: '10:00 AM - 11:30 AM',
-          modality: 'In-person',
-          presenter: 'Tiffiany Aholou',
-          more: ''
-        },
-        {
-          id: 10,
-          name: 'Tri-Ethnic Community Readiness Model Training Highlights',
-          description: `
-            <div class="content">
-              <p>Please join my meeting from your computer, tablet or smartphone. https://global.gotomeeting.com/join/938210085</p>
-              <p>You can also dial in using your phone. United States: +1 (646) 749-3112 Access Code: 938-210-085</p>
-              <p>Joining from a video-conferencing room or system? Dial: 67.217.95.2##938210085 Cisco devices: 938210085@67.217.95.2</p>
-              <p>First GoToMeeting? Let's do a quick system check: https://link.gotomeeting.com/system-check</p>
-              <p>TARGET AUDIENCE ASAPP providers unable to attend the in-person training do to Hurricane Michael. ASAPP providers who would like a refresher on the TECRM are also encouraged to attend.</p>
-              <p>This training will highlight the processes for interviewing and scoring transcribed interviews for community readiness assessments.</p>
-            </div>
-          `,
-          date: 'November 15th, 2019',
-          time: '10:00AM - 11:30PM',
-          modality: 'Webinar',
-          presenter: 'Tiffiany Aholou',
-          more: ''
-        },
-        {
-          id: 10,
-          name: 'ECCO Training',
-          description: `
+  import Sidebar from '@/components/Sidebar.vue'
+  export default {
+    components: { Sidebar },
+    data() {
+      return {
+        events: [
+          {
+            id: 10,
+            name: 'ECCO Training',
+            description: `
             <div class="content">
               <p>These ECCO trainings will cover:</p>
               <ol>
@@ -344,16 +216,49 @@ export default {
              <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
             </div>
           `,
-          date: 'December 4, 2019',
-          time: '10:00 AM - 11:30 AM',
-          modality: 'Webinar',
-          presenter: '',
-          more: ''
-        },
-        {
-          id: 10,
-          name: 'ECCO Training',
-          description: `
+            date: 'December 4, 2019',
+            time: '10:00 AM - 11:30 AM',
+            modality: 'Webinar',
+            presenter: '',
+            more: ''
+          },
+          {
+            id: 10,
+            name: 'Standing ECCO Training',
+            description: `
+            <div class="content">
+              <p><b>Description:</b></p>
+              <p>Please join my meeting from your computer, tablet or smartphone.<br>
+              <a href="https://global.gotomeeting.com/join/967992397">
+                https://global.gotomeeting.com/join/967992397
+              </a></p>
+
+              <p><b>You can also dial in using your phone.</b><br>
+              United States: +1 (408) 650-3123</p>
+
+              <p><b>Access Code: 908-301-725</b></p>
+
+              <p><b>Join from a video-conferencing room or system?</b><br>
+              Dial in or type: 67.217.95.2 or inroomlink.goto.com<br>
+              Meeting ID: 967 992 397<br>
+              Or dial directly: 967992397@67.217.95.2 or 67.217.95.2##967992397</p>
+
+              <p>New to GoToMeeting? Get the app now and be ready when your first meeting starts:<br>
+              <a href="https://global.gotomeeting.com/install/967992397">
+                https://global.gotomeeting.com/install/967992397
+              </a></p>
+            </div>
+          `,
+            date: 'January 8, 2020',
+            time: '10:00 AM - 11:30 AM',
+            modality: 'Webinar',
+            presenter: '',
+            more: ''
+          },
+          {
+            id: 10,
+            name: 'ECCO Training',
+            description: `
             <div class="content">
               <p>These ECCO trainings will cover:</p>
               <ol>
@@ -365,16 +270,49 @@ export default {
              <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
             </div>
           `,
-          date: 'January 8, 2020',
-          time: '10:00 AM - 11:30 AM',
-          modality: 'Webinar',
-          presenter: '',
-          more: ''
-        },
-        {
-          id: 10,
-          name: 'ECCO Training',
-          description: `
+            date: 'February 5, 2020',
+            time: '10:00 AM - 11:30 PM',
+            modality: 'Webinar',
+            presenter: '',
+            more: ''
+          },
+          {
+            id: 10,
+            name: 'Standing ECCO Training',
+            description: `
+            <div class="content">
+              <p><b>Description:</b></p>
+              <p>Please join my meeting from your computer, tablet or smartphone.<br>
+              <a href="https://global.gotomeeting.com/join/631667717">
+                https://global.gotomeeting.com/join/631667717
+              </a></p>
+
+              <p><b>You can also dial in using your phone.</b><br>
+              United States: +1 (408) 650-3123</p>
+
+              <p><b>Access Code: 631-667-717</b></p>
+
+              <p><b>Join from a video-conferencing room or system?</b><br>
+              Dial in or type: 67.217.95.2 or inroomlink.goto.com<br>
+              Meeting ID: 631 667 717<br>
+              Or dial directly: 631667717@67.217.95.2 or 67.217.95.2##631667717</p>
+
+              <p>New to GoToMeeting? Get the app now and be ready when your first meeting starts:<br>
+              <a href="https://global.gotomeeting.com/install/631667717">
+                https://global.gotomeeting.com/install/631667717
+              </a></p>
+            </div>
+          `,
+            date: 'March 4, 2020',
+            time: '10:00 AM - 11:30 AM',
+            modality: 'Webinar',
+            presenter: '',
+            more: ''
+          },
+          {
+            id: 10,
+            name: 'ECCO Training',
+            description: `
             <div class="content">
               <p>These ECCO trainings will cover:</p>
               <ol>
@@ -386,16 +324,49 @@ export default {
              <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
             </div>
           `,
-          date: 'February 5, 2020',
-          time: '10:00 AM - 11:30 PM',
-          modality: 'Webinar',
-          presenter: '',
-          more: ''
-        },
-        {
-          id: 10,
-          name: 'ECCO Training',
-          description: `
+            date: 'April 1, 2020',
+            time: '10:00 AM - 11:30 AM',
+            modality: 'Webinar',
+            presenter: '',
+            more: ''
+          },
+          {
+            id: 10,
+            name: 'Standing ECCO Training',
+            description: `
+            <div class="content">
+              <p><b>Description:</b></p>
+              <p>Please join my meeting from your computer, tablet or smartphone.<br>
+              <a href="https://global.gotomeeting.com/join/589686533">
+                https://global.gotomeeting.com/join/589686533
+              </a></p>
+
+              <p><b>You can also dial in using your phone.</b><br>
+              United States: +1 (408) 650-3123</p>
+
+              <p><b>Access Code: 589-686-533</b></p>
+
+              <p><b>Join from a video-conferencing room or system?</b><br>
+              Dial in or type: 67.217.95.2 or inroomlink.goto.com<br>
+              Meeting ID: 589 686 533<br>
+              Or dial directly: 589686533@67.217.95.2 or 67.217.95.2##589686533</p>
+
+              <p>New to GoToMeeting? Get the app now and be ready when your first meeting starts:<br>
+              <a href="https://global.gotomeeting.com/install/589686533">
+                https://global.gotomeeting.com/install/589686533
+              </a></p>
+            </div>
+          `,
+            date: 'May 6, 2020',
+            time: '10:00 AM - 11:30 AM',
+            modality: 'Webinar',
+            presenter: '',
+            more: ''
+          },
+          {
+            id: 10,
+            name: 'ECCO Training',
+            description: `
             <div class="content">
               <p>These ECCO trainings will cover:</p>
               <ol>
@@ -407,16 +378,49 @@ export default {
              <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
             </div>
           `,
-          date: 'March 4, 2020',
-          time: '10:00 AM - 11:30 AM',
-          modality: 'Webinar',
-          presenter: '',
-          more: ''
-        },
-        {
-          id: 10,
-          name: 'ECCO Training',
-          description: `
+            date: 'June 3, 2020',
+            time: '10:00 AM - 11:30 AM',
+            modality: 'Webinar',
+            presenter: '',
+            more: ''
+          },
+          {
+            id: 10,
+            name: 'Standing ECCO Training',
+            description: `
+            <div class="content">
+              <p><b>Description:</b></p>
+              <p>Please join my meeting from your computer, tablet or smartphone.<br>
+              <a href="https://global.gotomeeting.com/join/834324733">
+                https://global.gotomeeting.com/join/834324733
+              </a></p>
+
+              <p><b>You can also dial in using your phone.</b><br>
+              United States: +1 (571) 317-3122</p>
+
+              <p><b>Access Code: 834-324-733</b></p>
+
+              <p><b>Join from a video-conferencing room or system?</b><br>
+              Dial in or type: 67.217.95.2 or inroomlink.goto.com<br>
+              Meeting ID: 834 324 733<br>
+              Or dial directly: 834324733@67.217.95.2 or 67.217.95.2##834324733</p>
+
+              <p>New to GoToMeeting? Get the app now and be ready when your first meeting starts:<br>
+              <a href="https://global.gotomeeting.com/install/834324733">
+                https://global.gotomeeting.com/install/834324733
+              </a></p>
+            </div>
+          `,
+            date: 'July 1, 2020',
+            time: '10:00 AM - 11:30 AM',
+            modality: 'Webinar',
+            presenter: '',
+            more: ''
+          },
+          {
+            id: 10,
+            name: 'ECCO Training',
+            description: `
             <div class="content">
               <p>These ECCO trainings will cover:</p>
               <ol>
@@ -428,121 +432,49 @@ export default {
              <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
             </div>
           `,
-          date: 'April 1, 2020',
-          time: '10:00 AM - 11:30 AM',
-          modality: 'Webinar',
-          presenter: '',
-          more: ''
-        },
-        {
-          id: 10,
-          name: 'ECCO Training',
-          description: `
+            date: 'August 5, 2019',
+            time: '10:00 AM - 11:30 AM',
+            modality: 'Webinar',
+            presenter: '',
+            more: ''
+          },
+          {
+            id: 10,
+            name: 'Standing ECCO Training',
+            description: `
             <div class="content">
-              <p>These ECCO trainings will cover:</p>
-              <ol>
-                <li>Quick review of Ga-SPS Website</li>
-                <li>Review Ecco’s core features</li>
-                <li>IP development process</li>
-                <li>Entering monthly process data</li>
-              </ol>
-             <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
+              <p><b>Description:</b></p>
+              <p>Please join my meeting from your computer, tablet or smartphone.<br>
+              <a href="https://global.gotomeeting.com/join/893410589">
+                https://global.gotomeeting.com/join/893410589
+              </a></p>
+
+              <p><b>You can also dial in using your phone.</b><br>
+              United States: +1 (872) 240-3212</p>
+
+              <p><b>Access Code: 893-410-589</b></p>
+
+              <p><b>Join from a video-conferencing room or system?</b><br>
+              Dial in or type: 67.217.95.2 or inroomlink.goto.com<br>
+              Meeting ID: 893 410 589<br>
+              Or dial directly: 893410589@67.217.95.2 or 67.217.95.2##893410589</p>
+
+              <p>New to GoToMeeting? Get the app now and be ready when your first meeting starts:<br>
+              <a href="https://global.gotomeeting.com/install/893410589">
+                https://global.gotomeeting.com/install/893410589
+              </a></p>
             </div>
           `,
-          date: 'May 6, 2020',
-          time: '10:00 AM - 11:30 AM',
-          modality: 'Webinar',
-          presenter: '',
-          more: ''
-        },
-        {
-          id: 10,
-          name: 'ECCO Training',
-          description: `
-            <div class="content">
-              <p>These ECCO trainings will cover:</p>
-              <ol>
-                <li>Quick review of Ga-SPS Website</li>
-                <li>Review Ecco’s core features</li>
-                <li>IP development process</li>
-                <li>Entering monthly process data</li>
-              </ol>
-             <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
-            </div>
-          `,
-          date: 'June 3, 2020',
-          time: '10:00 AM - 11:30 AM',
-          modality: 'Webinar',
-          presenter: '',
-          more: ''
-        },
-        {
-          id: 10,
-          name: 'ECCO Training',
-          description: `
-            <div class="content">
-              <p>These ECCO trainings will cover:</p>
-              <ol>
-                <li>Quick review of Ga-SPS Website</li>
-                <li>Review Ecco’s core features</li>
-                <li>IP development process</li>
-                <li>Entering monthly process data</li>
-              </ol>
-             <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
-            </div>
-          `,
-          date: 'July 1, 2020',
-          time: '10:00 AM - 11:30 AM',
-          modality: 'Webinar',
-          presenter: '',
-          more: ''
-        },
-        {
-          id: 10,
-          name: 'ECCO Training',
-          description: `
-            <div class="content">
-              <p>These ECCO trainings will cover:</p>
-              <ol>
-                <li>Quick review of Ga-SPS Website</li>
-                <li>Review Ecco’s core features</li>
-                <li>IP development process</li>
-                <li>Entering monthly process data</li>
-              </ol>
-             <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
-            </div>
-          `,
-          date: 'August 5, 2019',
-          time: '10:00 AM - 11:30 AM',
-          modality: 'Webinar',
-          presenter: '',
-          more: ''
-        },
-        {
-          id: 10,
-          name: 'ECCO Training',
-          description: `
-            <div class="content">
-              <p>These ECCO trainings will cover:</p>
-              <ol>
-                <li>Quick review of Ga-SPS Website</li>
-                <li>Review Ecco’s core features</li>
-                <li>IP development process</li>
-                <li>Entering monthly process data</li>
-              </ol>
-             <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
-            </div>
-          `,
-          date: 'September 2, 2020',
-          time: '10:00 AM - 11:30 AM',
-          modality: 'Webinar',
-          presenter: '',
-          more: ''
-        }
-      ]
+            date: 'Septermber 2, 2020',
+            time: '10:00 AM - 11:30 AM',
+            modality: 'Webinar',
+            presenter: '',
+            more: ''
+          }
+        ]
+      }
     }
   }
-}
 </script>
 
 <style scoped>
