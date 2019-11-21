@@ -96,96 +96,6 @@
                   </table>
                 </section>
               </b-tab-item>
-              <b-tab-item label="National">
-                <section class="section">
-                  <table class="table is-bordered is-fullwidth">
-                    <caption></caption>
-                    <thead>
-                      <tr>
-                        <th class="training-table-date">Dates</th>
-                        <th
-                          class="training-table-training"
-                          colspan="2"
-                        >Training</th>
-                        <th class="training-table-modality">Modality</th>
-                        <th class="training-table-ceus">CEUs</th>
-                        <th class="training-table-archived">Archived</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>May 16, 2017 at 1:30 p.m. Eastern</td>
-                        <td colspan="2">Emerging Issues in Tobacco Use</td>
-                        <td>Webinar</td>
-                        <td class="training-table-ceus">NA</td>
-                        <td class="training-table-archived">NA</td>
-                      </tr>
-                      <tr>
-                        <td colspan="6">
-                          <p>
-                            <b>Description:</b>
-                            <br>
-                          </p>
-                          <p>Emerging Issues in Tobacco Use – Tuesday, May 16, 2017 at 1:30 p.m. Eastern
-                            <br>This webinar will discuss the current landscape on tobacco use and address emerging issues in tobacco misuse and prevention. It will feature experts from SAMHSA and the CDC, as well as NPW partner Campaign for Tobacco Free Kids.
-                          </p>
-                          <p>
-                            <b>Logistics</b>
-                            <br>
-                          </p>
-                          <p>
-                            Register today:
-                            <a href="https://cc.readytalk.com/r/aw7y9kj6ybk&amp;eom">https://cc.readytalk.com/r/aw7y9kj6ybk&amp;eom</a>
-                          </p>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <table class="table is-bordered is-fullwidth">
-                    <caption></caption>
-                    <thead>
-                      <tr>
-                        <th class="training-table-date">Dates</th>
-                        <th
-                          class="training-table-training"
-                          colspan="2"
-                        >Training</th>
-                        <th class="training-table-modality">Modality</th>
-                        <th class="training-table-ceus">CEUs</th>
-                        <th class="training-table-archived">Archived</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Wednesday, May 17, 2017 at 1:30 p.m. Eastern</td>
-                        <td colspan="2">Opioid Addiction and Prevention</td>
-                        <td>Webinar</td>
-                        <td class="training-table-ceus">NA</td>
-                        <td class="training-table-archived">NA</td>
-                      </tr>
-                      <tr>
-                        <td colspan="6">
-                          <p>
-                            <b>Description:</b>
-                            <br>
-                          </p>
-                          <p>Opioid Addiction and Prevention – Wednesday, May 17, 2017 at 1:30 p.m. Eastern
-                            <br>This webinar will discuss the growing issue of opioid addiction and how partner engagement can support prevention efforts. It will feature SAMHSA and state prevention experts, and NPW partner American Society for Addiction Medicine.
-                            <br>m/r/749hzwn4sivd&amp;eom
-                          </p>
-                          <p>
-                            <b>Logistics</b>
-                            <br>
-                          </p>
-                          <p>
-                            <a href="https://cc.readytalk.com/r/749hzwn4sivd&amp;eom">https://cc.readytalk.com/r/749hzwn4sivd&amp;eom</a>
-                          </p>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </section>
-              </b-tab-item>
             </b-tabs>
           </div>
         </div>
@@ -195,16 +105,16 @@
 </template>
 
 <script>
-  import Sidebar from '@/components/Sidebar.vue'
-  export default {
-    components: { Sidebar },
-    data() {
-      return {
-        events: [
-          {
-            id: 10,
-            name: 'ECCO Training',
-            description: `
+import Sidebar from '@/components/Sidebar.vue'
+export default {
+  components: { Sidebar },
+  data () {
+    return {
+      events: [
+        {
+          id: 10,
+          name: 'ECCO Training',
+          description: `
             <div class="content">
               <p>These ECCO trainings will cover:</p>
               <ol>
@@ -216,16 +126,16 @@
              <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
             </div>
           `,
-            date: 'December 4, 2019',
-            time: '10:00 AM - 11:30 AM',
-            modality: 'Webinar',
-            presenter: '',
-            more: ''
-          },
-          {
-            id: 10,
-            name: 'Standing ECCO Training',
-            description: `
+          date: 'December 4, 2019',
+          time: '10:00 AM - 11:30 AM',
+          modality: 'Webinar',
+          presenter: '',
+          more: ''
+        },
+        {
+          id: 10,
+          name: 'Standing ECCO Training',
+          description: `
             <div class="content">
               <p><b>Description:</b></p>
               <p>Please join my meeting from your computer, tablet or smartphone.<br>
@@ -249,16 +159,16 @@
               </a></p>
             </div>
           `,
-            date: 'January 8, 2020',
-            time: '10:00 AM - 11:30 AM',
-            modality: 'Webinar',
-            presenter: '',
-            more: ''
-          },
-          {
-            id: 10,
-            name: 'ECCO Training',
-            description: `
+          date: 'January 8, 2020',
+          time: '10:00 AM - 11:30 AM',
+          modality: 'Webinar',
+          presenter: '',
+          more: ''
+        },
+        {
+          id: 10,
+          name: 'ECCO Training',
+          description: `
             <div class="content">
               <p>These ECCO trainings will cover:</p>
               <ol>
@@ -270,16 +180,16 @@
              <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
             </div>
           `,
-            date: 'February 5, 2020',
-            time: '10:00 AM - 11:30 PM',
-            modality: 'Webinar',
-            presenter: '',
-            more: ''
-          },
-          {
-            id: 10,
-            name: 'Standing ECCO Training',
-            description: `
+          date: 'February 5, 2020',
+          time: '10:00 AM - 11:30 PM',
+          modality: 'Webinar',
+          presenter: '',
+          more: ''
+        },
+        {
+          id: 10,
+          name: 'Standing ECCO Training',
+          description: `
             <div class="content">
               <p><b>Description:</b></p>
               <p>Please join my meeting from your computer, tablet or smartphone.<br>
@@ -303,16 +213,16 @@
               </a></p>
             </div>
           `,
-            date: 'March 4, 2020',
-            time: '10:00 AM - 11:30 AM',
-            modality: 'Webinar',
-            presenter: '',
-            more: ''
-          },
-          {
-            id: 10,
-            name: 'ECCO Training',
-            description: `
+          date: 'March 4, 2020',
+          time: '10:00 AM - 11:30 AM',
+          modality: 'Webinar',
+          presenter: '',
+          more: ''
+        },
+        {
+          id: 10,
+          name: 'ECCO Training',
+          description: `
             <div class="content">
               <p>These ECCO trainings will cover:</p>
               <ol>
@@ -324,16 +234,16 @@
              <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
             </div>
           `,
-            date: 'April 1, 2020',
-            time: '10:00 AM - 11:30 AM',
-            modality: 'Webinar',
-            presenter: '',
-            more: ''
-          },
-          {
-            id: 10,
-            name: 'Standing ECCO Training',
-            description: `
+          date: 'April 1, 2020',
+          time: '10:00 AM - 11:30 AM',
+          modality: 'Webinar',
+          presenter: '',
+          more: ''
+        },
+        {
+          id: 10,
+          name: 'Standing ECCO Training',
+          description: `
             <div class="content">
               <p><b>Description:</b></p>
               <p>Please join my meeting from your computer, tablet or smartphone.<br>
@@ -357,16 +267,16 @@
               </a></p>
             </div>
           `,
-            date: 'May 6, 2020',
-            time: '10:00 AM - 11:30 AM',
-            modality: 'Webinar',
-            presenter: '',
-            more: ''
-          },
-          {
-            id: 10,
-            name: 'ECCO Training',
-            description: `
+          date: 'May 6, 2020',
+          time: '10:00 AM - 11:30 AM',
+          modality: 'Webinar',
+          presenter: '',
+          more: ''
+        },
+        {
+          id: 10,
+          name: 'ECCO Training',
+          description: `
             <div class="content">
               <p>These ECCO trainings will cover:</p>
               <ol>
@@ -378,16 +288,16 @@
              <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
             </div>
           `,
-            date: 'June 3, 2020',
-            time: '10:00 AM - 11:30 AM',
-            modality: 'Webinar',
-            presenter: '',
-            more: ''
-          },
-          {
-            id: 10,
-            name: 'Standing ECCO Training',
-            description: `
+          date: 'June 3, 2020',
+          time: '10:00 AM - 11:30 AM',
+          modality: 'Webinar',
+          presenter: '',
+          more: ''
+        },
+        {
+          id: 10,
+          name: 'Standing ECCO Training',
+          description: `
             <div class="content">
               <p><b>Description:</b></p>
               <p>Please join my meeting from your computer, tablet or smartphone.<br>
@@ -411,16 +321,16 @@
               </a></p>
             </div>
           `,
-            date: 'July 1, 2020',
-            time: '10:00 AM - 11:30 AM',
-            modality: 'Webinar',
-            presenter: '',
-            more: ''
-          },
-          {
-            id: 10,
-            name: 'ECCO Training',
-            description: `
+          date: 'July 1, 2020',
+          time: '10:00 AM - 11:30 AM',
+          modality: 'Webinar',
+          presenter: '',
+          more: ''
+        },
+        {
+          id: 10,
+          name: 'ECCO Training',
+          description: `
             <div class="content">
               <p>These ECCO trainings will cover:</p>
               <ol>
@@ -432,16 +342,16 @@
              <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
             </div>
           `,
-            date: 'August 5, 2019',
-            time: '10:00 AM - 11:30 AM',
-            modality: 'Webinar',
-            presenter: '',
-            more: ''
-          },
-          {
-            id: 10,
-            name: 'Standing ECCO Training',
-            description: `
+          date: 'August 5, 2019',
+          time: '10:00 AM - 11:30 AM',
+          modality: 'Webinar',
+          presenter: '',
+          more: ''
+        },
+        {
+          id: 10,
+          name: 'Standing ECCO Training',
+          description: `
             <div class="content">
               <p><b>Description:</b></p>
               <p>Please join my meeting from your computer, tablet or smartphone.<br>
@@ -465,16 +375,16 @@
               </a></p>
             </div>
           `,
-            date: 'Septermber 2, 2020',
-            time: '10:00 AM - 11:30 AM',
-            modality: 'Webinar',
-            presenter: '',
-            more: ''
-          }
-        ]
-      }
+          date: 'Septermber 2, 2020',
+          time: '10:00 AM - 11:30 AM',
+          modality: 'Webinar',
+          presenter: '',
+          more: ''
+        }
+      ]
     }
   }
+}
 </script>
 
 <style scoped>
