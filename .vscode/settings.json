@@ -51,8 +51,22 @@
     "vetur.validation.template": false,
     "workbench.colorTheme": "Cobalt2",
     "workbench.colorCustomizations": {
-        "titleBar.activeForeground": "#fff",
+        "activityBar.background": "#cd1547",
+        "activityBar.activeBorder": "#143a06",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "activityBarBadge.background": "#143a06",
+        "activityBarBadge.foreground": "#e7e7e7",
         "titleBar.activeBackground": "#9f1037",
-        "titleBar.inactiveBackground": "#9f103788"
+        "titleBar.inactiveBackground": "#9f103799",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveForeground": "#e7e7e799",
+        "statusBar.background": "#9f1037",
+        "statusBarItem.hoverBackground": "#cd1547",
+        "statusBar.foreground": "#e7e7e7"
+    },
+    "peacock.color": "#9f1037",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
     }
 }
