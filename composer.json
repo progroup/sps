@@ -40,7 +40,7 @@
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.5",
-        "league/commonmark": "^0.15.6",
+        "league/commonmark": "^0.18.3",
         "league/flysystem-aws-s3-v3": "^1.0",
         "lubusin/laravel-decomposer": "^1.2",
         "maatwebsite/excel": "^2.1",
