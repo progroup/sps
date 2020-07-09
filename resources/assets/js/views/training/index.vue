@@ -113,39 +113,6 @@ export default {
       events: [
         {
           id: 10,
-          name: 'Standing ECCO Training',
-          description: `
-            <div class="content">
-              <p><b>Description:</b></p>
-              <p>Please join my meeting from your computer, tablet or smartphone.<br>
-              <a href="https://global.gotomeeting.com/join/589686533">
-                https://global.gotomeeting.com/join/589686533
-              </a></p>
-
-              <p><b>You can also dial in using your phone.</b><br>
-              United States: +1 (408) 650-3123</p>
-
-              <p><b>Access Code: 589-686-533</b></p>
-
-              <p><b>Join from a video-conferencing room or system?</b><br>
-              Dial in or type: 67.217.95.2 or inroomlink.goto.com<br>
-              Meeting ID: 589 686 533<br>
-              Or dial directly: 589686533@67.217.95.2 or 67.217.95.2##589686533</p>
-
-              <p>New to GoToMeeting? Get the app now and be ready when your first meeting starts:<br>
-              <a href="https://global.gotomeeting.com/install/589686533">
-                https://global.gotomeeting.com/install/589686533
-              </a></p>
-            </div>
-          `,
-          date: 'May 6, 2020',
-          time: '10:00 AM - 11:30 AM',
-          modality: 'Webinar',
-          presenter: '',
-          more: ''
-        },
-        {
-          id: 10,
           name: 'ECCO Training',
           description: `
             <div class="content">
@@ -159,61 +126,7 @@ export default {
              <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
             </div>
           `,
-          date: 'June 3, 2020',
-          time: '10:00 AM - 11:30 AM',
-          modality: 'Webinar',
-          presenter: '',
-          more: ''
-        },
-        {
-          id: 10,
-          name: 'Standing ECCO Training',
-          description: `
-            <div class="content">
-              <p><b>Description:</b></p>
-              <p>Please join my meeting from your computer, tablet or smartphone.<br>
-              <a href="https://global.gotomeeting.com/join/834324733">
-                https://global.gotomeeting.com/join/834324733
-              </a></p>
-
-              <p><b>You can also dial in using your phone.</b><br>
-              United States: +1 (571) 317-3122</p>
-
-              <p><b>Access Code: 834-324-733</b></p>
-
-              <p><b>Join from a video-conferencing room or system?</b><br>
-              Dial in or type: 67.217.95.2 or inroomlink.goto.com<br>
-              Meeting ID: 834 324 733<br>
-              Or dial directly: 834324733@67.217.95.2 or 67.217.95.2##834324733</p>
-
-              <p>New to GoToMeeting? Get the app now and be ready when your first meeting starts:<br>
-              <a href="https://global.gotomeeting.com/install/834324733">
-                https://global.gotomeeting.com/install/834324733
-              </a></p>
-            </div>
-          `,
-          date: 'July 1, 2020',
-          time: '10:00 AM - 11:30 AM',
-          modality: 'Webinar',
-          presenter: '',
-          more: ''
-        },
-        {
-          id: 10,
-          name: 'ECCO Training',
-          description: `
-            <div class="content">
-              <p>These ECCO trainings will cover:</p>
-              <ol>
-                <li>Quick review of Ga-SPS Website</li>
-                <li>Review Ecco’s core features</li>
-                <li>IP development process</li>
-                <li>Entering monthly process data</li>
-              </ol>
-             <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
-            </div>
-          `,
-          date: 'August 5, 2019',
+          date: 'August 5, 2020',
           time: '10:00 AM - 11:30 AM',
           modality: 'Webinar',
           presenter: '',
