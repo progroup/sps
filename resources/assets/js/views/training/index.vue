@@ -113,27 +113,6 @@ export default {
       events: [
         {
           id: 10,
-          name: 'ECCO Training',
-          description: `
-            <div class="content">
-              <p>These ECCO trainings will cover:</p>
-              <ol>
-                <li>Quick review of Ga-SPS Website</li>
-                <li>Review Ecco’s core features</li>
-                <li>IP development process</li>
-                <li>Entering monthly process data</li>
-              </ol>
-             <p>Please RSVP for the training date you plan to attend at ted@progroup.us or fiana@progroup.us<br><br>RSVPs must be sent no later than 5:00 PM on the Friday before the training date.<br><br>Webinar trainings will be held on GoToMeeting.</p>
-            </div>
-          `,
-          date: 'August 5, 2020',
-          time: '10:00 AM - 11:30 AM',
-          modality: 'Webinar',
-          presenter: '',
-          more: ''
-        },
-        {
-          id: 10,
           name: 'Standing ECCO Training',
           description: `
             <div class="content">
@@ -164,7 +143,31 @@ export default {
           modality: 'Webinar',
           presenter: '',
           more: ''
-        }
+        },
+        {
+          id: 10,
+          name: 'Standing ECCO Training',
+          description: `
+            <div class="content">
+                <p>Join Zoom Meeting
+                <a href="https://us02web.zoom.us/j/84847542068?pwd=cmNpMWZWWFJRT3FZZE1HYy9acXZ4dz09">https://us02web.zoom.us/j/84847542068?pwd=cmNpMWZWWFJRT3FZZE1HYy9acXZ4dz09</a><br></p>
+                <ul>
+                    <li><b>Meeting ID:</b> 848 4754 2068</li>
+                    <li><b>Passcode:</b> 197043</li>
+                    <li>One tap mobile<br>
+                    +13126266799,,84847542068# US (Chicago)<br>
+                    +19292056099,,84847542068# US (New York)<br></li>
+                </ul>
+                <p><b>This webinar will cover common reporting and IP errors made in ECCO</b><br></p>
+                <p><b>TARGET AUDIENCE:</b> OBHPFG prevention providers on ECCO.</p>
+            </div>
+          `,
+          date: 'Septermber 16, 2020',
+          time: '10:00 AM - 11:00 AM',
+          modality: 'Webinar',
+          presenter: 'Prospectus Group',
+          more: ''
+        },
       ]
     }
   }
