@@ -14,9 +14,5 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(FaqTableSeeder::class);
         $this->call(InitialDummyData::class);
-        \Artisan::call('passport:client', [
-            '--password' => true,
-            '-n'    => true,
-        ]);
     }
 }

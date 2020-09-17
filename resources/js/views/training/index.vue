@@ -113,59 +113,35 @@ export default {
       events: [
         {
           id: 10,
-          name: 'Standing ECCO Training',
+          name: 'Cultural Competency Training -- Part 1',
           description: `
             <div class="content">
-              <p><b>Description:</b></p>
-              <p>Please join my meeting from your computer, tablet or smartphone.<br>
-              <a href="https://global.gotomeeting.com/join/893410589">
-                https://global.gotomeeting.com/join/893410589
-              </a></p>
-
-              <p><b>You can also dial in using your phone.</b><br>
-              United States: +1 (872) 240-3212</p>
-
-              <p><b>Access Code: 893-410-589</b></p>
-
-              <p><b>Join from a video-conferencing room or system?</b><br>
-              Dial in or type: 67.217.95.2 or inroomlink.goto.com<br>
-              Meeting ID: 893 410 589<br>
-              Or dial directly: 893410589@67.217.95.2 or 67.217.95.2##893410589</p>
-
-              <p>New to GoToMeeting? Get the app now and be ready when your first meeting starts:<br>
-              <a href="https://global.gotomeeting.com/install/893410589">
-                https://global.gotomeeting.com/install/893410589
-              </a></p>
-            </div>
-          `,
-          date: 'Septermber 2, 2020',
-          time: '10:00 AM - 11:30 AM',
-          modality: 'Webinar',
-          presenter: '',
-          more: ''
-        },
-        {
-          id: 10,
-          name: 'Standing ECCO Training',
-          description: `
-            <div class="content">
-                <p>Join Zoom Meeting
-                <a href="https://us02web.zoom.us/j/84847542068?pwd=cmNpMWZWWFJRT3FZZE1HYy9acXZ4dz09">https://us02web.zoom.us/j/84847542068?pwd=cmNpMWZWWFJRT3FZZE1HYy9acXZ4dz09</a><br></p>
+                <h5><b>TOPIC: Cultural Competency Training (Part 1)</b></h5>
+                <p>The 2 hour credit training (​Part 1​) aims to highlight the following points for Cultural Competence:</p>
                 <ul>
-                    <li><b>Meeting ID:</b> 848 4754 2068</li>
-                    <li><b>Passcode:</b> 197043</li>
-                    <li>One tap mobile<br>
-                    +13126266799,,84847542068# US (Chicago)<br>
-                    +19292056099,,84847542068# US (New York)<br></li>
+                  <li>Cultural competence defined</li>
+                  <li>Comprehensive overview of cultural competence as it relates to prevention efforts</li>
+                  <li>Application of cultural competence along a continuum</li>
                 </ul>
-                <p><b>This webinar will cover common reporting and IP errors made in ECCO</b><br></p>
-                <p><b>TARGET AUDIENCE:</b> OBHPFG prevention providers on ECCO.</p>
+                <h5><b>Join Zoom Meeting</b></h5>
+                <a href="https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09">https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09</a><br></p>
+                <ul>
+                    <li><b>Meeting ID:</b> 884 3584 3854</li>
+                    <li><b>Passcode:</b> 421097</li>
+                    <li>--OR--<br>
+                    Dial by your location
+                      +1 929 205 6099 US (New York)<br>
+                      Find your local number:<br>
+                      https://us02web.zoom.us/u/kpWLPEqKk
+                    </li>
+                </ul>
+                <p><b>TARGET AUDIENCE:</b> OBHPFG Providers</p>
             </div>
           `,
-          date: 'Septermber 16, 2020',
-          time: '10:00 AM - 11:00 AM',
+          date: 'Septermber 29, 2020',
+          time: '10:00 AM - 12:00 PM',
           modality: 'Webinar',
-          presenter: 'Prospectus Group',
+          presenter: 'Jessica Andrews-Wilson & Michael Davis (GUIDE), Prospectus Group',
           more: ''
         },
       ]
