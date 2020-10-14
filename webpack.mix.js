@@ -1,13 +1,16 @@
-const mix = require('laravel-mix')
-const path = require('path')
+const mix = require('laravel-mix');
+const path = require('path');
+const tailwindcss = require('tailwindcss');
 
-mix
-    .js('resources/js/sps.js', 'public/js')
-    .sass('resources/sass/sps.scss', 'public/css')
-    .webpackConfig({
-        resolve: {
-            alias: {
-                '@': path.resolve('resources/js')
-            }
+mix.js('resources/js/main.js', 'public/js');
+mix.postCss('resources/css/main.css', 'public/css', [
+    tailwindcss('./tailwind.config.js')
+]);
+
+mix.webpackConfig({
+    resolve: {
+        alias: {
+            '@': path.resolve('resources/js')
         }
-    })
+    }
+});

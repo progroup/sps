@@ -5,126 +5,6 @@
       style="background-size: cover; background-image: url('/images/atlanta.jpg')"
     >
       <div class="hero-header">
-
-        <!-- <div class="container">
-          <nav class="navbar is-transparent">
-            <div class="navbar-brand">
-              <a
-                class="navbar-item"
-                href="#"
-              >
-                <div style="">
-                  <span style="font-family: 'Audiowide', cursive;font-size: 2.5rem;word-wrap:nowrap">Ga<span style="color: #980e0e">SPS</span></span>
-                </div>
-              </a>
-
-              <div
-                class="navbar-burger burger"
-                data-target="navMenuIndex"
-              >
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-            </div>
-
-            <div
-              class="navbar-menu"
-              id="navMenuIndex"
-            >
-              <div class="navbar-start">
-                <div class="navbar-item has-dropdown">
-                  <a class="navbar-link">
-                    New to Ecco
-                  </a>
-                  <div
-                    id="eccoDropdown"
-                    class="navbar-dropdown"
-                  >
-                    <a
-                      class="navbar-item"
-                      href="http://resources.ga-sps.org/resources/ecco-users-manual"
-                    >
-                      Users Manual w/ Progress Reporting
-                    </a>
-                    <a
-                      class="navbar-item"
-                      href="http://resources.ga-sps.org/resources/ecco-overview-using-brifecase"
-                    >
-                      Using Briefcase
-                    </a>
-                    <a
-                      class="navbar-item"
-                      href="http://resources.ga-sps.org/resources/ecco-overview-ta-entry-and-updates"
-                    >
-                      TA Entry and Updates
-                    </a>
-                    <a
-                      class="navbar-item"
-                      href="http://resources.ga-sps.org/resources/ecco-overview-entering-progress-level-data"
-                    >
-                      Entering Process Level Data
-                    </a>
-                    <a
-                      class="navbar-item"
-                      href="http://resources.ga-sps.org/resources/ecco-overview-adding-an-intervention-profile"
-                    >
-                      Adding an Intervention Profile
-                    </a>
-                    <a
-                      class="navbar-item"
-                      href="http://resources.ga-sps.org/resources/ecco-mds-data-entry-guidance-document"
-                    >
-                      ECCO MDS Data Entry Guidance Document
-                    </a>
-                  </div>
-                </div>
-                <a
-                  class="navbar-item"
-                  href="/#/spf-overview"
-                >SPF Overview</a>
-                <a
-                  class="navbar-item"
-                  href="/#/search"
-                >Resources</a>
-                <a
-                  class="navbar-item"
-                  href="/#/media"
-                >Media</a>
-                <a
-                  class="navbar-item"
-                  href="/#/training"
-                >Training</a>
-              </div>
-
-              <div class="navbar-end">
-                <div class="navbar-item">
-                  <a
-                    class="button is-link"
-                    href="https://www.georgiamds.uga.edu/PublicHome/Index"
-                    target="new"
-                  >MDS</a>
-                  <a
-                    class="button is-link"
-                    href="http://gaspsdata.net/"
-                    target="new"
-                  >GA Data Warehouse</a>
-                </div>
-
-                <div class="navbar-item">
-                  <a
-                    href="http://ecco.ga-sps.org/login.php"
-                    target="_new"
-                    class="button is-info is-ecco"
-                  >
-                    Ecco v4.0 Sign In
-                  </a>
-                </div>
-              </div>
-            </div>
-          </nav>
-        </div> -->
-
         <div class="container">
           <p
             class="is-size-2 has-text-light"
@@ -337,12 +217,17 @@
           </div>
           <div class="column is-4">
             <div class="content">
-              <h3>APP State Wide Goals</h3>
+              <h3>ASAPP State Wide Goals</h3>
               <ul class="list-unstyled">
                 <li>
                   <strong>Goal 1:</strong> Reduce the early onset of alcohol use among 9-20 year olds</li>
                 <li>
-                  <strong>Goal 2:</strong> Reduce access to alcohol and binge drinking among 9-20 year olds</li>
+                  <strong>Goal 2:</strong>
+                  <ol>
+                    <li>Reduce access to alcohol among 9-20 year olds</li>
+                    <li>Reduce binge drinking among 9-20 year olds</li>
+                  </ol>
+                </li>
                 <li>
                   <strong>Goal 3:</strong> Reduce binge drinking and heavy drinking among 18-25 year olds</li>
               </ul>

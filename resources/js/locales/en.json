@@ -1,0 +1,25 @@
+{
+    "auth": {
+        "unauthorized": "You are not authorized to view this page."
+    },
+    "dashboard": "Dashboard",
+    "corporate_matching": {
+        "total_received_pledges": "Total Amount Received",
+        "total_eligible_pledges": "Total Amount Eligible",
+        "number_of_pledges": "Corporate Match Donations",
+        "status": {
+            "key_heading": "Match Status Key",
+            "received": "Received",
+            "received_description": "Corporate Match Donation has been received by KDM",
+            "confirmed": "Confirmed",
+            "confirmed_description": "Company has contacted the school to confirm the CMG request by donor",
+            "submitted": "Submitted",
+            "submitted_description": "Application/Request for CMG match has been submitted by donor",
+            "eligible": "Eligible",
+            "eligible_description": "Donor who pledged is a part of an organization that DTD has deemed eligible for a corporate match",
+            "unpaid": "Unpaid",
+            "unpaid_description": "Not yet eligible since donor has not yet paid for their pledge"
+        }
+
+    }
+}

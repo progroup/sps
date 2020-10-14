@@ -78,7 +78,7 @@
                           </p>
                         </template>
 
-                        <template scope="props">
+                        <template v-slot="props">
                           <span
                             style="font-size: 0.75rem"
                             class="ais-refinement-list__value"
@@ -99,7 +99,7 @@
                           </p>
                         </template>
 
-                        <template scope="props">
+                        <template v-slot="props">
                           <span
                             class="ais-refinement-list__value"
                             v-text="seriesName(props.value)"
@@ -113,19 +113,19 @@
                 <div class="column">
                   <h2 class="is-size-4">Resources</h2>
                   <ais-stats>
-                    <template scope="{ totalResults, processingTime, query }">
+                    <template v-slot="{ totalResults, processingTime, query }">
                       <hr> There are {{ totalResults }} resources matching your search
                       <b>{{ query }}</b>
                     </template>
                   </ais-stats>
                   <ais-no-results>
-                    <template scope="props">
+                    <template v-slot="props">
                       <hr> No resources were found for
                       <b>{{ props.query }}</b>.
                     </template>
                   </ais-no-results>
                   <ais-results :results-per-page="10">
-                    <template scope="{ result }">
+                    <template v-slot="{ result }">
                       <hr>
                       <article class="media">
                         <figure class="media-left">
@@ -190,7 +190,7 @@
                       </template>
                       <template
                         class="pagination-link"
-                        scope="props"
+                        v-slot="props"
                       >
                         {{ props.value }}
                       </template>
@@ -222,19 +222,19 @@
               <h2 class="is-size-4">FAQs</h2>
 
               <ais-stats>
-                <template scope="{ totalResults, processingTime, query }">
+                <template v-slot="{ totalResults, processingTime, query }">
                   <hr> There are {{ totalResults }} FAQs matching your search
                   <b>{{ query }}</b>
                 </template>
               </ais-stats>
               <ais-no-results>
-                <template scope="props">
+                <template v-slot="props">
                   <hr> No FAQs were found for
                   <b>{{ props.query }}</b>.
                 </template>
               </ais-no-results>
               <ais-results>
-                <template scope="{ result }">
+                <template v-slot="{ result }">
                   <hr>
                   <article class="media">
                     <div class="media-content">

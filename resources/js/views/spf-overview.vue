@@ -1,16 +1,3 @@
-<script>
-    import Sidebar from '@/components/Sidebar.vue'
-
-    export default {
-      methods: {
-        toggle(event) {
-          console.log(event.target.parentNode.classList.toggle('cbp-ntopen'))
-        }
-      },
-      components: { Sidebar }
-    }
-</script>
-
 <template>
     <main>
         <section class="hero is-medium is-primary is-bold" style="background-size: cover; background-image: url('/images/about.jpg')">
@@ -612,3 +599,15 @@
         </section>
     </main>
 </template>
+<script>
+    import Sidebar from '@/components/Sidebar.vue'
+
+    export default {
+      methods: {
+        toggle(event) {
+          console.log(event.target.parentNode.classList.toggle('cbp-ntopen'))
+        }
+      },
+      components: { Sidebar }
+    }
+</script>

@@ -1,10 +1,3 @@
-<script>
-    import Sidebar from '@/components/Sidebar.vue'
-    export default {
-      components: { Sidebar }
-    }
-</script>
-
 <template>
     <main>
         <section class="hero is-primary is-bold" style="min-height: 250px;background-size: cover; background-image: url('/assets/images/banners/calendar.jpg')">
@@ -44,3 +37,10 @@
 
     </main>
 </template>
+
+<script>
+    import Sidebar from '@/components/Sidebar.vue'
+    export default {
+      components: { Sidebar }
+    }
+</script>
