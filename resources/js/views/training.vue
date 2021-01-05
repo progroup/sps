@@ -157,7 +157,7 @@ export default {
                 </ul>
             </div>
           `,
-          date: 'January 26, 2020',
+          date: 'January 26, 2021',
           time: '10:00-11:00 am',
           modality: 'Zoom',
           presenter: 'Prospectus Group',
