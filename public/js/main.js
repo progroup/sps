@@ -12631,6 +12631,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Sidebar_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/components/Sidebar.vue */ "./resources/js/components/Sidebar.vue");
+/* harmony import */ var store_plugins_events__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! store/plugins/events */ "./node_modules/store/plugins/events.js");
+/* harmony import */ var store_plugins_events__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(store_plugins_events__WEBPACK_IMPORTED_MODULE_1__);
+//
 //
 //
 //
@@ -12738,6 +12741,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     Sidebar: _components_Sidebar_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -12745,13 +12749,67 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       events: [{
-        id: 10,
-        name: 'Cultural Competency Training -- Part 1',
-        description: "\n            <div class=\"content\">\n                <h5><b>TOPIC: Cultural Competency Training (Part 1)</b></h5>\n                <p>The 2 hour credit training (\u200BPart 1\u200B) aims to highlight the following points for Cultural Competence:</p>\n                <ul>\n                  <li>Cultural competence defined</li>\n                  <li>Comprehensive overview of cultural competence as it relates to prevention efforts</li>\n                  <li>Application of cultural competence along a continuum</li>\n                </ul>\n                <h5><b>Join Zoom Meeting</b></h5>\n                <a href=\"https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09\">https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09</a><br></p>\n                <ul>\n                    <li><b>Meeting ID:</b> 884 3584 3854</li>\n                    <li><b>Passcode:</b> 421097</li>\n                    <li>--OR--<br>\n                    Dial by your location\n                      +1 929 205 6099 US (New York)<br>\n                      Find your local number:<br>\n                      https://us02web.zoom.us/u/kpWLPEqKk\n                    </li>\n                </ul>\n                <p><b>TARGET AUDIENCE:</b> OBHPFG Providers</p>\n            </div>\n          ",
-        date: 'Septermber 29, 2020',
+        id: 1,
+        name: 'Sustainability Assessment Toolkit-building plan',
+        description: "\n            <div class=\"content\">\n                <h5><b>Join Zoom Meeting</b></h5>\n                <a href=\"https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09\">https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09</a></p>\n                <ul>\n                    <li><b>Meeting ID:</b> 884 3584 3854</li>\n                    <li><b>Passcode:</b> 421097</li>\n                    <li>--OR--<br>\n                    Dial by your location\n                      +1 929 205 6099 US (New York)<br>\n                      Find your local number:<br>\n                      https://us02web.zoom.us/u/kpWLPEqKk\n                    </li>\n                </ul>\n            </div>\n          ",
+        date: ' January 12, 2021',
         time: '10:00 AM - 12:00 PM',
-        modality: 'Webinar',
-        presenter: 'Jessica Andrews-Wilson & Michael Davis (GUIDE), Prospectus Group',
+        modality: 'Zoom',
+        presenter: 'Prospectus Group',
+        more: ''
+      }, {
+        id: 2,
+        name: 'Shared Risk & Protective Factors-all staff  ',
+        description: "\n            <div class=\"content\">\n                <h5><b>Join Zoom Meeting</b></h5>\n                <p><a href=\"https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09\">https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09</a></p>\n                <ul>\n                    <li><b>Meeting ID:</b> 884 3584 3854</li>\n                    <li><b>Passcode:</b> 421097</li>\n                    <li>--OR--<br>\n                    Dial by your location\n                      +1 929 205 6099 US (New York)<br>\n                      Find your local number:<br>\n                      https://us02web.zoom.us/u/kpWLPEqKk\n                    </li>\n                </ul>\n            </div>\n          ",
+        date: 'January 26, 2020',
+        time: '10:00-11:00 am',
+        modality: 'Zoom',
+        presenter: 'Prospectus Group',
+        more: ''
+      }, {
+        id: 3,
+        name: 'SAPST (State) ',
+        description: "\n            <div class=\"content\">\n            <h5><b>270 Peachtree Street NW</b></h5>\n            </div>\n          ",
+        date: 'February 9-12, 2021',
+        time: '9:00 am-5:00 pm',
+        modality: 'In-person',
+        presenter: 'Prospectus Group',
+        more: ''
+      }, {
+        id: 4,
+        name: 'SAPST (Providers)',
+        description: "\n            <div class=\"content\">\n                <h5><b>Join Zoom Meeting</b></h5>\n                <p><a href=\"https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09\">https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09</a></p>\n                <ul>\n                    <li><b>Meeting ID:</b> 884 3584 3854</li>\n                    <li><b>Passcode:</b> 421097</li>\n                    <li>--OR--<br>\n                    Dial by your location\n                      +1 929 205 6099 US (New York)<br>\n                      Find your local number:<br>\n                      https://us02web.zoom.us/u/kpWLPEqKk\n                    </li>\n                </ul>\n            </div>\n          ",
+        date: 'March 9-12, 2021',
+        time: '9:00 am-5:00 pm',
+        modality: 'Zoom',
+        presenter: 'Prospectus Group',
+        more: ''
+      }, {
+        id: 5,
+        name: 'Ethics',
+        description: "\n            <div class=\"content\">\n                <h5><b>Join Zoom Meeting</b></h5>\n                <p><a href=\"https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09\">https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09</a></p>\n                <ul>\n                    <li><b>Meeting ID:</b> 884 3584 3854</li>\n                    <li><b>Passcode:</b> 421097</li>\n                    <li>--OR--<br>\n                    Dial by your location\n                      +1 929 205 6099 US (New York)<br>\n                      Find your local number:<br>\n                      https://us02web.zoom.us/u/kpWLPEqKk\n                    </li>\n                </ul>\n            </div>\n          ",
+        date: 'March 23, 2021',
+        time: '10:00 am-12:00 pm',
+        modality: 'Zoom',
+        presenter: 'Prospectus Group',
+        more: ''
+      }, {
+        id: 6,
+        name: 'Intervening Variables & Contributing Factors - possible later date ',
+        description: "\n            <div class=\"content\">\n                <h5><b>Join Zoom Meeting</b></h5>\n                <p><a href=\"https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09\">https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09</a></p>\n                <ul>\n                    <li><b>Meeting ID:</b> 884 3584 3854</li>\n                    <li><b>Passcode:</b> 421097</li>\n                    <li>--OR--<br>\n                    Dial by your location\n                      +1 929 205 6099 US (New York)<br>\n                      Find your local number:<br>\n                      https://us02web.zoom.us/u/kpWLPEqKk\n                    </li>\n                </ul>\n            </div>\n          ",
+        date: 'Early-Mid April, 2021',
+        time: '10:00 am-11:00 am',
+        modality: 'Zoom',
+        presenter: 'Prospectus Group',
+        more: ''
+      }, {
+        id: 7,
+        name: 'Sustainability',
+        description: "\n            <div class=\"content\">\n                <h5><b>Join Zoom Meeting</b></h5>\n                <p><a href=\"https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09\">https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09</a></p>\n                <ul>\n                    <li><b>Meeting ID:</b> 884 3584 3854</li>\n                    <li><b>Passcode:</b> 421097</li>\n                    <li>--OR--<br>\n                    Dial by your location\n                      +1 929 205 6099 US (New York)<br>\n                      Find your local number:<br>\n                      https://us02web.zoom.us/u/kpWLPEqKk\n                    </li>\n                </ul>\n            </div>\n          ",
+        date: 'April 22, 2021',
+        time: '10:00 am-2:00 pm',
+        modality: 'Zoom',
+        presenter: 'Prospectus Group',
         more: ''
       }]
     };
@@ -61407,6 +61465,242 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/store/plugins/events.js":
+/*!**********************************************!*\
+  !*** ./node_modules/store/plugins/events.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var util = __webpack_require__(/*! ../src/util */ "./node_modules/store/src/util.js")
+var bind = util.bind
+var each = util.each
+var create = util.create
+var slice = util.slice
+
+module.exports = eventsPlugin
+
+function eventsPlugin() {
+	var pubsub = _newPubSub()
+
+	return {
+		watch: watch,
+		unwatch: unwatch,
+		once: once,
+
+		set: set,
+		remove: remove,
+		clearAll: clearAll
+	}
+
+	// new pubsub functions
+	function watch(_, key, listener) {
+		return pubsub.on(key, bind(this, listener))
+	}
+	function unwatch(_, subId) {
+		pubsub.off(subId)
+	}
+	function once(_, key, listener) {
+		pubsub.once(key, bind(this, listener))
+	}
+
+	// overwrite function to fire when appropriate
+	function set(super_fn, key, val) {
+		var oldVal = this.get(key)
+		super_fn()
+		pubsub.fire(key, val, oldVal)
+	}
+	function remove(super_fn, key) {
+		var oldVal = this.get(key)
+		super_fn()
+		pubsub.fire(key, undefined, oldVal)
+	}
+	function clearAll(super_fn) {
+		var oldVals = {}
+		this.each(function(val, key) {
+			oldVals[key] = val
+		})
+		super_fn()
+		each(oldVals, function(oldVal, key) {
+			pubsub.fire(key, undefined, oldVal)
+		})
+	}
+}
+
+
+function _newPubSub() {
+	return create(_pubSubBase, {
+		_id: 0,
+		_subSignals: {},
+		_subCallbacks: {}
+	})
+}
+
+var _pubSubBase = {
+	_id: null,
+	_subCallbacks: null,
+	_subSignals: null,
+	on: function(signal, callback) {
+		if (!this._subCallbacks[signal]) {
+			this._subCallbacks[signal] = {}
+		}
+		this._id += 1
+		this._subCallbacks[signal][this._id] = callback
+		this._subSignals[this._id] = signal
+		return this._id
+	},
+	off: function(subId) {
+		var signal = this._subSignals[subId]
+		delete this._subCallbacks[signal][subId]
+		delete this._subSignals[subId]
+	},
+	once: function(signal, callback) {
+		var subId = this.on(signal, bind(this, function() {
+			callback.apply(this, arguments)
+			this.off(subId)
+		}))
+	},
+	fire: function(signal) {
+		var args = slice(arguments, 1)
+		each(this._subCallbacks[signal], function(callback) {
+			callback.apply(this, args)
+		})
+	}
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/store/src/util.js":
+/*!****************************************!*\
+  !*** ./node_modules/store/src/util.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {var assign = make_assign()
+var create = make_create()
+var trim = make_trim()
+var Global = (typeof window !== 'undefined' ? window : global)
+
+module.exports = {
+	assign: assign,
+	create: create,
+	trim: trim,
+	bind: bind,
+	slice: slice,
+	each: each,
+	map: map,
+	pluck: pluck,
+	isList: isList,
+	isFunction: isFunction,
+	isObject: isObject,
+	Global: Global
+}
+
+function make_assign() {
+	if (Object.assign) {
+		return Object.assign
+	} else {
+		return function shimAssign(obj, props1, props2, etc) {
+			for (var i = 1; i < arguments.length; i++) {
+				each(Object(arguments[i]), function(val, key) {
+					obj[key] = val
+				})
+			}			
+			return obj
+		}
+	}
+}
+
+function make_create() {
+	if (Object.create) {
+		return function create(obj, assignProps1, assignProps2, etc) {
+			var assignArgsList = slice(arguments, 1)
+			return assign.apply(this, [Object.create(obj)].concat(assignArgsList))
+		}
+	} else {
+		function F() {} // eslint-disable-line no-inner-declarations
+		return function create(obj, assignProps1, assignProps2, etc) {
+			var assignArgsList = slice(arguments, 1)
+			F.prototype = obj
+			return assign.apply(this, [new F()].concat(assignArgsList))
+		}
+	}
+}
+
+function make_trim() {
+	if (String.prototype.trim) {
+		return function trim(str) {
+			return String.prototype.trim.call(str)
+		}
+	} else {
+		return function trim(str) {
+			return str.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '')
+		}
+	}
+}
+
+function bind(obj, fn) {
+	return function() {
+		return fn.apply(obj, Array.prototype.slice.call(arguments, 0))
+	}
+}
+
+function slice(arr, index) {
+	return Array.prototype.slice.call(arr, index || 0)
+}
+
+function each(obj, fn) {
+	pluck(obj, function(val, key) {
+		fn(val, key)
+		return false
+	})
+}
+
+function map(obj, fn) {
+	var res = (isList(obj) ? [] : {})
+	pluck(obj, function(v, k) {
+		res[k] = fn(v, k)
+		return false
+	})
+	return res
+}
+
+function pluck(obj, fn) {
+	if (isList(obj)) {
+		for (var i=0; i<obj.length; i++) {
+			if (fn(obj[i], i)) {
+				return obj[i]
+			}
+		}
+	} else {
+		for (var key in obj) {
+			if (obj.hasOwnProperty(key)) {
+				if (fn(obj[key], key)) {
+					return obj[key]
+				}
+			}
+		}
+	}
+}
+
+function isList(val) {
+	return (val != null && typeof val != 'function' && typeof val.length == 'number')
+}
+
+function isFunction(val) {
+	return val && {}.toString.call(val) === '[object Function]'
+}
+
+function isObject(val) {
+	return val && {}.toString.call(val) === '[object Object]'
+}
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AccordionMenu.vue?vue&type=style&index=0&id=361ccaec&scoped=true&lang=css&":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AccordionMenu.vue?vue&type=style&index=0&id=361ccaec&scoped=true&lang=css& ***!
@@ -72834,7 +73128,11 @@ var render = function() {
                                     staticClass: "training-table-training",
                                     attrs: { colspan: "2" }
                                   },
-                                  [_vm._v("Training")]
+                                  [
+                                    _vm._v(
+                                      "\n                        Training\n                      "
+                                    )
+                                  ]
                                 ),
                                 _vm._v(" "),
                                 _c(
@@ -72957,13 +73255,13 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("p", [
         _vm._v(
-          "From this page you can access and register for statewide GASPS trainings, as well as national trainings provided by our federal partners at the Center for the Application of Prevention Technologies (CAPT)."
+          "\n              From this page you can access and register for statewide GASPS\n              trainings, as well as national trainings provided by our federal\n              partners at the Center for the Application of Prevention\n              Technologies (CAPT).\n            "
         )
       ]),
       _vm._v(" "),
       _c("p", [
         _vm._v(
-          "Current and future training events are listed on this page. Past trainings are removed and web based trainings are archived to the resources page under the “webinar” heading."
+          "\n              Current and future training events are listed on this page. Past\n              trainings are removed and web based trainings are archived to\n              the resources page under the “webinar” heading.\n            "
         )
       ]),
       _vm._v(" "),
