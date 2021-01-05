@@ -12761,7 +12761,7 @@ __webpack_require__.r(__webpack_exports__);
         id: 2,
         name: 'Shared Risk & Protective Factors-all staff  ',
         description: "\n            <div class=\"content\">\n                <h5><b>Join Zoom Meeting</b></h5>\n                <p><a href=\"https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09\">https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09</a></p>\n                <ul>\n                    <li><b>Meeting ID:</b> 884 3584 3854</li>\n                    <li><b>Passcode:</b> 421097</li>\n                    <li>--OR--<br>\n                    Dial by your location\n                      +1 929 205 6099 US (New York)<br>\n                      Find your local number:<br>\n                      https://us02web.zoom.us/u/kpWLPEqKk\n                    </li>\n                </ul>\n            </div>\n          ",
-        date: 'January 26, 2020',
+        date: 'January 26, 2021',
         time: '10:00-11:00 am',
         modality: 'Zoom',
         presenter: 'Prospectus Group',
