@@ -4,10 +4,7 @@
       class="hero is-light is-medium is-bold"
       style="background-size: cover; background-image: url('/assets/images/banners/training.jpg')"
     >
-      <div
-        class="hero-header"
-        style="padding: 1rem"
-      >
+      <div class="hero-header" style="padding: 1rem">
         <div class="container">
           <div class="field has-addons">
             <div class="control is-expanded has-icons-left">
@@ -17,12 +14,9 @@
                 placeholder="What resources can we help you find today?"
                 v-model="query"
                 name="query"
-              >
+              />
               <span class="icon is-left">
-                <i
-                  class="fa fa-search"
-                  aria-hidden="true"
-                ></i>
+                <i class="fa fa-search" aria-hidden="true"></i>
               </span>
             </div>
           </div>
@@ -46,8 +40,17 @@
               <p>
                 <strong>Welcome the GASPS Training Center.</strong>
               </p>
-              <p>From this page you can access and register for statewide GASPS trainings, as well as national trainings provided by our federal partners at the Center for the Application of Prevention Technologies (CAPT).</p>
-              <p>Current and future training events are listed on this page. Past trainings are removed and web based trainings are archived to the resources page under the “webinar” heading.</p>
+              <p>
+                From this page you can access and register for statewide GASPS
+                trainings, as well as national trainings provided by our federal
+                partners at the Center for the Application of Prevention
+                Technologies (CAPT).
+              </p>
+              <p>
+                Current and future training events are listed on this page. Past
+                trainings are removed and web based trainings are archived to
+                the resources page under the “webinar” heading.
+              </p>
               <p>
                 <a href="http://ga-sps.org/search?q=webinar">
                   <strong>Click Here For All Archived Webinars</strong>
@@ -66,10 +69,9 @@
                     <thead>
                       <tr>
                         <th class="training-table-date">Dates</th>
-                        <th
-                          class="training-table-training"
-                          colspan="2"
-                        >Training</th>
+                        <th class="training-table-training" colspan="2">
+                          Training
+                        </th>
                         <th class="training-table-modality">Modality</th>
                         <th class="training-table-ceus">CEUs</th>
                         <th class="training-table-archived">Archived</th>
@@ -77,7 +79,7 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td>{{ event.date }} {{event.time }}</td>
+                        <td>{{ event.date }} {{ event.time }}</td>
                         <td colspan="2">{{ event.name }}</td>
                         <td>{{ event.modality }}</td>
                         <td class="training-table-ceus">no</td>
@@ -85,7 +87,6 @@
                       </tr>
                       <tr>
                         <td colspan="6">
-
                           <div v-html="event.description"></div>
                           <div v-html="event.more"></div>
                           <p style="margin-top: 1rem"><b>Facilitators:</b></p>
@@ -106,25 +107,19 @@
 
 <script>
 import Sidebar from '@/components/Sidebar.vue'
+import events from 'store/plugins/events'
 export default {
-  components: { Sidebar },
-  data () {
+  components: {Sidebar},
+  data() {
     return {
       events: [
         {
-          id: 10,
-          name: 'Cultural Competency Training -- Part 1',
+          id: 1,
+          name: 'Sustainability Assessment Toolkit-building plan',
           description: `
             <div class="content">
-                <h5><b>TOPIC: Cultural Competency Training (Part 1)</b></h5>
-                <p>The 2 hour credit training (​Part 1​) aims to highlight the following points for Cultural Competence:</p>
-                <ul>
-                  <li>Cultural competence defined</li>
-                  <li>Comprehensive overview of cultural competence as it relates to prevention efforts</li>
-                  <li>Application of cultural competence along a continuum</li>
-                </ul>
                 <h5><b>Join Zoom Meeting</b></h5>
-                <a href="https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09">https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09</a><br></p>
+                <a href="https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09">https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09</a></p>
                 <ul>
                     <li><b>Meeting ID:</b> 884 3584 3854</li>
                     <li><b>Passcode:</b> 421097</li>
@@ -135,18 +130,157 @@ export default {
                       https://us02web.zoom.us/u/kpWLPEqKk
                     </li>
                 </ul>
-                <p><b>TARGET AUDIENCE:</b> OBHPFG Providers</p>
             </div>
           `,
-          date: 'Septermber 29, 2020',
+          date: ' January 12, 2021',
           time: '10:00 AM - 12:00 PM',
-          modality: 'Webinar',
-          presenter: 'Jessica Andrews-Wilson & Michael Davis (GUIDE), Prospectus Group',
-          more: ''
+          modality: 'Zoom',
+          presenter: 'Prospectus Group',
+          more: '',
         },
-      ]
+        {
+          id: 2,
+          name: 'Shared Risk & Protective Factors-all staff  ',
+          description: `
+            <div class="content">
+                <h5><b>Join Zoom Meeting</b></h5>
+                <p><a href="https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09">https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09</a></p>
+                <ul>
+                    <li><b>Meeting ID:</b> 884 3584 3854</li>
+                    <li><b>Passcode:</b> 421097</li>
+                    <li>--OR--<br>
+                    Dial by your location
+                      +1 929 205 6099 US (New York)<br>
+                      Find your local number:<br>
+                      https://us02web.zoom.us/u/kpWLPEqKk
+                    </li>
+                </ul>
+            </div>
+          `,
+          date: 'January 26, 2020',
+          time: '10:00-11:00 am',
+          modality: 'Zoom',
+          presenter: 'Prospectus Group',
+          more: '',
+        },
+        {
+          id: 3,
+          name: 'SAPST (State) ',
+          description: `
+            <div class="content">
+            <h5><b>270 Peachtree Street NW</b></h5>
+            </div>
+          `,
+          date: 'February 9-12, 2021',
+          time: '9:00 am-5:00 pm',
+          modality: 'In-person',
+          presenter: 'Prospectus Group',
+          more: '',
+        },
+        {
+          id: 4,
+          name: 'SAPST (Providers)',
+          description: `
+            <div class="content">
+                <h5><b>Join Zoom Meeting</b></h5>
+                <p><a href="https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09">https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09</a></p>
+                <ul>
+                    <li><b>Meeting ID:</b> 884 3584 3854</li>
+                    <li><b>Passcode:</b> 421097</li>
+                    <li>--OR--<br>
+                    Dial by your location
+                      +1 929 205 6099 US (New York)<br>
+                      Find your local number:<br>
+                      https://us02web.zoom.us/u/kpWLPEqKk
+                    </li>
+                </ul>
+            </div>
+          `,
+          date: 'March 9-12, 2021',
+          time: '9:00 am-5:00 pm',
+          modality: 'Zoom',
+          presenter: 'Prospectus Group',
+          more: '',
+        },
+        {
+          id: 5,
+          name: 'Ethics',
+          description: `
+            <div class="content">
+                <h5><b>Join Zoom Meeting</b></h5>
+                <p><a href="https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09">https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09</a></p>
+                <ul>
+                    <li><b>Meeting ID:</b> 884 3584 3854</li>
+                    <li><b>Passcode:</b> 421097</li>
+                    <li>--OR--<br>
+                    Dial by your location
+                      +1 929 205 6099 US (New York)<br>
+                      Find your local number:<br>
+                      https://us02web.zoom.us/u/kpWLPEqKk
+                    </li>
+                </ul>
+            </div>
+          `,
+          date: 'March 23, 2021',
+          time: '10:00 am-12:00 pm',
+          modality: 'Zoom',
+          presenter: 'Prospectus Group',
+          more: '',
+        },
+        {
+          id: 6,
+          name:
+            'Intervening Variables & Contributing Factors - possible later date ',
+          description: `
+            <div class="content">
+                <h5><b>Join Zoom Meeting</b></h5>
+                <p><a href="https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09">https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09</a></p>
+                <ul>
+                    <li><b>Meeting ID:</b> 884 3584 3854</li>
+                    <li><b>Passcode:</b> 421097</li>
+                    <li>--OR--<br>
+                    Dial by your location
+                      +1 929 205 6099 US (New York)<br>
+                      Find your local number:<br>
+                      https://us02web.zoom.us/u/kpWLPEqKk
+                    </li>
+                </ul>
+            </div>
+          `,
+          date: 'Early-Mid April, 2021',
+          time: '10:00 am-11:00 am',
+          modality: 'Zoom',
+          presenter: 'Prospectus Group',
+          more: '',
+        },
+        {
+          id: 7,
+          name: 'Sustainability',
+          description: `
+            <div class="content">
+                <h5><b>Join Zoom Meeting</b></h5>
+                <p><a href="https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09">https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09</a></p>
+                <ul>
+                    <li><b>Meeting ID:</b> 884 3584 3854</li>
+                    <li><b>Passcode:</b> 421097</li>
+                    <li>--OR--<br>
+                    Dial by your location
+                      +1 929 205 6099 US (New York)<br>
+                      Find your local number:<br>
+                      https://us02web.zoom.us/u/kpWLPEqKk
+                    </li>
+                </ul>
+            </div>
+          `,
+          date: 'April 22, 2021',
+          time: '10:00 am-2:00 pm',
+          modality: 'Zoom',
+          presenter: 'Prospectus Group',
+          more: '',
+        },
+      ],
     }
-  }
+  },
 }
 </script>
 
