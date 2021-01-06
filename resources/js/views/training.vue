@@ -164,20 +164,6 @@ export default {
           more: '',
         },
         {
-          id: 3,
-          name: 'SAPST (State) ',
-          description: `
-            <div class="content">
-            <h5><b>270 Peachtree Street NW</b></h5>
-            </div>
-          `,
-          date: 'February 9-12, 2021',
-          time: '9:00 am-5:00 pm',
-          modality: 'In-person',
-          presenter: 'Prospectus Group',
-          more: '',
-        },
-        {
           id: 4,
           name: 'SAPST (Providers)',
           description: `

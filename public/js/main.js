@@ -12767,15 +12767,6 @@ __webpack_require__.r(__webpack_exports__);
         presenter: 'Prospectus Group',
         more: ''
       }, {
-        id: 3,
-        name: 'SAPST (State) ',
-        description: "\n            <div class=\"content\">\n            <h5><b>270 Peachtree Street NW</b></h5>\n            </div>\n          ",
-        date: 'February 9-12, 2021',
-        time: '9:00 am-5:00 pm',
-        modality: 'In-person',
-        presenter: 'Prospectus Group',
-        more: ''
-      }, {
         id: 4,
         name: 'SAPST (Providers)',
         description: "\n            <div class=\"content\">\n                <h5><b>Join Zoom Meeting</b></h5>\n                <p><a href=\"https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09\">https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09</a></p>\n                <ul>\n                    <li><b>Meeting ID:</b> 884 3584 3854</li>\n                    <li><b>Passcode:</b> 421097</li>\n                    <li>--OR--<br>\n                    Dial by your location\n                      +1 929 205 6099 US (New York)<br>\n                      Find your local number:<br>\n                      https://us02web.zoom.us/u/kpWLPEqKk\n                    </li>\n                </ul>\n            </div>\n          ",
