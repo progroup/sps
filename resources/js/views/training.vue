@@ -114,31 +114,6 @@ export default {
     return {
       events: [
         {
-          id: 1,
-          name: 'Sustainability Assessment Toolkit-building plan',
-          description: `
-            <div class="content">
-                <h5><b>Join Zoom Meeting</b></h5>
-                <a href="https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09">https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09</a></p>
-                <ul>
-                    <li><b>Meeting ID:</b> 884 3584 3854</li>
-                    <li><b>Passcode:</b> 421097</li>
-                    <li>--OR--<br>
-                    Dial by your location
-                      +1 929 205 6099 US (New York)<br>
-                      Find your local number:<br>
-                      https://us02web.zoom.us/u/kpWLPEqKk
-                    </li>
-                </ul>
-            </div>
-          `,
-          date: ' January 12, 2021',
-          time: '10:00 AM - 12:00 PM',
-          modality: 'Zoom',
-          presenter: 'Prospectus Group',
-          more: '',
-        },
-        {
           id: 2,
           name: 'Shared Risk & Protective Factors-all staff  ',
           description: `
@@ -159,6 +134,31 @@ export default {
           `,
           date: 'January 26, 2021',
           time: '10:00-11:00 am',
+          modality: 'Zoom',
+          presenter: 'Prospectus Group',
+          more: '',
+        },
+        {
+          id: 1,
+          name: 'Sustainability Assessment Toolkit-building plan',
+          description: `
+            <div class="content">
+                <h5><b>Join Zoom Meeting</b></h5>
+                <a href="https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09">https://us02web.zoom.us/j/88435843854?pwd=TytNU2ZvQXNMcHpaNFdLdk56cHRkQT09</a></p>
+                <ul>
+                    <li><b>Meeting ID:</b> 884 3584 3854</li>
+                    <li><b>Passcode:</b> 421097</li>
+                    <li>--OR--<br>
+                    Dial by your location
+                      +1 929 205 6099 US (New York)<br>
+                      Find your local number:<br>
+                      https://us02web.zoom.us/u/kpWLPEqKk
+                    </li>
+                </ul>
+            </div>
+          `,
+          date: 'February 16, 2021',
+          time: '10:00 AM - 12:00 PM',
           modality: 'Zoom',
           presenter: 'Prospectus Group',
           more: '',
