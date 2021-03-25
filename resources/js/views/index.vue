@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="hero-body">
-        <div class="container">
+        <form @submit="search" class="container">
           <div class="field has-addons">
             <div class="control is-expanded has-icons-left">
               <input
@@ -34,13 +34,14 @@
             </div>
             <div class="control">
               <button
-                @click="search()"
                 class="button is-primary is-large"
                 type="submit"
-              >Search</button>
+              >
+                Search
+              </button>
             </div>
           </div>
-        </div>
+        </form>
       </div>
       <div class="hero-footer">
         <div class="container">
