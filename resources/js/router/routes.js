@@ -1,48 +1,56 @@
-import Index from '@/views/index'
-import Calendar from '@/views/calendar'
-import Media from '@/views/media'
-import About from '@/views/about'
-import Contact from '@/views/contact'
-import GeorgiaSeow from '@/views/georgia-seow'
-import Search from '@/views/search'
-import SpfOverview from '@/views/spf-overview'
-import Training from '@/views/training'
+import Index from '~/pages/index'
+import Login from '~/pages/login'
+import Calendar from '~/pages/calendar'
+import Media from '~/pages/media'
+import About from '~/pages/about'
+import Contact from '~/pages/contact'
+import GeorgiaSeow from '~/pages/georgia-seow'
+import Resources from '~/pages/resources'
+import SpfOverview from '~/pages/spf-overview'
+import Training from '~/pages/training'
 
 export default [
-    {
-        path: '/',
-        component: Index,
+  {
+    path: '/',
+    component: Index,
+  },
+  {
+    path: '/login',
+    component: Login,
+    meta: {
+      layout: 'FullScreenLayout',
     },
-    {
-        path: '/calendar',
-        component: Calendar
-    },
-    {
-        path: '/about',
-        component: About
-    },
-    {
-        path: '/contact',
-        component: Contact
-    },
-    {
-        path: '/georgia-seow',
-        component: GeorgiaSeow
-    },
-    {
-        path: '/media',
-        component: Media
-    },
-    {
-        path: '/search',
-        component: Search
-    },
-    {
-        path: '/spf-overview',
-        component: SpfOverview
-    },
-    {
-        path: '/training',
-        component: Training
-    }
+  },
+  {
+    path: '/calendar',
+    component: Calendar,
+  },
+  {
+    path: '/about',
+    component: About,
+  },
+  {
+    path: '/contact',
+    component: Contact,
+  },
+  {
+    path: '/georgia-seow',
+    component: GeorgiaSeow,
+  },
+  {
+    path: '/media',
+    component: Media,
+  },
+  {
+    path: '/resources',
+    component: Resources,
+  },
+  {
+    path: '/spf-overview',
+    component: SpfOverview,
+  },
+  {
+    path: '/training',
+    component: Training,
+  },
 ]

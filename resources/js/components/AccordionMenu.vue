@@ -1,53 +1,59 @@
-<template>
-    <div class="faq-container">
-        <h2 class="is-size-4">Frequently Asked Questions</h2>
-        <hr>
-        <div class="faq-question" v-on:click="toggle(index)" v-for="(item, index) in contents">
-            <div class="faq-description"><span class="faq-number">{{index + 1}}</span>{{item.title}}<span>+</span></div>
-            <div class="faq-content" style="display: none;">
-                <p>{{item.msg}}</p>
-            </div>
-        </div>
-    </div>
-</template>
-
 <script>
 export default {
-    name: 'accordion-menu',
-    props: {
-        contents: {
-            type: Array,
-            default: [
-                {
-                    title: 'How are you?',
-                    msg: 'I am fine thank you.'
-                }
-            ]
+  name: 'accordion-menu',
+  props: {
+    contents: {
+      type: Array,
+      default: [
+        {
+          title: 'How are you?',
+          msg: 'I am fine thank you.'
         }
-    },
-    methods: {
-        toggle: function (num) {
-            // console.log(this)
-            // console.log(this.$el)
-            // console.log(this.$el.children)
-            if (this.$el.children[num].classList.contains('open')) {
-                // console.log("if")
-                this.$el.children[num].classList.remove('open')
-                this.$el.children[num].querySelectorAll('.faq-content')[0].style.display = 'none'
-            } else {
-                // console.log("else")
-                var prevFaqQuestion = this.$el.querySelectorAll('.open')
-                if (prevFaqQuestion.length !== 0) {
-                    prevFaqQuestion[0].classList.remove('open')
-                    prevFaqQuestion[0].querySelectorAll('.faq-content')[0].style.display = 'none'
-                }
-                this.$el.children[num].classList.add('open')
-                this.$el.children[num].querySelectorAll('.faq-content')[0].style.display = ''
-            }
-        }
+      ]
     }
+  },
+  methods: {
+    toggle: function(num) {
+      // console.log(this)
+      // console.log(this.$el)
+      // console.log(this.$el.children)
+      if (this.$el.children[num].classList.contains('open')) {
+        // console.log("if")
+        this.$el.children[num].classList.remove('open')
+        this.$el.children[num].querySelectorAll('.faq-content')[0].style.display = 'none'
+      } else {
+        // console.log("else")
+        var prevFaqQuestion = this.$el.querySelectorAll('.open')
+        if (prevFaqQuestion.length !== 0) {
+          prevFaqQuestion[0].classList.remove('open')
+          prevFaqQuestion[0].querySelectorAll('.faq-content')[0].style.display = 'none'
+        }
+        this.$el.children[num].classList.add('open')
+        this.$el.children[num].querySelectorAll('.faq-content')[0].style.display = ''
+      }
+    }
+  }
 }
 </script>
+
+<template>
+  <div class="faq-container">
+    <h2 class="is-size-4">Frequently Asked Questions</h2>
+    <hr />
+    <div class="faq-question" v-on:click="toggle(index)" v-for="(item, index) in contents">
+      <div class="faq-description">
+        <span class="faq-number">{{ index + 1 }}</span>
+        {{ item.title }}
+        <span>+</span>
+      </div>
+      <div class="faq-content" style="display: none;">
+        <p>{{ item.msg }}</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+
 
 <style scoped>
 .faq-container {
@@ -95,7 +101,7 @@ export default {
     width: 100%;
     border-radius: 0;
     border: 1px solid transparent;
-    border-bottom: 1px solid #D9D9D9;
+    border-bottom: 1px solid #d9d9d9;
     padding: 0;
   }
 

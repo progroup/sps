@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Language" content="{{ app()->getLocale() }}">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="/favicon.ico" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta name="google" value="notranslate">
@@ -22,15 +23,13 @@
 		]) !!};
 
 		window.App = {!! json_encode([
-            'csrfToken' => csrf_token(),
-            'user' => Auth::user(),
-            'signedIn' => Auth::check()
-        ])!!};
+			'csrfToken' => csrf_token(),
+			'user' => Auth::user(),
+			'signedIn' => Auth::check()
+		])!!};
 	</script>
-	<link href="/css/sps.css" rel="stylesheet">
-	{{-- <link href="{{ mix('/css/main.css') }}" rel="stylesheet"> --}}
+	<link href="/css/tailwind.css" rel="stylesheet">
 	<script src="{{ mix('/js/main.js') }}" defer></script>
-	{{-- <script src="{{ mix('/js/sps.js') }}" defer></script> --}}
 </head>
 
 <body>

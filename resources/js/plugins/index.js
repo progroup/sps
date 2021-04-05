@@ -1,5 +1,3 @@
-import 'nprogress/nprogress.css';
+import 'nprogress/nprogress.css'
 
-import '@/plugins/portal-vue';
-import '@/plugins/vue-gtag';
-import '@/plugins/vue-instantsearch';
+import '@/plugins/vue-gtag'
