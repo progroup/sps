@@ -6,14 +6,21 @@ mix.postCss('resources/js/assets/css/tailwind.css', 'public/css', [
   require('tailwindcss'),
 ])
 
-mix.override(webpackConfig => {
-  webpackConfig.resolve.modules = [
-    'node_modules',
-    __dirname + '/vendor/spatie/laravel-medialibrary-pro/resources/js',
-  ]
-})
+// mix.override(webpackConfig => {
+//   webpackConfig.resolve.modules = [
+//     'node_modules',
+//     __dirname + '/vendor/spatie/laravel-medialibrary-pro/resources/js',
+//   ]
+// })
 
-mix.purgeCss({whitelistPatterns: [/^media-library/]})
+// mix.webpackConfig({
+//   resolve: {
+//     modules: [
+//       'node_modules',
+//       path.resolve(__dirname, 'vendor/laravel/spark/resources/assets/js'),
+//     ],
+//   },
+// })
 
 mix.webpackConfig({
   resolve: {

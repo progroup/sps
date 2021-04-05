@@ -15,8 +15,18 @@ class CreateResourcesTable extends Migration
     {
         Schema::create('resources', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('slug');
+            $table->string('channel');
+            $table->string('category');
+            $table->string('url');
+            $table->string('file_url');
+            $table->string('resource_url');
             $table->string('title');
             $table->text('description');
+            $table->string('filetype');
+            $table->text('tags');
+            $table->string('author');
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
 

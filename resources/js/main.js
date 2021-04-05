@@ -4,7 +4,6 @@ import {createStore} from 'vuex'
 import {createI18n} from 'vue-i18n'
 
 import Oruga from '@oruga-ui/oruga-next'
-// import '~/assets/css/tailwind.css'
 import '@oruga-ui/oruga-next/dist/oruga-full-vars.css'
 
 import upperFirst from 'lodash/upperFirst'

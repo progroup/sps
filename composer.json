@@ -13,6 +13,7 @@
     "blade-ui-kit/blade-heroicons": "^1.0.1",
     "blade-ui-kit/blade-ui-kit": "^0.2.0",
     "calebporzio/sushi": "^v2.1.1",
+    "doctrine/dbal": "^3.0",
     "eluceo/ical": "2.0.0",
     "fideloper/proxy": "^4.4.1",
     "friendsofphp/php-cs-fixer": "^v2.18.4",
@@ -28,12 +29,12 @@
     "spatie/laravel-activitylog": "^3.17.0",
     "spatie/laravel-mail-preview": "4.0.1",
     "spatie/laravel-medialibrary": "^9.0.0",
-    "spatie/laravel-medialibrary-pro": "^1.0.0",
     "spatie/laravel-permission": "^4.0.1",
     "spatie/laravel-query-builder": "^3.3.4",
     "spatie/laravel-ray": "^1.17.1",
     "spatie/laravel-tail": "^4.3.2",
     "squizlabs/php_codesniffer": "^3.5.8",
+    "statamic/cms": "^3.1",
     "stevebauman/purify": "v4.0.0"
   },
   "require-dev": {
@@ -68,9 +69,13 @@
     }
   },
   "scripts": {
+    "pre-update-cmd": [
+      "Statamic\\Console\\Composer\\Scripts::preUpdateCmd"
+    ],
     "post-autoload-dump": [
       "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-      "@php artisan package:discover --ansi"
+      "@php artisan package:discover --ansi",
+      "@php artisan statamic:install --ansi"
     ],
     "post-root-package-install": [
       "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
@@ -94,11 +99,5 @@
     "sort-packages": true
   },
   "minimum-stability": "dev",
-  "prefer-stable": true,
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://satis.spatie.be"
-    }
-  ]
+  "prefer-stable": true
 }

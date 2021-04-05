@@ -18,5 +18,4 @@ class ProductSearchController extends Controller
     {
         return Product::where('name', 'like', '%'.$name.'%')->get();
     }
-
 }
