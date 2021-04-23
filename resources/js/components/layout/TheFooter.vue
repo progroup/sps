@@ -1,6 +1,6 @@
 <template>
-  <footer class="p-8 bg-black">
-    <div class="container">
+  <footer class="bg-black text-white text-xs">
+    <div class="max-w-7xl w-full mx-auto p-8 space-y-8">
       <div class="flex items-center justify-between">
         <figure>
           <a href="http://www.samhsa.gov" target="_new">

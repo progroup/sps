@@ -47,6 +47,8 @@
   --transition-snappy: 200ms linear;
   --transition-silky: 300ms cubic-bezier(1, 0, 0.55, 0.85);
 
+  --color-black: #000;
+  --color-white: #fff;
   --color-pink: #faa7ed;
   --color-navy: #0c1f72;
   --color-navy-opaque: rgba(6, 0, 79, 0.77);
@@ -88,9 +90,40 @@
   /* Oruga */
 
   --oruga-variant-primary: var(--color-primary);
+  --oruga-color-primary-invert: var(--color-white);
   --oruga-variant-secondary: var(--color-secondary);
   --oruga-variant-danger: var(--color-danger);
+
   --oruga-button-background-color: var(--oruga-variant-primary);
+
+  /* --oruga-base-border-radius: theme('borderRadius.lg');
+  --oruga-color-primary: theme('colors.primary.500');
+
+  --oruga-color-secondary: var(--color-raven);
+  --oruga-color-danger: var(--color-danger);
+  --oruga-color-warning: var(--color-warning);
+  --oruga-color-success: var(--color-success);
+  --oruga-color-info: var(--color-info);
+
+  --oruga-checkbox-active-background-color: theme('colors.primary.500');
+  --oruga-dropdown-item-background-active: theme('colors.primary.500');
+  --oruga-pagination-link-current-background-color: theme('colors.primary.500');
+  --oruga-pagination-link-current-border-color: theme('colors.primary.500');
+  --oruga-radio-active-background-color: theme('colors.primary.500');
+  --oruga-sidebar-content-background-color: theme('colors.gray.50');
+  --oruga-sidebar-width: 450px;
+  --oruga-steps-active-color: theme('colors.primary.500');
+  --oruga-steps-previous-color: theme('colors.primary.500');
+  --oruga-switch-active-background-color: theme('colors.primary.500');
+  --oruga-table-detail-chevron-color: theme('colors.primary.500');
+  --oruga-table-focus-border-color: theme('colors.primary.500');
+  --oruga-table-row-active-background-color: theme('colors.primary.500');
+  --oruga-tabs-link-active-border-bottom-color: theme('colors.primary.500');
+  --oruga-tabs-link-active-color: theme('colors.primary.500');
+  --oruga-tabs-toggle-link-active-background-color: theme('colors.primary.500');
+  --oruga-tabs-toggle-link-active-border-color: theme('colors.primary.500');
+  --oruga-tabs-toggle-link-active-color: theme('colors.white');
+  --oruga-tooltip-background-color: theme('colors.primary.500'); */
 }
 
 .dark {

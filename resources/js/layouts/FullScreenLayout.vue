@@ -5,7 +5,5 @@ export default {
 </script>
 
 <template>
-  <div class="flex justify-center min-h-screen">
-    <RouterView />
-  </div>
+  <RouterView />
 </template>

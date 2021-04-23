@@ -1,5 +1,5 @@
 <script lang="ts">
-import {defineComponent, computed, reactive} from 'vue'
+import { defineComponent, computed, reactive } from 'vue'
 
 export default defineComponent({
   props: {
@@ -60,7 +60,7 @@ export default defineComponent({
   <section
     :style="`background-image: ${backgroundImage}`"
     :class="{
-      'h-screen': fullheight,
+      'h-full': fullheight,
       'h-1/2': halfheight,
       'bg-cover': bgCover,
       'md:flex md:flex-col md:items-center md:justify-center': false,
@@ -81,9 +81,9 @@ export default defineComponent({
           <div>
             <h1
               :class="[
-                {'text-gray-900': false},
-                {'mt-10 mb-8 sm:mt-14 sm:mb-10': false},
-                {'text-4xl font-extrabold sm:text-6xl lg:text-7xl': false},
+                { 'text-gray-900': false },
+                { 'mt-10 mb-8 sm:mt-14 sm:mb-10': false },
+                { 'text-4xl font-extrabold sm:text-6xl lg:text-7xl': false },
               ]"
               class="leading-none tracking-tight"
             >
@@ -97,9 +97,7 @@ export default defineComponent({
               }"
               v-if="hasSubtitleSlot || subtitle"
             >
-              <slot name="subtitle">
-                {{ subtitle }}
-              </slot>
+              <slot name="subtitle">{{ subtitle }}</slot>
             </h2>
           </div>
 

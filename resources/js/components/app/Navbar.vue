@@ -82,51 +82,6 @@ export default defineComponent({
           label: this.t('training'),
           path: '/training/',
         },
-        // {
-        //   name: 'events',
-        //   label: this.t('events'),
-        //   path: '/events/',
-        // },
-        // {
-        //   name: 'about',
-        //   label: this.t('about'),
-        //   path: '/about/',
-        // },
-        // {
-        //   name: 'learn',
-        //   label: this.t('learn'),
-        //   path: '/learn/',
-        // },
-        // {
-        //   name: 'demos',
-        //   label: this.t('demos'),
-        //   path: '/demos/',
-        // },
-        // {
-        //   name: 'blog',
-        //   label: this.t('blog'),
-        //   path: '/blog/',
-        // },
-        // {
-        //   name: 'docs',
-        //   label: this.t('docs'),
-        //   path: '/docs/',
-        // },
-        // {
-        //   name: 'uses',
-        //   label: this.t('uses'),
-        //   path: '/uses/',
-        // },
-        // {
-        //   name: 'support',
-        //   label: this.t('support'),
-        //   path: '/support/',
-        // },
-        // {
-        //   name: 'pricing',
-        //   label: this.t('pricing'),
-        //   path: '/pricing/',
-        // },
       ]
     },
   },
@@ -143,8 +98,6 @@ export default defineComponent({
         custom: true,
         trapFocus: true,
       })
-
-      // this.$oruga.modal.open('testing')
     },
   },
 })
@@ -159,7 +112,7 @@ export default defineComponent({
       'w-full shadow border-b',
     ]"
   >
-    <div class="px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-0">
       <div class="flex justify-between h-16">
         <div class="flex">
           <div class="flex items-center mr-2 -ml-2 md:hidden">
@@ -175,7 +128,6 @@ export default defineComponent({
           </div>
 
           <div class="flex items-center flex-shrink-0">
-            <!-- <AffiliateDashboardLink /> -->
             <RouterLink
               class="flex items-center justify-center"
               to="/"
@@ -186,10 +138,6 @@ export default defineComponent({
           </div>
 
           <div class="items-center hidden md:ml-6 md:flex md:space-x-8">
-            <!-- <RouterLink to="/">
-              {{ t('dashboard') }}
-            </RouterLink>-->
-
             <BaseMenu :paths="['about', 'contact', 'georgia_seow']">{{ t('about') }}</BaseMenu>
 
             <RouterLink
@@ -222,29 +170,7 @@ export default defineComponent({
               >ecco</OButton>
             </div>
 
-            <!-- Help dropdown -->
-            <!-- <BaseHelpDropdownButton /> -->
-
-            <!-- Profile dropdown -->
-            <!-- <BaseProfileDropdownButton /> -->
-            <!-- <RouterLink  v-if="!isLoggedIn" :to="localePath('/login/')">
-              {{ t('login')}}
-            </RouterLink>-->
             <div class="hidden space-x-3 lg:block">
-              <div class="space-x-3" v-if="person.isLoggedIn">
-                <!-- <ProfileDropdown :person="person" /> -->
-                <!-- <RouterLink to="/profile/" id="profile" active-class="font-bold">
-                  {{ t('my_profile') }}
-                </RouterLink>-->
-                <!-- <button @click="$auth.logout()">
-                  {{ t('logout') }}
-                </button>-->
-              </div>
-
-              <div class="flex items-center space-x-3" v-else>
-                <RouterLink to="/login/">{{ t('login') }}</RouterLink>
-              </div>
-
               <RouterLink v-if="isAdmin" to="/admin/" id="admin">{{ t('admin') }}</RouterLink>
             </div>
           </div>

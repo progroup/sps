@@ -13,6 +13,9 @@ export default [
   {
     path: '/',
     component: Index,
+    meta: {
+      layout: 'PlainLayout',
+    },
   },
   {
     path: '/login',

@@ -25,7 +25,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::firstOrCreate([
+            'username' => $request->input('username')
+        ], [
+            'email' =>  $request->input('email'),
+            'username' =>  $request->input('username'),
+            'password' =>  $request->input('password'),
+        ]);
     }
 
     /**

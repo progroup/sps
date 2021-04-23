@@ -20,6 +20,7 @@ import router from '~/router'
 import DefaultLayout from '~/layouts/DefaultLayout'
 import FullScreenLayout from '~/layouts/FullScreenLayout'
 import NoHeaderLayout from '~/layouts/NoHeaderLayout'
+import PlainLayout from '~/layouts/PlainLayout'
 
 import en from '~/locales/en.json'
 
@@ -94,6 +95,7 @@ requireComponent.keys().forEach(fileName => {
 app.component('DefaultLayout', DefaultLayout)
 app.component('FullScreenLayout', FullScreenLayout)
 app.component('NoHeaderLayout', NoHeaderLayout)
+app.component('PlainLayout', PlainLayout)
 
 app.use(store)
 app.use(router)

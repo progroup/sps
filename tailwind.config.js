@@ -1,31 +1,11 @@
-module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
-  theme: {
-    extend: {},
-  },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
-}
 const defaultTheme = require('tailwindcss/defaultTheme')
 const tailWindColors = require('tailwindcss/colors')
-
-const angelArmiesColors = require('./resources/config/angel_armies/colors')
-const boosterColors = require('./resources/config/booster/colors')
 const defaultColors = require('./resources/config/__DEFAULT__/colors')
-const emaColors = require('./resources/config/ema/colors')
 const gaSpsColors = require('./resources/config/ga_sps_org/colors')
-const promiseServesColors = require('./resources/config/promise_serves/colors')
 
 const colors = {
-  ...angelArmiesColors,
-  ...boosterColors,
   ...defaultColors,
-  ...emaColors,
   ...gaSpsColors,
-  ...promiseServesColors,
   ...tailWindColors,
 }
 
@@ -102,39 +82,6 @@ module.exports = {
         ],
       },
       colors: {
-        // primary: colors.burgundy,
-        // primary: colors.blueGray,
-        // primary: colors.jacarta,
-        // primary: colors.studio,
-        // primary: colors.paprika,
-        // primary: colors.emerald,
-        // primary: colors.oliveGreen,
-        // primary: colors['flame-pea'],
-        // primary: colors['regal-blue'],
-        // primary: 'var(--color-primary)',
-
-        // secondary: colors['silver-chalice'],
-        // secondary: colors.coolGray,
-        // secondary: colors['clay-creek'],
-        // secondary: colors['gold-tips'],
-        // secondary: colors['tory-blue'],
-        // secondary: colors['cornflower-blue'],
-        // secondary: colors.mineShaft,
-        // secondary: colors.deepTeal,
-        // secondary: colors['chathams-blue'],
-        // secondary: 'var(--color-secondary)',
-
-        // tertiary: colors['hokey-pokey'],
-        // tertiary: colors.trueGray,
-        // tertiary: colors.mineShaft,
-        // tertiary: colors['deep-sea'],
-        // tertiary: colors['deep-sea'],
-        // tertiary: colors['picton-blue'],
-        // tertiary: colors['yellow-orange'],
-        // tertiary: colors.candlelight,
-        // tertiary: colors.peachSchnapps,
-        // tertiary: 'var(--color-tertiary)',
-
         primary: {
           DEFAULT: 'var(--color-primary)',
           50: 'var(--color-primary-50)',
