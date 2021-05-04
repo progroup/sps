@@ -15,16 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Carbon::serializeUsing(function ($carbon) {
-            return $carbon->format('U');
-        });
 
-        \View::composer('*', function ($view) {
-            $topics = Topic::all();
-
-            $view->with(compact('topics'));
-
-        });
     }
 
     /**

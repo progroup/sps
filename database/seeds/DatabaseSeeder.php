@@ -12,7 +12,5 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(UserSeeder::class);
-        $this->call(FaqTableSeeder::class);
-        $this->call(InitialDummyData::class);
     }
 }
