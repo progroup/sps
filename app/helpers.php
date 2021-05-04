@@ -113,4 +113,3 @@ function format_phone($phoneNumber)
 
     return $phoneNumber;
 }
-
