@@ -172,7 +172,6 @@ return [
         Barryvdh\Cors\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Fideloper\Proxy\TrustedProxyServiceProvider::class,
-        Laravel\Scout\ScoutServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
 
         /*
@@ -183,8 +182,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Navigation\NavigationServiceProvider::class,
-
     ],
 
     /*
